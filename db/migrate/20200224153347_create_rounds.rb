@@ -4,7 +4,7 @@ class CreateRounds < ActiveRecord::Migration[5.2]
       t.string :start_page
       t.string :end_page
       t.string :game_mode
-      t.string :state
+      t.string :state, default: 'initiated'
       t.string :start_time
       t.references :game_session, foreign_key: true
 

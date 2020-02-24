@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_155006) do
     t.string "start_page"
     t.string "end_page"
     t.string "game_mode"
-    t.string "state"
+    t.string "state", default: "initiated"
     t.string "start_time"
     t.bigint "game_session_id"
     t.datetime "created_at", null: false
