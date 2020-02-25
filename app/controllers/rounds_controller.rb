@@ -6,13 +6,17 @@ class RoundsController < ApplicationController
 
   def show
 
-    # @round = Round.find(params[:id])
-    # @end_page = @round.end_page
-    # la end_page est display right
-    # a counter will be displayed
+    #OLD COMMENTS OF TIM/ NOT CODE/ JUST COMMENTS--------------------------------------
+      # @round = Round.find(params[:id])
+      # @end_page = @round.end_page
+      # la end_page est display right
+      # a counter will be displayed
+    #-----------------------------------------------------------------------------------
 
-    @round = Round.find(params[:id].to_i)
-    @game_session = @round.game_session
+    #CODE OF SOMEONE NOT TIM PASSED IN COMMENTS TO BE ABLE TO PLAY WITH PAGE------------
+      # @round = Round.find(params[:id].to_i) #WTF sur cette ligne?
+      # @game_session = @round.game_session
+    #-----------------------------------------------------------------------------------
 
   end
 
