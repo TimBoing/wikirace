@@ -1,9 +1,12 @@
 const requestAndDisplay = () => {
-  const page_name = 'Faculté_de_théologie_protestante_de_Strasbourg';
+  const page_name = 'Constantin_Ier_(empereur_romain)';
   const pageContainer = document.getElementById('test-container-for-receiving-ajax');
   let previousPage;
+  let randomPage;
 
-   const requestWikipageContent = (page) => {
+  // This AJAX request allows to get the html of a page by proviging the last part of a wiki url
+
+  const requestWikipageContent = (page) => {
     previousPage = page;
     console.log(previousPage);
     const requestOptions = {
@@ -16,6 +19,24 @@ const requestAndDisplay = () => {
       .catch(error => console.log('error', error));
   }
 
+  // This is an atttempt to get a randomly generated page title
+
+  const requestRandomPageTitle = () => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch("https://fr.wikipedia.org/api/rest_v1/page/random/title", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        requestWikipageContent(result.items[0].title);
+      });
+  }
+
+
+
+  // This adds eventListeners on all links in the page returned
   const addEventsOnWikiLinks = () => {
     const wikiLinks = pageContainer.querySelectorAll('a');
     wikiLinks.forEach((link) => {
@@ -35,14 +56,21 @@ const requestAndDisplay = () => {
     });
   }
 
+  // This visually displays the content of the page in the container of the page
   const displayContentOnPage = (content) => {
     pageContainer.insertAdjacentHTML('afterbegin', content);
     addEventsOnWikiLinks();
+    console.log('I finished the content displaying');
   }
 
 
+  // We call the whole machinery when we load the page with the game container
 
-  requestWikipageContent(page_name);
+  requestRandomPageTitle();
+  // if(pageContainer){
+  //   requestWikipageContent(requestRandomPageTitle());
+  // }
+
 }
 
 export { requestAndDisplay };
