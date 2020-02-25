@@ -1,6 +1,7 @@
 class RoundsController < ApplicationController
   def index
-    @rounds = Round.all
+    @game_session = GameSession.find(params[:game_session_id])
+    @rounds = Round.where(game_session_id: @game_session.id)
   end
 
   def show
