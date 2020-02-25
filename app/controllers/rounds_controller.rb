@@ -4,6 +4,8 @@ class RoundsController < ApplicationController
   end
 
   def show
+    @round = Round.find(params[:id].to_i)
+    @game_session = @round.game_session
   end
 
   def new

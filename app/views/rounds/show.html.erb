@@ -1,2 +1,8 @@
 <h1>Rounds#show</h1>
-<p>Find me in app/views/rounds/show.html.erb</p>
+<p>Ici c'est la page de jeu</p>
+
+<p>Puis quand le jeu est fini, on a le choix de:</p>
+
+<%= link_to "Play a new Round", new_game_session_round_path(@game_session) %>
+
+<%= link_to "End the Game Session", game_session_rounds_path(@game_session) %>
