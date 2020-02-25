@@ -1,8 +1,12 @@
 <div>
   <h1>Wecome to WikiRace</h1>
-  <%= simple_form_for @game_session do |f| %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit "Create a session" %>
-<% end %>
+  <%= if current_user %>
+    <%= simple_form_for @game_session do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit "Create a session" %>
+    <% end %>
+  <% else %>
+    <p>LOG-IN PLEASE</p>
+  <% end %>
 </div>
 
