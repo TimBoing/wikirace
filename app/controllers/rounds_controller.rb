@@ -16,7 +16,6 @@ class RoundsController < ApplicationController
   def create
     @round = Round.new(round_params)
     @round.game_session_id = params[:game_session_id].to_i
-    raise
     if @round.save
       round_participation = RoundParticipation.new
       round_participation.user_id = current_user.id
