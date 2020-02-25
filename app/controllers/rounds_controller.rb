@@ -1,4 +1,8 @@
 class RoundsController < ApplicationController
+  def index
+    @rounds = Round.all
+  end
+
   def show
   end
 
@@ -18,9 +22,6 @@ class RoundsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def index
   end
 
   private
