@@ -6,5 +6,7 @@ class GameSessionsController < ApplicationController
   end
 
   def show
+    # This is the waiting page
+
   end
 end
