@@ -66,10 +66,9 @@ const requestAndDisplay = () => {
 
   // We call the whole machinery when we load the page with the game container
 
-  requestRandomPageTitle();
-  // if(pageContainer){
-  //   requestWikipageContent(requestRandomPageTitle());
-  // }
+  if(pageContainer){
+    requestRandomPageTitle();
+  }
 
 }
 
