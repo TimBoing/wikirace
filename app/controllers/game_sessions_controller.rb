@@ -3,6 +3,8 @@ class GameSessionsController < ApplicationController
 
   def new
     @game_session = GameSession.new
+    @round = Round.new
+    @round_participation = RoundParticipation.new
   end
 
   def create

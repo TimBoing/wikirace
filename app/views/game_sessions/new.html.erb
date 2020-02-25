@@ -2,11 +2,13 @@
   <h1>Wecome to WikiRace</h1>
   <% if user_signed_in? %>
     <%= simple_form_for @game_session do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.submit "Create a session" %>
+      <%= f.submit "Create a session" %>
+    <% end %>
+    <%= simple_form_for @round_participation do |f| %>
+      <%= f.input :round_id %>
+      <%= f.submit "Join an existing session" %>
     <% end %>
   <% else %>
     <p>Please log-in to be able to create a Game Session...</p>
   <% end %>
 </div>
-
