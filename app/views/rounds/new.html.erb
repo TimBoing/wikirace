@@ -1,2 +1,14 @@
-<h1>Rounds#new</h1>
-<p>Find me in app/views/rounds/new.html.erb</p>
+<div class="container">
+
+  <h1>Choose your options for this round</h1>
+
+  <div>
+    <%= simple_form_for @round, url: game_session_rounds_path(@game_session) do |f| %>
+      <%= f.input :start_page %>
+      <%= f.input :end_page %>
+      <%= f.input :game_mode, collection: ['Speed God', 'Less Clicks', 'WTF'] %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+
+</div>

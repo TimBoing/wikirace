@@ -1,0 +1,21 @@
+<h1>
+  <% if @user.username != nil && @user.username != "" %>
+    <%= @user.username %>, mets jour ton profile!
+  <% else %>
+    Putain mais t'as même pas de Username!!! Vas y, remplis ton profile!!
+  <% end %>
+</h1>
+
+<div class="edit-form-container">
+   <%= simple_form_for @user do |f| %>
+      <h2>User info</h2>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :username %>
+      <h2>Photo</h2>
+      <%= f.input :photo %>
+      <%= f.submit 'Mets à jour ton profile' %>
+    <% end %>
+</div>
+
+<%= link_to "Back", :back %>

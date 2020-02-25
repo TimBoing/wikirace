@@ -1,7 +1,16 @@
 <h1>Rounds#show</h1>
-<p>This is our game page</p>
-<p>en_page to be displayed and the "game_banner" with the counter </p>
+
+<p>Ici c'est la page de jeu</p>
+<p>end_page to be displayed and the "game_banner" with the counter </p>
 <p>modal pop up when counter arrives to 5 or 3 </p>
+<p>Puis quand le jeu est fini, on a le choix de:</p>
+
+<% if current_user == @game_session.user_id %>
+  <%= link_to "Play a new Round", new_game_session_round_path(@game_session) %>
+<% else %>
+  <%= link_to "Play a new Round", game_session_path(@game_session) %>
+<% end %>
+<%= link_to "End the Game Session", game_session_rounds_path(@game_session) %>
 
 <div class="container">
   <div id="test-container-for-receiving-ajax">

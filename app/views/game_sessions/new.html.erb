@@ -1,2 +1,14 @@
-<h1>GameSessions#new</h1>
-<p>Find me in app/views/game_sessions/new.html.erb</p>
+<div>
+  <h1>Wecome to WikiRace</h1>
+  <% if user_signed_in? %>
+    <%= simple_form_for @game_session do |f| %>
+      <%= f.submit "Create a session" %>
+    <% end %>
+    <%= simple_form_for @round_participation do |f| %>
+      <%= f.input :round_id %>
+      <%= f.submit "Join an existing session" %>
+    <% end %>
+  <% else %>
+    <p>Please log-in to be able to create a Game Session...</p>
+  <% end %>
+</div>
