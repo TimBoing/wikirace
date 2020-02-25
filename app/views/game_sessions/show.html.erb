@@ -8,3 +8,13 @@
     <%= link_to "START THE GAME", round_path %>
   </div>
 <%end  %>
+
+<% content_for :after_js do %>
+  <script>
+    App['game_session_<%= game_sessiona.id %>'] = App.cable.subscription.create({ 'GameSessionChannel', @game_session_id: <%= game_session.id %> }, {
+      received(data) => {
+        console.log(data);
+      }
+    })
+  </script>
+<% end %>
