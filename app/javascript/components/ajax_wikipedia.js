@@ -1,14 +1,26 @@
-
 const requestAndDisplay = () => {
   const page_name = 'wagon';
+  const pageContainer = document.getElementById('test-container-for-receiving-ajax');
 
-  const displayContentOnPage = (content) => {
-    const pageContainer = document.getElementById('test-container-for-receiving-ajax');
-    pageContainer.insertAdjacentHTML('afterbegin', content);
+
+
+  const addEventsOnWikiLinks = () => {
+    const wikiLinks = pageContainer.querySelectorAll('a');
+    wikiLinks.forEach((link) => {
+      console.log('adding event');
+      link.addEventListener('click', (event)=> {
+        event.preventDefault();
+        alert('you clicked a link!');
+      });
+    });
   }
 
 
+  const displayContentOnPage = (content) => {
+    pageContainer.insertAdjacentHTML('afterbegin', content);
 
+    addEventsOnWikiLinks();
+  }
 
   const requestWikipageContent = () => {
 
@@ -24,9 +36,7 @@ const requestAndDisplay = () => {
 
   }
 
-
   requestWikipageContent();
-
 }
 
 export { requestAndDisplay };
