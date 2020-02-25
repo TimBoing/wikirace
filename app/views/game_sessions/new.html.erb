@@ -1,2 +1,8 @@
-<h1>GameSessions#new</h1>
-<p>Find me in app/views/game_sessions/new.html.erb</p>
+<div>
+  <h1>Wecome to WikiRace</h1>
+  <%= simple_form_for @game_session do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "Create a session" %>
+<% end %>
+</div>
+
