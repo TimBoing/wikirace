@@ -14,13 +14,18 @@ class RoundsController < ApplicationController
   end
 
   def create
-    @round = Round.new
-    @round.game_mode = params[:round][:game_mode]
-    @round.start_page = params[:round][:start_page]
-    @round.end_page = params[:round][:end_page]
+    @round = Round.new(round_params)
     @round.game_session_id = params[:game_session_id].to_i
+    raise
     if @round.save
-      redirect_to game_session_path(params[:game_session_id].to_i)
+      round_participation = RoundParticipation.new
+      round_participation.user_id = current_user.id
+      round_participation.round_id = @round.id
+      if round_participation.save
+        redirect_to game_session_path(params[:game_session_id].to_i)
+      else
+        render :new
+      end
     else
       render :new
     end
@@ -28,7 +33,7 @@ class RoundsController < ApplicationController
 
   private
 
-  # def round_params
-  #   params.require[:round].permit[:game_mode, :start_page, :end_page]
-  # end
+  def round_params
+    params.require(:round).permit(:game_mode, :start_page, :end_page)
+  end
 end
