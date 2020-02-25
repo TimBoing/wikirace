@@ -16,6 +16,6 @@ class GameSessionsController < ApplicationController
 
   def show
     @game_session = GameSession.find(params[:id])
-    @round = Round.where(:game_session_id == @game_session).last
+    @round = Round.where(game_session_id: @game_session).last
   end
 end
