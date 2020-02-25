@@ -17,7 +17,10 @@ class GameSessionsController < ApplicationController
   end
 
   def show
+    # This is the waiting page
+    
     @game_session = GameSession.find(params[:id])
     @round = Round.where(game_session_id: @game_session).last
+
   end
 end

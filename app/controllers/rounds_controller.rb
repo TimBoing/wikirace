@@ -5,8 +5,15 @@ class RoundsController < ApplicationController
   end
 
   def show
+
+    # @round = Round.find(params[:id])
+    # @end_page = @round.end_page
+    # la end_page est display right
+    # a counter will be displayed
+
     @round = Round.find(params[:id].to_i)
     @game_session = @round.game_session
+
   end
 
   def new
