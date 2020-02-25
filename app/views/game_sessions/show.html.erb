@@ -2,3 +2,9 @@
 <p><%= @game_session.id %></p>
 
 <p>Link to send to your friends : www.wikirace.xyz/rounds/<%= @round.id %>/round_participations/new</p>
+
+<%if current_user.id == @game_session.creator_id  %>
+  <div class="btn">
+    <%= link_to "START THE GAME", round_path %>
+  </div>
+<%end  %>
