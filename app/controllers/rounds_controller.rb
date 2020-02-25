@@ -18,7 +18,7 @@ class RoundsController < ApplicationController
     @round.end_page = params[:round][:end_page]
     @round.game_session_id = params[:game_session_id].to_i
     if @round.save
-      redirect_to root_path
+      redirect_to game_session_path(params[:game_session_id].to_i)
     else
       render :new
     end
