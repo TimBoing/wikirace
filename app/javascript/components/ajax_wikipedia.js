@@ -13,10 +13,8 @@ const requestAndDisplay = () => {
 
 
 
-
-
-
-
+  // MA MASTERPIECE! -----------------------------------------------------------------------------------------
+  // AJAX Request qui crée une nouvelle visited page dans la DB!!!!!!!!!!! J´ai galéré de ouf...pas touche batard!
   const addVisitedPageToDatabase = (page) => {
     const requestOptions = {
       method: 'POST',
@@ -29,16 +27,13 @@ const requestAndDisplay = () => {
     fetch(`../round_participations/${roundParticipation}/visited_pages`, requestOptions)
       .catch(error => console.log('error', error));
   }
-
-
-
-
-
+  // FIN DE MA MASTERPIECE! -----------------------------------------------------------------------------------------
 
 
 
   // This AJAX request allows to get the html of a page by proviging the last part of a wiki url
   const requestWikipageContent = (page) => {
+    addVisitedPageToDatabase(page);
     previousPage = page;
     console.log(previousPage);
     const requestOptions = {
@@ -68,6 +63,7 @@ const requestAndDisplay = () => {
         }
       });
     });
+
   }
 
   // This visually displays the content of the page in the container of the page
@@ -77,11 +73,11 @@ const requestAndDisplay = () => {
   }
 
   // We call the whole machinery when we load the page with the game container (ie: the game_container exists)
-  // if(pageContainer){
-  //   requestWikipageContent(roundStartPage);
-  // }
+  if(pageContainer){
+    requestWikipageContent(roundStartPage);
+  }
 
-  addVisitedPageToDatabase('tamere');
+  //addVisitedPageToDatabase('une page');
 
 }
 

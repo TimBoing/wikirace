@@ -1,14 +1,6 @@
 class VisitedPagesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  def new
-
-    @visited_page = VisitedPage.new
-    @round_participation = RoundParticipation.find(params[:round_participation_id])
-
-
-  end
-
   def create
 
     @round_participation = RoundParticipation.find(params[:round_participation_id])
