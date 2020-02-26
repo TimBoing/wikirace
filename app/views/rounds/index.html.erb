@@ -1,8 +1,45 @@
-<div>
-  <% @rounds.each do |round| %>
-    <h2><%= round.start_page %> >> <%= round.end_page %></h2>
-    <br>
-    <br>
-  <% end %>
+<div class="container-fluid align-items-center justify-content-center mt-2">
+  <div class="head-banner text-center p-3">
+    <h3>score final</h3>
+  </div>
+  <br>
+  <div class="table-container bg-white">
+    <table>
+      <tr class="background-grey">
+        <th class="text-blue">rank</th>
+        <th>username</th>
+        <th>score</th>
+      </tr>
+      <tr>
+        <td>1er</td>
+        <td class="text-blue">Geo</td>
+        <td class="text-blue">50points</td>
+      </tr>
+      <tr class="background-grey">
+        <td>2nd</td>
+        <td class="text-blue">Max</td>
+        <td>35points</td>
+      </tr>
+      <tr>
+        <td class="text-blue">3eme</td>
+        <td>Alexis</td>
+        <td class="text-blue">35points</td>
+      </tr>
+      <tr class="background-grey">
+        <td>4eme</td>
+        <td class="text-blue">Pilou</td>
+        <td>35points</td>
+      </tr>
+      <tr>
+        <td>5eme</td>
+        <td class="text-blue">Tim</td>
+        <td class="text-blue">35points</td>
+      </tr>
+      <tr class="background-grey">
+        <td class="text-blue">6eme</td>
+        <td>Eddy Malou</td>
+        <td>35points</td>
+      </tr>
+    </table>
+  </div>
 </div>
-<%= link_to "Back Home", root_path %>
