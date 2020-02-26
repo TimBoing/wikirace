@@ -1,8 +1,6 @@
 <div>
   <% @rounds.each do |round| %>
     <h2><%= round.start_page %> >> <%= round.end_page %></h2>
-    <h3>Your Rank : <%= round.round_participations.rank %></h3>
-    <p>Your buddies : <%= round.round_participations.users.username %></p>
     <br>
     <br>
   <% end %>

@@ -5,10 +5,9 @@
 
 <%if current_user.id == @game_session.user_id  %>
   <div class="btn">
-    <%= link_to "START THE GAME", round_path %>
+    <%= link_to "START THE GAME", round_path(@round) %>
   </div>
 <%end  %>
-
 
 <div class="chat-container">
   <div class="chat-element">

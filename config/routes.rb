@@ -10,4 +10,5 @@ Rails.application.routes.draw do
       resources :round_participations, only: [:new, :create, :update]
     end
   end
+  resources :round_participations, only: [:create]
 end

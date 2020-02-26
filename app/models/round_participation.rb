@@ -4,4 +4,5 @@ class RoundParticipation < ApplicationRecord
   has_many :visited_pages
   validates :user, presence: true
   validates :round, presence: true
+
 end
