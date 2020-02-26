@@ -1,12 +1,29 @@
-<div>
+<div class="text-center pt-5 mt-5">
   <h1>Wecome to WikiRace</h1>
+  <h4>Ready to rumble dummy ?</h4>
+</div>
+<div class="pt-5 h2" >
   <% if user_signed_in? %>
-    <%= simple_form_for @game_session do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.submit "Create a session" %>
-    <% end %>
+    <div class="d-flex justify-content-around align-items-center">
+      <%= simple_form_for @game_session do |f| %>
+        <div class="">
+          <%= f.submit "Create a session", class: "btn-orange-blue" %>
+        </div>
+      <% end %>
+        <div>
+          <h4>or</h4>
+        </div>
+      <%= simple_form_for @round_participation do |f| %>
+        <div class="pt-2 pr-2 pb-2 pl-2 bg-white shadow-sm">
+          <%= f.input :round_id %>
+          <%= f.submit "Join an existing session", class: "btn-blue-orange" %>
+        </div>
+      <% end %>
+    </div>
   <% else %>
-    <p>Please log-in to be able to create a Game Session...</p>
+    <div class="text-center mt-5">
+      <%= link_to "CREATE A PARTY", new_user_registration_path, class: "btn-blue-orange" %>
+    </div>
   <% end %>
 </div>
 
