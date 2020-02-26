@@ -1,11 +1,15 @@
 const requestAndDisplay = () => {
   const page_name = 'Constantin_Ier_(empereur_romain)';
-  const pageContainer = document.getElementById('zoom-container');
+  const pageContainer = document.getElementById('wikipage-container');
+  const roundStartPage = pageContainer.dataset.startPage;
+  const roundEndPage = pageContainer.dataset.endPage;
+  console.log(`the start page : ${pageContainer.dataset.startPage}`);
+  console.log(`the end page : ${pageContainer.dataset.endPage}`);
+
   let previousPage;
   let randomPage;
 
   // This AJAX request allows to get the html of a page by proviging the last part of a wiki url
-
   const requestWikipageContent = (page) => {
     previousPage = page;
     console.log(previousPage);
@@ -18,23 +22,6 @@ const requestAndDisplay = () => {
       .then(result => displayContentOnPage(result))
       .catch(error => console.log('error', error));
   }
-
-  // This is an atttempt to get a randomly generated page title
-
-  const requestRandomPageTitle = () => {
-    var requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
-
-    fetch("https://fr.wikipedia.org/api/rest_v1/page/random/title", requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        requestWikipageContent(result.items[0].title);
-      });
-  }
-
-
 
   // This adds eventListeners on all links in the page returned
   const addEventsOnWikiLinks = () => {
@@ -51,7 +38,6 @@ const requestAndDisplay = () => {
           pageContainer.innerHTML = '';
           requestWikipageContent(stripedRef);
         }
-
       });
     });
   }
@@ -63,11 +49,9 @@ const requestAndDisplay = () => {
     console.log('I finished the content displaying');
   }
 
-
-  // We call the whole machinery when we load the page with the game container
-
+  // We call the whole machinery when we load the page with the game container (ie: the game_container exists)
   if(pageContainer){
-    requestRandomPageTitle();
+    requestWikipageContent(roundStartPage);
   }
 
 }
@@ -78,3 +62,8 @@ export { requestAndDisplay };
 // event.currentTarget.hrf will give you the full url
 // str.substring(indiceA[, indiceB]) ==> start and end
 // les liens morts ont une class "new"
+
+
+// une requete pour appeler un titre de page random est appelée
+// elle appelle une requete pour choper le contenu html de la page wiki correspondante à ce code
+// Cette derniere appelle une fonction qui display le contenu qui résultait
