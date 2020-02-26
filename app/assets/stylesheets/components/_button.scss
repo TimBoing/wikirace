@@ -1,0 +1,65 @@
+.btn-blue {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background-color: $p_blue;
+  border: 1px solid $p_blue;
+}
+
+.btn-blue:hover {
+  background-color: $p_blue;
+  color: white;
+  text-decoration: none;
+}
+
+//---------------------------
+
+.btn-orange {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background-color: $p_orange;
+  border: 1px solid $p_orange;
+}
+
+.btn-orange:hover {
+  background-color: $p_orange;
+  color: white;
+  text-decoration: none;
+}
+
+//---------------------------
+
+.btn-blue-orange {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background-color: $p_blue;
+  border: 1px solid $p_orange;
+}
+
+.btn-blue-orange:hover {
+  background-color: $p_orange;
+  color: white;
+  text-decoration: none;
+}
+
+//---------------------------
+
+.btn-orange-blue {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background-color: $p_orange;
+  border: 1px solid $p_blue;
+}
+
+.btn-orange-blue:hover {
+  background-color: $p_blue;
+  color: white;
+  text-decoration: none;
+}
