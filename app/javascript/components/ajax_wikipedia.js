@@ -13,9 +13,6 @@ const requestAndDisplay = () => {
     console.log(`the end page : ${pageContainer.dataset.endPage}`);
     console.log(`the participation # : ${roundParticipation}`);
   }
-  let previousPage;
-  let randomPage;
-
 
 
   // MA MASTERPIECE! -----------------------------------------------------------------------------------------
@@ -39,8 +36,9 @@ const requestAndDisplay = () => {
   // This AJAX request allows to get the html of a page by proviging the last part of a wiki url
   const requestWikipageContent = (page) => {
     addVisitedPageToDatabase(page);
-    previousPage = page;
-    console.log(previousPage);
+    if(page === roundEndPage) {
+      alert('bravo biatch!');
+    }
     const requestOptions = {
       method: 'GET',
       redirect: 'follow'
