@@ -1,6 +1,6 @@
 const requestAndDisplay = () => {
   const page_name = 'Constantin_Ier_(empereur_romain)';
-  const pageContainer = document.getElementById('test-container-for-receiving-ajax');
+  const pageContainer = document.getElementById('zoom-container');
   let previousPage;
   let randomPage;
 
