@@ -6,8 +6,9 @@ class MessagesController < ApplicationController
     @message.user = current_user
     if @message.save
       ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", {
-        message: @message.to_json;
+        message_partial: render(partial: 'game_sessions/messages', locals: { message: @message })
       })
+
       respond_to do |format|
         format.html {redirect_to game_session_path(@game_session)}
         format.js
