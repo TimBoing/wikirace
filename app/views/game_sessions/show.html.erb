@@ -3,6 +3,16 @@
 
 <p>Link to send to your friends : www.wikirace.xyz/rounds/<%= @round.id %>/round_participations/new</p>
 
+<p>Waiting for your friends to join</p>
+<div class="spinner-box">
+  <div class="leo-border-1">
+    <div class="leo-core-1"></div>
+  </div>
+  <div class="leo-border-2">
+    <div class="leo-core-2"></div>
+  </div>
+</div>
+
 <%if current_user.id == @game_session.user_id  %>
   <div class="btn">
     <%= link_to "START THE GAME", round_path(@round) %>
