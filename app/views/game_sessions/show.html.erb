@@ -9,11 +9,30 @@
   </div>
 <%end  %>
 
+
+<div>
+  <div class="chat-header"><h4>Welcome to the GameSession <%= @game_session.id %></h4></div>
+
+  <div class="messages">
+    <% @game_session.messages.each do |message| %>
+      <%= render "messages", message: message %>
+    <% end %>
+  </div>
+
+  <div id="create-message">
+    <%= simple_form_for [@game_session, Message.new], remote: true do |f| %>
+      <%= f.input :content, label: false %>
+    <% end %>
+  </div>
+
+</div>
+
 <% content_for :after_js do %>
   <script>
-    App['game_session_<%= game_sessiona.id %>'] = App.cable.subscription.create({ 'GameSessionChannel', @game_session_id: <%= game_session.id %> }, {
-      received(data) => {
-        console.log(data);
+    App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create({
+    channel: 'GameSessionChannel', game_session_id: <%= @game_session.id %> }, {
+        received: (data) => {
+          console.log(data);
       }
     })
   </script>
