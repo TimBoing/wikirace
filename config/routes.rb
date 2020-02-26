@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update]
 
   resources :game_sessions, only: [:new, :create, :show], shallow: true do
+    resources :messages, only: [:create]
     resources :rounds, only: [:index, :new, :create, :show], shallow: true do
       resources :round_participations, only: [:new, :create, :update]
     end

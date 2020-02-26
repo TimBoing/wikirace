@@ -1,5 +1,5 @@
 const trackMouse = () => {
-  const pageContainer = document.getElementById('zoom-container');
+  const pageContainer = document.getElementById('wikipage-container');
   const topMouse = document.getElementById('top-mouse');
   const leftMouse = document.getElementById('left-mouse');
   const portal = document.getElementById('portal-test');
