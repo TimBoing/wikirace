@@ -19,6 +19,7 @@
   </div>
 <%end  %>
 
+  <!-- this part is the chat window -->
 <div class="chat-container">
   <div class="chat-element">
     <div class="chat-header"><h4>Welcome to the GameSession <%= @game_session.id %></h4></div>
@@ -37,11 +38,13 @@
   </div>
 </div>
 
+<!-- that is the subscription that happens when a user gets to the game_session#show -->
 <% content_for :after_js do %>
   <script>
     App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create(
     { channel: 'GameSessionChannel', game_session_id: <%= @game_session.id %> },
     {received: (data) => {
+      // here we have the content that will be broadcasted
       const messagesContainer = document.querySelector('.messages');
       messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
     }
