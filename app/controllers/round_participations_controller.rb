@@ -3,6 +3,7 @@ class RoundParticipationsController < ApplicationController
     @round_participation = RoundParticipation.new
     @round = Round.find(params[:round_id])
     @game_session = GameSession.find(@round.game_session_id)
+    @creator = User.find(@game_session.user_id)
   end
 
   def create
