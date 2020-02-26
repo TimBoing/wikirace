@@ -1,3 +1,9 @@
-<div class="btn">
-  <%= link_to "Join the game_session",  round_round_participations_path, method: :post  %>
+<div class="height-div container-fluid d-flex align-items-center justify-content-center">
+  <div class="text-center">
+    <h2><%= @creator.username %> invite you to</h2>
+    <h2>THE WIKIRACE</h2>
+    <br>
+    <br>
+    <%= link_to "Join the game_session",  round_round_participations_path, method: :post, class: "btn-orange"  %>
+  </div>
 </div>
