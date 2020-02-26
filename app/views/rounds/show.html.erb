@@ -4,8 +4,12 @@
 <p>end_page to be displayed and the "game_banner" with the counter </p>
 <p>modal pop up when counter arrives to 5 or 3 </p>
 <p>Puis quand le jeu est fini, on a le choix de:</p>
-<div id="top-mouse">Top mouse : 0</div>
-<div id="left-mouse">Left mouse : 0</div>
+
+<!-- Tracking the mouse with coordinates---------- -->
+  <!-- <div id="top-mouse">Top mouse : 0</div>
+  <div id="left-mouse">Left mouse : 0</div> -->
+<!-- --------------------------------------------- -->
+
 <%# if current_user == @game_session.user_id %>
   <%#= link_to "Play a new Round", new_game_session_round_path(@game_session) %>
 <%# else %>
@@ -16,7 +20,8 @@
 <div class="container">
   <div id="test-container-for-receiving-ajax">
     <div id="zoom-container">
-      <div id="portal-test" class="small-portal"></div>
+
+      <!-- <div id="portal-test" class="small-portal"></div> -->
     </div>
   </div>
 </div>
