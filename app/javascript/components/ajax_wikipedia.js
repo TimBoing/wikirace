@@ -1,13 +1,18 @@
 const requestAndDisplay = () => {
   const page_name = 'Constantin_Ier_(empereur_romain)';
   const pageContainer = document.getElementById('wikipage-container');
-  const roundParticipation = pageContainer.dataset.participation;
-  const roundStartPage = pageContainer.dataset.startPage;
-  const roundEndPage = pageContainer.dataset.endPage;
-  console.log(`the start page : ${pageContainer.dataset.startPage}`);
-  console.log(`the end page : ${pageContainer.dataset.endPage}`);
-  console.log(`the participation # : ${roundParticipation}`);
+  let roundParticipation;
+  let roundStartPage;
+  let roundEndPage;
 
+  if(pageContainer){
+    roundParticipation = pageContainer.dataset.participation;
+    roundStartPage = pageContainer.dataset.startPage;
+    roundEndPage = pageContainer.dataset.endPage;
+    console.log(`the start page : ${pageContainer.dataset.startPage}`);
+    console.log(`the end page : ${pageContainer.dataset.endPage}`);
+    console.log(`the participation # : ${roundParticipation}`);
+  }
   let previousPage;
   let randomPage;
 
