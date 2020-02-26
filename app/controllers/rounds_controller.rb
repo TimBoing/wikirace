@@ -16,21 +16,21 @@ class RoundsController < ApplicationController
       # a counter will be displayed
     #-----------------------------------------------------------------------------------
 
-    #CODE OF SOMEONE NOT TIM PASSED IN COMMENTS TO BE ABLE TO PLAY WITH PAGE------------
-       @round = Round.find(params[:id].to_i) #WTF sur cette ligne?
-      # @game_session = @round.game_session
-    #-----------------------------------------------------------------------------------
+
+    @round = Round.find(params[:id])
+    @game_session = @round.game_session
+    @round_participation_id = @round.round_participations.where(user: current_user).first.id
 
   end
 
   def new
     @round = Round.new
-    @game_session = GameSession.find(params[:game_session_id].to_i)
+    @game_session = GameSession.find(params[:game_session_id])
   end
 
   def create
     @round = Round.new(round_params)
-    @round.game_session_id = params[:game_session_id].to_i
+    @round.game_session_id = params[:game_session_id]
 
     # Creation of the random start page and end page through API----
     url_for_random_title = 'https://fr.wikipedia.org/api/rest_v1/page/random/title'
@@ -50,7 +50,7 @@ class RoundsController < ApplicationController
       round_participation.user_id = current_user.id
       round_participation.round_id = @round.id
       if round_participation.save
-        redirect_to game_session_path(params[:game_session_id].to_i)
+        redirect_to game_session_path(params[:game_session_id])
       else
         render :new
       end
