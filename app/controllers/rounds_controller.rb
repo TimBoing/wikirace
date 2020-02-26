@@ -17,7 +17,7 @@ class RoundsController < ApplicationController
     #-----------------------------------------------------------------------------------
 
     #CODE OF SOMEONE NOT TIM PASSED IN COMMENTS TO BE ABLE TO PLAY WITH PAGE------------
-      # @round = Round.find(params[:id].to_i) #WTF sur cette ligne?
+       @round = Round.find(params[:id].to_i) #WTF sur cette ligne?
       # @game_session = @round.game_session
     #-----------------------------------------------------------------------------------
 
