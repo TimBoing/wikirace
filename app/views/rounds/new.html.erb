@@ -1,14 +1,14 @@
-<div class="container">
-
-  <h1>Choose your options for this round</h1>
-
-  <div>
-    <%= simple_form_for @round, url: game_session_rounds_path(@game_session) do |f| %>
-      <%= f.input :start_page %>
-      <%= f.input :end_page %>
-      <%= f.input :game_mode, collection: ['Speed God', 'Less Clicks', 'WTF'] %>
-      <%= f.button :submit %>
-    <% end %>
+ <div class="height-div container-fluid d-flex align-items-center justify-content-center">
+  <div class="bg-white p-4 rounded-lg">
+    <h2>Choose your options</h2>
+    <br>
+    <div>
+      <%= simple_form_for @round, url: game_session_rounds_path(@game_session) do |f| %>
+        <%= f.input :start_page %>
+        <%= f.input :end_page %>
+        <%= f.input :game_mode, collection: ['Speed God', 'Less Clicks', 'WTF'] %>
+        <%= f.button :submit, class: "btn-blue" %>
+      <% end %>
+    </div>
   </div>
-
 </div>
