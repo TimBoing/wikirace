@@ -8,7 +8,6 @@ class RoundsController < ApplicationController
   end
 
   def show
-
     #OLD COMMENTS OF TIM/ NOT CODE/ JUST COMMENTS--------------------------------------
       # @round = Round.find(params[:id])
       # @end_page = @round.end_page
@@ -20,7 +19,8 @@ class RoundsController < ApplicationController
        @round = Round.find(params[:id].to_i) #WTF sur cette ligne?
       # @game_session = @round.game_session
     #-----------------------------------------------------------------------------------
-
+    @round.state = "playing"
+    @round.save
   end
 
   def new

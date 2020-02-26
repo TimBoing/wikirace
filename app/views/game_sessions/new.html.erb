@@ -1,27 +1,25 @@
  <div class="height-div container-fluid d-flex align-items-center justify-content-center">
   <div class="text-center">
     <div>
-      <h2>Wecome to WikiRace</h2>
-      <h4>Ready to rumble dummy ?</h4>
+      <h2>Bienvenu sur WikiRace</h2>
+      <h4>Prets à jouer mon grand ?</h4>
       <br>
     </div>
     <div>
       <% if user_signed_in? %>
         <div class="bg-white p-4 rounded-lg">
           <%= simple_form_for @game_session do |f| %>
-            <%= f.submit "Create a session", class: "btn-orange-blue" %>
+            <%= f.submit "Crées ta partie", class: "btn-orange-blue" %>
           <% end %>
           <br>
           <h3>or</h3>
           <br>
-          <%= simple_form_for @round_participation do |f| %>
-            <%= f.input :round_id, label: "Enter round-id" %>
-            <%= f.submit "Join an existing session", class: "btn-blue-orange" %>
-          <% end %>
+          <%= text_field_tag "name", "", placeholder: "Entres le numéro de round", id: "round-input" %>
+          <%= button_tag "Rejoins une partie existante", class: "btn-blue-orange", id: "round-input-submit" %>
         </div>
       <% else %>
         <div>
-          <%= link_to "CREATE A PARTY", new_user_registration_path, class: "btn-blue-orange" %>
+          <%= link_to "NOUVELLE PARTIE", new_user_registration_path, class: "btn-blue-orange" %>
         </div>
       <% end %>
     </div>
