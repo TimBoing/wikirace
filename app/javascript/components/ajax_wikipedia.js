@@ -2,7 +2,10 @@ const requestAndDisplay = () => {
   const page_name = 'Constantin_Ier_(empereur_romain)';
   const pageContainer = document.getElementById('wikipage-container');
   const roundStartPage = pageContainer.dataset.startPage;
+  const roundEndPage = pageContainer.dataset.endPage;
   console.log(`the start page : ${pageContainer.dataset.startPage}`);
+  console.log(`the end page : ${pageContainer.dataset.endPage}`);
+
   let previousPage;
   let randomPage;
 
