@@ -6,6 +6,14 @@ const handleGameModals = () => {
   // Get the <span> element that closes the modal
   const span = document.getElementsByClassName("close")[0];
 
+  // TESTING PURPOSE
+  const blackModal = document.getElementById("black-modal");
+  const btnB = document.getElementById("black-modal-display");
+  btnB.addEventListener('click', (event) => {
+      blackModal.style.display = "block";
+  });
+  // END OF TESTING
+
   // When the user clicks the button, open the modal
   if(endPageModal){
     btn.addEventListener('click', (event) => {
@@ -27,3 +35,6 @@ const handleGameModals = () => {
 }
 
 export { handleGameModals };
+
+
+

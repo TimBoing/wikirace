@@ -49,3 +49,15 @@
     position: fixed;
   }
 }
+
+#black-modal {
+  background-color: black;
+  #black-modal-content {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+  }
+}

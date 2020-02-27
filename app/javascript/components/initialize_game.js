@@ -1,6 +1,8 @@
 const pageContainer = document.getElementById('wikipage-container');
 const endPageContainer = document.getElementById('end-page-container');
 const counterContainer = document.getElementById('counter-container');
+const blackModal = document.getElementById('black-modal');
+const blackModalContent = document.getElementById('black-modal-content');
 let roundEndPage;
 let gameMode;
 let roundStartTimeString;
@@ -48,14 +50,26 @@ const updateCounter = () => {
   counterContainer.innerText = counterDisplay;
 }
 
+const updateBlackModal = () => {
+  secondElapsed = Math.round(((sessionStartTime - Date.now()) / 1000) % 60);
+  blackModalContent.innerText = `${secondElapsed}`
+}
+
+const launchBlackModal = () => {
+  blackModal.style.display = "block";
+  myInterval = setInterval(updateBlackModal, 1000);
+}
+
 
 const updateDecreasingCounter = () => {
-  minuteElapsed = Math.floor(((Date.now() - roundStartTime) / 1000) / 60);
-  secondElapsed = Math.round(((Date.now() - roundStartTime) / 1000) % 60);
-
-  if(secondElapsed=== 60){secondElapsed = 0;};
-  counterDisplay = `${minuteElapsed}min and ${secondElapsed}sec`;
-  counterContainer.innerText = counterDisplay;
+  secondElapsed = Math.round(((sessionStartTime - Date.now()) / 1000) % 60);
+  if(secondElapsed > 5){
+    counterDisplay = `Round starts in : ${secondElapsed}sec`;
+    counterContainer.innerText = counterDisplay;
+  } else {
+    clearInterval(myInterval);
+    launchBlackModal();
+  }
 }
 
 const startCounter = () => {
