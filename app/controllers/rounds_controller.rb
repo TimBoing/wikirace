@@ -8,19 +8,12 @@ class RoundsController < ApplicationController
   end
 
   def show
-
-    #OLD COMMENTS OF TIM/ NOT CODE/ JUST COMMENTS--------------------------------------
-      # @round = Round.find(params[:id])
-      # @end_page = @round.end_page
-      # la end_page est display right
-      # a counter will be displayed
-    #-----------------------------------------------------------------------------------
-
-
     @round = Round.find(params[:id])
     @game_session = @round.game_session
     @round_participation_id = @round.round_participations.where(user: current_user).first.id
-
+     if current_user == @game_session.user
+      @round.update(state: "playing")
+     end
   end
 
   def new
