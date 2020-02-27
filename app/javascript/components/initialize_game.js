@@ -3,8 +3,9 @@ const endPageContainer = document.getElementById('end-page-container');
 const counterContainer = document.getElementById('counter-container');
 let roundEndPage;
 let gameMode;
-let startTime;
-let startTimeJS;
+let roundStartTimeString;
+let roundStartTime;
+let sessionStartTime;
 let minuteElapsed;
 let secondElapsed;
 let counterDisplay;
@@ -39,17 +40,29 @@ const requestEndPageContent = (page) => {
 }
 
 const updateCounter = () => {
-  minuteElapsed = Math.floor(((Date.now() - startTimeJS) / 1000) / 60);
-  secondElapsed = Math.round(((Date.now() - startTimeJS) / 1000) % 60);
+  minuteElapsed = Math.floor(((Date.now() - roundStartTime) / 1000) / 60);
+  secondElapsed = Math.round(((Date.now() - roundStartTime) / 1000) % 60);
+
+  if(secondElapsed=== 60){secondElapsed = 0;};
+  counterDisplay = `${minuteElapsed}min and ${secondElapsed}sec`;
+  counterContainer.innerText = counterDisplay;
+}
+
+
+const updateDecreasingCounter = () => {
+  minuteElapsed = Math.floor(((Date.now() - roundStartTime) / 1000) / 60);
+  secondElapsed = Math.round(((Date.now() - roundStartTime) / 1000) % 60);
+
   if(secondElapsed=== 60){secondElapsed = 0;};
   counterDisplay = `${minuteElapsed}min and ${secondElapsed}sec`;
   counterContainer.innerText = counterDisplay;
 }
 
 const startCounter = () => {
-  //alert(typeof startTime);
-  startTimeJS = new Date(startTime).getTime();
-  myInterval = setInterval(updateCounter, 1000);
+  //alert(typeof roundStartTime);
+  roundStartTime = new Date(roundStartTimeString).getTime();
+  sessionStartTime = roundStartTime + 30 * 1000; // 30 sec between launch of page and game
+  myInterval = setInterval(updateDecreasingCounter, 1000);
 
 }
 
@@ -57,7 +70,7 @@ const initGame = () => {
   if(pageContainer) {
     roundEndPage = pageContainer.dataset.endPage;
     gameMode = pageContainer.dataset.gameMode;
-    startTime = pageContainer.dataset.startTime;
+    roundStartTimeString = pageContainer.dataset.startTime;
     startCounter();
     requestEndPageContent(roundEndPage);
     console.log('Game Initialization');
