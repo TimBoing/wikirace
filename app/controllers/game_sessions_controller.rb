@@ -1,5 +1,5 @@
 class GameSessionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new]
+  skip_before_action :authenticate_user!, only: [:new, :create]
 
   def new
     @game_session = GameSession.new
@@ -18,7 +18,7 @@ class GameSessionsController < ApplicationController
 
   def show
     # This is the waiting page
-    
+
     @game_session = GameSession.find(params[:id])
     @messages = Message.where(game_session_id: @game_session.id)
     @round = Round.where(game_session_id: @game_session).last
