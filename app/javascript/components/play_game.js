@@ -1,5 +1,4 @@
 const requestAndDisplay = () => {
-  const page_name = 'Constantin_Ier_(empereur_romain)';
   const pageContainer = document.getElementById('wikipage-container');
   let roundParticipation;
   let roundStartPage;
@@ -26,7 +25,7 @@ const requestAndDisplay = () => {
       },
       body: JSON.stringify({visited_page:{title:`${page}`}})
     };
-    fetch(`../round_participations/${roundParticipation}/visited_pages`, requestOptions)
+    fetch(`http://${window.location.host}/round_participations/${roundParticipation}/visited_pages`, requestOptions)
       .catch(error => console.log('error', error));
   }
   // FIN DE MA MASTERPIECE! -----------------------------------------------------------------------------------------
