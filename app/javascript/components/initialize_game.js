@@ -41,6 +41,7 @@ const requestEndPageContent = (page) => {
 const updateCounter = () => {
   minuteElapsed = Math.floor(((Date.now() - startTimeJS) / 1000) / 60);
   secondElapsed = Math.round(((Date.now() - startTimeJS) / 1000) % 60);
+  if(secondElapsed=== 60){secondElapsed = 0;};
   counterDisplay = `${minuteElapsed}min and ${secondElapsed}sec`;
   counterContainer.innerText = counterDisplay;
 }
