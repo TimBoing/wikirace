@@ -12,6 +12,7 @@ let minuteElapsed;
 let secondElapsed;
 let counterDisplay;
 let myInterval;
+let myTimeout;
 
 const preventOpenWikiLinks = () => {
   console.log('Preventing clicks on wiki links ');
@@ -50,9 +51,22 @@ const updateCounter = () => {
   counterContainer.innerText = counterDisplay;
 }
 
+const clearBlackModal = () => {
+  blackModal.style.display = "none";
+  roundStartTime = sessionStartTime;
+  myInterval = setInterval(updateCounter, 1000);
+}
+
 const updateBlackModal = () => {
   secondElapsed = Math.round(((sessionStartTime - Date.now()) / 1000) % 60);
-  blackModalContent.innerText = `${secondElapsed}`
+  if(secondElapsed === 0) {
+    blackModalContent.innerText = "GO!";
+  } else if(secondElapsed < 0) {
+    clearBlackModal();
+  } else {
+    blackModalContent.innerText = `${secondElapsed}`;
+  }
+
 }
 
 const launchBlackModal = () => {
@@ -63,7 +77,7 @@ const launchBlackModal = () => {
 
 const updateDecreasingCounter = () => {
   secondElapsed = Math.round(((sessionStartTime - Date.now()) / 1000) % 60);
-  if(secondElapsed > 5){
+  if(secondElapsed > 4){
     counterDisplay = `Round starts in : ${secondElapsed}sec`;
     counterContainer.innerText = counterDisplay;
   } else {
@@ -74,7 +88,7 @@ const updateDecreasingCounter = () => {
 
 const startCounter = () => {
   //alert(typeof roundStartTime);
-  roundStartTime = new Date(roundStartTimeString).getTime();
+  roundStartTime = parseInt(roundStartTimeString);
   sessionStartTime = roundStartTime + 30 * 1000; // 30 sec between launch of page and game
   myInterval = setInterval(updateDecreasingCounter, 1000);
 

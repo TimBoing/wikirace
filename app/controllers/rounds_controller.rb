@@ -2,6 +2,8 @@ require 'json'
 require 'open-uri'
 
 class RoundsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:update]
+
   def index
     @game_session = GameSession.find(params[:game_session_id])
     @rounds = Round.where(game_session_id: @game_session.id)
@@ -14,10 +16,6 @@ class RoundsController < ApplicationController
 
     ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", content: @round.id) if @round.state != "playing"
     @round.update(state: "playing")
-
-     if current_user == @game_session.user
-      @round.update(start_time: Time.now) if @round.start_time.nil?
-     end
 
   end
 
@@ -52,6 +50,14 @@ class RoundsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def update
+    #/rounds/:id
+    round = Round.find(params[:id])
+    start_time = params[:start_time]
+    round.update(start_time: start_time)
+
   end
 
   private
