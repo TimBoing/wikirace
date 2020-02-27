@@ -18,7 +18,7 @@
 
 <%if current_user.id == @game_session.user_id  %>
   <div class="btn">
-    <%= link_to "START THE GAME", round_path(@round), id: "start-game" %>
+    <%= link_to "START THE GAME", round_path(@round)%>
   </div>
 <%end  %>
 
@@ -47,15 +47,16 @@
     App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create(
     { channel: 'GameSessionChannel', game_session_id: <%= @game_session.id %> },
     {received: (data) => {
-      // here we have the content that will be broadcasted
-      const messagesContainer = document.querySelector('.messages');
-      messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-      const  input = document.querySelector('#message_content');
-      input.value = '';
-      input.blur();
-
-
-    }
+        if (data.message_partial === undefined) {
+          window.location = '<%= round_path(@round) %>';
+        } else if (data.content === undefined) {
+          const messagesContainer = document.querySelector('.messages');
+          messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+          const  input = document.querySelector('#message_content');
+          input.value = '';
+          input.blur();
+        }
+      }
     })
   </script>
 <% end %>
