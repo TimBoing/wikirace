@@ -25,3 +25,14 @@
   <%= link_to "Play a new Round", game_session_path(@game_session) %>
 <% end %>
 <%= link_to "End the Game Session", game_session_rounds_path(@game_session) %>
+
+
+<button id="end-page-modal-btn">Open Modal</button>
+<div id="end-page-modal" class="modal">
+  <div id="end-page-modal-content" class="modal-content">
+    <div id="modal-header">
+      <span class="close">&times;</span>
+    </div>
+    <div id="end-page-container"></div>
+  </div>
+</div>
