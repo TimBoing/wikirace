@@ -11,9 +11,8 @@ class RoundsController < ApplicationController
     @round = Round.find(params[:id])
     @game_session = @round.game_session
     @round_participation_id = @round.round_participations.where(user: current_user).first.id
-     if current_user == @game_session.user
-      @round.update(state: "playing")
-     end
+    ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", content: @round.id) if @round.state != "playing"
+    @round.update(state: "playing")
   end
 
   def new
