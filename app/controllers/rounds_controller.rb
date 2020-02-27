@@ -15,10 +15,6 @@ class RoundsController < ApplicationController
     ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", content: @round.id) if @round.state != "playing"
     @round.update(state: "playing")
 
-     if current_user == @game_session.user
-      @round.update(start_time: Time.now) if @round.start_time.nil?
-     end
-
   end
 
   def new
@@ -56,6 +52,11 @@ class RoundsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def update
+    #/rounds/:id
+
   end
 
   private
