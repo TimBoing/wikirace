@@ -1,8 +1,18 @@
+#game-navbar {
+  width: 100%;
+  height: 15vh;
+  background-color: #343A40;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
 #game-container {
   position: relative;
   // overflow: hidden;
+  overflow: auto;
   // height: 100vh;
-  border: 1px solid black;
+  //border: 1px solid black;
   background-color: white;
   padding: 20px;
 }
