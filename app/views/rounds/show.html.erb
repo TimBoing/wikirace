@@ -1,7 +1,5 @@
-<h1>Rounds#show</h1>
-
-<p>Ici c'est la page de jeu</p>
-<p>end_page to be displayed and the "game_banner" with the counter </p>
+<p><strong>Page de debut:</strong> <%= @round.start_page %></p>
+<p><strong>Page de fin:</strong> <%= @round.end_page %></p>
 <p>modal pop up when counter arrives to 5 or 3 </p>
 <p>Puis quand le jeu est fini, on a le choix de:</p>
 
@@ -19,7 +17,7 @@
 
 <div class="container">
   <div id="game-container">
-    <div id="wikipage-container" data-start-page="<%= @round.start_page %>" data-end-page="<%= @round.end_page %>">
+    <div id="wikipage-container" data-start-page="<%= @round.start_page %>" data-end-page="<%= @round.end_page %>" data-participation = "<%= @round_participation_id  %>">
 
       <!-- <div id="portal-test" class="small-portal"></div> -->
     </div>
