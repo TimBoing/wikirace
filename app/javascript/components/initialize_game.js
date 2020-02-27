@@ -74,7 +74,7 @@ const updateDecreasingCounter = () => {
 
 const startCounter = () => {
   //alert(typeof roundStartTime);
-  roundStartTime = new Date(roundStartTimeString).getTime();
+  roundStartTime = parseInt(roundStartTimeString);
   sessionStartTime = roundStartTime + 30 * 1000; // 30 sec between launch of page and game
   myInterval = setInterval(updateDecreasingCounter, 1000);
 
