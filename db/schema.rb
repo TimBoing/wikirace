@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_26_103217) do
+ActiveRecord::Schema.define(version: 2020_02_27_152556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,29 @@ ActiveRecord::Schema.define(version: 2020_02_26_103217) do
     t.datetime "updated_at", null: false
     t.index ["game_session_id"], name: "index_messages_on_game_session_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "paths", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "duration_id"
+    t.bigint "start_page_id"
+    t.bigint "end_page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["duration_id"], name: "index_paths_on_duration_id"
+    t.index ["end_page_id"], name: "index_paths_on_end_page_id"
+    t.index ["start_page_id"], name: "index_paths_on_start_page_id"
+    t.index ["user_id"], name: "index_paths_on_user_id"
+  end
+
+  create_table "points", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "path_id"
+    t.bigint "wiki_page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["path_id"], name: "index_points_on_path_id"
+    t.index ["wiki_page_id"], name: "index_points_on_wiki_page_id"
   end
 
   create_table "round_participations", force: :cascade do |t|
@@ -101,10 +124,21 @@ ActiveRecord::Schema.define(version: 2020_02_26_103217) do
     t.index ["round_participation_id"], name: "index_visited_pages_on_round_participation_id"
   end
 
+  create_table "wiki_pages", force: :cascade do |t|
+    t.string "title"
+    t.string "url"
+    t.text "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "game_sessions", "users"
   add_foreign_key "messages", "game_sessions"
   add_foreign_key "messages", "users"
+  add_foreign_key "paths", "users"
+  add_foreign_key "points", "paths"
+  add_foreign_key "points", "wiki_pages"
   add_foreign_key "round_participations", "rounds"
   add_foreign_key "round_participations", "users"
   add_foreign_key "rounds", "game_sessions"
