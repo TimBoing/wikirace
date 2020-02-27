@@ -6,6 +6,9 @@
     <input id="url" type="text" value="www.wikirace.xyz/rounds/<%= @round.id %>/round_participations/new" readonly></input>
     <button id="copy-button" class="mb-3">Copy</button>
     <p class="text-center mb-0">OU fais leur flasher ce QRcode</p>
+
+
+
   </div>
   <br>
 
@@ -65,13 +68,16 @@
     App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create(
     { channel: 'GameSessionChannel', game_session_id: <%= @game_session.id %> },
     {received: (data) => {
-      // here we have the content that will be broadcasted
-      const messagesContainer = document.querySelector('.messages');
-      messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-      const  input = document.querySelector('#message_content');
-      input.value = '';
-      input.blur();
-    }
+        if (data.message_partial === undefined) {
+          window.location = '<%= round_path(@round) %>';
+        } else if (data.content === undefined) {
+          const messagesContainer = document.querySelector('.messages');
+          messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+          const  input = document.querySelector('#message_content');
+          input.value = '';
+          input.blur();
+        }
+      }
     })
   </script>
 <% end %>
