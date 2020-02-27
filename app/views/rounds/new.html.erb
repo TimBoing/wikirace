@@ -4,8 +4,8 @@
     <br>
     <div>
       <%= simple_form_for @round, url: game_session_rounds_path(@game_session) do |f| %>
-        <%= f.input :start_page %>
-        <%= f.input :end_page %>
+        <%= f.input :start_page, :collection => @wiki_pages %>
+        <%= f.input :end_page, :collection => @wiki_pages  %>
         <%= f.input :game_mode, collection: ['Speed God', 'Less Clicks', 'WTF'] %>
         <%= f.button :submit, class: "btn-blue" %>
       <% end %>
