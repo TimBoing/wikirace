@@ -42,12 +42,11 @@
     </div>
   </div>
   <br>
-
     <!-- this part is the chat window -->
-  <div class="container-fluid bg-light radius p-2">
-    <div class="">
-      <div class=""><h4>TAILLE TES POTES !</h4></div>
-      <div class="messages">
+  <div class="container-fluid bg radius p-2">
+    <div>
+      <div><h4>TAILLE TES POTES !</h4></div>
+      <div class="messages text-color-blue">
         <% @game_session.messages.each do |message| %>
           <%= render "messages", message: message %>
         <% end %>
