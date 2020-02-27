@@ -1,4 +1,7 @@
-<div id="game-navbar"></div>
+<div id="game-navbar">
+  <button id="end-page-modal-btn">See your target</button>
+  <div id="counter-container"></div>
+</div>
 
 <p><strong>Page de debut:</strong> <%= @round.start_page %></p>
 <p><strong>Page de fin:</strong> <%= @round.end_page %></p>
@@ -12,7 +15,12 @@
 
  <div class="container-fluid d-flex align-items-center justify-content-center">
     <div id="game-container" class="" >
-      <div id="wikipage-container" data-start-page="<%= @round.start_page %>" data-end-page="<%= @round.end_page %>" data-participation = "<%= @round_participation_id  %>">
+      <div id="wikipage-container"
+      data-start-page="<%= @round.start_page %>"
+      data-end-page="<%= @round.end_page %>"
+      data-participation = "<%= @round_participation_id  %>"
+      data-game-mode = "<%= @round.game_mode %>"
+      data-start-time = "<%= @round.start_time %>">
 
         <!-- <div id="portal-test" class="small-portal"></div> -->
       </div>
@@ -27,7 +35,7 @@
 <%= link_to "End the Game Session", game_session_rounds_path(@game_session) %>
 
 
-<button id="end-page-modal-btn">Open Modal</button>
+
 <div id="end-page-modal" class="modal">
   <div id="end-page-modal-content" class="modal-content">
     <div id="modal-header">

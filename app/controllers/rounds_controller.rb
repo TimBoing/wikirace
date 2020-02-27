@@ -37,6 +37,7 @@ class RoundsController < ApplicationController
     @round.start_page = start_page
     @round.end_page = end_page
     # End of creation-----------------------------------------------
+    @round.start_time = Time.now
 
     if @round.save
       round_participation = RoundParticipation.new
