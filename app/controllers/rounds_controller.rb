@@ -13,6 +13,7 @@ class RoundsController < ApplicationController
     @round_participation_id = @round.round_participations.where(user: current_user).first.id
      if current_user == @game_session.user
       @round.update(state: "playing")
+      @round.update(start_time: Time.now) if @round.start_time.nil?
      end
   end
 
@@ -37,6 +38,7 @@ class RoundsController < ApplicationController
     @round.start_page = start_page
     @round.end_page = end_page
     # End of creation-----------------------------------------------
+    #@round.start_time = Time.now
 
     if @round.save
       round_participation = RoundParticipation.new
