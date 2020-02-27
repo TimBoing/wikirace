@@ -52,6 +52,7 @@ const updateCounter = () => {
 }
 
 const clearBlackModal = () => {
+  counterContainer.innerText = 'GO!';
   blackModal.style.display = "none";
   roundStartTime = sessionStartTime;
   myInterval = setInterval(updateCounter, 1000);
