@@ -29,11 +29,12 @@
 </div>
 
 <% if current_user == @game_session.user_id %>
-  <%= link_to "Play a new Round", new_game_session_round_path(@game_session) %>
+  <%= link_to "Jouer un nouveau Round", new_game_session_round_path(@game_session) %>
 <% else %>
-  <%= link_to "Play a new Round", game_session_path(@game_session) %>
+  <%= link_to "Jouer un nouveau Round", game_session_path(@game_session) %>
 <% end %>
-<%= link_to "End the Game Session", game_session_rounds_path(@game_session) %>
+<%= link_to "Finir la partie", game_session_rounds_path(@game_session) %>
+
 
 
 
@@ -50,3 +51,4 @@
   <div id="black-modal-content" class="modal-content">
   </div>
 </div>
+
