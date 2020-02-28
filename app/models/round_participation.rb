@@ -5,5 +5,4 @@ class RoundParticipation < ApplicationRecord
   validates :user, presence: true
   validates :round, presence: true
   validates :user, uniqueness: { scope: :round, message: "There can only be a RP per user per round" }
-
 end
