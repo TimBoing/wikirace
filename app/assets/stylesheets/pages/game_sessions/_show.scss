@@ -5,3 +5,11 @@
 #btn-start-game {
   color: white;
 }
+
+.connected-players {
+  display: flex;
+
+  p {
+    margin-right: 10px;
+  }
+}

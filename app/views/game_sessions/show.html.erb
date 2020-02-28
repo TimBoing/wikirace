@@ -19,12 +19,6 @@
 <%end  %>
 <br>
 
-<div class="connected-players">
-  <% @round.round_participations.each do |round_participation| %>
-    <%= User.find(round_participation.user_id).username %>
-  <% end %>
-</div>
-
 
   <!-- <img src=<%#= "http://api.qrserver.com/v1/create-qr-code/?data=http://www.wikirace.xyz/rounds/#{@round.id}/round_participations/new/&size=[150]x[150]" %> alt="Le QR Code pour rejoindre la partie" title="QR Code" /> -->
   <div class="text-align-center">
@@ -39,17 +33,18 @@
         </div>
       </div>
     </div>
-    <div class="text-align-center d-inline-block justify-content-center pb-0">
+    <div class="connected-players">
+      <% counter = 0 %>
       <% @round.round_participations.each do |round_participation| %>
-        <p class="mb-0 pb-0">> <%= User.find(round_participation.user_id).username %></p>
+        <% counter += 1 %>
+        <p><%= counter %> : <%= User.find(round_participation.user_id).username %></p>
       <% end %>
-      <p>...</p>
     </div>
   </div>
   <br>
 
     <!-- this part is the chat window -->
-  <div class="container-fluid bg-light radius p-2">
+  <div class="message-box bg-light radius p-2">
     <div class="">
       <div class=""><h4>TAILLE TES POTES !</h4></div>
       <div class="messages">
@@ -73,18 +68,20 @@
     App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create(
     { channel: 'GameSessionChannel', game_session_id: <%= @game_session.id %> },
     {received: (data) => {
-        if (data.message_partial === undefined && data.player === undefined) {
+        if (data.message_partial === undefined && data.player === undefined && data.end_game === undefined) {
           window.location = '<%= round_path(@round) %>';
-        } else if (data.content === undefined && data.player === undefined) {
+        } else if (data.content === undefined && data.player === undefined && data.end_game === undefined) {
           const messagesContainer = document.querySelector('.messages');
           messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
           const  input = document.querySelector('#message_content');
           input.value = '';
           input.blur();
-        } else if (data.content === undefined && data.message_partial === undefined) {
+        } else if (data.content === undefined && data.message_partial === undefined && data.end_game === undefined) {
           const playerConnected = document.querySelector('.connected-players');
           console.log(data.player);
           playerConnected.insertAdjacentHTML('beforeend', `<p>${data.player}</p>`);
+        } else if (data.content === undefined && data.message_partial === undefined && data.player === undefined) {
+          console.log('modal pop up');
         }
       }
     })

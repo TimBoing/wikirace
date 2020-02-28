@@ -57,7 +57,7 @@ class RoundsController < ApplicationController
     round = Round.find(params[:id])
     start_time = params[:start_time]
     round.update(start_time: start_time)
-
+    ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", end_game: "finished")
   end
 
   private
