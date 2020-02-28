@@ -80,6 +80,8 @@
           playerConnected.insertAdjacentHTML('beforeend', `<p>${data.player}</p>`);
         } else if (data.content === undefined && data.message_partial === undefined && data.player === undefined) {
           console.log('modal pop up');
+        } else {
+          console.log('connard');
         }
       }
     })
