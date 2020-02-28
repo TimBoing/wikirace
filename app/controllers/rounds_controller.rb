@@ -64,13 +64,13 @@ class RoundsController < ApplicationController
     end
 
     unless params[:state].nil?
-      ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", end_game: "finished")
       round.update(state: 'ended')
+      ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", end_game: "finished")
     end
 
 
 
-    
+
 
   end
 
