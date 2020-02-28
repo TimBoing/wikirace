@@ -59,7 +59,7 @@ class RoundsController < ApplicationController
     round = Round.find(params[:id])
     start_time = params[:start_time]
     round.update(start_time: start_time)
-
+    ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", end_game: "finished")
   end
 
   private
@@ -69,10 +69,10 @@ class RoundsController < ApplicationController
   end
 
   def random_page
+    @round.page_random = true
     url_for_random_title = 'https://fr.wikipedia.org/api/rest_v1/page/random/title'
     page_raw = open(url_for_random_title).read
     page_json = JSON.parse(page_raw)
     page = page_json["items"][0]['title']
-    @round.page_random = true
   end
 end
