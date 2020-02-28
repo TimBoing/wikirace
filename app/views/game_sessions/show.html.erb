@@ -22,6 +22,12 @@
   </div>
 <%end  %>
 
+<div class="connected-players">
+  <% @round.round_participations.each do |round_participation| %>
+    <%= User.find(round_participation.user_id).username %>
+  <% end %>
+</div>
+
   <!-- this part is the chat window -->
 <div class="chat-container">
   <div class="chat-element">
@@ -47,14 +53,18 @@
     App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create(
     { channel: 'GameSessionChannel', game_session_id: <%= @game_session.id %> },
     {received: (data) => {
-        if (data.message_partial === undefined) {
+        if (data.message_partial === undefined && data.player === undefined) {
           window.location = '<%= round_path(@round) %>';
-        } else if (data.content === undefined) {
+        } else if (data.content === undefined && data.player === undefined) {
           const messagesContainer = document.querySelector('.messages');
           messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
           const  input = document.querySelector('#message_content');
           input.value = '';
           input.blur();
+        } else if (data.content === undefined && data.message_partial === undefined) {
+          const playerConnected = document.querySelector('.connected-players');
+          console.log(data.player);
+          playerConnected.insertAdjacentHTML('beforeend', `<p>${data.player}</p>`);
         }
       }
     })
