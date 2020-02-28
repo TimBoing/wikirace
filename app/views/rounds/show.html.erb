@@ -19,6 +19,7 @@
     <div id="game-container" class="" >
       <div id="wikipage-container"
       data-round="<%= @round.id %>"
+      data-state= "playing"
       data-start-page="<%= @round.start_page %>"
       data-end-page="<%= @round.end_page %>"
       data-participation = "<%= @round_participation_id  %>"
@@ -71,7 +72,10 @@
     App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create(
     { channel: 'GameSessionChannel', game_session_id: <%= @game_session.id %> },
     {received: (data) => {
+      const theGameContainer = document.getElementById('wikipage-container');
+      theGameContainer.dataset.state = "ended";
       console.log('modal pop up');
+
       }
     })
   </script>

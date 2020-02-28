@@ -6,7 +6,9 @@ import { joinRound } from '../components/join_round'
 import { toggleNavbar } from '../components/toggle_navbar';
 import '../components/copy_url'
 import { handleGameModals } from '../components/modals_game';
+import { gameEnd } from '../components/end_game';
 
+gameEnd();
 startGame();
 initGame();
 toggleNavbar();
