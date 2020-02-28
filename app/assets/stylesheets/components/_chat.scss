@@ -43,7 +43,6 @@
 
 .message {
   display: flex;
-  margin-bottom: 10px;
   &.right {
     flex-direction: row-reverse;
     .message-content {
@@ -54,9 +53,14 @@
 .message-content {
   background-color: #F7F7F7;
   border-radius: 3px;
-  margin: 0 10px;
+  margin: 0 0px;
   padding: 11px 10px 8px 10px;
+
+  p {
+    margin: 0;
+  }
 }
+
 .avatar {
   width: 42px;
   height: 42px;
