@@ -3,7 +3,7 @@ class CreateWikiPages < ActiveRecord::Migration[5.2]
     create_table :wiki_pages do |t|
       t.string :title
       t.string :url
-      t.text :category
+      t.text :categories
 
       t.timestamps
     end
