@@ -35,8 +35,8 @@
     <div class="connected-players">
       <% counter = 0 %>
       <% @round.round_participations.each do |round_participation| %>
-        <% counter += 1 %>
-        <p><%= counter %> : <%= User.find(round_participation.user_id).username %></p>
+        <%# counter += 1 %>
+        <p><%#= counter %> Player : <%= User.find(round_participation.user_id).username %></p>
       <% end %>
     </div>
   </div>
