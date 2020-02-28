@@ -1,12 +1,17 @@
  <div class="height-div container-fluid d-flex align-items-center justify-content-center">
   <div class="bg-white p-4 rounded-lg">
-    <h2>Choisis les options de jeu</h2>
+    <h2>Règles d'engagement du Round <%= @game_session.rounds.count + 1 %></h2>
     <br>
     <div>
       <%= simple_form_for @round, url: game_session_rounds_path(@game_session) do |f| %>
+        <h3>Mode de jeu</h3>
+        <%= f.input :game_mode, collection: ['Premier arrivé', 'Limite de temps mais pas de clicks', 'Limite de clicks mais pas de temps', 'Limite de temps et de clicks', 'Pas de limites'] %>
+        <h3>Option de jeu</h3>
+        <%= f.input :game_options, collection: ['Standard', 'Avec questions', 'Sans aide de recherche', 'Où est Charlie', 'Battlefield', 'Sens-interdit'] %>
+        <h3>Choix des pages</h3>
+        <p>Par défaut: aléatoire</p>
         <%= f.input :start_page, :collection => @wiki_pages %>
         <%= f.input :end_page, :collection => @wiki_pages  %>
-        <%= f.input :game_mode, collection: ['Speed God', 'Less Clicks', 'WTF'] %>
         <%= f.button :submit, class: "btn-blue" %>
       <% end %>
     </div>

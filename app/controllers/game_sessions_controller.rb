@@ -18,8 +18,8 @@ class GameSessionsController < ApplicationController
 
   def show
     # This is the waiting page
-
     @game_session = GameSession.find(params[:id])
+    ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", player: current_user.username)
     @messages = Message.where(game_session_id: @game_session.id)
     @round = Round.where(game_session_id: @game_session).last
 

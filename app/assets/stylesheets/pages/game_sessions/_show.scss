@@ -2,10 +2,9 @@
   height: calc(100vh - 56px);
 }
 
-#start-game {
+#btn-start-game {
   color: white;
 }
-
 .bg {
   background-color: $p_orange;
   border-radius: 10px;
@@ -15,3 +14,13 @@
 .text-color-blue {
   color: $p_blue;
 }
+
+.connected-players {
+  display: flex;
+
+  p {
+    margin-right: 10px;
+  }
+
+.color-blue {
+  color: $p_blue;
