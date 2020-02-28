@@ -1,11 +1,15 @@
 require "open-uri"
 
 puts "Destroying the old database"
+Point.destroy_all
+Path.destroy_all
+WikiPage.destroy_all
 VisitedPage.destroy_all
 RoundParticipation.destroy_all
 Round.destroy_all
 GameSession.destroy_all
 User.destroy_all
+
 puts "All the old database has been deleted"
 
 puts "Creating new users..."
@@ -153,5 +157,39 @@ visited_pages33 = VisitedPage.create(title: "Phare_de_Pumpkin_Island", url: "htt
 visited_pages34 = VisitedPage.create(title: "Phare_de_Pumpkin_Island", url: "https://fr.wikipedia.org/wiki/La_Vengeance_des_zombies")
 visited_pages35 = VisitedPage.create(title: "Phare_de_Pumpkin_Island", url: "https://fr.wikipedia.org/wiki/La_Vengeance_des_zombies")
 puts "Some visited pages have been created"
+
+puts "Creating new wiki_pages..."
+wiki_page1 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+wiki_page2 = WikiPage.create(category: "Fruit", title: "Tomate", url: "https://fr.wikipedia.org/wiki/Tomate")
+wiki_page3 = WikiPage.create(category: "Fruit", title: "Avocat (fruit)", url: "https://fr.wikipedia.org/wiki/Avocat_(fruit)")
+wiki_page4 = WikiPage.create(category: "Fruit", title: "Orange (fruit)", url: "https://fr.wikipedia.org/wiki/Orange_(fruit)")
+wiki_page5 = WikiPage.create(category: "Fruit", title: "Prune", url: "https://fr.wikipedia.org/wiki/Prune")
+wiki_page6 = WikiPage.create(category: "Philosophie", title: "Philosophie", url: "https://fr.wikipedia.org/wiki/Philosophie")
+wiki_page7 = WikiPage.create(category: "Philosophie", title: "Socrate", url: "https://fr.wikipedia.org/wiki/Socrate")
+wiki_page8 = WikiPage.create(category: "Philosophie", title: "Diogène de Sinope", url: "https://fr.wikipedia.org/wiki/Diog%C3%A8ne_de_Sinope")
+wiki_page9 = WikiPage.create(category: "Philosophie", title: "Liste de philosophes scolastiques", url: "https://fr.wikipedia.org/wiki/Liste_de_philosophes_scolastiques")
+# wiki_page10 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page11 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page12 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page13 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page14 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page15 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page16 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page17 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page18 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page19 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page20 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page21 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page22 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page23 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page24 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page25 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page26 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page27 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page28 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page29 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+# wiki_page30 = WikiPage.create(category: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+
+puts "Some wiki_pages have been created"
 
 puts "Congratulation, your database is clean and has some elements from the seed"
