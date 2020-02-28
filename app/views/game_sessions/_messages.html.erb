@@ -1,4 +1,19 @@
 <div class="message <%= message.from?(current_user) ? "right" : "" %>">
-  <p><%= message.user.username %></p>
+  <% if message.from?(current_user) %>
+    <p><%= message.user.username %>
+    <% if current_user.photo.attached? %>
+      <%= image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <% else %>
+      <%= cl_image_tag "wikipadia_bion2m.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <% end %></p>
+  <% else %>
+    <p>
+    <% if current_user.photo.attached? %>
+      <%= image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <% else %>
+      <%= cl_image_tag "wikipadia_bion2m.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <% end %>
+    <%= message.user.username %></p>
+  <% end %>
   <div class="message-content"><%= message.content %></div>
 </div>
