@@ -14,7 +14,6 @@ const startGame = () => {
     };
     fetch(`http://${window.location.host}/rounds/${roundId}`, requestOptions)
       .catch(error => console.log('error', error));
-
     window.location.href = `http://${window.location.host}/rounds/${roundId}`;
   };
 
