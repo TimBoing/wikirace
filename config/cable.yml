@@ -6,6 +6,12 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  url: <%= ENV['REDISCLOUD_URL'] %>
   channel_prefix: wikirace_production
 
+
+# ca c´etait avant
+# production:
+#   adapter: redis
+#   url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+#   channel_prefix: wikirace_production
