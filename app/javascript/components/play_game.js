@@ -1,16 +1,20 @@
-const requestAndDisplay = () => {
+const gameLoop = () => {
   const pageContainer = document.getElementById('wikipage-container');
   let roundParticipation;
   let roundStartPage;
   let roundEndPage;
+  let roundId;
 
   if(pageContainer){
     roundParticipation = pageContainer.dataset.participation;
     roundStartPage = pageContainer.dataset.startPage;
     roundEndPage = pageContainer.dataset.endPage;
+    roundId = pageContainer.dataset.round;
+
     console.log(`the start page : ${pageContainer.dataset.startPage}`);
     console.log(`the end page : ${pageContainer.dataset.endPage}`);
     console.log(`the participation # : ${roundParticipation}`);
+    console.log(`the round # : ${roundId}`);
   }
 
 
@@ -30,6 +34,20 @@ const requestAndDisplay = () => {
   }
   // FIN DE MA MASTERPIECE! -----------------------------------------------------------------------------------------
 
+  const notifyRoundEnded = () => {
+    const requestOptions = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({state: 'ended'})
+    };
+    fetch(`http://${window.location.host}/rounds/${roundId}`, requestOptions)
+      .catch(error => console.log('error', error));
+
+  }
+
 
 
   // This AJAX request allows to get the html of a page by proviging the last part of a wiki url
@@ -37,6 +55,7 @@ const requestAndDisplay = () => {
     addVisitedPageToDatabase(page);
     if(page === roundEndPage) {
       alert('bravo biatch!');
+      notifyRoundEnded();
     }
     const requestOptions = {
       method: 'GET',
@@ -83,7 +102,7 @@ const requestAndDisplay = () => {
 
 }
 
-export { requestAndDisplay };
+export { gameLoop };
 
 // event.currentTarget.getAttribute("href") will give you ./endofurl
 // event.currentTarget.hrf will give you the full url

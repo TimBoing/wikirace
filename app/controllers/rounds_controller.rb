@@ -55,10 +55,16 @@ class RoundsController < ApplicationController
   end
 
   def update
-    #/rounds/:id
     round = Round.find(params[:id])
-    start_time = params[:start_time]
-    round.update(start_time: start_time)
+
+    unless params[:start_time].nil?
+      start_time = params[:start_time]
+      round.update(start_time: start_time)
+    end
+
+    unless params[:state].nil?
+      round.update(state: 'ended')
+    end
 
   end
 
