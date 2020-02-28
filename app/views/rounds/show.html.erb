@@ -1,6 +1,7 @@
 <div id="game-navbar">
   <button id="end-page-modal-btn">See your target</button>
   <button id="black-modal-display">bm display</button>
+  <button id="info-your-target-modal-display">bm display</button>
   <div id="counter-container"></div>
 </div>
 
@@ -17,6 +18,7 @@
  <div class="container-fluid d-flex align-items-center justify-content-center">
     <div id="game-container" class="" >
       <div id="wikipage-container"
+      data-round="<%= @round.id %>"
       data-start-page="<%= @round.start_page %>"
       data-end-page="<%= @round.end_page %>"
       data-participation = "<%= @round_participation_id  %>"
@@ -35,13 +37,25 @@
 <% end %>
 <%= link_to "Finir la partie", game_session_rounds_path(@game_session) %>
 
-
+<div id="info-your-target-modal" class="modal">
+  <div id="info-your-target-modal-content" class="modal-content">
+    <div id="info-your-target-modal-header">
+      <span class="close" id="closeInfo">&times;</span>
+    </div>
+    <div id="info-your-target-modal-container">
+      <div id="game-counter">The game will start in : </div>
+      <div id="game-mode">The game mode is : <%= @round.game_mode %></div>
+      <div id="game-mode-rule">The rules for this mode are :</div>
+      <div id="game-info">Close this and check your end-page target quickly!</div>
+    </div>
+  </div>
+</div>
 
 
 <div id="end-page-modal" class="modal">
   <div id="end-page-modal-content" class="modal-content">
     <div id="modal-header">
-      <span class="close">&times;</span>
+      <span class="close" id="closeEndPage">&times;</span>
     </div>
     <div id="end-page-container"></div>
   </div>

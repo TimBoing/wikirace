@@ -55,11 +55,23 @@ class RoundsController < ApplicationController
   end
 
   def update
-    #/rounds/:id
     round = Round.find(params[:id])
-    start_time = params[:start_time]
-    round.update(start_time: start_time)
-    ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", end_game: "finished")
+
+
+    unless params[:start_time].nil?
+      start_time = params[:start_time]
+      round.update(start_time: start_time)
+    end
+
+    unless params[:state].nil?
+      ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", end_game: "finished")
+      round.update(state: 'ended')
+    end
+
+
+
+    
+
   end
 
   private

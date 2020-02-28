@@ -1,4 +1,7 @@
+import { gameLoop } from './play_game';
+
 const pageContainer = document.getElementById('wikipage-container');
+const infoModal = document.getElementById("info-your-target-modal");
 const endPageContainer = document.getElementById('end-page-container');
 const counterContainer = document.getElementById('counter-container');
 const blackModal = document.getElementById('black-modal');
@@ -16,8 +19,14 @@ let myTimeout;
 
 const preventOpenWikiLinks = () => {
   console.log('Preventing clicks on wiki links ');
-  const wikiLinks = endPageContainer.querySelectorAll('a');
+  const wikiLinks = pageContainer.querySelectorAll('a');
   wikiLinks.forEach((link) => {
+    link.addEventListener('click', (event)=> {
+      event.preventDefault();
+    });
+  });
+  const wikiLinksModal = endPageContainer.querySelectorAll('a');
+  wikiLinksModal.forEach((link) => {
     link.addEventListener('click', (event)=> {
       event.preventDefault();
     });
@@ -26,6 +35,7 @@ const preventOpenWikiLinks = () => {
 
 const displayContentOnModal = (content) => {
   console.log('Displaying content on modal');
+  pageContainer.insertAdjacentHTML('afterbegin', content);
   endPageContainer.insertAdjacentHTML('afterbegin', content);
   preventOpenWikiLinks();
 }
@@ -73,6 +83,7 @@ const updateBlackModal = () => {
 const launchBlackModal = () => {
   blackModal.style.display = "block";
   myInterval = setInterval(updateBlackModal, 1000);
+  gameLoop();
 }
 
 
