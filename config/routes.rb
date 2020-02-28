@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
+  mount ActionCable.server => "/cable"
+
   root to: 'game_sessions#new'
 
   resources :users, only: [:edit, :update]
@@ -13,3 +15,4 @@ Rails.application.routes.draw do
     end
   end
 end
+
