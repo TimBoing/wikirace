@@ -3,11 +3,8 @@
     <h4 class="mb-3">INVITE TES AMIS: </h4>
     <p class="text-center">envoie leur ce numéro de partie : <%= @round.id %></p>
     <p class="text-center pb-0 mb-0">OU envoi leur ce lien :</p>
-    <div class="d-flex align-items-center align-content-center justify-content-center mb-3">
-      <input id="url" type="text" value="www.wikirace.xyz/rounds/<%= @round.id %>/round_participations/new" readonly></input>
-      <button id="copy-button">Copy</button>
-      <i id="pop-up" class="bg-light position-absolute border d-none fas fa-check-square color-blue no-border" style="right: 55px"></i>
-    </div>
+    <input id="url" type="text" value="www.wikirace.xyz/rounds/<%= @round.id %>/round_participations/new" readonly></input>
+    <button id="copy-button" class="mb-3">Copy</button>
     <p class="text-center mb-0">OU fais leur flasher ce QRcode</p>
 
 
