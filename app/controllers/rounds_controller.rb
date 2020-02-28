@@ -28,6 +28,8 @@ class RoundsController < ApplicationController
   def create
     @round = Round.new(round_params)
     @round.game_session_id = params[:game_session_id]
+    @round.game_mode = params[:round][:game_mode]
+    @round.game_options = params[:round][:game_options]
     if params[:round][:start_page] == ""
       @round.start_page = random_page
     else
@@ -67,6 +69,7 @@ class RoundsController < ApplicationController
   end
 
   def random_page
+    @round.page_random = true
     url_for_random_title = 'https://fr.wikipedia.org/api/rest_v1/page/random/title'
     page_raw = open(url_for_random_title).read
     page_json = JSON.parse(page_raw)

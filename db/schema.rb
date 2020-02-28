@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(version: 2020_02_27_152556) do
     t.string "start_page"
     t.string "end_page"
     t.string "game_mode"
+    t.string "game_options"
+    t.boolean "page_random", default: false
     t.string "state", default: "initiated"
     t.string "start_time"
     t.bigint "game_session_id"
@@ -127,7 +129,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_152556) do
   create_table "wiki_pages", force: :cascade do |t|
     t.string "title"
     t.string "url"
-    t.text "category"
+    t.text "categories"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
