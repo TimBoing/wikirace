@@ -1,4 +1,5 @@
 import { gameLoop } from './play_game';
+import { checkForUpdates } from './capture_game_events';
 
 const pageContainer = document.getElementById('wikipage-container');
 const infoModal = document.getElementById("info-your-target-modal");
@@ -60,13 +61,14 @@ const updateCounter = () => {
   if(secondElapsed=== 60){secondElapsed = 0;};
   counterDisplay = `${minuteElapsed}min and ${secondElapsed}sec`;
   counterContainer.innerText = counterDisplay;
+  checkForUpdates();
 }
 
 const clearBlackModal = () => {
   counterContainer.innerText = 'GO!';
   blackModal.style.display = "none";
   roundStartTime = sessionStartTime;
-  myInterval = setInterval(updateCounter, 1000);
+  myInterval = setInterval(updateCounter, 500); // Counter update every half second
 }
 
 const updateBlackModal = () => {

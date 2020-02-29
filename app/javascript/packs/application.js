@@ -8,7 +8,7 @@ import '../components/copy_url'
 import { handleGameModals } from '../components/modals_game';
 import { gameEnd } from '../components/end_game';
 
-gameEnd();
+//gameEnd();
 startGame();
 initGame();
 toggleNavbar();
