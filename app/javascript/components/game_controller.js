@@ -12,7 +12,7 @@ const infoGameCounter = document.getElementById('info-game-counter');
 const infoGameMode = document.getElementById('info-game-mode');
 const infoGameEndPageContainer = document.getElementById('info-game-end-page-container');
 const infoGameCounterBig = document.getElementById('info-game-counter-big');
-
+const gameEndModal = document.getElementById('game-end-modal');
 //DATASET--------------------------------------------------------
 let gameRound;
 let gameState;
@@ -98,7 +98,7 @@ const gameLoop = () => {
   //-----------------------------------------------------------------------------
   case 'ended':
   // display modal of end game with a button link to the show de round
-    alert('someone won!');
+    gameEndModal.style.display = 'block';
     break;
   //-----------------------------------------------------------------------------
   default:
