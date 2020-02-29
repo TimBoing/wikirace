@@ -41,9 +41,10 @@
 </div>
 
 <div id="game-end-modal" class="modal">
-  <h1>The game has ended!</h1>
-  <h2><%= %></h2>
-  <%= link_to 'Score Table', "#{@host_name}#{game_session_rounds_path(@game_session)}" %>
+  <div class="modal-content">
+    <h1>The game has ended!</h1>
+    <%= link_to 'Score Table', "#{@host_name}#{game_session_rounds_path(@game_session)}" %>
+  </div>
 </div>
 
 
