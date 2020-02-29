@@ -8,7 +8,7 @@ import { toggleNavbar } from '../components/toggle_navbar';
 import '../components/copy_url'
 import { handleGameModals } from '../components/modals_game';
 
-loadDynamicBannerText();
+//loadDynamicBannerText();
 startGame();
 initGame();
 toggleNavbar();

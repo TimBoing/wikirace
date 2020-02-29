@@ -1,28 +1,39 @@
- <div class="height-div container-fluid d-flex align-items-center justify-content-center" id="home-page-container">
+ <div class="height-div container-fluid d-flex justify-content-center" id="home-page-container">
   <div class="text-center">
-    <div>
+    <div id="home-page-title-container">
       <h2><span id="#home-page-title"></span></h2>
-      <br>
     </div>
-    <div>
-      <% if user_signed_in? %>
+
+    <div class="btn-tim-container ">
+      <%= link_to "Create Game", new_user_session_path, class: "btn-tim-test" %>
+    </div>
+    <% if user_signed_in? %>
+      <%#= simple_form_for @game_session, html: { id: 'home-page-options' } do |f| %>
+        <%#= f.submit "Crées ta partie", class: "btn-orange-blue" %>
+      <%# end %>
+    <% end %>
+
+  </div>
+</div>
+
+
+  <!-- <div>
+      <#% if user_signed_in? %>
         <div class="p-4 rounded-lg" id="home-page-options-container">
-          <%= simple_form_for @game_session, html: { id: 'home-page-options' } do |f| %>
-            <%= f.submit "Crées ta partie", class: "btn-orange-blue" %>
-          <% end %>
+          <%#= link_to "Create Game", new_user_session_path, class: "btn-tim-test" %>
+          <%#= simple_form_for @game_session, html: { id: 'home-page-options' } do |f| %>
+            <%#= f.submit "Crées ta partie", class: "btn-orange-blue" %>
+          <%# end %>
           <br>
           <h3>or</h3>
           <br>
-          <%= text_field_tag "name", "", placeholder: "Entres le numéro de round", id: "round-input" %>
-          <%= button_tag "Rejoins une partie existante", class: "btn-blue-orange", id: "round-input-submit" %>
+          <%#= text_field_tag "name", "", placeholder: "Entres le numéro de round", id: "round-input" %>
+          <%#= button_tag "Rejoins une partie existante", class: "btn-blue-orange", id: "round-input-submit" %>
         </div>
-      <% else %>
+      <%# else %>
         <div>
-          <%= link_to "JOUER A WikiRACE", new_user_session_path, class: "btn-blue-orange" %>
+          <%#= link_to "JOUER A WikiRACE", new_user_session_path, class: "btn-blue-orange" %>
+
         </div>
-      <% end %>
-    </div>
-  </div>
-
-</div>
-
+      <%# end %>
+    </div> -->
