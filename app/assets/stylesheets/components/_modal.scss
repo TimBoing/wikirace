@@ -44,24 +44,26 @@
 }
 
 #info-your-target-modal {
-  display:block;
-}
+  #info-game-counter {
+    // display: flex;
+    // justify-content: flex-end;
+    margin: 10px;
+  }
+  #info-game-mode {
+    margin: 10px;
+    border-bottom: 1px solid black;
+  }
+  #info-game-end-page-container {
 
-#end-page-modal-content{
-  //min-height: 100%;
-  .close{
+  }
+  #info-game-counter-big{
+    display:none;
     position: fixed;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    font-size: 220px;
   }
 }
 
-#black-modal {
-  background-color: black;
-  #black-modal-content {
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 60px;
-  }
-}
+

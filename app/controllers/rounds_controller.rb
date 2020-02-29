@@ -11,6 +11,7 @@ class RoundsController < ApplicationController
   end
 
   def show
+    @host_name = request.protocol + request.host_with_port #pour gérer le soucis de redirection des bouttons
     @round = Round.find(params[:id])
     @game_session = @round.game_session
     @round_participation_id = @round.round_participations.where(user: current_user).first.id
