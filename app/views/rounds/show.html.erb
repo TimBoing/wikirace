@@ -13,15 +13,7 @@
 
  <div class="container-fluid d-flex align-items-center justify-content-center">
     <div id="game-container" class="" >
-      <div id="wikipage-container"
-      data-round="<%= @round.id %>"
-      data-state= "playing"
-      data-start-page="<%= @round.start_page %>"
-      data-end-page="<%= @round.end_page %>"
-      data-participation = "<%= @round_participation_id  %>"
-      data-game-mode = "<%= @round.game_mode %>"
-      data-start-time = "<%= @round.start_time %>">
-
+      <div id="wikipage-container">
         <!-- <div id="portal-test" class="small-portal"></div> -->
       </div>
     </div>
@@ -48,20 +40,6 @@
   </div>
 </div>
 
-
-<div id="end-page-modal" class="modal">
-  <div id="end-page-modal-content" class="modal-content">
-    <div id="modal-header">
-      <span class="close" id="closeEndPage">&times;</span>
-    </div>
-    <div id="end-page-container"></div>
-  </div>
-</div>
-
-<div id="black-modal" class="modal">
-  <div id="black-modal-content" class="modal-content">
-  </div>
-</div>
 
 <div id="game-info"
   data-round="<%= @round.id %>"
