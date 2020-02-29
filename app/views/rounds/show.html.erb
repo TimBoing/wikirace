@@ -41,13 +41,13 @@
 <div id="info-your-target-modal" class="modal">
   <div id="info-your-target-modal-content" class="modal-content">
     <div id="info-your-target-modal-header">
-      <span class="close" id="closeInfo">&times;</span>
+      <span class="close" id="info-close">&times;</span>
     </div>
     <div id="info-your-target-modal-container">
-      <div id="game-counter">The game will start in : </div>
-      <div id="game-mode">The game mode is : <%= @round.game_mode %></div>
-      <div id="game-mode-rule">The rules for this mode are :</div>
-      <div id="game-info">Close this and check your end-page target quickly!</div>
+      <div id="info-game-counter">Round starts in : </div>
+      <div id="info-game-mode">The game mode is : <%= @round.game_mode %></div>
+      <div id="info-game-end-page-container"></div>
+      <div id="info-game-counter-big">3</div>
     </div>
   </div>
 </div>
@@ -65,6 +65,16 @@
 <div id="black-modal" class="modal">
   <div id="black-modal-content" class="modal-content">
   </div>
+</div>
+
+<div id="game-info"
+  data-round="<%= @round.id %>"
+  data-state= "init"
+  data-start-page="<%= @round.start_page %>"
+  data-end-page="<%= @round.end_page %>"
+  data-participation = "<%= @round_participation_id  %>"
+  data-game-mode = "<%= @round.game_mode %>"
+  data-start-time = "<%= @round.start_time %>">
 </div>
 
 <% content_for :after_js do %>

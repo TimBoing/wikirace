@@ -1,6 +1,7 @@
 import "bootstrap";
 import { startGame } from '../components/start_game';
-import { initGame } from '../components/initialize_game';
+import { initGame } from '../components/game_controller';
+//import { initGame } from '../components/initialize_game';
 import { trackMouse } from '../components/mouseTrack';
 import { joinRound } from '../components/join_round'
 import { toggleNavbar } from '../components/toggle_navbar';
@@ -13,7 +14,7 @@ startGame();
 initGame();
 toggleNavbar();
 joinRound();
-handleGameModals();
+//handleGameModals();
 
 
 
