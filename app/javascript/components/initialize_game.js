@@ -6,6 +6,7 @@ const endPageContainer = document.getElementById('end-page-container');
 const counterContainer = document.getElementById('counter-container');
 const blackModal = document.getElementById('black-modal');
 const blackModalContent = document.getElementById('black-modal-content');
+const waitingTime = 10;
 let roundEndPage;
 let gameMode;
 let roundStartTimeString;
@@ -101,7 +102,7 @@ const updateDecreasingCounter = () => {
 const startCounter = () => {
   //alert(typeof roundStartTime);
   roundStartTime = parseInt(roundStartTimeString);
-  sessionStartTime = roundStartTime + 30 * 1000; // 30 sec between launch of page and game
+  sessionStartTime = roundStartTime + waitingTime * 1000; // 30 sec between launch of page and game
   myInterval = setInterval(updateDecreasingCounter, 1000);
 
 }
