@@ -1,3 +1,23 @@
 .height-div {
   height: calc(100vh - 56px);
 }
+
+#home-page-container {
+  position: relative;
+  //background-color: rgb(33, 41, 63);
+  background-color: #0E083C;
+
+  #home-page-options-container{
+    background-color: #0E083C;
+  }
+
+  #home-page-options{
+    // background-color: #0E083C;
+  }
+  h2 {
+    color: white;
+    font-family: 'Press Start 2P';
+  }
+}
+
+//https://images.pexels.com/photos/247676/pexels-photo-247676.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260
