@@ -1,14 +1,10 @@
-<div id="game-navbar">
+<!-- <div id="game-navbar">
   <button id="end-page-modal-btn">See your target</button>
   <button id="black-modal-display">bm display</button>
   <button id="info-your-target-modal-display">bm display</button>
   <div id="counter-container"></div>
-</div>
+</div> -->
 
-<p><strong>Page de debut:</strong> <%= @round.start_page %></p>
-<p><strong>Page de fin:</strong> <%= @round.end_page %></p>
-<p>modal pop up when counter arrives to 5 or 3 </p>
-<p>Puis quand le jeu est fini, on a le choix de:</p>
 
 <!-- Tracking the mouse with coordinates---------- -->
   <!-- <div id="top-mouse">Top mouse : 0</div>
@@ -82,8 +78,8 @@
     App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create(
     { channel: 'GameSessionChannel', game_session_id: <%= @game_session.id %> },
     {received: (data) => {
-      const theGameContainer = document.getElementById('wikipage-container');
-      theGameContainer.dataset.state = "ended";
+      const gameInfo = document.getElementById('game-info');
+      gameInfo.dataset.state = "ended";
       console.log(data);
 
       }

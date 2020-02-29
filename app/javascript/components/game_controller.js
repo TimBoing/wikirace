@@ -1,5 +1,7 @@
 import { requestEndPageContent } from './game_model';
 import { requestPageContent } from './game_model';
+import { getCurrentPage } from './game_model';
+import { notifyRoundEnded } from './game_model';
 
 //DOM ELEMENTS---------------------------------------------------
 const gameInfo = document.getElementById('game-info');
@@ -28,6 +30,8 @@ let myInterval;
 const waitingTime = 10;
 let counterDisplay;
 
+//Current page--------------------------------------------------
+let currentPage = gameStartPage;
 
 
 const initGame = () => {
@@ -47,6 +51,11 @@ const initGame = () => {
 
 const gameLoop = () => {
 
+  gameState = gameInfo.dataset.state;
+  currentPage = getCurrentPage();
+  // checkGameState();
+  // applyGameModeConditions();
+
   switch (gameState) {
   //Game initialization-----------------------------------------------------------
   case 'init':
@@ -58,7 +67,7 @@ const gameLoop = () => {
     } else {
       requestPageContent(gameStartPage);
       gameInfo.dataset.state = 'imminent';
-      gameState = gameInfo.dataset.state;
+      // gameState = gameInfo.dataset.state;
     }
     break;
   //-----------------------------------------------------------------------------
@@ -74,15 +83,22 @@ const gameLoop = () => {
       infoContainer.style.display = "none";
       infoGameCounterBig.style.display = "none";
       gameInfo.dataset.state = 'playing';
+      // gameState = gameInfo.dataset.state;
     } else {
       infoGameCounterBig.innerText = secondElapsed;
     }
     break;
   //-----------------------------------------------------------------------------
   case 'playing':
+
+    if(gameMode === "Premier arrivé"){
+      if(currentPage === gameEndPage){notifyRoundEnded();}
+    }
     break;
   //-----------------------------------------------------------------------------
   case 'ended':
+  // display modal of end game with a button link to the show de round
+    alert('someone won!');
     break;
   //-----------------------------------------------------------------------------
   default:
@@ -92,19 +108,6 @@ const gameLoop = () => {
 };
 
 
-// <div id="info-your-target-modal" class="modal">
-//   <div id="info-your-target-modal-content" class="modal-content">
-//     <div id="info-your-target-modal-header">
-//       <span class="close" id="info-close">&times;</span>
-//     </div>
-//     <div id="info-your-target-modal-container">
-//       <div id="info-game-counter">The game will start in : </div>
-//       <div id="info-game-mode">The game mode is : <%= @round.game_mode %></div>
-//       <div id="info-game-mode-rule">The rules for this mode are :</div>
-//       <div id="info-game-end-page-container"></div>
-//       <div id="info-game-counter-big"></div>
-//     </div>
-//   </div>
-// </div>
+// au moment ou on click sur la last page alors game ended
 
 export{initGame};
