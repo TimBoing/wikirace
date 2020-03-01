@@ -81,6 +81,12 @@ ActiveRecord::Schema.define(version: 2020_02_27_152556) do
     t.bigint "round_id"
     t.integer "score"
     t.integer "rank"
+    t.integer "item1_used"
+    t.integer "item2_used"
+    t.integer "item3_used"
+    t.integer "item4_used"
+    t.integer "item5_used"
+    t.integer "item6_used"
     t.time "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -113,6 +119,12 @@ ActiveRecord::Schema.define(version: 2020_02_27_152556) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
+    t.integer "coins"
+    t.integer "item1"
+    t.integer "item2"
+    t.integer "item3"
+    t.integer "item4"
+    t.integer "item5"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
