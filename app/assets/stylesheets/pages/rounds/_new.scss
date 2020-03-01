@@ -1,3 +1,15 @@
-.height-div {
-  height: calc(100vh - 56px);
+#new_round {
+  min-width:80%;
+}
+
+#round-options {
+  //color: $matrix-green;
+  font: $game-clean-font;
+  color: black;
+  margin-bottom: 20px;
+
+  h4 {
+    font-family: $game-clean-font;
+    color: white;
+  }
 }

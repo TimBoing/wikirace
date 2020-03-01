@@ -7,9 +7,11 @@ class RoundsController < ApplicationController
   def index
     @game_session = GameSession.find(params[:game_session_id])
     @rounds = Round.where(game_session_id: @game_session.id)
+    @players = @game_session.users.uniq.sort_by{ |player| player.total_score_for(@game_session)}.reverse
   end
 
   def show
+    @host_name = request.protocol + request.host_with_port #pour gérer le soucis de redirection des bouttons
     @round = Round.find(params[:id])
     @game_session = @round.game_session
     @round_participation_id = @round.round_participations.where(user: current_user).first.id
@@ -55,10 +57,19 @@ class RoundsController < ApplicationController
   end
 
   def update
-    #/rounds/:id
     round = Round.find(params[:id])
-    start_time = params[:start_time]
-    round.update(start_time: start_time)
+
+
+    unless params[:start_time].nil?
+      start_time = params[:start_time]
+      round.update(start_time: start_time)
+    end
+
+    unless params[:state].nil?
+      round.update(state: 'ended')
+      ActionCable.server.broadcast("game_session_channel_#{round.game_session.id}", end_game: "finished")
+    end
+
 
   end
 

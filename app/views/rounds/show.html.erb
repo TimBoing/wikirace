@@ -1,13 +1,10 @@
-<div id="game-navbar">
+<!-- <div id="game-navbar">
   <button id="end-page-modal-btn">See your target</button>
   <button id="black-modal-display">bm display</button>
+  <button id="info-your-target-modal-display">bm display</button>
   <div id="counter-container"></div>
-</div>
+</div> -->
 
-<p><strong>Page de debut:</strong> <%= @round.start_page %></p>
-<p><strong>Page de fin:</strong> <%= @round.end_page %></p>
-<p>modal pop up when counter arrives to 5 or 3 </p>
-<p>Puis quand le jeu est fini, on a le choix de:</p>
 
 <!-- Tracking the mouse with coordinates---------- -->
   <!-- <div id="top-mouse">Top mouse : 0</div>
@@ -16,39 +13,53 @@
 
  <div class="container-fluid d-flex align-items-center justify-content-center">
     <div id="game-container" class="" >
-      <div id="wikipage-container"
-      data-start-page="<%= @round.start_page %>"
-      data-end-page="<%= @round.end_page %>"
-      data-participation = "<%= @round_participation_id  %>"
-      data-game-mode = "<%= @round.game_mode %>"
-      data-start-time = "<%= @round.start_time %>">
-
+      <div id="wikipage-container">
         <!-- <div id="portal-test" class="small-portal"></div> -->
       </div>
     </div>
 </div>
 
-<% if current_user.id == @game_session.user_id %>
-  <%= link_to "Jouer un nouveau Round", new_game_session_round_path(@game_session) %>
-<% else %>
-  <%= link_to "Jouer un nouveau Round", game_session_path(@game_session) %>
-<% end %>
-<%= link_to "Finir la partie", game_session_rounds_path(@game_session) %>
-
-
-
-
-<div id="end-page-modal" class="modal">
-  <div id="end-page-modal-content" class="modal-content">
-    <div id="modal-header">
-      <span class="close">&times;</span>
+<div id="info-your-target-modal" class="modal">
+  <div id="info-your-target-modal-content" class="modal-content">
+    <div id="info-your-target-modal-header">
+      <span class="close" id="info-close">&times;</span>
     </div>
-    <div id="end-page-container"></div>
+    <div id="info-your-target-modal-container">
+      <div id="info-game-counter">Round starts in : </div>
+      <div id="info-game-mode">The game mode is : <%= @round.game_mode %></div>
+      <div id="info-game-end-page-container"></div>
+      <div id="info-game-counter-big">3</div>
+    </div>
   </div>
 </div>
 
-<div id="black-modal" class="modal">
-  <div id="black-modal-content" class="modal-content">
+<div id="game-end-modal" class="modal">
+  <div class="modal-content">
+    <h1>The game has ended!</h1>
+    <%= link_to 'Voir resultats du round', "#{@host_name}#{round_round_participations_path(@round)}" %>
   </div>
 </div>
 
+
+<div id="game-info"
+  data-round="<%= @round.id %>"
+  data-state= "init"
+  data-start-page="<%= @round.start_page %>"
+  data-end-page="<%= @round.end_page %>"
+  data-participation = "<%= @round_participation_id  %>"
+  data-game-mode = "<%= @round.game_mode %>"
+  data-start-time = "<%= @round.start_time %>">
+</div>
+
+<% content_for :after_js do %>
+  <script>
+    App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create(
+    { channel: 'GameSessionChannel', game_session_id: <%= @game_session.id %> },
+    {received: (data) => {
+      const gameInfo = document.getElementById('game-info');
+      gameInfo.dataset.state = "ended";
+      console.log(data);
+      }
+    })
+  </script>
+<% end %>
