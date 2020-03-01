@@ -3,7 +3,7 @@ class CreateRoundParticipations < ActiveRecord::Migration[5.2]
     create_table :round_participations do |t|
       t.references :user, foreign_key: true
       t.references :round, foreign_key: true
-      t.integer :score
+      t.integer :score, default: 0
       t.integer :rank
       t.time :end_time
 

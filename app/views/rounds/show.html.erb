@@ -19,13 +19,6 @@
     </div>
 </div>
 
-<% if current_user.id == @game_session.user_id %>
-  <%= link_to "Jouer un nouveau Round", new_game_session_round_path(@game_session) %>
-<% else %>
-  <%= link_to "Jouer un nouveau Round", game_session_path(@game_session) %>
-<% end %>
-<%= link_to "Finir la partie", game_session_rounds_path(@game_session) %>
-
 <div id="info-your-target-modal" class="modal">
   <div id="info-your-target-modal-content" class="modal-content">
     <div id="info-your-target-modal-header">
@@ -43,7 +36,7 @@
 <div id="game-end-modal" class="modal">
   <div class="modal-content">
     <h1>The game has ended!</h1>
-    <%= link_to 'Score Table', "#{@host_name}#{game_session_rounds_path(@game_session)}" %>
+    <%= link_to 'Voir resultats du round', "#{@host_name}#{round_round_participations_path(@round)}" %>
   </div>
 </div>
 
