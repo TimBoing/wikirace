@@ -64,16 +64,9 @@
   text-decoration: none;
 }
 
-.btn-tim-container {
-  width: 100%;
-  height: 200px;
-  display:flex;
-  align-items:center;
-  justify-content: center;
-}
 
-.btn-tim-test{
-  font-family: 'Montserrat', sans-serif;
+.btn-tim{
+  font-family: $game-clean-font, sans-serif;
   display:flex;
   align-items:center;
   justify-content: center;
@@ -82,7 +75,9 @@
   width: 210px;
   height: 90px;
   border-radius: 50px;
+  background:none;
   color:white;
+  margin: 20px;
 
   &:hover {
     transform:scale(0.9);
