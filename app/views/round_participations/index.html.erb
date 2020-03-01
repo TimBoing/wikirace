@@ -1,0 +1,37 @@
+<div class="container-fluid align-items-center justify-content-center mt-2">
+  <div class="head-banner text-center p-3">
+    <h3>Score du round <%= @game_session.rounds.count + 1 %></h3>
+  </div>
+  <br>
+  <div class="table-container bg-white">
+    <table>
+      <tr class="background-grey">
+        <th class="text-blue">Position</th>
+        <th class="text-blue">Joueurs</th>
+        <th class="text-blue">Temps</th>
+        <th class="text-blue">Nombre de clicks</th>
+        <th class="text-blue">Score</th>
+        <th class="text-blue">Dernière page</th>
+      <% @players.each do |player| %>
+        <tr>
+          <th><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].rank %></th>
+          <th><%= player.username %></th>
+          <th> <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.last.created_at - player.round_participations.select{|round_participation| round_participation.round == @round }[0].round.start_time.to_i %></th>
+          <th><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.count %></th>
+          <th><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].score %> points</th>
+          <th><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.last.title %> <br /> => Voir parcours?</th>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div>
+    <% if current_user.id == @game_session.user_id %>
+      <%= link_to "Jouer un nouveau Round", new_game_session_round_path(@game_session) %>
+    <% else %>
+      <%= link_to "Jouer un nouveau Round", game_session_path(@game_session) %>
+     <% end %>
+  </div>
+  <div>
+    <%= link_to "Finir la partie", game_session_rounds_path(@game_session) %>
+  </div>
+</div>

@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_152556) do
   create_table "round_participations", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "round_id"
-    t.integer "score"
+    t.integer "score", default: 0
     t.integer "rank"
     t.time "end_time"
     t.datetime "created_at", null: false
