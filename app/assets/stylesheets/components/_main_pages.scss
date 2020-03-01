@@ -1,6 +1,6 @@
 .main-container{
   position: relative;
-  background: url('matrix_gif.gif');
+  background: asset-url('matrix_gif.gif');
   width:100%;
   min-height: calc(100vh - 56px);
   display: flex;
