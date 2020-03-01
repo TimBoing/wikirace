@@ -7,9 +7,9 @@
     <div class="btn-tim-container ">
       <% if user_signed_in? %>
         <%= simple_form_for @game_session, html: { id: 'home-page-options' } do |f| %>
-            <%= f.submit "Create Game", class: "btn-tim" %>
+            <%= f.submit "Create Game", class: "btn-tim", id: "red-pill" %>
         <% end %>
-        <%= button_tag "Join Game", class: "btn-tim", id: "round-input-submit" %>
+        <%= button_tag "Join Game",class: "btn-tim", id: "blue-pill" %>
         <%= text_field_tag "name", "", placeholder: "Enter round #", id: "round-input" %>
       <% end %>
     </div>

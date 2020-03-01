@@ -79,9 +79,20 @@
   color:white;
   margin: 20px;
 
+
   &:hover {
     transform:scale(0.9);
     text-decoration: none;
     color:white;
   }
+}
+
+#red-pill {
+  color: red;
+  border: 3px solid red;
+}
+
+#blue-pill {
+  color: blue;
+  border: 3px solid blue;
 }

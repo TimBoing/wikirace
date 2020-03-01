@@ -1,6 +1,6 @@
 const joinRound = () => {
   const roundInput = document.getElementById("round-input");
-  const btnSubmit = document.getElementById("round-input-submit");
+  const btnSubmit = document.getElementById("blue-pill");
 
   const testURL = (url) => {
     const requestOptions = {
