@@ -1,3 +1,10 @@
+.new-connection{
+    color:$matrix-green;
+    font-family: $matrix-font;
+    font-size: 12px;
+
+  }
+
  @media only screen and (max-width: 600px) {
 
   .chat-container {
@@ -58,6 +65,8 @@
 
   p {
     margin: 0;
+
+
   }
 }
 
@@ -68,14 +77,14 @@
 }
 
 #create-message {
-  padding: 10px;
-  background-color: #ffffff;
-  margin-bottom: 20px;
-  border: 1px solid #ececec;
-  position: relative;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+  // padding: 10px;
+  // background-color: #ffffff;
+  // margin-bottom: 20px;
+  // border: 1px solid #ececec;
+  // position: relative;
+  // left: 0;
+  // bottom: 0;
+  // width: 100%;
 }
 .message_content {
   margin-bottom: 0;

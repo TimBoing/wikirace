@@ -1,17 +1,15 @@
-.height-div {
-  height: calc(100vh - 56px);
+#new_round {
+  min-width:80%;
 }
 
-#round-new-main-container {
-  background-image: url(https://wallpaperplay.com/walls/full/a/f/3/77446.jpg);
+#round-options {
+  //color: $matrix-green;
+  font: $game-clean-font;
+  color: black;
+  margin-bottom: 20px;
 
-  //background-image: url(https://www.altalab.it/wp-content/uploads/2018/10/green-matrix-background-2560x1600-wallpaper.jpg);
-  background-size: cover;
-  background-position: center;
-
-
-  #round-new-options-container{
-    background: none;
-    color:white;
+  h4 {
+    font-family: $game-clean-font;
+    color: white;
   }
 }
