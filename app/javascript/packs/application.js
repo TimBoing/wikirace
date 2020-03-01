@@ -10,6 +10,7 @@ import '../components/copy_url';
 import { handleGameModals } from '../components/handle_modals';
 import { handleRoundInfoModal } from '../components/handle_modals';
 
+
 collapseOptions();
 loadDynamicBannerText();
 startGame();
@@ -21,4 +22,3 @@ handleRoundInfoModal();
 
 
 //trackMouse();
-
