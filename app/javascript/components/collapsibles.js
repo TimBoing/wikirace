@@ -8,11 +8,14 @@ const collapseOptions = () => {
       event.preventDefault;
       if(options.style.display === "block") {
         options.style.display = "none";
+        options.style.maxHeight = 0;
       } else {
         options.style.display = "block";
+        options.style.maxHeight = options.scrollHeight + "px";
       }
     });
   }
 }
 
 export {collapseOptions};
+

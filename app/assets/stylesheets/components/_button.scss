@@ -77,13 +77,18 @@
   border-radius: 50px;
   background:none;
   color:white;
-  margin: 20px;
-
+  margin-top: 20px;
+  margin-bottom: 20px;
 
   &:hover {
     transform:scale(0.9);
     text-decoration: none;
     color:white;
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline:0;
   }
 }
 
@@ -96,3 +101,4 @@
   color: blue;
   border: 3px solid blue;
 }
+

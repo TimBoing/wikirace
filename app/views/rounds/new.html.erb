@@ -1,29 +1,73 @@
- <div class="height-div container-fluid d-flex align-items-center justify-content-center" id="round-new-main-container">
-  <div class="p-4 rounded-lg" id="round-new-options-container">
-    <h2>Options du Round <%= @game_session.rounds.count + 1 %></h2>
-    <br>
-    <div>
-      <%= simple_form_for @round, url: game_session_rounds_path(@game_session) do |f| %>
-        <%= f.button :submit, class: "btn-tim" %>
-        <%= button_tag "Options",type: 'button', class: "btn-tim collapsible", id:"round-options-btn" %>
+<div class="main-container">
+  <div class="title-container centered-vertically"><h2>Options du Round <%= @game_session.rounds.count + 1%></h2></div>
+  <div class="content-container centered-vertically">
+    <%= simple_form_for @round, url: game_session_rounds_path(@game_session), html:{class:"centered-vertically"} do |f| %>
+      <%= f.button :submit,'Start Round', class: "btn-tim", id:"to-fire-camp" %>
+      <%= button_tag "Options",type: 'button', class: "btn-tim collapsible", id:"round-options-btn" %>
 
-        <div id="round-options" class="collapse">
-          <h3>Mode de jeu</h3>
+      <div class="collapse opaque-container" id="round-options" >
+        <h4>Mode de jeu</h4>
 
-          <%= f.input :game_mode,
+        <%= f.input :game_mode,
 
-            collection: ['Premier arrivé', 'Limite de temps', 'Limite de clicks', 'Limite de temps & clicks', 'Pas de limites'],
-            default: 'Premier arrivé' %>
-          <h3>Option de jeu</h3>
-          <%= f.input :game_options,
-            collection: ['Standard', 'Avec questions', 'Sans aide de recherche', 'Où est Charlie', 'Battlefield', 'Sens-interdit'],
-            default: 'Standard' %>
-          <h3>Choix des pages</h3>
-          <p>Par défaut: aléatoire</p>
-          <%= f.input :start_page, :collection => @wiki_pages %>
-          <%= f.input :end_page, :collection => @wiki_pages  %>
-        </div>
-      <% end %>
-    </div>
+          collection: ['Premier arrivé', 'Limite de temps', 'Limite de clicks', 'Limite de temps & clicks', 'Pas de limites'],
+          default: 'Premier arrivé' %>
+        <h4>Option de jeu</h4>
+        <%= f.input :game_options,
+          collection: ['Standard', 'Avec questions', 'Sans aide de recherche', 'Où est Charlie', 'Battlefield', 'Sens-interdit'],
+          default: 'Standard' %>
+        <h4>Choix des pages</h4>
+        <p>Par défaut: aléatoire</p>
+        <%= f.input :start_page, :collection => @wiki_pages %>
+        <%= f.input :end_page, :collection => @wiki_pages  %>
+      </div>
+    <% end %>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- TOUT CA C´EST DU PASSÉ---------------------------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------------------------------------------------- -->
+<!--
+
+
+
+ <div class="height-div container-fluid d-flex align-items-center justify-content-center" id="round-new-main-container">
+  <div class="p-4 rounded-lg" id="round-new-options-container">
+    <h2>Options du Round <%#= @game_session.rounds.count + 1 %></h2>
+
+
+    <%#= simple_form_for @round, url: game_session_rounds_path(@game_session) do |f| %>
+      <%#= f.button :submit, class: "btn-tim" %>
+      <%#= button_tag "Options",type: 'button', class: "btn-tim collapsible", id:"round-options-btn" %>
+
+      <div id="round-options" class="collapse">
+        <h3>Mode de jeu</h3>
+
+        <%#= f.input :game_mode,
+
+          collection: ['Premier arrivé', 'Limite de temps', 'Limite de clicks', 'Limite de temps & clicks', 'Pas de limites'],
+          default: 'Premier arrivé' %>
+        <h3>Option de jeu</h3>
+        <%#= f.input :game_options,
+          collection: ['Standard', 'Avec questions', 'Sans aide de recherche', 'Où est Charlie', 'Battlefield', 'Sens-interdit'],
+          default: 'Standard' %>
+        <h3>Choix des pages</h3>
+        <p>Par défaut: aléatoire</p>
+        <%#= f.input :start_page, :collection => @wiki_pages %>
+        <%#= f.input :end_page, :collection => @wiki_pages  %>
+      </div>
+    <%# end %>
+  </div>
+
+</div>
+ -->

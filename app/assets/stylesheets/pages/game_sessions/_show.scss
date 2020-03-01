@@ -1,20 +1,34 @@
-.height-div {
-  height: calc(100vh - 56px);
+#btn-start-game{
+  color: red;
+  border: 3px solid red;
 }
 
-#btn-start-game {
-  color: white;
+#invite-friends-modal-content{
+
 }
 
-.bg {
-  background-color: $p_orange;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
 
-.text-color-blue {
-  color: $p_blue;
-}
+// #gs-show-main-container{
+//   //background: url('matrix_gif.gif');
+
+//   #gs-show-second-container{
+//     //color:white;
+//   }
+// }
+
+// #btn-start-game {
+//   color: white;
+// }
+
+// .bg {
+//   background-color: $p_orange;
+//   border-radius: 10px;
+//   margin-bottom: 10px;
+// }
+
+// .text-color-blue {
+//   color: $p_blue;
+// }
 
 .connected-players {
   display: flex;
@@ -24,6 +38,6 @@
   }
 }
 
-.color-blue {
-  color: $p_blue;
-}
+// .color-blue {
+//   color: $p_blue;
+// }

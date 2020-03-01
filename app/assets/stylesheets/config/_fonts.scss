@@ -5,10 +5,11 @@
 //font-family: 'Montserrat', sans-serif;
 
 // Define fonts for body and headers
-$body-font: "Open Sans", "Helvetica", "sans-serif";
-$headers-font: "Raleway", "Helvetica", "sans-serif";
 $matrix-font: 'Press Start 2P';
 $game-clean-font:'Montserrat';
+$body-font: "Open Sans", "Helvetica", "sans-serif";
+$headers-font: $matrix-font, "Helvetica", "sans-serif";
+
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";
