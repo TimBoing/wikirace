@@ -24,14 +24,28 @@
       <% end %>
     </table>
   </div>
-  <div>
+  <div class="replay-btn">
     <% if current_user.id == @game_session.user_id %>
       <%= link_to "Jouer un nouveau Round", new_game_session_round_path(@game_session) %>
     <% else %>
-      <%= link_to "Jouer un nouveau Round", game_session_path(@game_session) %>
-     <% end %>
+      <a href="#" class="player_replay_button">Waiting for Game Master to create a new round</a>
+    <% end %>
   </div>
+
   <div>
     <%= link_to "Finir la partie", game_session_rounds_path(@game_session) %>
   </div>
 </div>
+
+<% content_for :after_js do %>
+  <script>
+    App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create(
+    { channel: 'GameSessionChannel', game_session_id: <%= @game_session.id %> },
+    {received: (data) => {
+      console.dir(data.new_round_link);
+      const replayButtonForPlayer = document.querySelector('.player_replay_button');
+      replayButtonForPlayer.outerHTML = data.new_round_link;
+      }
+    })
+  </script>
+<% end %>
