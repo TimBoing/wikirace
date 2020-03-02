@@ -2,6 +2,14 @@
   <div class="head-banner text-center p-3">
     <h3 style="text-align: center;">Round <%= @game_session.rounds.count %> : <%= @round_participations.first.user.username %> wins !!!</h3>
   </div>
+  <div class="record">
+      <% @round_participations.each do |round_participation| %>
+        <% if round_participation.is_the_best? %>
+
+          <h4><%= round_participation.user.username %> a battu le record en <%= round_participation.visited_pages.count %> pages</h4>
+        <% end %>
+      <% end %>
+    </div>
   <br>
   <div class="table-container bg-white">
     <table>
