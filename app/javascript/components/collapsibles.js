@@ -38,3 +38,4 @@ const collapsePageChoice = () => {
 
 export {collapseOptions};
 export {collapsePageChoice};
+
