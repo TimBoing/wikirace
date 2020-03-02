@@ -6,10 +6,12 @@ import { notifyRoundEnded } from './game_model';
 //DOM ELEMENTS---------------------------------------------------
 const gameInfo = document.getElementById('game-info');
 const counterContainer = document.getElementById('counter-container');
+const pageTitleContainer = document.getElementById('wikipage-title-container');
 const pageContainer = document.getElementById('wikipage-container');
 const infoContainer = document.getElementById('info-your-target-modal');
 const infoGameCounter = document.getElementById('info-game-counter');
 const infoGameMode = document.getElementById('info-game-mode');
+const infoGameEndPageTitleContainer = document.getElementById('info-game-end-page-title-container');
 const infoGameEndPageContainer = document.getElementById('info-game-end-page-container');
 const infoGameCounterBig = document.getElementById('info-game-counter-big');
 const gameEndModal = document.getElementById('game-end-modal');
@@ -44,6 +46,7 @@ const initGame = () => {
     gameMode = gameInfo.dataset.gameMode;
     gameStartTime = parseInt(gameInfo.dataset.startTime);
     gameLaunchTime = gameStartTime + waitingTime * 1000;
+    infoGameEndPageTitleContainer.innerText = `Your Target : ${gameEndPage}`;
     requestEndPageContent(gameEndPage);
     myInterval = setInterval(gameLoop, 500);
   }
@@ -65,6 +68,7 @@ const gameLoop = () => {
       counterDisplay = `Round starts in : ${secondElapsed}sec`;
       infoGameCounter.innerText = counterDisplay;
     } else {
+      pageTitleContainer.innerText = gameStartPage;
       requestPageContent(gameStartPage);
       gameInfo.dataset.state = 'imminent';
       // gameState = gameInfo.dataset.state;

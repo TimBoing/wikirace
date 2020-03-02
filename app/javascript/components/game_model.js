@@ -33,6 +33,8 @@ const requestEndPageContent = (page) => {
 };
 
 const requestPageContent = (page) => {
+  const pageTitleContainer = document.getElementById('wikipage-title-container');
+  pageTitleContainer.innerText = page;
   currentPage = page;
   addVisitedPageToDatabase(page);
   const requestOptions = {
