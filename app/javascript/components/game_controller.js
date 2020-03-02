@@ -26,8 +26,8 @@ let gameMode;
 //Time-----------------------------------------------------------
 let gameStartTime;
 let gameLaunchTime;
-let hoursElapsed;
-let minuteElapsed;
+let hoursElapsed = 0;
+let minuteElapsed = 0;
 let secondElapsed;
 let myInterval;
 const waitingTime = 10;
@@ -105,20 +105,20 @@ const gameLoop = () => {
     if(secondElapsed < 10){
       secondElapsed = `0${secondElapsed}`
     } else if (secondElapsed === 60){
+      minuteElapsed = minuteElapsed + 1;
       secondElapsed = '00';
     }
     if(minuteElapsed < 10){
       minuteElapsed = `0${minuteElapsed}`
     } else if (minuteElapsed === 60){
+      hoursElapsed = hoursElapsed + 1;
       minuteElapsed = '00';
     }
     if(hoursElapsed < 10){
       hoursElapsed = `0${hoursElapsed}`
-    } else if (hoursElapsed === 60){
-      hoursElapsed = '00';
     }
+
     counterDisplay = `${hoursElapsed}:${minuteElapsed}:${secondElapsed}`;
-    // counterDisplay = secondElapsed;
     timerContainer.innerText = counterDisplay;
 
     if(gameMode === "Premier arrivé"){
