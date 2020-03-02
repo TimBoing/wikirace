@@ -7,7 +7,7 @@ const alertBrowser = () => {
       addEventListener('load', function() {
         history.pushState(null, null, null);
         addEventListener('popstate', function() {
-          var stayOnPage = confirm("ATTENTION, vous aller quitter la partie");
+          const stayOnPage = confirm("ATTENTION, vous aller quitter la partie");
           if (!stayOnPage) {
             history.pushState(null, null, null);
           } else {

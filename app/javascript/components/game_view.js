@@ -18,8 +18,6 @@ const displayPageContent = (page) => {
 
   const pageContainer = document.getElementById('wikipage-container');
   pageContainer.innerHTML = '';
-  console.log('I just cleared the page');
-
   pageContainer.insertAdjacentHTML('afterbegin', page);
 
   const wikiLinks = pageContainer.querySelectorAll('a');

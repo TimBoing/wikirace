@@ -13,7 +13,6 @@ const visitedPagesSetter = (visitedPagesUpdated) => {
 
 const addVisitedPageToDatabase = (page) => {
   if(visitedPages[visitedPages.length - 1] !== page){visitedPages.push(page);};
-  console.log(visitedPages);
   const gameParticipation = gameInfo.dataset.participation;
   const requestOptions = {
     method: 'POST',
