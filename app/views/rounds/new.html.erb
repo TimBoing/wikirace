@@ -9,7 +9,6 @@
         <h4>Mode de jeu</h4>
 
         <%= f.input :game_mode,
-
           collection: ['Premier arrivé', 'Limite de temps', 'Limite de clicks', 'Limite de temps & clicks', 'Pas de limites'],
           default: 'Premier arrivé' %>
         <h4>Option de jeu</h4>
@@ -18,8 +17,8 @@
           default: 'Standard' %>
         <h4>Choix des pages</h4>
         <p>Par défaut: aléatoire</p>
-        <%= f.input :start_page, :collection => @wiki_pages %>
-        <%= f.input :end_page, :collection => @wiki_pages  %>
+        <%= f.input :start_page, :collection => @wiki_pages,prompt: 'Page aléatoire' %>
+        <%= f.input :end_page, :collection => @wiki_pages,prompt: 'Page aléatoire'  %>
       </div>
     <% end %>
   </div>

@@ -2,7 +2,6 @@
   <div class="title-container centered-vertically"><h2>Feu de Camp</h2></div>
   <div class="content-container centered-vertically">
     <%= button_tag "Invite Friends",type: 'button', class: "btn-tim", id:"invite-friends-btn" %>
-
     <%if current_user.id == @game_session.user_id  %>
       <div class="btn-tim" id ="btn-start-game" data-round="<%= @round.id %>" >LANCE LE JEU!</div>
     <%end  %>
