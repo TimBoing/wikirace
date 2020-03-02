@@ -1,8 +1,0 @@
-<tr>
-  <th><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].rank %></th>
-  <th><%= player.username %></th>
-  <th> <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.last.created_at - player.round_participations.select{|round_participation| round_participation.round == @round }[0].round.start_time.to_i %></th>
-  <th><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.count %></th>
-  <th><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].score %> points</th>
-  <th><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.last.title %> <br /> => Voir parcours?</th>
-</tr>
