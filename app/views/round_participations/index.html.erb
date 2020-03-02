@@ -5,8 +5,10 @@
   <div class="record">
       <% @round_participations.each do |round_participation| %>
         <% if round_participation.is_the_best? %>
-
+          <i class="fas fa-trophy"></i>
           <h4><%= round_participation.user.username %> a battu le record en <%= round_participation.visited_pages.count %> pages</h4>
+        <% else %>
+          <p>Pas de nouveau record, t'es mauvais Jack!</p>
         <% end %>
       <% end %>
     </div>
