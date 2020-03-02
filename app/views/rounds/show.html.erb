@@ -17,6 +17,11 @@
       <div id="wikipage-container">
         <!-- <div id="portal-test" class="small-portal"></div> -->
       </div>
+      <div id="game-actions-bar">
+        <i class="fas fa-chevron-circle-left" id="action-previous-page"></i>
+        <i class="fas fa-search" id="action-search-page"></i>
+        <i class="fas fa-bullseye" id="action-target-page"></i>
+      </div>
     </div>
 </div>
 
@@ -48,6 +53,7 @@
   data-state= "init"
   data-start-page="<%= @round.start_page %>"
   data-end-page="<%= @round.end_page %>"
+  data-current-page="<%= @round.start_page %>"
   data-participation = "<%= @round_participation_id  %>"
   data-game-mode = "<%= @round.game_mode %>"
   data-start-time = "<%= @round.start_time %>">

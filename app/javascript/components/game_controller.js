@@ -1,6 +1,6 @@
 import { requestEndPageContent } from './game_model';
 import { requestPageContent } from './game_model';
-import { getCurrentPage } from './game_model';
+import { initGameActionsBar } from '../components/game_actions_bar';
 import { notifyRoundEnded } from './game_model';
 
 //DOM ELEMENTS---------------------------------------------------
@@ -36,6 +36,7 @@ let counterDisplay;
 let currentPage = gameStartPage;
 
 
+
 const initGame = () => {
   if(gameInfo){
     gameRound = gameInfo.dataset.round;
@@ -48,6 +49,7 @@ const initGame = () => {
     gameLaunchTime = gameStartTime + waitingTime * 1000;
     infoGameEndPageTitleContainer.innerText = `Your Target : ${gameEndPage}`;
     requestEndPageContent(gameEndPage);
+    infoContainer.style.display = "block";
     myInterval = setInterval(gameLoop, 500);
   }
 };
@@ -55,14 +57,13 @@ const initGame = () => {
 const gameLoop = () => {
 
   gameState = gameInfo.dataset.state;
-  currentPage = getCurrentPage();
+  currentPage = gameInfo.dataset.currentPage;
   // checkGameState();
   // applyGameModeConditions();
 
   switch (gameState) {
   //Game initialization-----------------------------------------------------------
   case 'init':
-    infoContainer.style.display = "block";
     secondElapsed = Math.round(((gameLaunchTime - Date.now()) / 1000) % 60);
     if(secondElapsed > 4){
       counterDisplay = `Round starts in : ${secondElapsed}sec`;
@@ -86,6 +87,7 @@ const gameLoop = () => {
     } else if(secondElapsed < 0) {
       infoContainer.style.display = "none";
       infoGameCounterBig.style.display = "none";
+      initGameActionsBar();
       gameInfo.dataset.state = 'playing';
       // gameState = gameInfo.dataset.state;
     } else {

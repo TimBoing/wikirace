@@ -1,14 +1,19 @@
 import { displayPageContentOnInfoModal } from './game_view';
 import { displayPageContent } from './game_view';
 
-let currentPage;
 const gameInfo = document.getElementById('game-info');
+let visitedPages = [];
 
-const getCurrentPage = () => {
-  return currentPage;
-};
+const visitedPagesGetter = () => {
+  return visitedPages;
+}
+const visitedPagesSetter = (visitedPagesUpdated) => {
+  visitedPages = visitedPagesUpdated;
+}
 
 const addVisitedPageToDatabase = (page) => {
+  if(visitedPages[visitedPages.length - 1] !== page){visitedPages.push(page);};
+  console.log(visitedPages);
   const gameParticipation = gameInfo.dataset.participation;
   const requestOptions = {
     method: 'POST',
@@ -35,7 +40,7 @@ const requestEndPageContent = (page) => {
 const requestPageContent = (page) => {
   const pageTitleContainer = document.getElementById('wikipage-title-container');
   pageTitleContainer.innerText = page;
-  currentPage = page;
+  gameInfo.dataset.currentPage = page;
   addVisitedPageToDatabase(page);
   const requestOptions = {
     method: 'GET',
@@ -64,5 +69,6 @@ const notifyRoundEnded = () => {
 
 export{requestEndPageContent};
 export{requestPageContent};
-export{getCurrentPage};
 export{notifyRoundEnded};
+export{visitedPagesGetter};
+export{visitedPagesSetter};
