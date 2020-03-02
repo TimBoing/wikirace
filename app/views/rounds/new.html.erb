@@ -5,7 +5,7 @@
       <%= f.button :submit,'Start Round', class: "btn-tim", id:"to-fire-camp" %>
       <%= button_tag "Options",type: 'button', class: "btn-tim collapsible", id:"round-options-btn" %>
 
-      <div class="collapse opaque-container" id="round-options" >
+      <div class="collapse opaque-container" id="round-options">
         <h4>Mode de jeu</h4>
 
         <%= f.input :game_mode,
@@ -15,10 +15,13 @@
         <%= f.input :game_options,
           collection: ['Standard', 'Avec questions', 'Sans aide de recherche', 'Où est Charlie', 'Battlefield', 'Sens-interdit'],
           default: 'Standard' %>
-        <h4>Choix des pages</h4>
-        <p>Par défaut: aléatoire</p>
-        <%= f.input :start_page, :collection => @wiki_pages,prompt: 'Page aléatoire' %>
-        <%= f.input :end_page, :collection => @wiki_pages,prompt: 'Page aléatoire'  %>
+        <h4>Choix de page :</h4>
+        <%= f.input :start_page, :collection => @wiki_pages %>
+        <%= f.input :end_page, :collection => @wiki_pages  %>
+        <input id="page-choice" type="checkbox" name="page_choice" value="page_choice">
+        <div  class="collapse opaque-container" id="begin-and-end-pages">
+          <h4>XXXX</h4>
+        </div>
       </div>
     <% end %>
   </div>
