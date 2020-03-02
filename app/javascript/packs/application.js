@@ -7,7 +7,7 @@ import { trackMouse } from '../components/mouseTrack';
 import { joinRound } from '../components/join_round';
 import { toggleNavbar } from '../components/toggle_navbar';
 import '../components/copy_url';
-import { handleGameModals } from '../components/handle_modals';
+
 import { handleRoundInfoModal } from '../components/handle_modals';
 import { alertBrowser } from '../components/alert_browser';
 
@@ -19,7 +19,6 @@ startGame();
 initGame();
 toggleNavbar();
 joinRound();
-//handleGameModals();
 handleRoundInfoModal();
 alertBrowser();
 

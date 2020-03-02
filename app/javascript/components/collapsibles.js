@@ -17,5 +17,10 @@ const collapseOptions = () => {
   }
 }
 
+const collapseWikiSections = () => {
+
+}
+
 export {collapseOptions};
+
 
