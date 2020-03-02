@@ -51,6 +51,15 @@
   data-start-time = "<%= @round.start_time %>">
 </div>
 
+  <!--   input + button to ask what the user look for -->
+  <div>
+    <label>Find Text</label>
+    <input id="userFindInputText" type="text" value=""/>
+    <button id="userFindInputButton" type="button">Find</button>
+  </div>
+  <!--   input + button to ask what the user look for -->
+
+
 <% content_for :after_js do %>
   <script>
     App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create(
