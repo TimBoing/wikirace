@@ -1,6 +1,7 @@
 import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner_typed';
 import { collapseOptions } from '../components/collapsibles';
+import { collapsePageChoice } from '../components/collapsibles';
 import { startGame } from '../components/start_game';
 import { initGame } from '../components/game_controller';
 import { trackMouse } from '../components/mouseTrack';
@@ -12,6 +13,7 @@ import { handleRoundInfoModal } from '../components/handle_modals';
 
 
 collapseOptions();
+collapsePageChoice();
 loadDynamicBannerText();
 startGame();
 initGame();
