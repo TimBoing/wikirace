@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root to: 'game_sessions#new'
 
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:edit, :update, :show]
 
   resources :game_sessions, only: [:new, :create, :show], shallow: true do
     resources :messages, only: [:create]

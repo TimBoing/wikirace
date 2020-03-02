@@ -5,6 +5,12 @@ class CreateRoundParticipations < ActiveRecord::Migration[5.2]
       t.references :round, foreign_key: true
       t.integer :score, default: 0
       t.integer :rank
+      t.integer :item1_used
+      t.integer :item2_used
+      t.integer :item3_used
+      t.integer :item4_used
+      t.integer :item5_used
+      t.integer :item6_used
       t.time :end_time
 
       t.timestamps
