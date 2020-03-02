@@ -21,7 +21,7 @@ class RoundParticipation < ApplicationRecord
         end
       }
 
-    when "Limite de temps mais pas de clicks"
+    when "Limite de temps"
       @round_participations.each { |round_participation|
         if round_participation.visited_pages.last == round_participation.round.end_page
           @round_participations.sort_by{ |round_participation| round_participation.visited_pages.last.created_at }
@@ -32,7 +32,7 @@ class RoundParticipation < ApplicationRecord
         end
       }
 
-    when "Limite de clicks mais pas de temps"
+    when "Limite de clicks"
       @round_participations.each { |round_participation|
         if round_participation.visited_pages.last == round_participation.round.end_page
           @round_participations.sort_by{ |round_participation| round_participation.visited_pages.count }
@@ -43,7 +43,7 @@ class RoundParticipation < ApplicationRecord
         end
       }
 
-    when "Limite de temps et de clicks"
+    when "Limite de temps & clicks"
       @round_participations.each { |round_participation|
         if round_participation.visited_pages.last == round_participation.round.end_page
           @round_participations.sort_by{ |round_participation| round_participation.visited_pages.count }
@@ -82,7 +82,7 @@ class RoundParticipation < ApplicationRecord
           @score = - self.visited_pages.count
       end
 
-    when "Limite de temps mais pas de clicks"
+    when "Limite de temps"
       if self.rank == 1
         @score = 100
       elsif self.rank == 2
@@ -95,7 +95,7 @@ class RoundParticipation < ApplicationRecord
         @score = 10
       end
 
-    when "Limite de clicks mais pas de temps"
+    when "Limite de clicks"
       if self.rank == 1
         @score = 100
       elsif self.rank == 2
@@ -108,7 +108,7 @@ class RoundParticipation < ApplicationRecord
         @score = 10
       end
 
-    when "Limite de temps et de clicks"
+    when "Limite de temps & clicks"
       if self.rank == 1
         @score = 100
       elsif self.rank == 2

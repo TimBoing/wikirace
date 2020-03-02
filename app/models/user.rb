@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
+  validates :username, presence: true, uniqueness: true
+
   def total_score_for(game_session)
     game_session.round_participations.where(user: self).map(&:score).sum
   end
