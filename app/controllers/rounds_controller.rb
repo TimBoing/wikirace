@@ -32,6 +32,7 @@ class RoundsController < ApplicationController
     @round.game_session_id = params[:game_session_id]
     @round.game_mode = params[:round][:game_mode]
     @round.game_options = params[:round][:game_options]
+
     if params[:round][:start_page] == ""
       @round.start_page_url = random_page_url
       @round.start_page = random_page_title(@round.start_page_url)
@@ -39,6 +40,7 @@ class RoundsController < ApplicationController
       @round.start_page = WikiPage.find(params[:round][:start_page]).title
       @round.start_page_url = WikiPage.find(params[:round][:start_page]).url
     end
+
     if params[:round][:end_page] == ""
       @round.end_page_url = random_page_url
       @round.end_page = random_page_title(@round.end_page_url)
