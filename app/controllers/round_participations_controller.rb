@@ -7,11 +7,7 @@ class RoundParticipationsController < ApplicationController
   end
 
   def create
-    if params[:replay_round_id].nil?
-      @round_participation = current_user.round_participations.new(round_id: @round.id)
-    else
-      @round_participation = current_user.round_participations.new(round_id: params[:replay_round_id])
-    end
+    @round_participation = current_user.round_participations.new(round_id: @round.id)
     @round_participation.save
     redirect_to game_session_path(@game_session)
   end
@@ -25,8 +21,6 @@ class RoundParticipationsController < ApplicationController
     }
     @round_participations = @round_participations.sort_by{ |round_participation| round_participation.rank}
     @players = @round_participations.map { |round_participation| round_participation.user }
-    # Will be of use when we will want to end the Round not at the same time
-    # ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", player: current_user, round_participation: RoundParticipation.where(user_id: current_user.id, round_id: @round.id))
   end
 
   def edit
