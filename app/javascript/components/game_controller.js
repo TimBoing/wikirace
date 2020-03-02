@@ -5,7 +5,7 @@ import { notifyRoundEnded } from './game_model';
 
 //DOM ELEMENTS---------------------------------------------------
 const gameInfo = document.getElementById('game-info');
-const counterContainer = document.getElementById('counter-container');
+const timerContainer = document.getElementById('timer-container');
 const pageTitleContainer = document.getElementById('wikipage-title-container');
 const pageContainer = document.getElementById('wikipage-container');
 const infoContainer = document.getElementById('info-your-target-modal');
@@ -26,6 +26,7 @@ let gameMode;
 //Time-----------------------------------------------------------
 let gameStartTime;
 let gameLaunchTime;
+let hoursElapsed;
 let minuteElapsed;
 let secondElapsed;
 let myInterval;
@@ -50,7 +51,7 @@ const initGame = () => {
     infoGameEndPageTitleContainer.innerText = `Your Target : ${gameEndPage}`;
     requestEndPageContent(gameEndPage);
     infoContainer.style.display = "block";
-    myInterval = setInterval(gameLoop, 500);
+    myInterval = setInterval(gameLoop, 250);
   }
 };
 
@@ -88,6 +89,7 @@ const gameLoop = () => {
       infoContainer.style.display = "none";
       infoGameCounterBig.style.display = "none";
       initGameActionsBar();
+      gameLaunchTime = Date.now();
       gameInfo.dataset.state = 'playing';
       // gameState = gameInfo.dataset.state;
     } else {
@@ -96,6 +98,28 @@ const gameLoop = () => {
     break;
   //-----------------------------------------------------------------------------
   case 'playing':
+
+    secondElapsed = Math.round(((Date.now() -gameLaunchTime) / 1000) % 60);
+    minuteElapsed = Math.floor(((Date.now() -gameLaunchTime) / 1000) / 60 % 60);
+    hoursElapsed = Math.floor(((Date.now() -gameLaunchTime) / 1000) / 60 /60 % 60);
+    if(secondElapsed < 10){
+      secondElapsed = `0${secondElapsed}`
+    } else if (secondElapsed === 60){
+      secondElapsed = '00';
+    }
+    if(minuteElapsed < 10){
+      minuteElapsed = `0${minuteElapsed}`
+    } else if (minuteElapsed === 60){
+      minuteElapsed = '00';
+    }
+    if(hoursElapsed < 10){
+      hoursElapsed = `0${hoursElapsed}`
+    } else if (hoursElapsed === 60){
+      hoursElapsed = '00';
+    }
+    counterDisplay = `${hoursElapsed}:${minuteElapsed}:${secondElapsed}`;
+    // counterDisplay = secondElapsed;
+    timerContainer.innerText = counterDisplay;
 
     if(gameMode === "Premier arrivé"){
       if(currentPage === gameEndPage){notifyRoundEnded();}
