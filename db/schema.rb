@@ -55,12 +55,11 @@ ActiveRecord::Schema.define(version: 2020_02_27_152556) do
 
   create_table "paths", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "duration_id"
     t.bigint "start_page_id"
     t.bigint "end_page_id"
+    t.time "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["duration_id"], name: "index_paths_on_duration_id"
     t.index ["end_page_id"], name: "index_paths_on_end_page_id"
     t.index ["start_page_id"], name: "index_paths_on_start_page_id"
     t.index ["user_id"], name: "index_paths_on_user_id"
@@ -96,7 +95,9 @@ ActiveRecord::Schema.define(version: 2020_02_27_152556) do
 
   create_table "rounds", force: :cascade do |t|
     t.string "start_page"
+    t.string "start_page_url"
     t.string "end_page"
+    t.string "end_page_url"
     t.string "game_mode"
     t.string "game_options"
     t.boolean "page_random", default: false
