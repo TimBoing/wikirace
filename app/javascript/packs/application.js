@@ -8,6 +8,7 @@ import { joinRound } from '../components/join_round';
 import { toggleNavbar } from '../components/toggle_navbar';
 import '../components/copy_url';
 
+import { handleRoundPathsModals } from '../components/handle_modals';
 import { handleRoundInfoModal } from '../components/handle_modals';
 import { alertBrowser } from '../components/alert_browser';
 
@@ -20,6 +21,7 @@ initGame();
 toggleNavbar();
 joinRound();
 handleRoundInfoModal();
+handleRoundPathsModals();
 alertBrowser();
 
 
