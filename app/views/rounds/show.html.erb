@@ -29,7 +29,7 @@
       <div id="info-game-mode">The game mode is : <%= @round.game_mode %></div>
       <h2 id="info-game-end-page-title-container"></div>
       <div id="info-game-end-page-container"></h2>
-      <div id="info-game-counter-big">3</div>
+      <div id="info-game-counter-big"></div>
     </div>
   </div>
 </div>
@@ -43,6 +43,7 @@
 
 
 <div id="game-info"
+  data-current-user="<%= current_user.id %>"
   data-round="<%= @round.id %>"
   data-state= "init"
   data-start-page="<%= @round.start_page %>"
@@ -50,7 +51,9 @@
   data-current-page="<%= @round.start_page %>"
   data-participation = "<%= @round_participation_id  %>"
   data-game-mode = "<%= @round.game_mode %>"
-  data-start-time = "<%= @round.start_time %>">
+  data-start-time = "<%= @round.start_time %>"
+  data-malus-sender = ""
+  data-malus = "none">
 </div>
 
 <% content_for :after_js do %>
@@ -58,10 +61,20 @@
     App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create(
     { channel: 'GameSessionChannel', game_session_id: <%= @game_session.id %> },
     {received: (data) => {
-      const gameInfo = document.getElementById('game-info');
-      gameInfo.dataset.state = "ended";
       console.log(data);
+      const gameInfo = document.getElementById('game-info');
+
+      if(data['end_game']){
+        gameInfo.dataset.state = "ended";
+      }else if(data['malus']){
+        console.log('there is a malus');
+        console.log(data['malus']);
+        gameInfo.dataset.sender = data['malus']['sender'];
+        gameInfo.dataset.malus = data['malus']['type'];
       }
+
+    }
+
     })
   </script>
 <% end %>

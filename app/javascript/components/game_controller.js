@@ -22,6 +22,7 @@ let gameStartPage;
 let gameEndPage;
 let gameParticipation;
 let gameMode;
+let currentUserId;
 
 //Time-----------------------------------------------------------
 let gameStartTime;
@@ -46,6 +47,7 @@ const initGame = () => {
     gameEndPage = gameInfo.dataset.endPage;
     gameParticipation = gameInfo.dataset.participation;
     gameMode = gameInfo.dataset.gameMode;
+    currentUserId = gameInfo.dataset.currentUser;
     gameStartTime = parseInt(gameInfo.dataset.startTime);
     gameLaunchTime = gameStartTime + waitingTime * 1000;
     infoGameEndPageTitleContainer.innerText = `Your Target : ${gameEndPage}`;
@@ -98,7 +100,7 @@ const gameLoop = () => {
     break;
   //-----------------------------------------------------------------------------
   case 'playing':
-
+    // GESTION DU TIMER----------
     secondElapsed = Math.round(((Date.now() -gameLaunchTime) / 1000) % 60);
     minuteElapsed = Math.floor(((Date.now() -gameLaunchTime) / 1000) / 60 % 60);
     hoursElapsed = Math.floor(((Date.now() -gameLaunchTime) / 1000) / 60 /60 % 60);
@@ -117,12 +119,24 @@ const gameLoop = () => {
     if(hoursElapsed < 10){
       hoursElapsed = `0${hoursElapsed}`
     }
-
     counterDisplay = `${hoursElapsed}:${minuteElapsed}:${secondElapsed}`;
     timerContainer.innerText = counterDisplay;
+    // FIN DE LA GESTION DU TIMER----------
+
 
     if(gameMode === "Premier arrivé"){
       if(currentPage === gameEndPage){notifyRoundEnded();}
+    }
+
+    if(gameInfo.dataset.malus === "reverse"){
+      if(gameInfo.dataset.sender !== currentUserId){
+        if(pageContainer.classList.contains('reverse-effect')){
+        }else{
+          pageContainer.classList.add('reverse-effect');
+        }
+      }else {
+        if(pageContainer.classList.contains('reverse-effect')){pageContainer.classList.remove('reverse-effect')}
+      }
     }
     break;
   //-----------------------------------------------------------------------------

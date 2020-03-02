@@ -59,7 +59,6 @@ class RoundsController < ApplicationController
   def update
     round = Round.find(params[:id])
 
-
     unless params[:start_time].nil?
       start_time = params[:start_time]
       round.update(start_time: start_time)
@@ -70,6 +69,9 @@ class RoundsController < ApplicationController
       ActionCable.server.broadcast("game_session_channel_#{round.game_session.id}", end_game: "finished")
     end
 
+    unless params[:malus].nil?
+      ActionCable.server.broadcast("game_session_channel_#{round.game_session.id}", malus: params[:malus])
+    end
 
   end
 

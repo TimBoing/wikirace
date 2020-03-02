@@ -1,4 +1,5 @@
 import { requestPageContent } from './game_model';
+import { addMalusLinks } from './malus';
 
 const displayPageContentOnInfoModal = (page) => {
 
@@ -33,6 +34,8 @@ const displayPageContent = (page) => {
       }
     });
   });
+  console.log("displayPageContent end");
+  addMalusLinks();
 };
 
 export {displayPageContentOnInfoModal};
