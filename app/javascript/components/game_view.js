@@ -1,4 +1,5 @@
 import { requestPageContent } from './game_model';
+import { addMalusLinks } from './malus';
 
 const displayPageContentOnInfoModal = (page) => {
 
@@ -18,8 +19,6 @@ const displayPageContent = (page) => {
 
   const pageContainer = document.getElementById('wikipage-container');
   pageContainer.innerHTML = '';
-  console.log('I just cleared the page');
-
   pageContainer.insertAdjacentHTML('afterbegin', page);
 
   const wikiLinks = pageContainer.querySelectorAll('a');
@@ -35,6 +34,8 @@ const displayPageContent = (page) => {
       }
     });
   });
+  console.log("displayPageContent end");
+  addMalusLinks();
 };
 
 export {displayPageContentOnInfoModal};
