@@ -12,8 +12,8 @@
           </div>
           <div class="centered-vertically" id="round-options-modal-content-after-header">
             <h4>Choix de page :</h4>
-            <%= f.input :start_page, :collection => @wiki_pages %>
-            <%= f.input :end_page, :collection => @wiki_pages  %>
+            <%= f.input :start_page, :collection => @wiki_pages, :prompt => "Page aléatoire" %>
+            <%= f.input :end_page, :collection => @wiki_pages, :prompt => "Page aléatoire"  %>
             <h4>Mode de jeu</h4>
             <%= f.input :game_mode,
               collection: ['Premier arrivé', 'Limite de temps', 'Limite de clicks', 'Limite de temps & clicks', 'Pas de limites'],

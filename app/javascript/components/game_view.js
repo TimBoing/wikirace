@@ -26,7 +26,7 @@ const displayPageContent = (page) => {
     link.addEventListener('click', (event)=> {
       event.preventDefault();
       if(event.currentTarget.classList.contains('new')){
-        alert('ce lien est mort');
+        alert('Ce lien est mort');
       }else{
         const linkRef = event.currentTarget.getAttribute("href");
         const stripedRef = linkRef.substring(2);
