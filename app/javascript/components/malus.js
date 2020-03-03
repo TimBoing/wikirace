@@ -21,7 +21,6 @@ const applyMalus = () => {
 
 
 const addMalusLinks = () => {
-  console.log('supposed to be here');
   const wikiContent = pageContainer.querySelectorAll('p');
   wikiContent.forEach((paragraph) => {
     const malusProba = Math.random();

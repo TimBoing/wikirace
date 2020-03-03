@@ -38,16 +38,25 @@ const requestEndPageContent = (page) => {
 
 const requestPageContent = (page) => {
   const pageTitleContainer = document.getElementById('wikipage-title-container');
-  pageTitleContainer.innerText = page;
-  gameInfo.dataset.currentPage = page;
-  addVisitedPageToDatabase(page);
+
   const requestOptions = {
     method: 'GET',
     redirect: 'follow'
   };
   fetch(`https://fr.wikipedia.org/api/rest_v1/page/html/${page}`, requestOptions)
     .then(response => response.text())
-    .then(result => displayPageContent(result));
+    .then((result) => {
+      if(result.substring(0,1) !== "{"){
+        pageTitleContainer.innerText = page;
+        gameInfo.dataset.currentPage = page;
+        displayPageContent(result);
+        addVisitedPageToDatabase(page);
+      } else {
+        alert("Tu ne peux pas accéder à cette page!");
+      }
+
+
+    });
 };
 
 const notifyRoundEnded = () => {

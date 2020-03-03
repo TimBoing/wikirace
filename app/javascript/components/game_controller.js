@@ -75,7 +75,7 @@ const gameLoop = () => {
       pageTitleContainer.innerText = gameStartPage;
       requestPageContent(gameStartPage);
       gameInfo.dataset.state = 'imminent';
-      // gameState = gameInfo.dataset.state;
+      infoGameCounter.style.display= "none";
     }
     break;
   //-----------------------------------------------------------------------------
