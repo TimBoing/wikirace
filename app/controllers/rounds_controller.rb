@@ -24,7 +24,7 @@ class RoundsController < ApplicationController
   def new
     @round = Round.new
     @game_session = GameSession.find(params[:game_session_id])
-    @wiki_pages = WikiPage.all
+    @wiki_pages = WikiPage.all.sort_by { |wiki_page| wiki_page.title }
   end
 
   def create

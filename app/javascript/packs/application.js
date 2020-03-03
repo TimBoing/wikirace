@@ -1,4 +1,5 @@
 import "bootstrap";
+//import "mark";
 import { loadDynamicBannerText } from '../components/banner_typed';
 import { handleRoundOptionsModal } from '../components/handle_modals';
 import { collapsePageChoice } from '../components/collapsibles';
@@ -11,7 +12,9 @@ import '../components/copy_url';
 
 import { handleRoundPathsModals } from '../components/handle_modals';
 import { handleRoundInfoModal } from '../components/handle_modals';
+import { highlight } from '../components/marker';
 import { alertBrowser } from '../components/alert_browser';
+
 
 
 
@@ -23,8 +26,8 @@ initGame();
 toggleNavbar();
 joinRound();
 handleRoundInfoModal();
+highlight();
 handleRoundPathsModals();
 alertBrowser();
-
 
 //trackMouse();
