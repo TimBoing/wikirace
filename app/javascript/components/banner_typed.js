@@ -5,12 +5,11 @@ const loadDynamicBannerText = () => {
 
   if(title){
     new Typed(title, {
-      strings: ["Enter","the", "WikiRACE", "!!!"],
-      typeSpeed: 80,
+      strings: ["", "Defiez-vous","sur", "WikiRACE !!!"],
+      typeSpeed: 120,
       loop: true
     });
   }
-
 }
 
 export { loadDynamicBannerText };

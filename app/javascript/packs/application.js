@@ -19,8 +19,6 @@ import { alertBrowser } from '../components/alert_browser';
 
 
 
-collapseOptions();
-collapsePageChoice();
 loadDynamicBannerText();
 handleRoundOptionsModal();
 // collapsePageChoice();
