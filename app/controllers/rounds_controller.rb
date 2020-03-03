@@ -32,15 +32,21 @@ class RoundsController < ApplicationController
     @round.game_session_id = params[:game_session_id]
     @round.game_mode = params[:round][:game_mode]
     @round.game_options = params[:round][:game_options]
+
     if params[:round][:start_page] == ""
-      @round.start_page = random_page
+      @round.start_page_url = random_page_url
+      @round.start_page = random_page_title(@round.start_page_url)
     else
       @round.start_page = WikiPage.find(params[:round][:start_page]).title
+      @round.start_page_url = WikiPage.find(params[:round][:start_page]).url
     end
+
     if params[:round][:end_page] == ""
-      @round.end_page = random_page
+      @round.end_page_url = random_page_url
+      @round.end_page = random_page_title(@round.end_page_url)
     else
       @round.end_page = WikiPage.find(params[:round][:end_page]).title
+      @round.end_page_url = WikiPage.find(params[:round][:end_page]).url
     end
     if @round.save
       round_participation = RoundParticipation.new
@@ -59,7 +65,6 @@ class RoundsController < ApplicationController
   def update
     round = Round.find(params[:id])
 
-
     unless params[:start_time].nil?
       start_time = params[:start_time]
       round.update(start_time: start_time)
@@ -70,6 +75,9 @@ class RoundsController < ApplicationController
       ActionCable.server.broadcast("game_session_channel_#{round.game_session.id}", end_game: "finished")
     end
 
+    unless params[:malus].nil?
+      ActionCable.server.broadcast("game_session_channel_#{round.game_session.id}", malus: params[:malus])
+    end
 
   end
 
@@ -79,10 +87,14 @@ class RoundsController < ApplicationController
     params.require(:round).permit(:game_mode, :start_page, :end_page)
   end
 
-  def random_page
+  def random_page_url
     @round.page_random = true
     url_for_random_title = 'https://fr.wikipedia.org/api/rest_v1/page/random/title'
-    page_raw = open(url_for_random_title).read
+
+  end
+
+  def random_page_title(url)
+    page_raw = open(url).read
     page_json = JSON.parse(page_raw)
     page = page_json["items"][0]['title']
   end

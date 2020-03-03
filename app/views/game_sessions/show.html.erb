@@ -2,7 +2,6 @@
   <div class="title-container centered-vertically"><h2>Feu de Camp</h2></div>
   <div class="content-container centered-vertically">
     <%= button_tag "Invite Friends",type: 'button', class: "btn-tim", id:"invite-friends-btn" %>
-
     <%if current_user.id == @game_session.user_id  %>
       <div class="btn-tim" id ="btn-start-game" data-round="<%= @round.id %>" >LANCE LE JEU!</div>
     <%end  %>
@@ -32,9 +31,9 @@
         <h4>Invite tes amis!</h4>
         <p>Envoie leur ce numéro de partie : <%= @round.id %></p>
         <p>OU fais leur flasher ce QRcode</p>
-        <img src="http://api.qrserver.com/v1/create-qr-code/?data=http://www.wikirace.xyz/rounds/#{@round.id}/round_participations/new/&size=[150]x[150]" alt="Le QR Code pour rejoindre la partie" title="QR Code" />
+        <img src=<%= "http://api.qrserver.com/v1/create-qr-code/?data=http://www.wikirace.xyz/rounds/#{@round.id}/round_participations/new/&size=[150]x[150]" %> alt="Le QR Code pour rejoindre la partie" title="QR Code" />
         <p>OU envoi leur ce lien :</p>
-        <input id="url" type="text" value="www.wikirace.xyz/rounds/<%= @round.id %>/round_participations/new" readonly></input>
+        <input id="url" type="text" value="http://www.wikirace.xyz/rounds/<%= @round.id %>/round_participations/new" readonly></input>
         <button id="copy-button" class="">Copy</button>
       </div>
     </div>
@@ -52,9 +51,9 @@
     </div>
   </div>
 </div>
-        
-        
-        
+
+
+
 <% content_for :after_js do %>
   <script>
     App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create(

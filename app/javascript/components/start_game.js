@@ -13,8 +13,7 @@ const startGame = () => {
       body: JSON.stringify({start_time:`${date}`})
     };
     fetch(`http://${window.location.host}/rounds/${roundId}`, requestOptions)
-      .catch(error => console.log('error', error));
-    window.location.href = `http://${window.location.host}/rounds/${roundId}`;
+      .then(window.location.href = `http://${window.location.host}/rounds/${roundId}`);
   };
 
   if(buttonStart){

@@ -1,15 +1,17 @@
 import { requestEndPageContent } from './game_model';
 import { requestPageContent } from './game_model';
-import { getCurrentPage } from './game_model';
+import { initGameActionsBar } from '../components/game_actions_bar';
 import { notifyRoundEnded } from './game_model';
 
 //DOM ELEMENTS---------------------------------------------------
 const gameInfo = document.getElementById('game-info');
-const counterContainer = document.getElementById('counter-container');
+const timerContainer = document.getElementById('timer-container');
+const pageTitleContainer = document.getElementById('wikipage-title-container');
 const pageContainer = document.getElementById('wikipage-container');
 const infoContainer = document.getElementById('info-your-target-modal');
 const infoGameCounter = document.getElementById('info-game-counter');
 const infoGameMode = document.getElementById('info-game-mode');
+const infoGameEndPageTitleContainer = document.getElementById('info-game-end-page-title-container');
 const infoGameEndPageContainer = document.getElementById('info-game-end-page-container');
 const infoGameCounterBig = document.getElementById('info-game-counter-big');
 const gameEndModal = document.getElementById('game-end-modal');
@@ -20,11 +22,13 @@ let gameStartPage;
 let gameEndPage;
 let gameParticipation;
 let gameMode;
+let currentUserId;
 
 //Time-----------------------------------------------------------
 let gameStartTime;
 let gameLaunchTime;
-let minuteElapsed;
+let hoursElapsed = 0;
+let minuteElapsed = 0;
 let secondElapsed;
 let myInterval;
 const waitingTime = 10;
@@ -32,6 +36,7 @@ let counterDisplay;
 
 //Current page--------------------------------------------------
 let currentPage = gameStartPage;
+
 
 
 const initGame = () => {
@@ -42,29 +47,32 @@ const initGame = () => {
     gameEndPage = gameInfo.dataset.endPage;
     gameParticipation = gameInfo.dataset.participation;
     gameMode = gameInfo.dataset.gameMode;
+    currentUserId = gameInfo.dataset.currentUser;
     gameStartTime = parseInt(gameInfo.dataset.startTime);
     gameLaunchTime = gameStartTime + waitingTime * 1000;
+    infoGameEndPageTitleContainer.innerText = `Your Target : ${gameEndPage}`;
     requestEndPageContent(gameEndPage);
-    myInterval = setInterval(gameLoop, 500);
+    infoContainer.style.display = "block";
+    myInterval = setInterval(gameLoop, 250);
   }
 };
 
 const gameLoop = () => {
 
   gameState = gameInfo.dataset.state;
-  currentPage = getCurrentPage();
+  currentPage = gameInfo.dataset.currentPage;
   // checkGameState();
   // applyGameModeConditions();
 
   switch (gameState) {
   //Game initialization-----------------------------------------------------------
   case 'init':
-    infoContainer.style.display = "block";
     secondElapsed = Math.round(((gameLaunchTime - Date.now()) / 1000) % 60);
     if(secondElapsed > 4){
       counterDisplay = `Round starts in : ${secondElapsed}sec`;
       infoGameCounter.innerText = counterDisplay;
     } else {
+      pageTitleContainer.innerText = gameStartPage;
       requestPageContent(gameStartPage);
       gameInfo.dataset.state = 'imminent';
       // gameState = gameInfo.dataset.state;
@@ -82,6 +90,8 @@ const gameLoop = () => {
     } else if(secondElapsed < 0) {
       infoContainer.style.display = "none";
       infoGameCounterBig.style.display = "none";
+      initGameActionsBar();
+      gameLaunchTime = Date.now();
       gameInfo.dataset.state = 'playing';
       // gameState = gameInfo.dataset.state;
     } else {
@@ -90,9 +100,43 @@ const gameLoop = () => {
     break;
   //-----------------------------------------------------------------------------
   case 'playing':
+    // GESTION DU TIMER----------
+    secondElapsed = Math.round(((Date.now() -gameLaunchTime) / 1000) % 60);
+    minuteElapsed = Math.floor(((Date.now() -gameLaunchTime) / 1000) / 60 % 60);
+    hoursElapsed = Math.floor(((Date.now() -gameLaunchTime) / 1000) / 60 /60 % 60);
+    if(secondElapsed < 10){
+      secondElapsed = `0${secondElapsed}`
+    } else if (secondElapsed === 60){
+      minuteElapsed = minuteElapsed + 1;
+      secondElapsed = '00';
+    }
+    if(minuteElapsed < 10){
+      minuteElapsed = `0${minuteElapsed}`
+    } else if (minuteElapsed === 60){
+      hoursElapsed = hoursElapsed + 1;
+      minuteElapsed = '00';
+    }
+    if(hoursElapsed < 10){
+      hoursElapsed = `0${hoursElapsed}`
+    }
+    counterDisplay = `${hoursElapsed}:${minuteElapsed}:${secondElapsed}`;
+    timerContainer.innerText = counterDisplay;
+    // FIN DE LA GESTION DU TIMER----------
+
 
     if(gameMode === "Premier arrivé"){
       if(currentPage === gameEndPage){notifyRoundEnded();}
+    }
+
+    if(gameInfo.dataset.malus === "reverse"){
+      if(gameInfo.dataset.sender !== currentUserId){
+        if(pageContainer.classList.contains('reverse-effect')){
+        }else{
+          pageContainer.classList.add('reverse-effect');
+        }
+      }else {
+        if(pageContainer.classList.contains('reverse-effect')){pageContainer.classList.remove('reverse-effect')}
+      }
     }
     break;
   //-----------------------------------------------------------------------------
