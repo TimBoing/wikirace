@@ -2,7 +2,7 @@
   <div class="title-container centered-vertically"><h1>Feu de Camp</h1></div>
   <div class="content-container centered-vertically">
     <div class="white-container centered-vertically">
-      <%= button_tag "Invite Friends",type: 'button', class: "btn-tim", id:"invite-friends-btn" %>
+      <%= button_tag "Inviter des amis",type: 'button', class: "btn-tim", id:"invite-friends-btn" %>
       <%if current_user.id == @game_session.user_id  %>
         <div class="btn-tim" id ="btn-start-game" data-round="<%= @round.id %>" >LANCE LE JEU!</div>
       <% else %>
@@ -20,7 +20,7 @@
           <%= render "messages", message: message %>
         <% end %>
         <% @round.round_participations.each do |round_participation| %>
-        <p class="new-connection">- <%= User.find(round_participation.user_id).username %> joined the game...</p>
+        <p class="new-connection">- <%= User.find(round_participation.user_id).username %> a rejoint la partie...</p>
         <% end %>
       </div>
     </div>
@@ -80,10 +80,11 @@
         } else if (data.content === undefined && data.message_partial === undefined && data.end_game === undefined) {
           const playerConnected = document.querySelector('.messages');
           console.log(data.player);
-          playerConnected.insertAdjacentHTML('afterbegin', `<p class="new-connection">- ${data.player} joined the game...</p>`);
+          playerConnected.insertAdjacentHTML('afterbegin', `<p class="new-connection">- ${data.player} a rejoint la partie...</p>`);
 
         } else if (data.content === undefined && data.message_partial === undefined && data.player === undefined) {
           console.log('modal pop up');
+
         } else {
           console.log('canard');
         }

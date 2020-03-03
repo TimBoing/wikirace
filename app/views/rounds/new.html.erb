@@ -3,7 +3,7 @@
   <div class="content-container centered-vertically">
     <div class="white-container centered-vertically">
     <%= simple_form_for @round, url: game_session_rounds_path(@game_session), html:{class:"centered-vertically"} do |f| %>
-      <%= f.button :submit,'Start Round', class: "btn-tim", id:"to-fire-camp" %>
+      <%= f.button :submit,'Jouer', class: "btn-tim", id:"to-fire-camp" %>
       <%= button_tag "Options",type: 'button', class: "btn-tim", id:"round-options-btn" %>
       <div id="round-options-modal" class="modal">
         <div id="round-options-modal-content" class="modal-content">
@@ -12,17 +12,17 @@
           </div>
           <div class="centered-vertically" id="round-options-modal-content-after-header">
             <h4>Choix de page :</h4>
-            <%= f.input :start_page, :collection => @wiki_pages, :prompt => "Page aléatoire" %>
-            <%= f.input :end_page, :collection => @wiki_pages, :prompt => "Page aléatoire"  %>
+            <%= f.input :start_page, label: false, label: "Page de début :", :collection => @wiki_pages, :prompt => "Page aléatoire" %>
+            <%= f.input :end_page, label: false, label: "Page cible :", :collection => @wiki_pages, :prompt => "Page aléatoire"  %>
             <h4>Mode de jeu</h4>
-            <%= f.input :game_mode,
+            <%= f.input :game_mode, label: false,
               collection: ['Premier arrivé', 'Limite de temps', 'Limite de clicks', 'Limite de temps & clicks', 'Pas de limites'],
               default: 'Premier arrivé' %>
             <h4>Option de jeu</h4>
-            <%= f.input :game_options,
+            <%= f.input :game_options, label: false,
               collection: ['Standard', 'Avec questions', 'Sans aide de recherche', 'Où est Charlie', 'Battlefield', 'Sens-interdit'],
               default: 'Standard' %>
-            <%= button_tag "Start Round",type: 'submit', class: "btn-tim", id:"round-options-ok-btn" %>
+            <%= button_tag "Jouer",type: 'submit', class: "btn-tim", id:"round-options-ok-btn" %>
           </div>
         </div>
       </div>
