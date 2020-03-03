@@ -9,11 +9,11 @@
 <div class="edit-form-container">
    <%= simple_form_for @user do |f| %>
       <h2>Info utilisateur</h2>
-      <%= f.input :first_name %>
-      <%= f.input :last_name %>
-      <%= f.input :username %>
+      <%= f.input :first_name, label: false, label: 'Nom' %>
+      <%= f.input :last_name, label: false, label: 'Prenom' %>
+      <%= f.input :username, label: false, label: "Nom d'utilisateur" %>
       <h2>Photo de profile</h2>
-      <%= f.input :photo %>
+      <%= f.input :photo, label: false %>
       <%= f.submit 'Mets à jour ton profile' %>
     <% end %>
 </div>

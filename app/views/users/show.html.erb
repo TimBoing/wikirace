@@ -34,6 +34,30 @@
   </div>
 
   <h3>Records mondiaux détenus :</h3>
+  <div>
+    <div class="cards">
+      <% @world_records.each do |world_record| %>
+        <div class="card" style="background-color: blue">
+          <div class="card-date">Début : <%= world_record.start_page %></div>
+          <div class="card-date">Fin : <%= world_record.end_page %></div>
+          <div class="card-game-name"> Fait en <%= world_record.points.count %> clicks</div>
+          <div class="card-game-description">Fait en <%= world_record.duration %> secondes</div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
   <h3>Records perso :</h3>
+  <div>
+    <div class="cards">
+      <% @personal_records.each do |personal_record| %>
+        <div class="card" style="background-color: blue">
+          <div class="card-date">Début : <%= personal_record.round.start_page %></div>
+          <div class="card-date">Fin : <%= personal_record.round.end_page %></div>
+          <div class="card-game-name"> Fait en <%= personal_record.visited_pages.count %> clicks</div>
+          <div class="card-game-description">Fait en <%= personal_record.end_time - personal_record.round.start_time.to_i %> secondes</div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
