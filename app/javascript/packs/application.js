@@ -13,7 +13,9 @@ import '../components/copy_url';
 import { handleRoundPathsModals } from '../components/handle_modals';
 import { handleRoundInfoModal } from '../components/handle_modals';
 import { highlight } from '../components/marker';
-import { alertBrowser } from '../components/alert_browser';
+// import { alertBrowser } from '../components/alert_browser';
+// import { initSweetalert } from '../components/init_sweet_alert';
+
 
 
 
@@ -28,6 +30,7 @@ joinRound();
 handleRoundInfoModal();
 highlight();
 handleRoundPathsModals();
-alertBrowser();
+// alertBrowser();
+// initSweetalert();
 
 //trackMouse();
