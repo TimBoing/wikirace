@@ -33,12 +33,16 @@
       </div>
       <div class="centered-vertically" id="invite-friends-modal-content-after-header">
         <h4>Invite tes amis!</h4>
-        <p>Envoie leur ce numéro de partie : <%= @round.id %></p>
-        <p>OU fais leur flasher ce QRcode</p>
+        <p>Envoie leur ce code : <strong><%= @round.id %></strong></p>
+        <p>OU</p>
+        <p>fais leur flasher ce QRcode :</p>
+        <br>
         <img src=<%= "http://api.qrserver.com/v1/create-qr-code/?data=http://www.wikirace.xyz/rounds/#{@round.id}/round_participations/new/&size=[150]x[150]" %> alt="Le QR Code pour rejoindre la partie" title="QR Code" />
-        <p>OU envoi leur ce lien :</p>
-        <input id="url" type="text" value="http://www.wikirace.xyz/rounds/<%= @round.id %>/round_participations/new" readonly></input>
-        <button id="copy-button" class="">Copy</button>
+        <br>
+        <p>OU ENCORE</p>
+        <p>envoi leur ce lien :</p>
+        <button id="copy-button" class="">Copier le lien</button>
+        <input id="url" style="opacity: 0;" type="text" value="http://www.wikirace.xyz/rounds/<%= @round.id %>/round_participations/new" readonly></input>
       </div>
     </div>
   </div>
