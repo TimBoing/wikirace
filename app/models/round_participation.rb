@@ -7,14 +7,14 @@ class RoundParticipation < ApplicationRecord
   validates :user, uniqueness: { scope: :round, message: "There can only be a RP per user per round" }
 
   def is_the_best?
-    start_page = self.round.start_page
-    end_page = self.visited_pages.last.title
-    record_path = Path.where(:start_page => start_page, :end_page => end_page)
+    start_page = WikiPage.where(title: self.round.start_page)
+    end_page = WikiPage.where(title: self.visited_pages.last.title)
+    record_path = Path.where(start_page: start_page, end_page: end_page)
     if record_path.blank?
       return true
     else
-      clicks_number_record = record_path.points.count
-      clicks_number_new = self.round_participations.count
+      clicks_number_record = record_path[0].points.count
+      clicks_number_new = self.visited_pages.count
       if clicks_number_new < clicks_number_record
         return true
       end
@@ -23,24 +23,24 @@ class RoundParticipation < ApplicationRecord
   end
 
   def save_record(current_user)
-    start_page = self.round.start_page
-    end_page = self.visited_pages.last.title
-    record_path = Path.where(:start_page => start_page, :end_page => end_page)[0]
-    if WikiPage.where(title: start_page).blank?
-      WikiPage.create(title: start_page, url: self.round.start_page_url)
+    start_page = WikiPage.where(title: self.round.start_page)[0]
+    end_page = WikiPage.where(title: self.visited_pages.last.title)[0]
+    record_path = Path.where(start_page: start_page, end_page: end_page)[0]
+    if WikiPage.where(title: start_page.title).blank?
+      WikiPage.create(title: start_page.title, url: self.round.start_page_url)
     end
-    if WikiPage.where(title: end_page).blank?
-      WikiPage.create(title: end_page, url: self.round.end_page_url)
+    if WikiPage.where(title: end_page.title).blank?
+      WikiPage.create(title: end_page.title, url: self.round.end_page_url)
     end
-    wiki_start_page = WikiPage.where(title: start_page)[0]
-    wiki_end_page = WikiPage.where(title: end_page)[0]
+    wiki_start_page = WikiPage.where(title: start_page.title)[0]
+    wiki_end_page = WikiPage.where(title: end_page.title)[0]
     if record_path.blank?
       Path.create(user: current_user, start_page: wiki_start_page, end_page: wiki_end_page, duration: (self.visited_pages.last.created_at.to_i - self.round.start_time.to_i))
     else
       record_path.update(user: current_user, start_page: wiki_start_page, end_page: wiki_end_page, duration: (self.visited_pages.last.created_at.to_i - self.round.start_time.to_i))
       record_path.points.each {|point| point.destroy}
     end
-    record_path = Path.where(:start_page => wiki_start_page, :end_page => wiki_end_page)[0]
+    record_path = Path.where(start_page: wiki_start_page, end_page: wiki_end_page)[0]
     position = 0
     self.visited_pages.each {|visited_page|
       if WikiPage.where(title: visited_page.title).blank?
