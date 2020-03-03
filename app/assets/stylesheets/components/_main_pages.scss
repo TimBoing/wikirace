@@ -1,6 +1,8 @@
 .main-container{
   position: relative;
-  background: asset-url('matrix_gif.gif');
+  // background-image: url('https://www.pexels.com/fr-fr/photo/allumette-assortir-blanc-challenge-262488/');
+  background-image: asset-url('puzzle.jpg');
+  background-size: cover;
   width:100%;
   min-height: calc(100vh - 56px);
   display: flex;
