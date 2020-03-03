@@ -1,3 +1,29 @@
+const handleRoundOptionsModal = () => {
+  const roundOptionsModal = document.getElementById("round-options-modal");
+  const roundOptionsBtn = document.getElementById("round-options-btn");
+  const roundOptionsSpan = document.getElementById("close-round-options");
+
+  // const roundInfoBtn = document.getElementById("round-options-ok-btn");
+
+  if(roundOptionsModal){
+    roundOptionsBtn.addEventListener('click', (event) => {
+      roundOptionsModal.style.display = "block";
+    });
+
+    roundOptionsSpan.addEventListener('click', (event) => {
+      roundOptionsModal.style.display = "none";
+    });
+
+    window.addEventListener('click', (event) => {
+      if (event.target == roundOptionsModal) {
+        roundOptionsModal.style.display = "none";
+      }
+    });
+  }
+}
+
+
+
 const handleRoundInfoModal = () => {
   const inviteFriendsModal = document.getElementById("invite-friends-modal");
   const inviteFriendsBtn = document.getElementById("invite-friends-btn");
@@ -21,9 +47,12 @@ const handleRoundInfoModal = () => {
       }
     });
 
+  if(roundInfoBtn){
     roundInfoBtn.addEventListener('click', (event) => {
       roundInfoModal.style.display = "block";
     });
+  }
+
 
     roundInfoSpan.addEventListener('click', (event) => {
       roundInfoModal.style.display = "none";
@@ -61,7 +90,7 @@ const handleRoundPathsModals = () => {
 }
 
 
-export { handleRoundInfoModal, handleRoundPathsModals };
+export { handleRoundOptionsModal, handleRoundInfoModal, handleRoundPathsModals };
 
 // <i class="fas fa-chevron-circle-left" id="action-previous-page"></i>
 //         <i class="fas fa-search" id="action-search-page"></i>

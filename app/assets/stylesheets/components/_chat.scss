@@ -1,9 +1,13 @@
 .new-connection{
-    color:$matrix-green;
-    font-family: $matrix-font;
-    font-size: 12px;
+  background-color: #CB1C67;
+  color:white;
+  font-family: $game-clean-font;
 
-  }
+}
+
+#create-message{
+  padding:0;
+}
 
  @media only screen and (max-width: 600px) {
 

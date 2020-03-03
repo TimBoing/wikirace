@@ -1,21 +1,21 @@
-const collapseOptions = () => {
+// const collapseOptions = () => {
 
-  const roundOptionsBtn = document.getElementById("round-options-btn");
-  const options = document.getElementById("round-options");
+//   const roundOptionsBtn = document.getElementById("round-options-btn");
+//   const options = document.getElementById("round-options");
 
-  if(roundOptionsBtn){
-    roundOptionsBtn.addEventListener("click", (event) => {
-      event.preventDefault;
-      if(options.style.display === "block") {
-        options.style.display = "none";
-        options.style.maxHeight = 0;
-      } else {
-        options.style.display = "block";
-        options.style.maxHeight = options.scrollHeight + "px";
-      }
-    });
-  }
-}
+//   if(roundOptionsBtn){
+//     roundOptionsBtn.addEventListener("click", (event) => {
+//       event.preventDefault;
+//       if(options.style.display === "block") {
+//         options.style.display = "none";
+//         options.style.maxHeight = 0;
+//       } else {
+//         options.style.display = "block";
+//         options.style.maxHeight = options.scrollHeight + "px";
+//       }
+//     });
+//   }
+// }
 
 const collapsePageChoice = () => {
   const pageChoiceCheckbox = document.getElementById("page-choice");
@@ -36,6 +36,6 @@ const collapsePageChoice = () => {
   };
 }
 
-export {collapseOptions};
+// export {collapseOptions};
 export {collapsePageChoice};
 

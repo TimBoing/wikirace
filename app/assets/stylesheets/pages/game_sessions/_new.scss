@@ -1,15 +1,27 @@
+#home-page-title {
+
+}
+
+
 #round-input{
   margin: 20px;
   text-align: center;
   font-family: $game-clean-font;
-  border:3px solid blue;
+  border:1px solid #1bcb7f;
   height: 50px;
+
+
 }
 
-#to-fire-camp {
-  color: red;
-  border: 3px solid red;
+
+#red-pill {
+  background-color: #CB1C67;
 }
+
+#blue-pill {
+  background-color: #1bcb7f;
+}
+
 
 
 //https://images.pexels.com/photos/247676/pexels-photo-247676.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260
