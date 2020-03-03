@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     @game_sessions_played = current_user.round_participations.map { |round_participation|
       round_participation.round.game_session
     }.uniq
-    @records_perso = current_user.round_participations.uniq { |round_participation| [round_participation.round.start_page, round_participation.round.end_page] }
+    @world_records = current_user.paths
+    @personal_records = current_user.round_participations.uniq { |round_participation| [round_participation.round.start_page, round_participation.round.end_page] }
   end
 
   def edit
