@@ -1,7 +1,7 @@
 import "bootstrap";
 //import "mark";
 import { loadDynamicBannerText } from '../components/banner_typed';
-import { collapseOptions } from '../components/collapsibles';
+import { handleRoundOptionsModal } from '../components/handle_modals';
 import { collapsePageChoice } from '../components/collapsibles';
 import { startGame } from '../components/start_game';
 import { initGame } from '../components/game_controller';
@@ -18,9 +18,9 @@ import { alertBrowser } from '../components/alert_browser';
 
 
 
-collapseOptions();
+handleRoundOptionsModal();
 collapsePageChoice();
-loadDynamicBannerText();
+//loadDynamicBannerText();
 startGame();
 initGame();
 toggleNavbar();

@@ -1,22 +1,26 @@
 <div class="main-container" id="gs-show-main-container">
-  <div class="title-container centered-vertically"><h2>Feu de Camp</h2></div>
+  <div class="title-container centered-vertically"><h1>Feu de Camp</h1></div>
   <div class="content-container centered-vertically">
-    <%= button_tag "Invite Friends",type: 'button', class: "btn-tim", id:"invite-friends-btn" %>
-    <%if current_user.id == @game_session.user_id  %>
-      <div class="btn-tim" id ="btn-start-game" data-round="<%= @round.id %>" >LANCE LE JEU!</div>
-    <%end  %>
+    <div class="white-container centered-vertically">
+      <%= button_tag "Invite Friends",type: 'button', class: "btn-tim", id:"invite-friends-btn" %>
+      <%if current_user.id == @game_session.user_id  %>
+        <div class="btn-tim" id ="btn-start-game" data-round="<%= @round.id %>" >LANCE LE JEU!</div>
+      <% else %>
+        <%= button_tag "Round Info",type: 'button', class: "btn-tim", id:"round-info-btn" %>
+      <%end  %>
+    </div>
 
-    <%= button_tag "Round Info",type: 'button', class: "btn-tim", id:"round-info-btn" %>
-    <div id="create-message" class="opaque-container">
-      <%= simple_form_for [@game_session, Message.new], remote: true do |f| %>
-        <%= f.input :content, label: false, placeholder: 'Taille tes potes!' %>
-      <% end %>
+      <div id="create-message" class="white-container">
+        <%= simple_form_for [@game_session, Message.new], remote: true do |f| %>
+          <%= f.input :content, label: false, placeholder: 'Taille tes potes!' %>
+        <% end %>
+
       <div class="messages">
         <% @game_session.messages.each do |message| %>
           <%= render "messages", message: message %>
         <% end %>
         <% @round.round_participations.each do |round_participation| %>
-        <p class="new-connection">- Player <%= User.find(round_participation.user_id).username %> joined the game...</p>
+        <p class="new-connection">- <%= User.find(round_participation.user_id).username %> joined the game...</p>
         <% end %>
       </div>
     </div>
@@ -70,7 +74,7 @@
         } else if (data.content === undefined && data.message_partial === undefined && data.end_game === undefined) {
           const playerConnected = document.querySelector('.messages');
           console.log(data.player);
-          playerConnected.insertAdjacentHTML('afterbegin', `<p class="new-connection">- Player ${data.player} joined the game...</p>`);
+          playerConnected.insertAdjacentHTML('afterbegin', `<p class="new-connection">- ${data.player} joined the game...</p>`);
         } else if (data.content === undefined && data.message_partial === undefined && data.player === undefined) {
           console.log('modal pop up');
         } else {
