@@ -125,7 +125,10 @@ const gameLoop = () => {
 
 
     if(gameMode === "Premier arrivé"){
-      if(currentPage === gameEndPage){notifyRoundEnded();}
+      if(currentPage === gameEndPage){
+        gameInfo.dataset.winner = currentUserId;
+        notifyRoundEnded();
+      }
     }
 
     if(gameInfo.dataset.malus === "reverse"){

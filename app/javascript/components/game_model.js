@@ -67,7 +67,7 @@ const notifyRoundEnded = () => {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     },
-    body: JSON.stringify({state: 'ended'})
+    body: JSON.stringify({state: 'ended', winner: gameInfo.dataset.winner})
   };
   fetch(`http://${window.location.host}/rounds/${gameRound}`, requestOptions)
     .catch(error => console.log('error', error));
