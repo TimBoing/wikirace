@@ -35,9 +35,10 @@
 </div>
 
 <div id="game-end-modal" class="modal">
-  <div class="modal-content">
+  <div class="modal-content centered-vertically">
     <h1>The game has ended!</h1>
-    <%= link_to 'Voir resultats du round', "#{@host_name}#{round_round_participations_path(@round)}" %>
+    <h2 id="game-end-modal-winner">Winner is : </h2>
+    <%= link_to 'Résultats', "#{@host_name}#{round_round_participations_path(@round)}", class: "btn-tim", id:"to-results-btn" %>
   </div>
 </div>
 
@@ -46,6 +47,7 @@
   data-current-user="<%= current_user.id %>"
   data-round="<%= @round.id %>"
   data-state= "init"
+  data-winner= ""
   data-start-page="<%= @round.start_page %>"
   data-end-page="<%= @round.end_page %>"
   data-current-page="<%= @round.start_page %>"
@@ -72,9 +74,13 @@
     {received: (data) => {
       console.log(data);
       const gameInfo = document.getElementById('game-info');
+      const gameEndModalWinner = document.getElementById('game-end-modal-winner');
 
       if(data['end_game']){
+        gameInfo.dataset.winner = data['end_game'];
+        gameEndModalWinner.innerText= `Winner is : ${gameInfo.dataset.winner}`
         gameInfo.dataset.state = "ended";
+
       }else if(data['malus']){
         console.log('there is a malus');
         console.log(data['malus']);

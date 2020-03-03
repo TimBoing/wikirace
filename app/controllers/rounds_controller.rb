@@ -72,7 +72,8 @@ class RoundsController < ApplicationController
 
     unless params[:state].nil?
       round.update(state: 'ended')
-      ActionCable.server.broadcast("game_session_channel_#{round.game_session.id}", end_game: "finished")
+      winner = User.find(params[:winner]).username
+      ActionCable.server.broadcast("game_session_channel_#{round.game_session.id}", end_game: winner)
     end
 
     unless params[:malus].nil?
