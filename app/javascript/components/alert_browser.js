@@ -11,7 +11,7 @@ const alertBrowser = () => {
           if (!stayOnPage) {
             history.pushState(null, null, null);
           } else {
-            history.back()
+            preventDefault();
           }
         });
       });
