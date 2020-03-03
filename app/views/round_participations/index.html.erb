@@ -4,7 +4,7 @@
   </div>
   <div class="record">
       <% @round_participations.each do |round_participation| %>
-        <% if round_participation.is_the_best? %>
+        <% if @best  %>
           <i class="fas fa-trophy"></i>
           <h4><%= round_participation.user.username %> a battu le record en <%= round_participation.visited_pages.count %> pages</h4>
         <% else %>
@@ -67,14 +67,15 @@
 
   <div>
     <% if current_user.id == @game_session.user_id %>
-      <%= link_to "Jouer un nouveau Round", new_game_session_round_path(@game_session) %>
+      <%= link_to "Jouer un nouveau Round", new_game_session_round_path(@game_session), class: "btn", id: "launch-new-round" %>
     <% else %>
-       <a href="#" class="player_replay_button">Waiting for Game Master to create a new round</a>
+       <button class="player_replay_button">En attente de <%= @game_session.user.username %> pour lancer un nouveau round</button>
      <% end %>
   </div>
   <div>
-    <%= link_to "Finir la partie", game_session_rounds_path(@game_session) %>
+    <%= link_to "Finir la partie", game_session_rounds_path(@game_session), class: "btn", id: "go-to-round-index" %>
   </div>
+
 </div>
 
 <% content_for :after_js do %>
