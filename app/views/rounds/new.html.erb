@@ -1,29 +1,32 @@
 <div class="main-container">
-  <div class="title-container centered-vertically"><h2>Options du Round <%= @game_session.rounds.count + 1%></h2></div>
+  <div class="title-container centered-vertically"><h1>Options Round <%= @game_session.rounds.count + 1%></h1></div>
   <div class="content-container centered-vertically">
+    <div class="white-container centered-vertically">
     <%= simple_form_for @round, url: game_session_rounds_path(@game_session), html:{class:"centered-vertically"} do |f| %>
       <%= f.button :submit,'Start Round', class: "btn-tim", id:"to-fire-camp" %>
-      <%= button_tag "Options",type: 'button', class: "btn-tim collapsible", id:"round-options-btn" %>
-
-      <div class="collapse opaque-container" id="round-options">
-        <h4>Mode de jeu</h4>
-
-        <%= f.input :game_mode,
-          collection: ['Premier arrivé', 'Limite de temps', 'Limite de clicks', 'Limite de temps & clicks', 'Pas de limites'],
-          default: 'Premier arrivé' %>
-        <h4>Option de jeu</h4>
-        <%= f.input :game_options,
-          collection: ['Standard', 'Avec questions', 'Sans aide de recherche', 'Où est Charlie', 'Battlefield', 'Sens-interdit'],
-          default: 'Standard' %>
-        <h4>Choix de page :</h4>
-        <%= f.input :start_page, :collection => @wiki_pages %>
-        <%= f.input :end_page, :collection => @wiki_pages  %>
-        <input id="page-choice" type="checkbox" name="page_choice" value="page_choice">
-        <div  class="collapse opaque-container" id="begin-and-end-pages">
-          <h4>XXXX</h4>
+      <%= button_tag "Options",type: 'button', class: "btn-tim", id:"round-options-btn" %>
+      <div id="round-options-modal" class="modal">
+        <div id="round-options-modal-content" class="modal-content">
+          <div id="round-options-modal-header">
+            <span class="close" id="close-round-options">&times;</span>
+          </div>
+          <div class="centered-vertically" id="round-options-modal-content-after-header">
+            <h4>Choix de page :</h4>
+            <%= f.input :start_page, :collection => @wiki_pages, :prompt => "Page aléatoire" %>
+            <%= f.input :end_page, :collection => @wiki_pages, :prompt => "Page aléatoire"  %>
+            <h4>Mode de jeu</h4>
+            <%= f.input :game_mode,
+              collection: ['Premier arrivé', 'Limite de temps', 'Limite de clicks', 'Limite de temps & clicks', 'Pas de limites'],
+              default: 'Premier arrivé' %>
+            <h4>Option de jeu</h4>
+            <%= f.input :game_options,
+              collection: ['Standard', 'Avec questions', 'Sans aide de recherche', 'Où est Charlie', 'Battlefield', 'Sens-interdit'],
+              default: 'Standard' %>
+            <%= button_tag "Start Round",type: 'submit', class: "btn-tim", id:"round-options-ok-btn" %>
+          </div>
         </div>
       </div>
-    <% end %>
+  <% end %>
   </div>
 </div>
 

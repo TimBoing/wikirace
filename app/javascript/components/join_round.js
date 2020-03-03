@@ -12,7 +12,7 @@ const joinRound = () => {
         if(response.status === 200){
           window.location.href = `../rounds/${roundInput.value}/round_participations/new`;
         } else {
-          alert("Tu t'es gourré man");
+          alert("Code incorrect");
         }
       });
   }
@@ -20,7 +20,6 @@ const joinRound = () => {
   if (btnSubmit){
     btnSubmit.addEventListener("click", (event) => {
       testURL(`../rounds/${roundInput.value}/round_participations/new`);
-      //
     });
   }
 }

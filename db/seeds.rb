@@ -13,27 +13,27 @@ User.destroy_all
 puts "All the old database has been deleted"
 
 puts "Creating new users..."
-user1 = User.new(email: "aaaaa@aaaaa.fr", password: "123456", first_name: "Alexis", last_name: "Filia", username: "Alex")
+user1 = User.new(email: "aaaaa@aaaaa.fr", password: "123456", first_name: "Alexis", last_name: "Filia",coins: 55, item1: 1, item2: 1, item3: 0, item4: 2, item5: 1, username: "Alex")
 picture1 = URI.open('https://images.unsplash.com/photo-1574257434424-2ee5b4fa8922?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80')
 user1.photo.attach(io: picture1, filename: 'user1.jpg', content_type: 'image/png')
 user1.save!
 
-user2 = User.new(email: "bbbbb@bbbbb.fr", password: "123456", first_name: "Tim", last_name: "Boing", username: "TimTim")
+user2 = User.new(email: "bbbbb@bbbbb.fr", password: "123456", first_name: "Tim", last_name: "Boing",coins: 62, item1: 2, item2: 4, item3: 3, item4: 2, item5: 0, username: "TimTim")
 picture2 = URI.open('https://images.unsplash.com/photo-1517423738875-5ce310acd3da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=705&q=80')
 user2.photo.attach(io: picture2, filename: 'user2.png', content_type: 'image/png')
 user2.save!
 
-user3 = User.new(email: "ccccc@ccccc.fr", password: "123456", first_name: "Geoffrey", last_name: "Dulac", username: "GeoffreyXXX")
+user3 = User.new(email: "ccccc@ccccc.fr", password: "123456", first_name: "Geoffrey", last_name: "Dulac",coins: 90, item1: 7, item2: 0, item3: 1, item4: 2, item5: 4, username: "GeoffreyXXX")
 picture3 = URI.open('https://res.cloudinary.com/dwsebrqxl/image/upload/v1582122066/mec1_fazdks.jpg')
 user3.photo.attach(io: picture3, filename: 'user3.png', content_type: 'image/png')
 user3.save!
 
-user4 = User.new(email: "ddddd@ddddd.fr", password: "123456", first_name: "VanderWees", last_name: "Maxime", username: "Max")
+user4 = User.new(email: "ddddd@ddddd.fr", password: "123456", first_name: "VanderWees", last_name: "Maxime",coins: 12, item1: 8, item2: 7, item3: 3, item4: 2, item5: 1, username: "Max")
 picture4 = URI.open('https://images.unsplash.com/photo-1505628346881-b72b27e84530?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')
 user4.photo.attach(io: picture4, filename: 'user4.png', content_type: 'image/png')
 user4.save!
 
-user5 = User.new(email: "eeeee@eeeee.fr", password: "123456", first_name: "Bobby", last_name: "Lapointe", username: "Bob")
+user5 = User.new(email: "eeeee@eeeee.fr", password: "123456", first_name: "Bobby", last_name: "Lapointe",coins: 0, item1: 2, item2: 2, item3: 0, item4: 1, item5: 1, username: "Bob")
 picture5 = URI.open('https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-1.2.1&auto=format&fit=crop&w=660&q=80')
 user5.photo.attach(io: picture5, filename: 'user5.png', content_type: 'image/png')
 user5.save!

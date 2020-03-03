@@ -1,34 +1,24 @@
 #btn-start-game{
-  color: red;
-  border: 3px solid red;
+  background-color: #CB1C67;
 }
+
+#invite-friends-btn{
+  background-color: #1bcb7f;
+}
+
+#round-info-btn{
+  background-color: #CB1C67;
+}
+
+#create-message{
+  margin-top: 20px;
+}
+
 
 #invite-friends-modal-content{
 
 }
 
-
-// #gs-show-main-container{
-//   //background: url('matrix_gif.gif');
-
-//   #gs-show-second-container{
-//     //color:white;
-//   }
-// }
-
-// #btn-start-game {
-//   color: white;
-// }
-
-// .bg {
-//   background-color: $p_orange;
-//   border-radius: 10px;
-//   margin-bottom: 10px;
-// }
-
-// .text-color-blue {
-//   color: $p_blue;
-// }
 
 .connected-players {
   display: flex;
@@ -37,7 +27,3 @@
     margin-right: 10px;
   }
 }
-
-// .color-blue {
-//   color: $p_blue;
-// }
