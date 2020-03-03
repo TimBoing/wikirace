@@ -2,12 +2,27 @@
   background-color: #CB1C67;
   color:white;
   font-family: $game-clean-font;
-
 }
 
-#create-message{
-  padding:0;
-}
+// #create-message{
+//   padding:20px;
+// }
+
+// .message{
+//   display: flex;
+// }
+
+// .right{
+//   justify-content:flex-end;
+// }
+
+// .message-user-name{
+//   margin:0;
+// }
+
+// .message-content{
+//   padding:0;
+// }
 
  @media only screen and (max-width: 600px) {
 
@@ -65,7 +80,7 @@
   background-color: #F7F7F7;
   border-radius: 3px;
   margin: 0 0px;
-  padding: 11px 10px 8px 10px;
+  padding: 0;
 
   p {
     margin: 0;

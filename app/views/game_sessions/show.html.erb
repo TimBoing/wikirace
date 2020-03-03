@@ -65,137 +65,28 @@
     {received: (data) => {
         if (data.message_partial === undefined && data.player === undefined && data.end_game === undefined) {
           window.location = '<%= round_path(@round) %>';
+
         } else if (data.content === undefined && data.player === undefined && data.end_game === undefined) {
           const messagesContainer = document.querySelector('.messages');
           messagesContainer.insertAdjacentHTML('afterbegin', data.message_partial);
           const  input = document.querySelector('#message_content');
           input.value = '';
           input.blur();
+
         } else if (data.content === undefined && data.message_partial === undefined && data.end_game === undefined) {
           const playerConnected = document.querySelector('.messages');
           console.log(data.player);
           playerConnected.insertAdjacentHTML('afterbegin', `<p class="new-connection">- ${data.player} joined the game...</p>`);
+
         } else if (data.content === undefined && data.message_partial === undefined && data.player === undefined) {
           console.log('modal pop up');
         } else {
-          console.log('connard');
+          console.log('canard');
         }
       }
     })
   </script>
 <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- TOUT CA C´EST DU PASSÉ---------------------------------------------------------------------------------------------------------- -->
-<!-- -------------------------------------------------------------------------------------------------------------------------------- -->
-
-<% if false %>
-
-  <div class="height-div container-fluid align-items-center justify-content-center text-center" id="gs-show-main-container">
-
-    <div class="p-2 rounded container-fluid" id="gs-show-second-container">
-
-      <h4 class="mb-3">INVITE TES AMIS: </h4>
-      <p class="text-center">envoie leur ce numéro de partie : <%= @round.id %></p>
-      <p class="text-center pb-0 mb-0">OU envoi leur ce lien :</p>
-      <div class="d-flex align-items-center align-content-center justify-content-center mb-3">
-        <input id="url" type="text" value="www.wikirace.xyz/rounds/<%= @round.id %>/round_participations/new" readonly></input>
-        <button id="copy-button">Copy</button>
-        <i id="pop-up" class="bg-light position-absolute d-none fas fa-check-square color-blue no-border" style="right: 55px"></i>
-      </div>
-      <p class="text-center mb-0">OU fais leur flasher ce QRcode</p>
-    </div>
-
-
-  <%if current_user.id == @game_session.user_id  %>
-    <div class="container">
-      <div class="btn btn-blue text-center" id ="btn-start-game" data-round="<%= @round.id %>" >LANCE LE JEU!</div>
-    </div>
-  <%end  %>
-
-    <!-- <img src=<%#= "http://api.qrserver.com/v1/create-qr-code/?data=http://www.wikirace.xyz/rounds/#{@round.id}/round_participations/new/&size=[150]x[150]" %> alt="Le QR Code pour rejoindre la partie" title="QR Code" /> -->
-    <div class="text-align-center">
-      <div class="container-fluid d-flex justify-content-around align-items-center">
-        <p class="mb-0">Waiting for your friends...</p>
-        <!-- <div class="spinner-box">
-          <div class="leo-border-1">
-            <div class="leo-core-1"></div>
-          </div>
-          <div class="leo-border-2">
-            <div class="leo-core-2"></div>
-          </div>
-        </div> -->
-      </div>
-      <div class="connected-players">
-        <% counter = 0 %>
-        <% @round.round_participations.each do |round_participation| %>
-          <%# counter += 1 %>
-          <p><%#= counter %> Player : <%= User.find(round_participation.user_id).username %></p>
-        <% end %>
-      </div>
-    </div>
-
-      <!-- this part is the chat window -->
-    <div class="message-box bg-light radius p-2">
-      <div class="">
-        <div class=""><h4>TAILLE TES POTES !</h4></div>
-        <div id="create-message" class="mt-4">
-          <%= simple_form_for [@game_session, Message.new], remote: true do |f| %>
-            <%= f.input :content, label: false %>
-          <% end %>
-        </div>
-        <div class="messages">
-          <% @game_session.messages.each do |message| %>
-            <%= render "messages", message: message %>
-          <% end %>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-  <!-- that is the subscription that happens when a user gets to the game_session#show -->
-  <% content_for :after_js do %>
-    <script>
-      App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create(
-      { channel: 'GameSessionChannel', game_session_id: <%= @game_session.id %> },
-      {received: (data) => {
-          if (data.message_partial === undefined && data.player === undefined && data.end_game === undefined) {
-            window.location = '<%= round_path(@round) %>';
-          } else if (data.content === undefined && data.player === undefined && data.end_game === undefined) {
-            const messagesContainer = document.querySelector('.messages');
-            messagesContainer.insertAdjacentHTML('afterbegin', data.message_partial);
-            const  input = document.querySelector('#message_content');
-            input.value = '';
-            input.blur();
-          } else if (data.content === undefined && data.message_partial === undefined && data.end_game === undefined) {
-            const playerConnected = document.querySelector('.connected-players');
-            console.log(data.player);
-            playerConnected.insertAdjacentHTML('beforeend', `<p>${data.player}</p>`);
-          } else if (data.content === undefined && data.message_partial === undefined && data.player === undefined) {
-            console.log('modal pop up');
-          } else {
-            console.log('connard');
-          }
-        }
-      })
-    </script>
-  <% end %>
-<% end %>
-
-
-
 
 
 
