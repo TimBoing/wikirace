@@ -5,11 +5,11 @@
       <% if user_signed_in? %>
 
           <%= simple_form_for @game_session, html: { id: 'home-page-options' } do |f| %>
-              <%= f.submit "Create Game", class: "btn-tim", id: "red-pill" %>
+              <%= f.submit "Creer une partie", class: "btn-tim", id: "red-pill" %>
           <% end %>
 
-          <%= text_field_tag "name", "", placeholder: "Enter round #", id: "round-input" %>
-          <%= button_tag "Join Game",class: "btn-tim", id: "blue-pill" %>
+          <%= text_field_tag "name", "", placeholder: "Enter code #", id: "round-input" %>
+          <%= button_tag "Rejoindre",class: "btn-tim", id: "blue-pill" %>
 
 
       <% else %>
