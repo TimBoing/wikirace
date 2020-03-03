@@ -2,7 +2,7 @@ import "bootstrap";
 //import "mark";
 import { loadDynamicBannerText } from '../components/banner_typed';
 import { handleRoundOptionsModal } from '../components/handle_modals';
-import { collapsePageChoice } from '../components/collapsibles';
+// import { collapsePageChoice } from '../components/collapsibles';
 import { startGame } from '../components/start_game';
 import { initGame } from '../components/game_controller';
 import { trackMouse } from '../components/mouseTrack';
@@ -19,7 +19,7 @@ import { alertBrowser } from '../components/alert_browser';
 
 
 handleRoundOptionsModal();
-collapsePageChoice();
+// collapsePageChoice();
 //loadDynamicBannerText();
 startGame();
 initGame();
