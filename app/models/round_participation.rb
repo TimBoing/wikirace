@@ -26,14 +26,14 @@ class RoundParticipation < ApplicationRecord
     start_page = WikiPage.where(title: self.round.start_page)[0]
     end_page = WikiPage.where(title: self.visited_pages.last.title)[0]
     record_path = Path.where(start_page: start_page, end_page: end_page)[0]
-    if WikiPage.where(title: start_page.title).blank?
-      WikiPage.create(title: start_page.title, url: self.round.start_page_url)
+    if WikiPage.where(title: start_page).blank?
+      WikiPage.create(title: start_page, url: self.round.start_page_url)
     end
-    if WikiPage.where(title: end_page.title).blank?
-      WikiPage.create(title: end_page.title, url: self.round.end_page_url)
+    if WikiPage.where(title: end_page).blank?
+      WikiPage.create(title: end_page, url: self.round.end_page_url)
     end
     wiki_start_page = WikiPage.where(title: start_page.title)[0]
-    wiki_end_page = WikiPage.where(title: end_page.title)[0]
+    wiki_end_page = WikiPage.where(title: self.visited_pages.last.title)[0]
     if record_path.blank?
       Path.create(user: current_user, start_page: wiki_start_page, end_page: wiki_end_page, duration: (self.visited_pages.last.created_at.to_i - self.round.start_time.to_i))
     else
