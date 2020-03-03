@@ -1,63 +1,92 @@
-<div class="container">
-  <h2>Mes stats</h2>
-  <br>
-  <div>Argent: <%= current_user.coins %> pieces</div>
-  <div>Item1 en stock: <%= current_user.item1 %></div>
-  <div>Item2 en stock: <%= current_user.item2 %></div>
-  <div>Item3 en stock: <%= current_user.item3 %></div>
-  <div>Item4 en stock: <%= current_user.item4 %></div>
-  <div>Item5 en stock: <%= current_user.item5 %></div>
-  <div>
-    <h3>Parties créées :</h3>
-    <div class="cards">
-      <% @created_game_sessions_clean.each do |game_session| %>
-        <div class="card" style="background-color: blue">
-          <div class="card-date"><%= game_session.rounds.first.start_time %></div>
-          <div class="card-game-name"><%= game_session.rounds.count %> rounds jouée</div>
-          <div class="card-game-description"><%= current_user.total_score_for(game_session) %> points</div>
+<div class="main-container">
+  <div class="title-container centered-vertically "><h1><span id="#home-page-title">Mon profile</span></h1></div>
+    <div class="content-container centered-vertically">
+      <div class="white-container centered-vertically">
+        <div>
+          <i class="fas fa-money-bill-wave"></i>
+          Argent: <%= current_user.coins %> WikiMonnaie
         </div>
-      <% end %>
+        <div class="row">
+          <div class="col-sm">
+            <i class="fas fa-fire"></i>
+            en stock: <%= current_user.item1 %>
+          </div>
+          <div class="col-sm">
+            <i class="fas fa-fire-extinguisher"></i>
+            en stock: <%= current_user.item2 %>
+          </div>
+          <div class="col-sm">
+            <i class="fas fa-random"></i>
+            en stock: <%= current_user.item3 %>
+          </div>
+          <div class="col-sm">
+            <i class="fas fa-ghost"></i>
+            en stock: <%= current_user.item4 %>
+          </div>
+          <div class="col-sm">
+            <i class="fas fa-plus-square"></i>
+            en stock: <%= current_user.item5 %>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <h3>Parties jouées :</h3>
-  <div>
-    <div class="cards">
-      <% @game_sessions_played.each do |game_session| %>
-        <div class="card" style="background-color: blue">
-          <div class="card-date"><%= game_session.rounds.first.start_time %></div>
-          <div class="card-game-name"><%= game_session.rounds.count %> rounds jouée</div>
-          <div class="card-game-description"><%= current_user.total_score_for(game_session) %> points</div>
+    <div class="content-container centered-vertically">
+      <div class="white-container centered-vertically">
+        <h3>Parties créées :</h3>
+        <div class="cards">
+          <% @created_game_sessions_clean.each do |game_session| %>
+            <div class="card" style="background-color: blue">
+              <div class="card-date"><%= game_session.rounds.first.start_time %></div>
+              <div class="card-game-name"><%= game_session.rounds.count %> rounds jouée</div>
+              <div class="card-game-description"><%= current_user.total_score_for(game_session) %> points</div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
-  </div>
-
-  <h3>Records mondiaux détenus :</h3>
-  <div>
-    <div class="cards">
-      <% @world_records.each do |world_record| %>
-        <div class="card" style="background-color: blue">
-          <div class="card-date">Début : <%= world_record.start_page %></div>
-          <div class="card-date">Fin : <%= world_record.end_page %></div>
-          <div class="card-game-name"> Fait en <%= world_record.points.count %> clicks</div>
-          <div class="card-game-description">Fait en <%= world_record.duration %> secondes</div>
+    <div class="content-container centered-vertically">
+      <div class="white-container centered-vertically">
+        <h3>Parties jouées :</h3>
+        <div class="cards">
+          <% @game_sessions_played.each do |game_session| %>
+            <div class="card" style="background-color: blue">
+              <div class="card-date"><%= game_session.rounds.first.start_time %></div>
+              <div class="card-game-name"><%= game_session.rounds.count %> rounds jouée</div>
+              <div class="card-game-description"><%= current_user.total_score_for(game_session) %> points</div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
-  </div>
-
-  <h3>Records perso :</h3>
-  <div>
-    <div class="cards">
-      <% @personal_records.each do |personal_record| %>
-        <div class="card" style="background-color: blue">
-          <div class="card-date">Début : <%= personal_record.round.start_page %></div>
-          <div class="card-date">Fin : <%= personal_record.round.end_page %></div>
-          <div class="card-game-name"> Fait en <%= personal_record.visited_pages.count %> clicks</div>
-          <div class="card-game-description">Fait en <%= personal_record.end_time - personal_record.round.start_time.to_i %> secondes</div>
+    <div class="content-container centered-vertically">
+      <div class="white-container centered-vertically">
+        <h3>Records mondiaux détenus :</h3>
+        <div class="cards">
+          <% @world_records.each do |world_record| %>
+            <div class="card" style="background-color: blue">
+              <div class="card-date">Début : <%= world_record.start_page %></div>
+              <div class="card-date">Fin : <%= world_record.end_page %></div>
+              <div class="card-game-name"> Fait en <%= world_record.points.count %> clicks</div>
+              <div class="card-game-description">Fait en <%= world_record.duration %> secondes</div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
+    </div>
+    <div class="content-container centered-vertically">
+      <div class="white-container centered-vertically">
+        <h3>Records perso :</h3>
+        <div class="cards">
+          <% @personal_records.each do |personal_record| %>
+            <div class="card" style="background-color: blue">
+              <div class="card-date">Début : <%= personal_record.round.start_page %></div>
+              <div class="card-date">Fin : <%= personal_record.round.end_page %></div>
+              <div class="card-game-name"> Fait en <%= personal_record.visited_pages.count %> clicks</div>
+              <div class="card-game-description">Fait en <%= personal_record.end_time - personal_record.round.start_time.to_i %> secondes</div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
