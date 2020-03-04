@@ -21,6 +21,6 @@ class GameSessionsController < ApplicationController
     @game_session = GameSession.find(params[:id])
     @messages = Message.where(game_session_id: @game_session.id)
     @round = Round.where(game_session_id: @game_session).last
-    ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", player: current_user.username, new_round_link: helpers.link_to('Join next', round_round_participations_path(@round), method: :post))
+    ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", player: current_user.username, new_round_link: helpers.link_to('Nouveau Round', round_round_participations_path(@round), method: :post, class: "btn-tim main-red"))
   end
 end
