@@ -11,53 +11,76 @@
       <% end %>
     </div>
 
-      <div class="cards">
-        <% @players.each do |player| %>
-          <div class="card" data-player="<%= player.id %>">
-            <div class="card-left-side">
-              <div class="card-rank"><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].rank %></div>
-              <div class="card-username"><%= player.username %></div>
-            </div>
-            <div class="card-right-side">
-              <div class="card-score"><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].score %> pts</div>
-              <div class="card-avatar-container">
-                <% if player.photo.attached? %>
-                  <%= image_tag player.photo, class: "card-avatar" %>
-                <% else %>
-                  <%= cl_image_tag "wikipadia_bion2m.jpg", class: "card-avatar"%>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
 
+
+
+    <div class="cards">
       <% @players.each do |player| %>
-        <div id="path-info-modal-player-<%= player.id %>" class="modal">
-          <div class="modal-content">
-            <div class="modal-header">
-              <span id="path-info-modal-close-player-<%= player.id %>" class="close">&times;</span>
-            </div>
-            <div class="centered-vertically game-font">
-              <h2 class="parcours-title">Parcours : <%= player.username %>!</h2>
-              <div class="time-and-score">
-                <p>Temps: <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.last.created_at - player.round_participations.select{|round_participation| round_participation.round == @round }[0].round.start_time.to_i %></p>
-                <p>Click: <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.count %></p>
-              </div>
-              <div style="display: flex; align-items: center; flex-direction: column;">
-                <% counter = 0 %>
-                <% player.round_participations.last.visited_pages.each do |visited_page| %>
-                  <% counter += 1 %>
-                    <p style="margin-bottom: 20px;"><%= counter %> : <%= visited_page.title %></p>
-                    <% if @round.end_page != visited_page.title %>
-                      <i class="fas fa-chevron-circle-down chevrons"></i>
-                    <% end %>
-                <% end %>
-              </div>
+        <div class="card" data-player="<%= player.id %>">
+          <div class="card-left-side">
+            <div class="card-rank"><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].rank %></div>
+            <div class="card-username"><%= player.username %></div>
+          </div>
+          <div class="card-right-side">
+            <div class="card-score"><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].score %> pts</div>
+            <div class="card-avatar-container">
+              <% if player.photo.attached? %>
+                <%= image_tag player.photo, class: "card-avatar" %>
+              <% else %>
+                <%= cl_image_tag "wikipadia_bion2m.jpg", class: "card-avatar"%>
+              <% end %>
             </div>
           </div>
         </div>
       <% end %>
+    </div>
+
+
+
+    <% @players.each do |player| %>
+      <div id="path-info-modal-player-<%= player.id %>" class="modal">
+        <div class="modal-content">
+
+
+          <div class="modal-header">
+            <span id="path-info-modal-close-player-<%= player.id %>" class="close">&times;</span>
+          </div>
+
+
+          <div class="centered-vertically game-font">
+
+
+            <h2 class="parcours-title">Parcours : <%= player.username %>!</h2>
+            <div class="time-and-score">
+              <p>Temps: <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.last.created_at - player.round_participations.select{|round_participation| round_participation.round == @round }[0].round.start_time.to_i %></p>
+              <p>Click: <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.count %></p>
+            </div>
+
+
+
+            <div style="display: flex; align-items: center; flex-direction: column;">
+              <% counter = 0 %>
+              <% player.round_participations.last.visited_pages.each do |visited_page| %>
+                <% counter += 1 %>
+                  <p style="margin-bottom: 20px;"><%= counter %> : <%= visited_page.title %></p>
+                  <% if @round.end_page != visited_page.title %>
+                    <i class="fas fa-chevron-circle-down chevrons"></i>
+                  <% end %>
+              <% end %>
+            </div>
+
+
+          </div>
+
+
+
+        </div>
+      </div>
+    <% end %>
+
+
+
+
 
     <div class="white-container centered-vertically" id="score-page-buttons-container">
       <% if current_user.id == @game_session.user_id %>
@@ -67,6 +90,12 @@
       <% end %>
       <%= link_to "Finir la partie", game_session_rounds_path(@game_session), class: "btn-tim", id: "go-to-round-index" %>
     </div>
+
+
+
+
+
+
 
 
   </div>
