@@ -36,6 +36,7 @@ class RoundsController < ApplicationController
     if params[:round][:start_page] == ""
       @round.start_page_url = random_page_url
       @round.start_page = random_page_title(@round.start_page_url)
+      @round.start_page_random = true
     else
       @round.start_page = WikiPage.find(params[:round][:start_page]).title
       @round.start_page_url = WikiPage.find(params[:round][:start_page]).url
@@ -44,6 +45,7 @@ class RoundsController < ApplicationController
     if params[:round][:end_page] == ""
       @round.end_page_url = random_page_url
       @round.end_page = random_page_title(@round.end_page_url)
+      @round.end_page_random = true
     else
       @round.end_page = WikiPage.find(params[:round][:end_page]).title
       @round.end_page_url = WikiPage.find(params[:round][:end_page]).url
@@ -88,7 +90,6 @@ class RoundsController < ApplicationController
   end
 
   def random_page_url
-    @round.page_random = true
     url_for_random_title = 'https://fr.wikipedia.org/api/rest_v1/page/random/title'
 
   end
