@@ -25,8 +25,8 @@
       <span class="close" id="info-close">&times;</span>
     </div>
     <div id="info-your-target-modal-container">
-      <div id="info-game-counter">Round starts in : </div>
-      <div id="info-game-mode">The game mode is : <%= @round.game_mode %></div>
+      <div id="info-game-counter">La partie commence dans : </div>
+      <div id="info-game-mode">Le mode de jeu est : <%= @round.game_mode %></div>
       <h1 id="info-game-end-page-title-container"></h1>
       <div id="info-game-end-page-container"></div>
       <div id="info-game-counter-big"></div>
@@ -36,8 +36,8 @@
 
 <div id="game-end-modal" class="modal">
   <div class="modal-content centered-vertically">
-    <h1>The game has ended!</h1>
-    <h2 id="game-end-modal-winner">Winner is : </h2>
+    <h1>La partie est terminée!</h1>
+    <h2 id="game-end-modal-winner">Le vainqueur est : </h2>
     <%= link_to 'Résultats', "#{@host_name}#{round_round_participations_path(@round)}", class: "btn-tim", id:"to-results-btn" %>
   </div>
 </div>
@@ -59,11 +59,11 @@
 </div>
 
   <!--   input + button to ask what the user look for -->
-  <div>
+<!--   <div>
     <label>Find Text</label>
     <input id="userFindInputText" type="text" value=""/>
     <button id="userFindInputButton" type="button">Find</button>
-  </div>
+  </div> -->
   <!--   input + button to ask what the user look for -->
 
 
