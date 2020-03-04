@@ -18,7 +18,7 @@
 #invite-friends-modal-content{
 
 }
-
+backgr
 
 .connected-players {
   display: flex;
@@ -26,4 +26,25 @@
   p {
     margin-right: 10px;
   }
+}
+
+#round-info-modal-content {
+    h3 {
+    color: $main-red;
+  }
+    h5 {
+    color: $main-green;
+  }
+}
+
+.card {
+  margin-bottom: 0px;
+  padding: 10px;
+  border-radius: 10px;
+  width: 90vw;
+  border: none;
+}
+
+#ok-btn{
+  background-color: #CB1C67;
 }

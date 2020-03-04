@@ -100,7 +100,8 @@ ActiveRecord::Schema.define(version: 2020_02_27_152556) do
     t.string "end_page_url"
     t.string "game_mode"
     t.string "game_options"
-    t.boolean "page_random", default: false
+    t.boolean "start_page_random", default: false
+    t.boolean "end_page_random", default: false
     t.string "state", default: "initiated"
     t.string "start_time"
     t.bigint "game_session_id"
