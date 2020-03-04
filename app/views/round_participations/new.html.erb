@@ -1,20 +1,20 @@
-<div class="height-div container-fluid d-flex align-items-center justify-content-center">
-  <div class="text-center">
-    <h2><%= @creator.username %> t'invite à jouer à:</h2>
-    <h2>WIKIRACE</h2>
-    <br>
-    <br>
-    <% if @round.state == nil %>
-      <p>Ce round n'existe pas, il doit y avoir un problème avec l'URL de votre ami(e)</p>
-    <% elsif @round.state == "initiated" %>
-      <%= link_to "Join the game_session",  round_round_participations_path, method: :post, class: "btn-orange"  %>
-    <% elsif @round.state == "playing" %>
-      <p>Désolé, vous ne pouvez pas vous joindre car ce round a déjà commencé, essayez de vous joindre à vos amis pour un prochain round...</p>
-    <% elsif @round.state == "ended" %>
-      <p>Désolé, vous ne pouvez pas vous joindre car ce round a déjà été joué...</p>
-    <% else %>
-      <p>Il y a un problème avec cette partie</p>
-    <% end %>
-    <%= link_to "Retour à la page d'acceuil", root_path, class: "nav-link" %>
+<div class="main-container justify-content-center align-items-center">
+  <div class="height-div white-container container-fluid d-flex align-items-center justify-content-center">
+    <div class="text-center">
+        <h2><%= @creator.username %> t'invite à jouer à:</h2>
+        <h2>WIKIRACE</h2>
+        <% if @round.state == nil %>
+          <p class="display-messages-no-round">Ce round n'existe pas, il doit y avoir un problème avec l'URL de votre ami(e)</p>
+        <% elsif @round.state == "initiated" %>
+          <%= link_to "Join the game_session", round_round_participations_path, method: :post, class:"btn-tim", id:"btn-join"  %>
+        <% elsif @round.state == "playing" %>
+          <p class="display-messages-no-round">Désolé, vous ne pouvez pas vous joindre car ce round a déjà commencé, essayez de vous joindre à vos amis pour un prochain round...</p>
+       <% elsif @round.state == "ended" %>
+          <p class="display-messages-no-round">Désolé, vous ne pouvez pas vous joindre car ce round a déjà été joué...</p>
+       <% else %>
+          <p class="display-messages-no-round">Il y a un problème avec cette partie</p>
+        <% end %>
+        <%= link_to "Retour à la page d'accueil", root_path, class: "nav-link" %>
+    </div>
   </div>
 </div>
