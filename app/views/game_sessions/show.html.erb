@@ -54,42 +54,42 @@
       </div>
       <div class="centered-vertically" id="round-info-modal-content-after-header">
         <h3>Détails de la partie!</h3>
-        <br>
-        <div class="card">
+
+        <div class="info-option-container">
           <% if  @round.start_page_random == false %>
-             <h4 class="text-center"><i class="fas fa-play-circle"></i> page de départ</h4><h5><%= @round.start_page %></h5>
+             <h4 class="text-center"><i class="fas fa-play-circle"></i> page de départ</h4><p><%= @round.start_page %></p>
           <% else %>
-            <h4 class="text-center"><i class="fas fa-play-circle"></i> page de départ</h4><h5>Page aléatoire...</h5>
+            <h4 class="text-center"><i class="fas fa-play-circle"></i> page de départ</h4><p>Page aléatoire...</p>
           <% end %>
-          <br>
+        </div>
+        <div class="info-option-container">
           <% if  @round.end_page_random == false %>
-            <h4 class="text-center"><i class="fas fa-bullseye"> page à atteindre</h4><h5 class="mb-0"><%= @round.end_page %></h5>
+            <h4 class="text-center"><i class="fas fa-bullseye"></i>page à atteindre</h4><p class="mb-0"><%= @round.end_page %></p>
           <% else%>
-            <h4 class="text-center"><i class="fas fa-bullseye"></i> page à atteindre</h4><h5 class="mb-0">Page aléatoire...</h5>
+            <h4 class="text-center"><i class="fas fa-bullseye"></i> page à atteindre</h4><p class="mb-0">Page aléatoire...</p>
           <% end %>
         </div>
-        <br>
-        <div class="card">
-          <h4 class="text-center">Mode de jeu: <br></h4><h5><%= @round.game_mode %></h5>
-          <br>
-          <h6 class="text-center">Atteind la page objectif en cliquant le moins possible, peu importe le temps</h6>
+
+        <div class="info-option-container">
+          <h4 class="text-center">Mode de jeu: <br></h4><p><%= @round.game_mode %></p>
+          <p class="text-center"><i>Atteind la page objectif en cliquant le moins possible, peu importe le temps</i></p>
         </div>
-        <br>
+
         <% if @round.game_options != nil %>
-          <div class="card">
+          <div class="info-option-container">
             <h4 class="text-center">Options de jeu: <br></h4>
             <% game_options_array = [] %>
             <% game_options_array << @round.game_options %>
             <% if game_options_array.size > 1 %>
               <% @round.game_options.split.each do |game_option| %>
-                <h5><%= game_option %></h5>
+                <p><%= game_option %></p>
               <% end %>
             <% else %>
-              <h5><%= @round.game_options %></h5>
+              <p><%= @round.game_options %></p>
             <% end %>
           </div>
         <% end %>
-        <br>
+
         <%= link_to "OK", game_session_path, class:"btn-tim", id:"ok-btn" %>
       </div>
     </div>
@@ -128,6 +128,7 @@
     })
   </script>
 <% end %>
+
 
 
 
