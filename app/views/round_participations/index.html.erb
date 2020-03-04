@@ -63,7 +63,7 @@
       <% if current_user.id == @game_session.user_id %>
         <%= link_to "Nouveau Round", new_game_session_round_path(@game_session), class: "btn-tim", id: "launch-new-round" %>
       <% else %>
-         <button class="player_replay_button">En attente de <%= @game_session.user.username %> pour lancer un nouveau round</button>
+         <button class="player_replay_button btn-tim main-red" style="opacity: 0.5;"><i>En attente de <%= @game_session.user.username %></i></button>
       <% end %>
       <%= link_to "Finir la partie", game_session_rounds_path(@game_session), class: "btn-tim", id: "go-to-round-index" %>
     </div>
@@ -73,76 +73,6 @@
 </div>
 
 
-<% if false %>
-<div class="container-fluid align-items-center justify-content-center mt-2">
-  <div class="head-banner text-center p-3">
-    <h3 style="text-align: center;">Round <%= @game_session.rounds.count %> : <%= @round_participations.first.user.username %> wins !!!</h3>
-  </div>
-  <div class="record">
-    <% if @sorted_round_participations.first.visited_pages.last.title == @sorted_round_participations.first.round.end_page %>
-      <i class="fas fa-trophy"></i>
-      <h4><%= @round_participations.first.user.username %> a battu le record en <%= @round_participations.first.visited_pages.count %> pages</h4>
-    <% else %>
-      <p>Pas de nouveau record sur ce round...</p>
-    <% end %>
-  </div>
-  <br>
-  <div class="table-container bg-white">
-    <table>
-      <tr class="background-grey">
-        <th class="text-blue">Position</th>
-        <th class="text-blue">Joueurs</th>
-        <th class="text-blue">Temps</th>
-        <th class="text-blue">Nombre de clicks</th>
-        <th class="text-blue">Score</th>
-        <th class="text-blue">Dernière page</th>
-      <% @players.each do |player| %>
-        <tr>
-          <th><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].rank %></th>
-          <th><%= player.username %></th>
-          <th><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.last.created_at - player.round_participations.select{|round_participation| round_participation.round == @round }[0].round.start_time.to_i %></th>
-          <th><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.count %></th>
-          <th><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].score %> points</th>
-          <th><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.last.title %> <br /> => <button id="path-info-btn">Voir parcours?</button></th>
-        </tr>
-      <% end %>
-    </table>
-  </div>
-
-
-
-<div>
-  <% @players.each do |player| %>
-    <div>
-      <h4 style="text-align: center; margin-bottom: 20px;">Le parcours de <%= player.username %></h4>
-      <div style="display: flex; align-items: center; flex-direction: column;">
-        <% counter = 0 %>
-        <% player.round_participations.last.visited_pages.each do |visited_page| %>
-          <% counter += 1 %>
-            <p style="margin-bottom: 20px;"><%= counter %> : <%= visited_page.title %></p>
-            <% if @round.end_page != visited_page.title %>
-              <i class="fas fa-chevron-circle-down" style="margin-bottom: 20px;"></i>
-            <% end %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-  <div>
-    <% if current_user.id == @game_session.user_id %>
-      <%= link_to "Jouer un nouveau Round", new_game_session_round_path(@game_session), class: "btn", id: "launch-new-round" %>
-    <% else %>
-       <button class="player_replay_button">En attente de <%= @game_session.user.username %> pour lancer un nouveau round</button>
-     <% end %>
-  </div>
-  <div>
-    <%= link_to "Finir la partie", game_session_rounds_path(@game_session), class: "btn", id: "go-to-round-index" %>
-  </div>
-
-</div>
-
-<% end %>
 
 <% content_for :after_js do %>
   <script>
@@ -155,6 +85,8 @@
     })
   </script>
 <% end %>
+
+
 
 
 
