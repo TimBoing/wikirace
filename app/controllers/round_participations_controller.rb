@@ -21,7 +21,7 @@ class RoundParticipationsController < ApplicationController
     end
 
     @sorted_round_participations = @round_participations.sort_by{ |round_participation| round_participation.rank}
-    @players = @round_participations.map { |round_participation| round_participation.user }
+    @players = @sorted_round_participations.map { |round_participation| round_participation.user }
   end
 
   def edit
