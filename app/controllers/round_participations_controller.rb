@@ -17,7 +17,6 @@ class RoundParticipationsController < ApplicationController
     @round_participations = @round.round_participations
     @round_participation = @round.round_participations.select {|round_participation| round_participation.user == current_user}[0]
     if @round_participation.is_the_best?
-      @best = true
       @round_participation.save_record(current_user)
     end
     # @round_participations.each{ |round_participation|
