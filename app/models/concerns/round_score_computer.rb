@@ -2,6 +2,7 @@ class RoundScoreComputer
   def call
     compute_points
     compute_rank
+    round_participations_end_time_update
   end
 
   private
@@ -38,6 +39,13 @@ class RoundScoreComputer
     round_participations.each do |round_participation|
       rank_counter += 1
       round_participation.update(rank: rank_counter)
+    end
+  end
+
+  def round_participations_end_time_update
+    @round_participations.each do |round_participation|
+      round_participation.end_time = Time.now
+      round_participation.save
     end
   end
 end
