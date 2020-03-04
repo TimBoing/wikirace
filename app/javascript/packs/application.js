@@ -14,6 +14,7 @@ import { handleRoundPathsModals } from '../components/handle_modals';
 import { handleRoundInfoModal } from '../components/handle_modals';
 import { highlight } from '../components/marker';
 import { alertBrowser } from '../components/alert_browser';
+import { checkRecord } from '../components/check_record';
 
 
 
@@ -31,5 +32,6 @@ handleRoundInfoModal();
 highlight();
 handleRoundPathsModals();
 alertBrowser();
+checkRecord();
 
 //trackMouse();
