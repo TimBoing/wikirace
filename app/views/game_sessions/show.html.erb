@@ -53,8 +53,44 @@
         <span class="close" id="close-round-info">&times;</span>
       </div>
       <div class="centered-vertically" id="round-info-modal-content-after-header">
-        <h4>Some information!</h4>
-        <p class="text-center">dhkbdsmb</p>
+        <h3>Détails de la partie!</h3>
+
+        <div class="info-option-container">
+          <% if  @round.start_page_random == false %>
+             <h4 class="text-center"><i class="fas fa-play-circle"></i> page de départ</h4><p><%= @round.start_page %></p>
+          <% else %>
+            <h4 class="text-center"><i class="fas fa-play-circle"></i> page de départ</h4><p>Page aléatoire...</p>
+          <% end %>
+        </div>
+        <div class="info-option-container">
+          <% if  @round.end_page_random == false %>
+            <h4 class="text-center"><i class="fas fa-bullseye"></i>page à atteindre</h4><p class="mb-0"><%= @round.end_page %></p>
+          <% else%>
+            <h4 class="text-center"><i class="fas fa-bullseye"></i> page à atteindre</h4><p class="mb-0">Page aléatoire...</p>
+          <% end %>
+        </div>
+
+        <div class="info-option-container">
+          <h4 class="text-center">Mode de jeu: <br></h4><p><%= @round.game_mode %></p>
+          <p class="text-center"><i>Atteind la page objectif en cliquant le moins possible, peu importe le temps</i></p>
+        </div>
+
+        <% if @round.game_options != nil %>
+          <div class="info-option-container">
+            <h4 class="text-center">Options de jeu: <br></h4>
+            <% game_options_array = [] %>
+            <% game_options_array << @round.game_options %>
+            <% if game_options_array.size > 1 %>
+              <% @round.game_options.split.each do |game_option| %>
+                <p><%= game_option %></p>
+              <% end %>
+            <% else %>
+              <p><%= @round.game_options %></p>
+            <% end %>
+          </div>
+        <% end %>
+
+        <%= link_to "OK", game_session_path, class:"btn-tim", id:"ok-btn" %>
       </div>
     </div>
   </div>
@@ -92,6 +128,7 @@
     })
   </script>
 <% end %>
+
 
 
 

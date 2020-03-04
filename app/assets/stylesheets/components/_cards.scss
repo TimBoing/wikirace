@@ -1,0 +1,79 @@
+.cards {
+  width: 80%;
+  // color: white;
+  // font-family: $game-clean-font;
+
+}
+
+.card {
+  display:flex;
+  flex-direction: row;
+  width: 100%;
+  border-radius: 10px;
+  margin: 10px 0 10px 0;
+  min-height: 80px;
+  font-family: $game-clean-font;
+  box-shadow: 1px 1px 2px black;
+  transition: all 0.3s ease;
+
+  .card-left-side{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+
+    .card-rank{
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid $main-red;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-username{
+    }
+
+  }
+
+  .card-right-side{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+
+    .card-score{
+    }
+
+    .card-avatar-container{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      height: 50%;
+
+      .card-avatar{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        // background-position: center;
+        // background-size: cover;
+      }
+    }
+  }
+}
+
+.card:hover{
+  background-color: $main-red;
+  color: white;
+  margin: 20px 0 20px 0;
+  cursor: pointer;
+
+  .card-rank{
+    border: 1px solid white;
+  }
+
+}
+

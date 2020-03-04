@@ -36,6 +36,7 @@ class RoundsController < ApplicationController
     if params[:round][:start_page] == ""
       @round.start_page_url = random_page_url
       @round.start_page = random_page_title(@round.start_page_url)
+      @round.start_page_random = true
     else
       @round.start_page = WikiPage.find(params[:round][:start_page]).title
       @round.start_page_url = WikiPage.find(params[:round][:start_page]).url
@@ -44,6 +45,7 @@ class RoundsController < ApplicationController
     if params[:round][:end_page] == ""
       @round.end_page_url = random_page_url
       @round.end_page = random_page_title(@round.end_page_url)
+      @round.end_page_random = true
     else
       @round.end_page = WikiPage.find(params[:round][:end_page]).title
       @round.end_page_url = WikiPage.find(params[:round][:end_page]).url
@@ -74,6 +76,7 @@ class RoundsController < ApplicationController
       round.update(state: 'ended')
       winner = User.find(params[:winner]).username
       ActionCable.server.broadcast("game_session_channel_#{round.game_session.id}", end_game: winner)
+      RoundScoreComputer.new(round).call
     end
 
     unless params[:malus].nil?
@@ -89,7 +92,6 @@ class RoundsController < ApplicationController
   end
 
   def random_page_url
-    @round.page_random = true
     url_for_random_title = 'https://fr.wikipedia.org/api/rest_v1/page/random/title'
 
   end
@@ -99,4 +101,32 @@ class RoundsController < ApplicationController
     page_json = JSON.parse(page_raw)
     page = page_json["items"][0]['title']
   end
+
+  # def compute_score
+  #   round = Round.find(params[:id])
+  #   round_participations = round.round_participations
+
+  #   round_participations.each do |round_participation|
+  #     if round_participation.visited_pages.first.title == round.start_page && round_participation.visited_pages.last.title == round.end_page
+  #       round_participation.update(score: 100)
+  #     end
+  #   end
+
+  #   losers = []
+
+  #   round_participations.each do |round_participation|
+  #     losers << round_participation if round_participation.score == 0
+  #   end
+
+  #   losers.each do |round_participation|
+  #     round_participation.update(score: -(round_participation.visited_pages.count))
+  #   end
+
+  #   round_participations = round.round_participations.sort_by{ |round_participation| round_participation.score}.reverse
+  #   rank_counter = 0
+  #   round_participations.each do |round_participation|
+  #     rank_counter += 1
+  #     round_participation.update(rank: rank_counter)
+  #   end
+  # end
 end

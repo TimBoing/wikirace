@@ -1,9 +1,85 @@
+<div class="main-container">
+  <div class="title-container centered-vertically "><h1><span id="#score-page-winner">Round <%= @game_session.rounds.count %> : <%= @round_participations.first.user.username %> wins !!!</span></h1></div>
+  <div class="content-container centered-vertically">
+
+    <div class="white-container centered-vertically" id="score-page-record-container">
+      <% if @best  %>
+        <i class="fas fa-trophy"></i>
+        <h4><%= @round_participations.first.user.username %> a battu le record en <%= @round_participations.first.visited_pages.count %> pages</h4>
+      <% else %>
+        <p>Pas de nouveau record sur ce round...</p>
+      <% end %>
+    </div>
+
+      <div class="cards">
+        <% @players.each do |player| %>
+          <div class="card" data-player="<%= player.id %>">
+            <div class="card-left-side">
+              <div class="card-rank"><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].rank %></div>
+              <div class="card-username"><%= player.username %></div>
+            </div>
+            <div class="card-right-side">
+              <div class="card-score"><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].score %> pts</div>
+              <div class="card-avatar-container">
+                <% if player.photo.attached? %>
+                  <%= image_tag current_user.photo, class: "card-avatar" %>
+                <% else %>
+                  <%= cl_image_tag "wikipadia_bion2m.jpg", class: "card-avatar"%>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <% @players.each do |player| %>
+        <div id="path-info-modal-player-<%= player.id %>" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <span id="path-info-modal-close-player-<%= player.id %>" class="close">&times;</span>
+            </div>
+            <div class="centered-vertically game-font">
+              <h2 class="parcours-title">Parcours : <%= player.username %>!</h2>
+              <div class="time-and-score">
+                <p>Temps: <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.last.created_at - player.round_participations.select{|round_participation| round_participation.round == @round }[0].round.start_time.to_i %></p>
+                <p>Click: <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.count %></p>
+              </div>
+              <div style="display: flex; align-items: center; flex-direction: column;">
+                <% counter = 0 %>
+                <% player.round_participations.last.visited_pages.each do |visited_page| %>
+                  <% counter += 1 %>
+                    <p style="margin-bottom: 20px;"><%= counter %> : <%= visited_page.title %></p>
+                    <% if @round.end_page != visited_page.title %>
+                      <i class="fas fa-chevron-circle-down chevrons"></i>
+                    <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    <div class="white-container centered-vertically" id="score-page-buttons-container">
+      <% if current_user.id == @game_session.user_id %>
+        <%= link_to "Nouveau Round", new_game_session_round_path(@game_session), class: "btn-tim", id: "launch-new-round" %>
+      <% else %>
+         <button class="player_replay_button">En attente de <%= @game_session.user.username %> pour lancer un nouveau round</button>
+      <% end %>
+      <%= link_to "Finir la partie", game_session_rounds_path(@game_session), class: "btn-tim", id: "go-to-round-index" %>
+    </div>
+
+
+  </div>
+</div>
+
+
+<% if false %>
 <div class="container-fluid align-items-center justify-content-center mt-2">
   <div class="head-banner text-center p-3">
     <h3 style="text-align: center;">Round <%= @game_session.rounds.count %> : <%= @round_participations.first.user.username %> wins !!!</h3>
   </div>
   <div class="record">
-    <% if @best  %>
+    <% if @sorted_round_participations.first.visited_pages.last.title == @sorted_round_participations.first.round.end_page %>
       <i class="fas fa-trophy"></i>
       <h4><%= @round_participations.first.user.username %> a battu le record en <%= @round_participations.first.visited_pages.count %> pages</h4>
     <% else %>
@@ -33,17 +109,7 @@
     </table>
   </div>
 
-  <div id="path-info-modal" class="modal">
-    <div id="path-info-modal-content" class="modal-content">
-      <div id="round-info-modal-header">
-        <span class="close" id="close-path-info">&times;</span>
-      </div>
-      <div class="centered-vertically" id="path-info-modal-content-after-header">
-        <h4>Some information!</h4>
-        <p class="text-center">dhkbdsmb</p>
-      </div>
-    </div>
-  </div>
+
 
 <div>
   <% @players.each do |player| %>
@@ -76,6 +142,7 @@
 
 </div>
 
+<% end %>
 
 <% content_for :after_js do %>
   <script>
@@ -90,34 +157,5 @@
 <% end %>
 
 
-<!-- <div class="main-container">
-  <div class="title-container centered-vertically "><h1><span id="#score-page-winner">Round <%= @game_session.rounds.count %> : <%= @round_participations.first.user.username %> wins !!!</span></h1></div>
-  <div class="content-container centered-vertically">
-    <div class="white-container centered-vertically">
-      <div class="cards">
-        <div class="card">
-          <div class="card-left"></div>
-          <div class="card-middle">
-            <div class="card-score"></div>
-            <div class="card-clicks"></div>
-            <div class="card-time"></div>
-          </div>
-          <div class="card-right">
-            <div class="card-avatar"></div>
-            <div class="card-username"></div>
-          </div>
-        </div>
-      </div>
-      <div id="score-page-buttons-container">
-        <#% if current_user.id == @game_session.user_id %>
-          <%#= link_to "Jouer un nouveau Round", new_game_session_round_path(@game_session), class: "btn", id: "launch-new-round" %>
-        <#% else %>
-           <button class="player_replay_button">En attente de <%= @game_session.user.username %> pour lancer un nouveau round</button>
-        <#% end %>
-        <#%= link_to "Finir la partie", game_session_rounds_path(@game_session), class: "btn-tim", id: "go-to-round-index" %>
-      </div>
-    </div>
-  </div>
-</div>
- -->
+
 
