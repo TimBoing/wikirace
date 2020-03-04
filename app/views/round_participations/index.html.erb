@@ -3,9 +3,9 @@
   <div class="content-container centered-vertically">
 
     <div class="white-container centered-vertically" id="score-page-record-container">
-      <% if @best  %>
+      <% if @sorted_round_participations.first.is_the_best? %>
         <i class="fas fa-trophy"></i>
-        <h4><%= @round_participations.first.user.username %> a battu le record en <%= @round_participations.first.visited_pages.count %> pages</h4>
+        <h4><%= @sorted_round_participations.first.user.username %> a battu le record en <%= @sorted_round_participations.first.visited_pages.count %> pages</h4>
       <% else %>
         <p>Pas de nouveau record sur ce round...</p>
       <% end %>
@@ -22,7 +22,7 @@
               <div class="card-score"><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].score %> pts</div>
               <div class="card-avatar-container">
                 <% if player.photo.attached? %>
-                  <%= image_tag current_user.photo, class: "card-avatar" %>
+                  <%= image_tag player.photo, class: "card-avatar" %>
                 <% else %>
                   <%= cl_image_tag "wikipadia_bion2m.jpg", class: "card-avatar"%>
                 <% end %>

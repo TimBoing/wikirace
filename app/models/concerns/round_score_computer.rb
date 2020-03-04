@@ -27,7 +27,7 @@ class RoundScoreComputer
     end
 
     losers.each do |round_participation|
-      round_participation.update(score: - (round_participation.visited_pages.count))
+      round_participation.update(score:  1 - (round_participation.visited_pages.count))
     end
   end
 

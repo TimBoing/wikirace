@@ -17,6 +17,8 @@ class RoundParticipation < ApplicationRecord
       clicks_number_new = self.visited_pages.count
       if clicks_number_new < clicks_number_record
         return true
+      elsif record_path[0].user_id == self.user_id && clicks_number_new = clicks_number_record
+        return true
       end
       return false
     end
