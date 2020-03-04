@@ -1,4 +1,4 @@
-import swal from 'sweetalert';
+import swal from 'sweetalert/dist/sweetalert.min.js';
 
 const alertBrowser = () => {
 

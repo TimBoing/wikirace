@@ -10,11 +10,11 @@ import { joinRound } from '../components/join_round';
 import { toggleNavbar } from '../components/toggle_navbar';
 import '../components/copy_url';
 
-import { handleRoundPathsModals } from '../components/handle_modals';
+// import { handleRoundPathsModals } from '../components/handle_modals';
 import { handleRoundInfoModal } from '../components/handle_modals';
 import { highlight } from '../components/marker';
 import { alertBrowser } from '../components/alert_browser';
-
+import { displayPathInfo } from '../components/path_info';
 
 
 
@@ -29,7 +29,7 @@ toggleNavbar();
 joinRound();
 handleRoundInfoModal();
 highlight();
-handleRoundPathsModals();
+// handleRoundPathsModals();
 alertBrowser();
-
+displayPathInfo();
 //trackMouse();
