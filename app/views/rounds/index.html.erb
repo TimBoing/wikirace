@@ -16,7 +16,7 @@
             <div class="card-score"><%=  player.total_score_for(@game_session)%> pts</div>
             <div class="card-avatar-container">
               <% if player.photo.attached? %>
-                <%= image_tag current_user.photo, class: "card-avatar" %>
+                <%= image_tag player.photo, class: "card-avatar" %>
               <% else %>
                 <%= cl_image_tag "wikipadia_bion2m.jpg", class: "card-avatar"%>
               <% end %>
