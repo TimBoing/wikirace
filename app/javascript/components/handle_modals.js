@@ -66,31 +66,31 @@ const handleRoundInfoModal = () => {
   }
 }
 
-const handleRoundPathsModals = () => {
-  const pathInfoModal = document.getElementById("path-info-modal");
-  const pathInfoBtn = document.getElementById("path-info-btn");
-  const pathInfoSpan = document.getElementById("close-path-info");
+// const handleRoundPathsModals = () => {
+//   const pathInfoModal = document.getElementById("path-info-modal");
+//   const pathInfoBtn = document.getElementById("path-info-btn");
+//   const pathInfoSpan = document.getElementById("close-path-info");
 
-  if (pathInfoModal) {
-    pathInfoBtn.addEventListener('click', (event) => {
-      pathInfoModal.style.display = "block";
-    });
+//   if (pathInfoModal) {
+//     pathInfoBtn.addEventListener('click', (event) => {
+//       pathInfoModal.style.display = "block";
+//     });
 
-    pathInfoBtn.addEventListener('click', (event) => {
-      pathInfoModal.style.display = "none";
-    });
+//     pathInfoBtn.addEventListener('click', (event) => {
+//       pathInfoModal.style.display = "none";
+//     });
 
-    window.addEventListener('click', (event) => {
-      if (event.target == pathInfoModal) {
-        roundInfoModal.style.display = "none";
-      }
-    });
-  }
+//     window.addEventListener('click', (event) => {
+//       if (event.target == pathInfoModal) {
+//         roundInfoModal.style.display = "none";
+//       }
+//     });
+//   }
 
-}
+// }
 
 
-export { handleRoundOptionsModal, handleRoundInfoModal, handleRoundPathsModals };
+export { handleRoundOptionsModal, handleRoundInfoModal };
 
 // <i class="fas fa-chevron-circle-left" id="action-previous-page"></i>
 //         <i class="fas fa-search" id="action-search-page"></i>
