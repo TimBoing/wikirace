@@ -18,7 +18,10 @@
       <% @players.each do |player| %>
         <div class="card" data-player="<%= player.id %>">
           <div class="card-left-side">
-            <div class="card-rank"><%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].rank %></div>
+            <div class="card-rank-container">
+              <div class="card-rank">
+                <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].rank %></div>
+              </div>
             <div class="card-username"><%= player.username %></div>
           </div>
           <div class="card-right-side">
