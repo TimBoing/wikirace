@@ -1,5 +1,5 @@
 class RoundParticipationsController < ApplicationController
-  before_action :find_round_and_game_session
+  before_action :find_round_and_game_session, except: [:update, :edit]
 
   def new
     @round_participation = RoundParticipation.new
@@ -26,12 +26,6 @@ class RoundParticipationsController < ApplicationController
     # }
     @sorted_round_participations = @round_participations.sort_by{ |round_participation| round_participation.rank}
     @players = @round_participations.map { |round_participation| round_participation.user }
-  end
-
-  def edit
-  end
-
-  def update
   end
 
   private

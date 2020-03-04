@@ -59,6 +59,7 @@ const requestPageContent = (page) => {
     });
 };
 
+
 const notifyRoundEnded = () => {
   const gameRound = gameInfo.dataset.round;
   const requestOptions = {
@@ -71,7 +72,6 @@ const notifyRoundEnded = () => {
   };
   fetch(`http://${window.location.host}/rounds/${gameRound}`, requestOptions)
     .catch(error => console.log('error', error));
-
 }
 
 
@@ -80,4 +80,9 @@ export{requestPageContent};
 export{notifyRoundEnded};
 export{visitedPagesGetter};
 export{visitedPagesSetter};
+
+
+
+
+
 

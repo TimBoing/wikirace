@@ -18,7 +18,6 @@ class RoundsController < ApplicationController
 
     ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", content: @round.id) if @round.state != "playing"
     @round.update(state: "playing")
-
   end
 
   def new
