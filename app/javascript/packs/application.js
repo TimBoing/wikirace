@@ -18,6 +18,8 @@ import { alertBrowser } from '../components/alert_browser';
 
 
 
+
+loadDynamicBannerText();
 handleRoundOptionsModal();
 // collapsePageChoice();
 //loadDynamicBannerText();
