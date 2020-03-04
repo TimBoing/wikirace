@@ -3,7 +3,7 @@
     <h3 style="text-align: center;">Round <%= @game_session.rounds.count %> : <%= @round_participations.first.user.username %> wins !!!</h3>
   </div>
   <div class="record">
-    <% if @best  %>
+    <% if @sorted_round_participations.first.visited_pages.last.title == @sorted_round_participations.first.round.end_page %>
       <i class="fas fa-trophy"></i>
       <h4><%= @round_participations.first.user.username %> a battu le record en <%= @round_participations.first.visited_pages.count %> pages</h4>
     <% else %>

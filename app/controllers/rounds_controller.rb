@@ -74,6 +74,7 @@ class RoundsController < ApplicationController
       round.update(state: 'ended')
       winner = User.find(params[:winner]).username
       ActionCable.server.broadcast("game_session_channel_#{round.game_session.id}", end_game: winner)
+      RoundScoreComputer.new(round).call
     end
 
     unless params[:malus].nil?
@@ -99,4 +100,32 @@ class RoundsController < ApplicationController
     page_json = JSON.parse(page_raw)
     page = page_json["items"][0]['title']
   end
+
+  # def compute_score
+  #   round = Round.find(params[:id])
+  #   round_participations = round.round_participations
+
+  #   round_participations.each do |round_participation|
+  #     if round_participation.visited_pages.first.title == round.start_page && round_participation.visited_pages.last.title == round.end_page
+  #       round_participation.update(score: 100)
+  #     end
+  #   end
+
+  #   losers = []
+
+  #   round_participations.each do |round_participation|
+  #     losers << round_participation if round_participation.score == 0
+  #   end
+
+  #   losers.each do |round_participation|
+  #     round_participation.update(score: -(round_participation.visited_pages.count))
+  #   end
+
+  #   round_participations = round.round_participations.sort_by{ |round_participation| round_participation.score}.reverse
+  #   rank_counter = 0
+  #   round_participations.each do |round_participation|
+  #     rank_counter += 1
+  #     round_participation.update(rank: rank_counter)
+  #   end
+  # end
 end

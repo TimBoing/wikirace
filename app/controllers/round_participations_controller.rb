@@ -13,18 +13,19 @@ class RoundParticipationsController < ApplicationController
   end
 
   def index
+    @round_participation = RoundParticipation.where(user: current_user)[0]
     @round_participations = @round.round_participations
     @round_participation = @round.round_participations.select {|round_participation| round_participation.user == current_user}[0]
     if @round_participation.is_the_best?
       @best = true
       @round_participation.save_record(current_user)
     end
-    @round_participations.each{ |round_participation|
-      round_participation.rank = round_participation.rank_for_round
-      round_participation.score = round_participation.score_for_round
-      round_participation.save
-    }
-    @round_participations = @round_participations.sort_by{ |round_participation| round_participation.rank}
+    # @round_participations.each{ |round_participation|
+    #   round_participation.rank = round_participation.rank_for_round
+    #   round_participation.score = round_participation.score_for_round
+    #   round_participation.save
+    # }
+    @sorted_round_participations = @round_participations.sort_by{ |round_participation| round_participation.rank}
     @players = @round_participations.map { |round_participation| round_participation.user }
   end
 
