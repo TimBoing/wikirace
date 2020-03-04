@@ -1,24 +1,39 @@
-<div class="container-fluid align-items-center justify-content-center mt-2">
-  <div class="head-banner text-center p-3">
-    <h3>Score final</h3>
-  </div>
-  <br>
-  <div class="table-container bg-white">
-    <table>
-      <tr class="background-grey">
-        <th class="text-blue">Position</th>
-        <th class="text-blue">Joueurs</th>
-        <th class="text-blue">Score</th>
-      </tr>
+<div class="main-container">
+  <div class="title-container centered-vertically "><h1><span>Score final</span></h1></div>
+  <div class="content-container centered-vertically">
+    <div class="cards">
+
       <% rank = 1 %>
       <% @players.each do |player| %>
-        <tr>
-          <th><%= rank %></th>
-          <th><%= player.username %></th>
-          <th><%= player.total_score_for(@game_session) %> points</th>
-          <% rank += 1 %>
-        </tr>
+        <div class="card not-pointer">
+
+          <div class="card-left-side">
+            <div class="card-rank-container">
+              <div class="card-rank"><%= rank %></div>
+            </div>
+            <div class="card-username"><%= player.username %></div>
+          </div>
+
+          <div class="card-right-side">
+            <div class="card-score"><%=  player.total_score_for(@game_session)%> pts</div>
+            <div class="card-avatar-container">
+              <% if player.photo.attached? %>
+                <%= image_tag player.photo, class: "card-avatar" %>
+              <% else %>
+                <%= cl_image_tag "wikipadia_bion2m.jpg", class: "card-avatar"%>
+              <% end %>
+            </div>
+          </div>
+
+        </div>
+      <% rank += 1 %>
       <% end %>
-    </table>
+
+    </div>
+
+    <div class="white-container centered-vertically">
+      <%= link_to "Accueil", root_path, class: "btn-tim", id:"button-home"%>
+    </div>
   </div>
 </div>
+

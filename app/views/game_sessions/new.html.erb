@@ -8,12 +8,12 @@
               <%= f.submit "Creer une partie", class: "btn-tim", id: "red-pill" %>
           <% end %>
 
-          <%= text_field_tag "name", "", placeholder: "Enter code #", id: "round-input" %>
+          <%= text_field_tag "name", "", placeholder: "Entrez code #", id: "round-input" %>
           <%= button_tag "Rejoindre",class: "btn-tim", id: "blue-pill" %>
 
 
       <% else %>
-        <%= link_to "JOUER", new_user_session_path, class: "btn-tim" %>
+        <%= link_to "JOUER", new_user_session_path, class: "btn-tim", id:"welcome-btn" %>
       <% end %>
     </div>
   </div>
@@ -25,66 +25,3 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-<!-- TOUT CA C´EST DU PASSÉ---------------------------------------------------------------------------------------------------------- -->
-<!-- -------------------------------------------------------------------------------------------------------------------------------- -->
-
-
-<% if false %>
-
-
-
-
-<!--  <div class="height-div container-fluid d-flex justify-content-center" id="home-page-container">
-  <div id="home-page-content-container">
-    <div id="home-page-title-container"> -->
-      <!-- <h2><span id="#home-page-title"></span></h2> -->
-   <!--  </div>
-
-    <div class="btn-tim-container "> -->
-      <%# if user_signed_in? %>
-        <%#= simple_form_for @game_session, html: { id: 'home-page-options' } do |f| %>
-            <%#= f.submit "Create Game", class: "btn-tim", id: "red-pill" %>
-        <%# end %>
-        <%#= button_tag "Join Game",class: "btn-tim", id: "blue-pill" %>
-        <%#= text_field_tag "name", "", placeholder: "Enter round #", id: "round-input" %>
-
-      <%# else %>
-        <%#= link_to "JOUER", new_user_session_path, class: "btn-tim" %>
-      <%# end %>
-  <!--   </div>
-
-  </div>
-</div> -->
-
-<% end %>
-
-  <!-- <div>
-      <#% if user_signed_in? %>
-        <div class="p-4 rounded-lg" id="home-page-options-container">
-          <%#= link_to "Create Game", new_user_session_path, class: "btn-tim-test" %>
-          <%#= simple_form_for @game_session, html: { id: 'home-page-options' } do |f| %>
-            <%#= f.submit "Crées ta partie", class: "btn-orange-blue" %>
-          <%# end %>
-          <br>
-          <h3>or</h3>
-          <br>
-          <%#= text_field_tag "name", "", placeholder: "Entres le numéro de round", id: "round-input" %>
-          <%#= button_tag "Rejoins une partie existante", class: "btn-blue-orange", id: "round-input-submit" %>
-        </div>
-      <%# else %>
-        <div>
-          <%#= link_to "JOUER A WikiRACE", new_user_session_path, class: "btn-blue-orange" %>
-
-        </div>
-      <%# end %>
-    </div> -->
