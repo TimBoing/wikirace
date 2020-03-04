@@ -104,6 +104,7 @@
     { channel: 'GameSessionChannel', game_session_id: <%= @game_session.id %> },
     {received: (data) => {
         if (data.message_partial === undefined && data.player === undefined && data.end_game === undefined) {
+          console.log(`yo mec : ${data}`);
           window.location = '<%= round_path(@round) %>';
 
         } else if (data.content === undefined && data.player === undefined && data.end_game === undefined) {
@@ -128,6 +129,8 @@
     })
   </script>
 <% end %>
+
+
 
 
 
