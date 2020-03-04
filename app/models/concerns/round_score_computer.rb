@@ -32,6 +32,7 @@ class RoundScoreComputer
   end
 
   def compute_rank
+    round_participations = @round.round_participations
     round_participations = round_participations.sort_by{ |round_participation| round_participation.score}.reverse
     rank_counter = 0
     round_participations.each do |round_participation|
