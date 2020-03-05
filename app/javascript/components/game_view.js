@@ -41,7 +41,7 @@ const displayPageContent = (page) => {
     });
   });
   console.log("displayPageContent end");
-  addMalusLinks();
+  //addMalusLinks();
 };
 
 
