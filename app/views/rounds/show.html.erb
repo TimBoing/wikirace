@@ -3,6 +3,7 @@
   <div id="left-mouse">Left mouse : 0</div> -->
 <!-- --------------------------------------------- -->
 
+
  <div class="container-fluid d-flex align-items-center justify-content-center">
     <div id="game-container" class="" >
 
@@ -10,10 +11,24 @@
       <div id="wikipage-container">
         <!-- <div id="portal-test" class="small-portal"></div> -->
       </div>
+
+      <div id="game-actions-bar-top">
+
+          <i class="fas fa-search" id="game-actions-search"></i>
+
+          <div id="userFindInput" class="hidden">
+              <input id="userFindInputText" type="text" value="" style="border: none;"/>
+          </div>
+
+          <i class="fas fa-poo-storm" id="game-actions-weapons"></i>
+
+      </div>
+
       <div id="game-actions-bar">
         <i class="fas fa-chevron-circle-left" id="action-previous-page"></i>
         <!-- <i class="fas fa-search" id="action-search-page"></i> -->
         <div id="timer-container">00:00:00</div>
+
         <i class="fas fa-bullseye" id="action-target-page"></i>
       </div>
     </div>
@@ -57,15 +72,6 @@
   data-malus-sender = ""
   data-malus = "none">
 </div>
-
-  <!--   input + button to ask what the user look for -->
-<!--   <div>
-    <label>Find Text</label>
-    <input id="userFindInputText" type="text" value=""/>
-    <button id="userFindInputButton" type="button">Find</button>
-  </div> -->
-  <!--   input + button to ask what the user look for -->
-
 
 <% content_for :after_js do %>
   <script>
