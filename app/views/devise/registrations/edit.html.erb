@@ -1,8 +1,9 @@
-<div class="d-flex justify-content-around">
-  <div class=" bg-white center mt-5 rounded shadow-sm pr-4 pl-4 pt-4 pb-4">
-
-    <h2>Editer : </h2>
-    <h2>Mot de passe / Email</h2>
+<div class="main-container" id="gs-show-main-container">
+  <div class="title-container centered-vertically">
+    <h1>Editer :</h1>
+  </div>
+  <div class="content-container centered-vertically">
+    <div class="white-container centered-vertically">
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.error_notification %>
@@ -17,16 +18,16 @@
 
           <%= f.input :password,
                       label: false, label: 'Nouveau mot de passe',
-                      hint: "Laissez le champ vide si vous ne voulez pas le changer",
+                      hint: "Laisser vide pour garder",
                       required: false,
                       input_html: { autocomplete: "Nouveau mot de passe" } %>
           <%= f.input :password_confirmation,
-                      label: false, label: 'Confirmation du nouveau mot de passe',
+                      label: false, label: 'Confirmation',
                       required: false,
                       input_html: { autocomplete: "Nouveau mot de passe" } %>
           <%= f.input :current_password,
                       label: false, label: 'Mot de passe actuel',
-                      hint: "Entrez votre mot de passe actuel pour confirmer",
+                      hint: "Confirmer avec mot de passe actuel",
                       required: true,
                       input_html: { autocomplete: "Mot de passe actuel" } %>
         </div>
@@ -37,10 +38,13 @@
       </div>
     <% end %>
 
-    <h3>Effacer votre compte</h3>
+    <h3>Effacer compte?</h3>
 
-    <p>Pas content? <%= link_to "Detruire votre compte", registration_path(resource_name), data: { confirm: "Etes-vous sûr?" }, method: :delete %></p>
+    <p>Pas content?</p>
+    <p><%= link_to "Detruire votre compte", registration_path(resource_name), data: { confirm: "Etes-vous sûr?" }, method: :delete %></p>
 
     <%= link_to "Retour", :back %>
+
+    </div>
   </div>
 </div>
