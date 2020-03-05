@@ -160,3 +160,4 @@ const gameLoop = () => {
 // au moment ou on click sur la last page alors game ended
 
 export{initGame};
+
