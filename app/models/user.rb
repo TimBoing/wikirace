@@ -13,4 +13,14 @@ class User < ApplicationRecord
   def total_score_for(game_session)
     game_session.round_participations.where(user: self).map(&:score).sum
   end
+
+  def total_clicks_for(game_session)
+    visited_pages = []
+    game_session.round_participations.where(user: self).each do |round_participation|
+      round_participation.visited_pages.each do |visited_page|
+        visited_pages << visited_page
+      end
+    end
+    visited_pages_count = visited_pages.count - game_session.rounds.count
+  end
 end
