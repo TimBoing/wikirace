@@ -15,6 +15,7 @@ const searchBar = () => {
         searchBar.style.opacity = "0.5";
         searchField.style.width = "0px";
         searchIconContainer.classList.remove("fake-class");
+        searchField.value= "";
 
       }else {
         searchBar.style.maxWidth = "85%";
