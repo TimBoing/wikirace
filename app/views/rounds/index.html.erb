@@ -46,7 +46,6 @@
           </div>
 
           <div class="centered-vertically game-font">
-
             <% if @players.first.username == player.username %>
               <h2 class="parcours-title">Bravo <%= player.username %> ! Tu as dominé la session <i class="fas fa-dragon"></i> </h2>
             <% else %>
@@ -60,24 +59,28 @@
             <div style="display: flex; align-items: center; flex-direction: column;">
               <% round_counter = 0 %>
               <% @rounds.each do |round| %>
-                <div class="round-recap">
-                  <% round_counter += 1 %>
-                  <div class="round-index-rank">
-                    <% if round.round_participations.where(user: player)[0].rank == 1 %>
-                      <i class="fas fa-trophy trophy" id="round-trophy"></i>
-                    <% end %>
-                    <h4 class="rank-nrb">Round : <%= round_counter %></h4>
-                    <% if round.round_participations.where(user: player)[0].rank == 1 %>
-                      <i class="fas fa-trophy trophy" id="round-trophy"></i>
+                <% if round.round_participations.where(user: player) == [] || round.round_participations.where(user: player).last.end_time.nil? %>
+                <% else %>
+                  <div class="round-recap">
+                    <% round_counter += 1 %>
+                    <div class="round-index-rank">
+                      <% if round.round_participations.where(user: player)[0].rank == 1 %>
+                        <i class="fas fa-trophy trophy" id="round-trophy"></i>
+                      <% end %>
+                      <h4 class="rank-nrb">Round : <%= round_counter %></h4>
+                      <% if round.round_participations.where(user: player)[0].rank == 1 %>
+                        <i class="fas fa-trophy trophy" id="round-trophy"></i>
+                      <% end %>
+                    </div>
+                    <% if %>
+                      <p>Rang : <%= round.round_participations.where(user: player)[0].rank %></p>
+                      <p>Score : <%= round.round_participations.where(user: player)[0].score %></p>
+                      <p>Clicks : <%= round.round_participations.where(user: player)[0].visited_pages.count - 1 %></p>
                     <% end %>
                   </div>
-                  <p>Rang : <%= round.round_participations.where(user: player)[0].rank %></p>
-                  <p>Score : <%= round.round_participations.where(user: player)[0].score %></p>
-                  <p>Clicks : <%= round.round_participations.where(user: player)[0].visited_pages.count - 1 %></p>
-                </div>
+                <% end %>
               <% end %>
             </div>
-
           </div>
 
         </div>
