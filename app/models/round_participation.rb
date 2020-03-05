@@ -9,15 +9,15 @@ class RoundParticipation < ApplicationRecord
   def is_the_best?
     start_page = WikiPage.where(title: self.round.start_page)
     end_page = WikiPage.where(title: self.visited_pages.last.title)
-    record_path = Path.where(start_page: start_page, end_page: end_page)
+    record_path = Path.find_by(start_page: start_page, end_page: end_page)
     if record_path.blank?
       return true
     else
-      clicks_number_record = record_path[0].points.count
+      clicks_number_record = record_path.points.count
       clicks_number_new = self.visited_pages.count
       if clicks_number_new < clicks_number_record
         return true
-      elsif record_path[0].user_id == self.user_id && clicks_number_new = clicks_number_record
+      elsif record_path.user_id == self.user_id && clicks_number_new = clicks_number_record
         return true
       end
       return false
@@ -25,37 +25,36 @@ class RoundParticipation < ApplicationRecord
   end
 
   def save_record(current_user)
-    start_page = self.round.start_page
-    end_page = self.visited_pages.last.title
-    record_path = Path.where(start_page: start_page, end_page: end_page)[0]
-
-    # creation of the WikiPages that does not exist
-    if WikiPage.where(title: start_page).blank?
-      WikiPage.create(title: start_page, url: self.round.start_page_url)
+    start_page_title = self.round.start_page
+    if WikiPage.find_by(title: start_page_title).blank?
+      WikiPage.create(title: start_page_title, url: self.round.start_page_url)
     end
-    if WikiPage.where(title: end_page).blank?
+    start_page = WikiPage.find_by(title: start_page_title)
+    end_page_title = self.visited_pages.last.title
+    if WikiPage.find_by(title: end_page_title).blank?
       WikiPage.create(title: end_page, url: self.round.end_page_url)
     end
-    wiki_start_page = WikiPage.where(title: start_page)[0]
-    wiki_end_page = WikiPage.where(title: end_page)[0]
+    end_page = WikiPage.find_by(title: end_page_title)
+
+    record_path = Path.find_by(start_page: start_page, end_page: end_page)
 
     # creation of the new path
     if record_path.blank?
-      Path.create(user: current_user, start_page: wiki_start_page, end_page: wiki_end_page, duration: (self.visited_pages.last.created_at.to_i - self.round.start_time.to_i))
+      Path.create(user: current_user, start_page: start_page, end_page: end_page, duration: (self.visited_pages.last.created_at.to_i - self.round.start_time.to_i))
     else
-      record_path.update(user: current_user, start_page: wiki_start_page, end_page: wiki_end_page, duration: (self.visited_pages.last.created_at.to_i - self.round.start_time.to_i))
+      record_path.update(user: current_user, start_page: start_page, end_page: end_page, duration: (self.visited_pages.last.created_at.to_i - self.round.start_time.to_i))
       record_path.points.each {|point| point.destroy}
     end
 
     # creation of points after the creation of the new WikiPages
-    record_path = Path.where(start_page: wiki_start_page, end_page: wiki_end_page)[0]
+    record_path = Path.find_by(start_page: start_page, end_page: end_page)
     position = 0
     self.visited_pages.each {|visited_page|
-      if WikiPage.where(title: visited_page.title).blank?
+      if WikiPage.find_by(title: visited_page.title).blank?
         WikiPage.create(title: visited_page.title, url: visited_page.url)
       end
       position += 1
-      Point.create(position: position, wiki_page: WikiPage.where(title: visited_page.title)[0], path: record_path)
+      Point.create(position: position, wiki_page: WikiPage.find_by(title: visited_page.title), path: record_path)
     }
   end
 
