@@ -1,9 +1,10 @@
 const roundOptionModal = document.getElementById("round-options-modal-content-after-header");
-const roundStartPage = document.getElementById("round_start_page");
-const roundEndPage = document.getElementById("round_end_page");
+const roundStartPage = document.getElementById("Tamere");
+const roundEndPage = document.getElementById("Tonpere");
 const recordSentence = document.getElementById("nombre-de-clicks-record");
 
 const lookInDB = (start_end) => {
+  console.log(start_end);
   const requestOptions = {
     method: 'GET',
     headers: {
@@ -27,9 +28,11 @@ const buildQueryString = (start, end) => {
 }
 
 const handleSelect = (event) => {
+  console.log(start_end);
   const start_title = roundStartPage.value;
   const end_title = roundEndPage.value;
   const start_end = buildQueryString(start_title, end_title);
+  console.log(start_end);
   lookInDB(start_end);
 
 }
@@ -37,8 +40,9 @@ const handleSelect = (event) => {
 const checkRecord = () => {
 
   if(roundOptionModal){
-    roundStartPage.addEventListener("change", handleSelect);
-    roundEndPage.addEventListener("change", handleSelect);
+    console.log("salut");
+    roundStartPage.addEventListener("select2:close", handleSelect);
+    roundEndPage.addEventListener("select2:close", handleSelect);
   }
 }
 

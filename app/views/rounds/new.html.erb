@@ -12,8 +12,8 @@
           </div>
           <div class="centered-vertically" id="round-options-modal-content-after-header">
             <h4>Choix de page :</h4>
-            <%= f.input :start_page, label: false, label: "Page de début :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2"} %>
-            <%= f.input :end_page, label: false, label: "Page cible :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2"}  %>
+            <%= f.input :start_page, label: false, label: "Page de début :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2", id: "Tamere"} %>
+            <%= f.input :end_page, label: false, label: "Page cible :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2", id: "Tonpere"}  %>
 
             <div id="nombre-de-clicks-record">
               <p>Pas encore de record sur ce chemin</p>
