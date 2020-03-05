@@ -11,7 +11,7 @@ class CreateRoundParticipations < ActiveRecord::Migration[5.2]
       t.integer :item4_used
       t.integer :item5_used
       t.integer :item6_used
-      t.time :end_time
+      t.string :end_time
 
       t.timestamps
     end

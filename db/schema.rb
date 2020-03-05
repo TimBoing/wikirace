@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_152556) do
     t.integer "item4_used"
     t.integer "item5_used"
     t.integer "item6_used"
-    t.time "end_time"
+    t.string "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["round_id"], name: "index_round_participations_on_round_id"

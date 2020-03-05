@@ -1,5 +1,5 @@
 <div class="main-container">
-  <div class="title-container centered-vertically "><h1><span id="#score-page-winner">Round <%= @game_session.rounds.count %> : <%= @round_participations.first.user.username %> gagne !!!</span></h1></div>
+  <div class="title-container centered-vertically "><h1><span id="score-page-winner">Round <%= @game_session.rounds.count %> : <%= @round_participations.first.user.username %> gagne !!!</span></h1></div>
   <div class="content-container centered-vertically">
 
     <div class="white-container centered-vertically" id="score-page-record-container">
@@ -55,8 +55,12 @@
 
             <h2 class="parcours-title">Parcours : <%= player.username %>!</h2>
             <div class="time-and-score">
-              <p>Temps: <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.last.created_at - player.round_participations.select{|round_participation| round_participation.round == @round }[0].round.start_time.to_i %></p>
-              <p>Click: <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.count %></p>
+              <% time_gap = player.round_participations.select{|round_participation| round_participation.round == @round }[0].end_time.to_i - @round.start_time.to_i %>
+              <% seconds_elapsed = ((time_gap / 1000) % 60).to_i %>
+              <% minutes_elapsed = ((time_gap / 1000) / 60 % 60).to_i %>
+              <% hours_elapsed = ((time_gap / 1000) / 60 / 60 % 60).to_i  %>
+              <p>Temps: <%= hours_elapsed %>h <%= minutes_elapsed %>min <%= seconds_elapsed %>s</p>
+              <p>Click: <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.count - 1 %></p>
             </div>
 
 

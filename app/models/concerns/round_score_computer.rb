@@ -1,5 +1,6 @@
 class RoundScoreComputer
   def call
+
     compute_points
     compute_rank
     round_participations_time_update
@@ -48,10 +49,12 @@ class RoundScoreComputer
 
     unadjusted_start_time = @round.start_time.to_i
     adjusted_start_time = unadjusted_start_time + 10 * 1000 #10 seconds of waiting time defined in the game
+
     @round.update(start_time: adjusted_start_time)
 
     @round_participations.each do |round_participation|
-      round_participation.update(end_time: end_time)
+      round_participation.update(end_time: end_time.to_s)
+
     end
   end
 end

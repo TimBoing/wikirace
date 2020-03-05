@@ -32,7 +32,7 @@ class RoundParticipation < ApplicationRecord
     start_page = WikiPage.find_by(title: start_page_title)
     end_page_title = self.visited_pages.last.title
     if WikiPage.find_by(title: end_page_title).blank?
-      WikiPage.create(title: end_page, url: self.round.end_page_url)
+      WikiPage.create(title: end_page_title, url: self.round.end_page_url)
     end
     end_page = WikiPage.find_by(title: end_page_title)
 
