@@ -31,6 +31,8 @@ const handleRoundInfoModal = () => {
   const roundInfoModal = document.getElementById("round-info-modal");
   const roundInfoBtn = document.getElementById("round-info-btn");
   const roundInfoSpan = document.getElementById("close-round-info");
+  const roundInfoOkBtn = document.getElementById("ok-btn");
+
 
   if(inviteFriendsModal){
     inviteFriendsBtn.addEventListener('click', (event) => {
@@ -55,6 +57,10 @@ const handleRoundInfoModal = () => {
 
 
     roundInfoSpan.addEventListener('click', (event) => {
+      roundInfoModal.style.display = "none";
+    });
+
+    roundInfoOkBtn.addEventListener('click', (event) => {
       roundInfoModal.style.display = "none";
     });
 
