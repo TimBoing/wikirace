@@ -1,6 +1,7 @@
 import { requestPageContent } from './game_model';
 import { addMalusLinks } from './malus';
 
+
 const scrollToTop = () => {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
@@ -21,7 +22,8 @@ const displayPageContentOnInfoModal = (page) => {
 
 
 const displayPageContent = (page) => {
-
+  const gameInfo = document.getElementById('game-info');
+  const gameReverse = gameInfo.dataset.reverse;
   const pageContainer = document.getElementById('wikipage-container');
   pageContainer.innerHTML = '';
   pageContainer.insertAdjacentHTML('afterbegin', page);
@@ -40,8 +42,8 @@ const displayPageContent = (page) => {
       }
     });
   });
-  console.log("displayPageContent end");
-  //addMalusLinks();
+  console.log(`reverse : ${gameReverse}`);
+  if(gameReverse === "true"){addMalusLinks();};
 };
 
 
