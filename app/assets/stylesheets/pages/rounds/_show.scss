@@ -65,56 +65,104 @@
     }
 
   }
+}
 
-    #game-actions-bar-top{
+
+#game-actions-search{
+  position: fixed;
+  top: 10%;
+  right: 0;
+  z-index: 10;
+  height: 8vh;
+  width: 15%;
+  max-width: 70px;
+  opacity: 0.5;
+  transition: all 0.2s ease-out;
+  display: flex;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 50px 0px 0px 50px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+
+  #seach-field{
+    width: 0px;
+    background-color: white;
+    // border: 1px solid $main-red;
+    color: black;
+    font-family: $game-clean-font;
+  }
+
+
+
+  #search-icon-container{
+    background-color: $main-red;
+    width: 70px;
+    max-width: 70px;
+    color: white;
+    height: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items:center;
+    justify-content:center;
+    align-items: center;
+    border-radius: 50px 0px 0px 50px;
     font-size: 30px;
-    color: $main-red;
-    padding: 0;
-    position: fixed;
-    z-index: 10;
-    top: 20px;
-    left:5%;
-    height: 8vh;
-    width: 90%;
-
-    i:hover {
-      cursor:pointer;
-    }
 
   }
 }
 
-    #game-actions-search{
-    display: flex;
-    align-items:center;
-    font-size: 30px;
-    color: $main-red;
-    padding: 0 10px;
-    background-color: white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    height: 50px;
-    width: 50px;
-    border-radius: 50px;
 
-  }
 
-    #game-actions-weapons{
-    display: flex;
-    align-items:center;
-    text-align: center;
-    font-size: 30px;
-    color: $main-red;
-    padding: 0 12.5px;
-    background-color: white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    height: 50px;
-    width: 50px;
-    border-radius: 50px;
+//     #game-actions-bar-top{
+//     display: flex;
+//     justify-content: space-between;
+//     align-items:center;
+//     font-size: 30px;
+//     color: $main-red;
+//     padding: 0;
+//     position: fixed;
+//     z-index: 10;
+//     top: 20px;
+//     left:5%;
+//     height: 8vh;
+//     width: 90%;
 
-  }
+//     i:hover {
+//       cursor:pointer;
+//     }
+
+//   }
+// }
+
+//     #game-actions-search{
+//     display: flex;
+//     align-items:center;
+//     font-size: 30px;
+//     color: $main-red;
+//     padding: 0 10px;
+//     background-color: white;
+//     box-shadow: 0 0 15px rgba(0,0,0,0.2);
+//     height: 50px;
+//     width: 50px;
+//     border-radius: 50px;
+
+//   }
+
+//     #game-actions-weapons{
+//     display: flex;
+//     align-items:center;
+//     text-align: center;
+//     font-size: 30px;
+//     color: $main-red;
+//     padding: 0 12.5px;
+//     background-color: white;
+//     box-shadow: 0 0 15px rgba(0,0,0,0.2);
+//     height: 50px;
+//     width: 50px;
+//     border-radius: 50px;
+
+//   }
 
 #info-your-target-modal {
   #info-game-counter {
