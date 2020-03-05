@@ -24,14 +24,14 @@
 
       </div> -->
 
-      <div id="game-actions-search">
-        <div id="search-icon-container">
-          <i class="fas fa-search" id="search-icon"></i>
+      <% if @round.search_bar %>
+        <div id="game-actions-search">
+          <div id="search-icon-container">
+            <i class="fas fa-search" id="search-icon"></i>
+          </div>
+          <input id="seach-field" type="text" value=""></>
         </div>
-        <input id="seach-field" type="text" value=""></>
-
-      </div>
-
+      <% end %>
 
 
       <div id="game-actions-bar">
@@ -80,7 +80,8 @@
   data-game-mode = "<%= @round.game_mode %>"
   data-start-time = "<%= @round.start_time %>"
   data-malus-sender = ""
-  data-malus = "none">
+  data-malus = "none"
+  data-reverse = "<%= @round.reverse %>">
 </div>
 
 <% content_for :after_js do %>

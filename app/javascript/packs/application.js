@@ -17,6 +17,7 @@ import { checkRecord } from '../components/check_record';
 import { displayPathInfo } from '../components/path_info';
 import { displayRoundsInfo } from '../components/rounds_info';
 import { searchBar } from '../components/search_bar';
+import { optionsSelection } from '../components/options_grid';
 import { select2js } from '../components/select2';
 
 
@@ -36,6 +37,7 @@ displayPathInfo();
 displayRoundsInfo();
 searchBar();
 select2js();
+optionsSelection();
 //trackMouse();
 
 

@@ -7,11 +7,14 @@ class CreateRounds < ActiveRecord::Migration[5.2]
       t.string :end_page_url
       t.string :game_mode
       t.string :game_options
+      t.boolean :search_bar, default: true
+      t.boolean :reverse, default: false
       t.boolean :start_page_random, default: false
       t.boolean :end_page_random, default: false
       t.string :state, default: 'initiated'
       t.string :start_time
       t.references :game_session, foreign_key: true
+
 
       t.timestamps
     end
