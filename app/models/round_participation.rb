@@ -44,6 +44,7 @@ class RoundParticipation < ApplicationRecord
       Path.create(user: current_user, start_page: wiki_start_page, end_page: wiki_end_page, duration: (self.visited_pages.last.created_at.to_i - self.round.start_time.to_i))
     else
       record_path.update(user: current_user, start_page: wiki_start_page, end_page: wiki_end_page, duration: (self.visited_pages.last.created_at.to_i - self.round.start_time.to_i))
+      raise
       record_path.points.each {|point| point.destroy}
     end
 
