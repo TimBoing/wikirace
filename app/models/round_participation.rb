@@ -40,9 +40,9 @@ class RoundParticipation < ApplicationRecord
 
     # creation of the new path
     if record_path.blank?
-      Path.create(user: current_user, start_page: start_page, end_page: end_page, duration: (self.visited_pages.last.created_at.to_i - self.round.start_time.to_i))
+      Path.create(user: current_user, start_page: start_page, end_page: end_page, duration: (self.end_time.to_i - self.round.start_time.to_i))
     else
-      record_path.update(user: current_user, start_page: start_page, end_page: end_page, duration: (self.visited_pages.last.created_at.to_i - self.round.start_time.to_i))
+      record_path.update(user: current_user, start_page: start_page, end_page: end_page, duration: (self.end_time.to_i - self.round.start_time.to_i))
       record_path.points.each {|point| point.destroy}
     end
 

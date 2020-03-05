@@ -30,49 +30,54 @@
         </div>
       </div>
 
-      <div class="white-container centered-vertically add-margin-records-page">
-        <h3>Records mondiaux détenus :</h3>
-        <div class="cards">
-          <% @world_records.each do |world_record| %>
-            <div class="card" data-game_session="<%= world_record.id %>">
-              <div class="card-left-side">
-                <div class="card-rank-container">
-                  <div class="card-rank">Début : <%= world_record.start_page.title %></div>
-                </div>
-                <div class="card-username">Fait en <%= world_record.points.count %> clicks</div>
-              </div>
-              <div class="card-right-side">
-                <div class="card-score">Fait en <%= world_record.duration %> secondes</div>
-              </div>
-              <div class="card-rank-container">
-                <div class="card-rank">Fin : <%= world_record.end_page.title %></div>
-              </div>
+      <div class="title-container centered-vertically white-shadow "><h3><span>Tes records mondiaux</span></h3></div>
+      <div class="record-cards">
+        <% @world_records.each do |world_record| %>
+          <div class="card record-card" data-game_session="<%= world_record.id %>">
+            <div class="begin-page">
+              <div class="color-red"><i class="fas fa-play"></i></div>
+              <div><%= world_record.start_page.title %></div>
             </div>
-          <% end %>
-        </div>
+            <div class="begin-page">
+              <div class="record-content color-red"><%= world_record.points.count %> </div>
+              <div class="record-content">clicks</div>
+            </div>
+            <div class="begin-page">
+              <div class="record-content color-red"><%= world_record.duration.to_i / 1000 %></div>
+              <div class="record-content">secondes</div>
+            </div>
+            <div class="begin-page">
+              <div class="color-red"><i class="fas fa-bullseye"></i></div>
+              <div><%= world_record.end_page.title %></div>
+            </div>
+          </div>
+        <% end %>
       </div>
 
-      <div class="white-container centered-vertically add-margin-records-page">
-        <h3>Records perso :</h3>
-        <div class="cards">
-          <% @personal_records.each do |personal_record| %>
-            <div class="card" data-game_session="<%= personal_record.id %>">
-              <div class="card-left-side">
-                <div class="card-rank-container">
-                  <div class="card-rank">Début : <%= personal_record.round.start_page %></div>
-                </div>
-                <div class="card-username">Fait en <%= personal_record.visited_pages.count %> clicks</div>
-              </div>
-              <div class="card-right-side">
-                <div class="card-score">Fait en <%= personal_record.end_time - personal_record.round.start_time.to_i %> secondes</div>
-              </div>
-              <div class="card-rank-container">
-                <div class="card-rank">Début : <%= personal_record.visited_pages.last.title %></div>
-              </div>
+      <div class="title-container centered-vertically white-shadow"><h3>Tes records perso</h3></div>
+      <div class="record-cards">
+        <% @personal_records.each do |personal_record| %>
+          <div class="card record-card" data-game_session="<%= personal_record.id %>">
+            <div id="begin-page">
+              <div class="color-red"><i class="fas fa-play"></i></div>
+              <div><%= personal_record.round.start_page %></div>
             </div>
-          <% end %>
-        </div>
+            <div class="begin-page">
+              <div class="record-content color-red"><%= personal_record.visited_pages.count %> </div>
+              <div class="record-content">clicks</div>
+            </div>
+            <div class="begin-page">
+              <div class="record-content color-red"><%= (personal_record.end_time.to_i - personal_record.round.start_time.to_i) / 1000 %></div>
+              <div class="record-content">secondes</div>
+            </div>
+            <div class="begin-page">
+              <div class="color-red"><i class="fas fa-bullseye"></i></div>
+              <div><%= personal_record.visited_pages.last.title %></div>
+            </div>
+          </div>
+        <% end %>
       </div>
+
     </div>
   </div>
 </div>
