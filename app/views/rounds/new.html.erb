@@ -17,34 +17,12 @@
             <div id="nombre-de-clicks-record">
               <p>Pas encore de record sur ce chemin</p>
             </div>
+
+
             <h4>Mode de jeu</h4>
-            <%= f.input :game_mode, label: false,
-              collection: ['Premier arrivé', 'Limite de temps', 'Limite de clicks', 'Limite de temps & clicks', 'Pas de limites'],
-              default: 'Premier arrivé' %>
-            <h4>Option de jeu</h4>
-            <%= f.input :game_options, label: false,
-              collection: ['Standard', 'Avec questions', 'Sans aide de recherche', 'Où est Charlie', 'Battlefield', 'Sens-interdit'],
-              default: 'Standard' %>
-            <%= button_tag "Jouer",type: 'submit', class: "btn-tim", id:"round-options-ok-btn" %>
-
+            <%= hidden_field_tag :game_mode, 'Premier arrivé' %>
             <div id="grid-container-options">
-              <div class="grid-option selectable-option" id="grid-option-1">
-                <i class="fas fa-sync-alt"></i>
-                <div class="title-option">Reverse!</div>
-                <div class="validation-option">
-                  <i class="fas fa-check"></i>
-                </div>
-              </div>
-
-              <div class="grid-option selectable-option" id="grid-option-4">
-                <i class="fas fa-search"></i>
-                <div class="title-option">Search Bar!</div>
-                <div class="validation-option">
-                  <i class="fas fa-check"></i>
-                </div>
-              </div>
-
-              <div class="grid-option" id="grid-option-2">
+              <div class="grid-option" id="grid-option-time-limit">
                 <i class="far fa-clock"></i>
                 <div class="title-option">Time Limit!</div>
                 <div class="validation-option">
@@ -52,15 +30,51 @@
                 </div>
               </div>
 
-              <div class="grid-option" id="grid-option-3">
+              <div class="grid-option" id="grid-option-click-limit">
                 <i class="fas fa-mouse-pointer"></i>
                 <div class="title-option">Click Limit!</div>
                 <div class="validation-option">
                   <i class="fas fa-check"></i>
                 </div>
               </div>
+            </div>
+
+            <%#= f.input :game_mode, label: false,
+              collection: ['Premier arrivé', 'Limite de temps', 'Limite de clicks', 'Limite de temps & clicks', 'Pas de limites'],
+              default: 'Premier arrivé' %>
+
+
+            <h4>Option de jeu</h4>
+
+            <div id="grid-container-options">
+
+              <div class="grid-option selectable-option active" id="grid-option-search-bar">
+                <i class="fas fa-search"></i>
+                <div class="title-option">Search Bar!</div>
+                <div class="validation-option">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+
+              <div class="grid-option selectable-option" id="grid-option-reverse">
+                <i class="fas fa-sync-alt"></i>
+                <div class="title-option">Reverse!</div>
+                <div class="validation-option">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
 
             </div>
+            <%= f.input :game_options, label: false,
+              collection: ['Standard', 'Avec questions', 'Sans aide de recherche', 'Où est Charlie', 'Battlefield', 'Sens-interdit'],
+              default: 'Standard' %>
+            <div class="not-visible">
+              <%= f.input :search_bar, default: true %>
+              <%= f.input :reverse, default: false %>
+            </div>
+            <%= button_tag "Jouer",type: 'submit', class: "btn-tim", id:"round-options-ok-btn" %>
+
+
 
           </div>
         </div>
