@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>The page you were looking for doesn't exist (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
     @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
@@ -13,13 +13,7 @@
     }
 
     body {
-      background-image: url("maze.jpg");
-      background-size: cover;
       background-repeat: no-repeat;
-      min-height: 100vh;
-      min-width: 100vw;
-      color: rgba(255,255,255,.87);
-
     }
 
     .mx-auto {
@@ -33,21 +27,15 @@
       height: 100%;
     }
 
-    #countUp {
-      display: flex;
+    #our-container{
+      position: relative;
+      width:100vw;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      height: 100%;
-    }
-
-    #our-container {
       text-align: center;
-      border-radius: 10px;
-      box-shadow: 1px 1px 2px black;
-      color: #30cb7e;
-      background-color: white;
-      padding: 10px;
+      height: 100vh;
+      display: flex;
+      background-image: url('/maze.jpg');
     }
 
     h3 {
@@ -58,24 +46,29 @@
     p {
       font-family:'Montserrat';
     }
+
+    #card {
+      align-items: center;
+      justify-content: center;
+      text-align:center;
+      padding: 10px;
+      width: 50%;
+      margin:auto;
+      border-radius: 15px;
+      background-color: white;
+    }
   </style>
 </head>
 
 <body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="container">
-    <div class="row">
-      <div class="xs-12 md-6 mx-auto">
-        <div id="countUp">
-          <h3 data-count="500">500</h3>
-          <div id="our-container">
-            <img src="wikirace-logo2.png" style="width: 40px; border-radius: 50%;">
-            <p>Page not found</p>
-            <p>This may not mean anything.</p>
-            <p>I'm probably working on something that has blown up.</p>
-          </div>
-        </div>
-      </div>
+  <!-- This file lives in public/500.html -->
+  <div id="our-container">
+    <div id="card">
+      <h3 data-count="500">500</h3>
+      <img src="/wikirace-logo2.png" style="width: 40px; border-radius: 50%; object-fit: cover;">
+      <p>Page not found</p>
+      <p>This may not mean anything.</p>
+      <p>I'm probably working on something that has blown up.</p>
     </div>
   </div>
 
