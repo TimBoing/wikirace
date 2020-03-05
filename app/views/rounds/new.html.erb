@@ -26,6 +26,42 @@
               collection: ['Standard', 'Avec questions', 'Sans aide de recherche', 'Où est Charlie', 'Battlefield', 'Sens-interdit'],
               default: 'Standard' %>
             <%= button_tag "Jouer",type: 'submit', class: "btn-tim", id:"round-options-ok-btn" %>
+
+            <div id="grid-container-options">
+              <div class="grid-option selectable-option" id="grid-option-1">
+                <i class="fas fa-sync-alt"></i>
+                <div class="title-option">Reverse!</div>
+                <div class="validation-option">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+
+              <div class="grid-option selectable-option" id="grid-option-4">
+                <i class="fas fa-search"></i>
+                <div class="title-option">Search Bar!</div>
+                <div class="validation-option">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+
+              <div class="grid-option" id="grid-option-2">
+                <i class="far fa-clock"></i>
+                <div class="title-option">Time Limit!</div>
+                <div class="validation-option">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+
+              <div class="grid-option" id="grid-option-3">
+                <i class="fas fa-mouse-pointer"></i>
+                <div class="title-option">Click Limit!</div>
+                <div class="validation-option">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+
+            </div>
+
           </div>
         </div>
       </div>
