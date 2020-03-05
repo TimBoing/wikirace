@@ -1,6 +1,12 @@
 <div class="main-container">
-  <div class="title-container centered-vertically "><h1><span id="final-winner">Score final : <%= @players.first.username %> gagne la partie</span></h1></div>
+  <div class="title-container centered-vertically "><h1><span id="final-winner">Score final</span></h1></div>
   <div class="content-container centered-vertically">
+
+    <div class="white-container centered-vertically" id="score-page-record-container">
+        <i class="fas fa-trophy trophy"></i>
+        <h4>La partie est remplortée par <strong class="trophy"><%= @players.first.username %></strong></h4>
+    </div>
+
     <div class="cards">
 
       <% rank = 1 %>

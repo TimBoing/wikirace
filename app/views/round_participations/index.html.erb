@@ -1,5 +1,5 @@
 <div class="main-container">
-  <div class="title-container centered-vertically "><h1><span id="#score-page-winner">Round <%= @game_session.rounds.count %> : <%= @round_participations.first.user.username %> gagne !!!</span></h1></div>
+  <div class="title-container centered-vertically "><h1><span id="score-page-winner">Round <%= @game_session.rounds.count %> : <%= @round_participations.first.user.username %> gagne !!!</span></h1></div>
   <div class="content-container centered-vertically">
 
     <div class="white-container centered-vertically" id="score-page-record-container">
@@ -7,10 +7,10 @@
         <i class="fas fa-trophy trophy"></i>
         <h4><%= @sorted_round_participations.first.user.username %> a battu le record en <strong class="trophy"><%= @sorted_round_participations.first.visited_pages.count - 1 %></strong> clicks</h4>
       <% else %>
-        <p>Pas de nouveau record sur ce round...</p>
+        <h4>Pas de nouveau record sur ce round...</h4>
+        <i class="fas fa-heart-broken trophy"></i>
       <% end %>
     </div>
-
 
 
 
