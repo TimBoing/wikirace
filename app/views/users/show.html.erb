@@ -1,7 +1,7 @@
 <div class="main-container">
-  <div class="title-container centered-vertically "><h1><span id="#home-page-title">Mon profile</span></h1></div>
+  <div class="title-container centered-vertically "><h1><span>Mon profile</span></h1></div>
     <div class="content-container centered-vertically">
-      <div class="white-container centered-vertically">
+      <div class="white-container centered-vertically add-margin-records-page">
         <div>
           <i class="fas fa-money-bill-wave"></i>
           Argent: <%= current_user.coins %> WikiMonnaie
@@ -29,10 +29,8 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="content-container centered-vertically">
-      <div class="white-container centered-vertically">
+      <div class="white-container centered-vertically add-margin-records-page">
         <h3>Records mondiaux détenus :</h3>
         <div class="cards">
           <% @world_records.each do |world_record| %>
@@ -53,10 +51,8 @@
           <% end %>
         </div>
       </div>
-    </div>
 
-    <div class="content-container centered-vertically">
-      <div class="white-container centered-vertically">
+      <div class="white-container centered-vertically add-margin-records-page">
         <h3>Records perso :</h3>
         <div class="cards">
           <% @personal_records.each do |personal_record| %>
