@@ -47,7 +47,8 @@ const requestPageContent = (page) => {
     .then(response => response.text())
     .then((result) => {
       if(result.substring(0,1) !== "{"){
-        pageTitleContainer.innerText = page;
+        const realTitle = page.replace(/_/g, " ");
+        pageTitleContainer.innerText = realTitle;
         gameInfo.dataset.currentPage = page;
         displayPageContent(result);
         addVisitedPageToDatabase(page);
@@ -80,6 +81,7 @@ export{requestPageContent};
 export{notifyRoundEnded};
 export{visitedPagesGetter};
 export{visitedPagesSetter};
+
 
 
 

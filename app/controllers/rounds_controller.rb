@@ -15,7 +15,6 @@ class RoundsController < ApplicationController
     @round = Round.find(params[:id])
     @game_session = @round.game_session
     @round_participation_id = @round.round_participations.where(user: current_user).first.id
-
     ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", content: @round.id) if @round.state != "playing"
     @round.update(state: "playing")
   end
@@ -65,10 +64,11 @@ class RoundsController < ApplicationController
 
   def update
     round = Round.find(params[:id])
-
-    unless params[:start_time].nil?
-      start_time = params[:start_time]
+    if params[:start_game]
+      t = Time.now
+      start_time = t.to_f * 1000
       round.update(start_time: start_time)
+      redirect_to round_path(round)
     end
 
     unless params[:state].nil?
