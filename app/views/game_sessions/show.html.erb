@@ -14,10 +14,12 @@
       <p id="nbr-player-connected">Participants : <%= @round.round_participations.count %></p>
     </div>
 
-      <div id="create-message" class="white-container">
+    <div id="create-message" class="white-container">
+      <div id="message-input">
         <%= simple_form_for [@game_session, Message.new], remote: true do |f| %>
-          <%= f.input :content, label: false, placeholder: 'Taille tes potes!' %>
+          <%= f.input :content, label: false, placeholder: 'Ecris ton message...' %>
         <% end %>
+      </div>
 
       <div class="messages">
         <% @game_session.messages.each do |message| %>
@@ -112,10 +114,10 @@
         } else if (data.content === undefined && data.player === undefined && data.end_game === undefined) {
           const messagesContainer = document.querySelector('.messages');
           messagesContainer.insertAdjacentHTML('afterbegin', data.message_partial);
-          const  input = document.querySelector('#message_content');
-          input.value = '';
-          input.blur();
-
+          if (data.current_user_id == <%= current_user.id %>) {
+            const  input = document.querySelector('#message_content');
+            input.value = '';
+          }
         } else if (data.content === undefined && data.message_partial === undefined && data.end_game === undefined) {
           const playerConnected = document.querySelector('.messages');
           console.log(data.player);
