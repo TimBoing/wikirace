@@ -30,59 +30,49 @@
         </div>
       </div>
     </div>
-    <div class="content-container centered-vertically">
-      <div class="white-container centered-vertically">
-        <h3>Parties créées :</h3>
-        <div class="cards">
-          <% @created_game_sessions_clean.each do |game_session| %>
-            <div class="card" style="background-color: blue">
-              <div class="card-date"><%= game_session.rounds.first.start_time %></div>
-              <div class="card-game-name"><%= game_session.rounds.count %> rounds jouée</div>
-              <div class="card-game-description"><%= current_user.total_score_for(game_session) %> points</div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="content-container centered-vertically">
-      <div class="white-container centered-vertically">
-        <h3>Parties jouées :</h3>
-        <div class="cards">
-          <% @game_sessions_played.each do |game_session| %>
-            <div class="card" style="background-color: blue">
-              <div class="card-date"><%= game_session.rounds.first.start_time %></div>
-              <div class="card-game-name"><%= game_session.rounds.count %> rounds jouée</div>
-              <div class="card-game-description"><%= current_user.total_score_for(game_session) %> points</div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
+
     <div class="content-container centered-vertically">
       <div class="white-container centered-vertically">
         <h3>Records mondiaux détenus :</h3>
         <div class="cards">
           <% @world_records.each do |world_record| %>
-            <div class="card" style="background-color: blue">
-              <div class="card-date">Début : <%= world_record.start_page %></div>
-              <div class="card-date">Fin : <%= world_record.end_page %></div>
-              <div class="card-game-name"> Fait en <%= world_record.points.count %> clicks</div>
-              <div class="card-game-description">Fait en <%= world_record.duration %> secondes</div>
+            <div class="card" data-game_session="<%= world_record.id %>">
+              <div class="card-left-side">
+                <div class="card-rank-container">
+                  <div class="card-rank">Début : <%= world_record.start_page.title %></div>
+                </div>
+                <div class="card-username">Fait en <%= world_record.points.count %> clicks</div>
+              </div>
+              <div class="card-right-side">
+                <div class="card-score">Fait en <%= world_record.duration %> secondes</div>
+              </div>
+              <div class="card-rank-container">
+                <div class="card-rank">Fin : <%= world_record.end_page.title %></div>
+              </div>
             </div>
           <% end %>
         </div>
       </div>
     </div>
+
     <div class="content-container centered-vertically">
       <div class="white-container centered-vertically">
         <h3>Records perso :</h3>
         <div class="cards">
           <% @personal_records.each do |personal_record| %>
-            <div class="card" style="background-color: blue">
-              <div class="card-date">Début : <%= personal_record.round.start_page %></div>
-              <div class="card-date">Fin : <%= personal_record.round.end_page %></div>
-              <div class="card-game-name"> Fait en <%= personal_record.visited_pages.count %> clicks</div>
-              <div class="card-game-description">Fait en <%= personal_record.end_time - personal_record.round.start_time.to_i %> secondes</div>
+            <div class="card" data-game_session="<%= personal_record.id %>">
+              <div class="card-left-side">
+                <div class="card-rank-container">
+                  <div class="card-rank">Début : <%= personal_record.round.start_page %></div>
+                </div>
+                <div class="card-username">Fait en <%= personal_record.visited_pages.count %> clicks</div>
+              </div>
+              <div class="card-right-side">
+                <div class="card-score">Fait en <%= personal_record.end_time - personal_record.round.start_time.to_i %> secondes</div>
+              </div>
+              <div class="card-rank-container">
+                <div class="card-rank">Début : <%= personal_record.visited_pages.last.title %></div>
+              </div>
             </div>
           <% end %>
         </div>
