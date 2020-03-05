@@ -1,21 +1,28 @@
-<h1>
-  <% if @user.username != nil && @user.username != "" %>
-    <%= @user.username %>, mets à jour ton profile!
-  <% else %>
-    Putain mais t'as même pas de Username!!! Vas y, remplis ton profile!!
-  <% end %>
-</h1>
+<div class="main-container" id="gs-show-main-container">
+  <div class="title-container centered-vertically">
+    <h1>
+      <% if @user.first_name != nil && @user.first_name != "" %>
+        <%= @user.first_name%>, mets à jour ton profil!
+      <% else %>
+        Tu n'as même pas donné ton nom!!! Remplis ton profil...
+      <% end %>
+    </h1>
+  </div>
+  <div class="content-container centered-vertically">
+    <div class="white-container centered-vertically">
 
-<div class="edit-form-container">
-   <%= simple_form_for @user do |f| %>
-      <h2>Info utilisateur</h2>
-      <%= f.input :first_name, label: false, label: 'Nom' %>
-      <%= f.input :last_name, label: false, label: 'Prenom' %>
-      <%= f.input :username, label: false, label: "Nom d'utilisateur" %>
-      <h2>Photo de profile</h2>
-      <%= f.input :photo, label: false %>
-      <%= f.submit 'Mets à jour ton profile' %>
-    <% end %>
+      <%= simple_form_for @user do |f| %>
+        <h2>Info</h2>
+        <%= f.input :first_name, label: false, label: 'Nom' %>
+        <%= f.input :last_name, label: false, label: 'Prenom' %>
+        <%= f.input :username, label: false, label: "Nom d'utilisateur" %>
+        <h2>Photo</h2>
+        <%= f.input :photo, label: false %>
+        <%= f.submit 'Mettre à jour', class:'btn-tim main-red mx-auto' %>
+      <% end %>
+
+      <%= link_to "Retour", :back %>
+
+    </div>
+  </div>
 </div>
-
-<%= link_to "Retour", :back %>

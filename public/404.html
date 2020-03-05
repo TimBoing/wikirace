@@ -4,64 +4,80 @@
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+    @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:900');
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    body {
+      background-image: url("maze.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      min-width: 100vw;
+      color: rgba(255,255,255,.87);
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+    }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container,
+    .container > .row,
+    .container > .row > div {
+      height: 100%;
+    }
+
+    #countUp {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    #our-container {
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 1px 1px 2px black;
+      color: #30cb7e;
+      background-color: white;
+      padding: 10px;
+    }
+
+    h3 {
+      color: black;
+      font-family: 'Press Start 2P', monospace;
+    }
+
+    p {
+      font-family:'Montserrat';
+    }
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+  <div class="container">
+    <div class="row">
+      <div class="xs-12 md-6 mx-auto">
+        <div id="countUp">
+          <h3 data-count="404">404</h3>
+          <div id="our-container">
+            <img src="wikirace-logo2.png" style="width: 40px; border-radius: 50%;">
+            <p>Page not found</p>
+            <p>This may not mean anything.</p>
+            <p>I'm probably working on something that has blown up.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
+
 </body>
 </html>

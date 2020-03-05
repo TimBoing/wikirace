@@ -1,16 +1,16 @@
 <div class="main-container">
-  <div class="title-container centered-vertically "><h1><span id="#score-page-winner">Round <%= @game_session.rounds.count %> : <%= @round_participations.first.user.username %> gagne !!!</span></h1></div>
+  <div class="title-container centered-vertically "><h1><span id="score-page-winner">Round <%= @game_session.rounds.count %> : <%= @round_participations.first.user.username %> gagne !!!</span></h1></div>
   <div class="content-container centered-vertically">
 
     <div class="white-container centered-vertically" id="score-page-record-container">
       <% if @sorted_round_participations.first.is_the_best? %>
-        <i class="fas fa-trophy"></i>
-        <h4><%= @sorted_round_participations.first.user.username %> a battu le record en <%= @sorted_round_participations.first.visited_pages.count %> pages</h4>
+        <i class="fas fa-trophy trophy"></i>
+        <h4><%= @sorted_round_participations.first.user.username %> a battu le record en <strong class="trophy"><%= @sorted_round_participations.first.visited_pages.count - 1 %></strong> clicks</h4>
       <% else %>
-        <p>Pas de nouveau record sur ce round...</p>
+        <h4>Pas de nouveau record sur ce round...</h4>
+        <i class="fas fa-heart-broken trophy"></i>
       <% end %>
     </div>
-
 
 
 
@@ -55,10 +55,13 @@
 
             <h2 class="parcours-title">Parcours : <%= player.username %>!</h2>
             <div class="time-and-score">
-              <p>Temps: <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.last.created_at - player.round_participations.select{|round_participation| round_participation.round == @round }[0].round.start_time.to_i %></p>
-              <p>Click: <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.count %></p>
+              <% time_gap = player.round_participations.select{|round_participation| round_participation.round == @round }[0].end_time.to_i - @round.start_time.to_i %>
+              <% seconds_elapsed = ((time_gap / 1000) % 60).to_i %>
+              <% minutes_elapsed = ((time_gap / 1000) / 60 % 60).to_i %>
+              <% hours_elapsed = ((time_gap / 1000) / 60 / 60 % 60).to_i  %>
+              <p>Temps: <%= hours_elapsed %>h <%= minutes_elapsed %>min <%= seconds_elapsed %>s</p>
+              <p>Click: <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.count - 1 %></p>
             </div>
-
 
 
             <div style="display: flex; align-items: center; flex-direction: column;">
@@ -72,16 +75,11 @@
               <% end %>
             </div>
 
-
           </div>
-
-
 
         </div>
       </div>
     <% end %>
-
-
 
 
 
@@ -93,12 +91,6 @@
       <% end %>
       <%= link_to "Finir la partie", game_session_rounds_path(@game_session), class: "btn-tim", id: "go-to-round-index" %>
     </div>
-
-
-
-
-
-
 
 
   </div>

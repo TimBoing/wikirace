@@ -3,7 +3,6 @@ import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner_typed';
 import { handleRoundOptionsModal } from '../components/handle_modals';
 // import { collapsePageChoice } from '../components/collapsibles';
-import { startGame } from '../components/start_game';
 import { initGame } from '../components/game_controller';
 import { trackMouse } from '../components/mouseTrack';
 import { joinRound } from '../components/join_round';
@@ -16,6 +15,7 @@ import { highlight } from '../components/marker';
 import { alertBrowser } from '../components/alert_browser';
 import { checkRecord } from '../components/check_record';
 import { displayPathInfo } from '../components/path_info';
+import { displayRoundsInfo } from '../components/rounds_info';
 
 
 
@@ -24,7 +24,6 @@ loadDynamicBannerText();
 handleRoundOptionsModal();
 // collapsePageChoice();
 //loadDynamicBannerText();
-startGame();
 initGame();
 toggleNavbar();
 joinRound();
@@ -34,4 +33,5 @@ highlight();
 alertBrowser();
 checkRecord();
 displayPathInfo();
+displayRoundsInfo();
 //trackMouse();

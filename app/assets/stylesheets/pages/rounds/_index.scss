@@ -2,8 +2,20 @@
   background-color: $main-red;
 }
 
+.rank-nrb {
+  color: $main-red;
+}
 
+.round-index-rank {
+  display: flex;
+  align-items: flex-end;
+}
 
+#round-trophy {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 8px;
+}
 
 
 

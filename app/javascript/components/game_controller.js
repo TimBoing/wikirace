@@ -50,7 +50,8 @@ const initGame = () => {
     currentUserId = gameInfo.dataset.currentUser;
     gameStartTime = parseInt(gameInfo.dataset.startTime);
     gameLaunchTime = gameStartTime + waitingTime * 1000;
-    infoGameEndPageTitleContainer.innerText = `Your Target : ${gameEndPage}`;
+    const realTitle = gameEndPage.replace(/_/g, " ");
+    infoGameEndPageTitleContainer.innerText = `Your Target : ${realTitle}`;
     requestEndPageContent(gameEndPage);
     infoContainer.style.display = "block";
     myInterval = setInterval(gameLoop, 250);
@@ -72,7 +73,8 @@ const gameLoop = () => {
       counterDisplay = `Round starts in : ${secondElapsed}sec`;
       infoGameCounter.innerText = counterDisplay;
     } else {
-      pageTitleContainer.innerText = gameStartPage;
+      const realTitle = gameStartPage.replace(/_/g, " ");
+      pageTitleContainer.innerText = realTitle;
       requestPageContent(gameStartPage);
       gameInfo.dataset.state = 'imminent';
       infoGameCounter.style.display= "none";
@@ -91,7 +93,7 @@ const gameLoop = () => {
       infoContainer.style.display = "none";
       infoGameCounterBig.style.display = "none";
       initGameActionsBar();
-      gameLaunchTime = Date.now();
+      //gameLaunchTime = Date.now();
       gameInfo.dataset.state = 'playing';
       // gameState = gameInfo.dataset.state;
     } else {
@@ -158,3 +160,4 @@ const gameLoop = () => {
 // au moment ou on click sur la last page alors game ended
 
 export{initGame};
+

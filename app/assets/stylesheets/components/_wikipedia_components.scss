@@ -1,4 +1,4 @@
-#wikipage-container {
+#wikipage-container, #info-game-end-page-container {
 
 
   a {
@@ -32,10 +32,23 @@
     display: none;
   }
 
+  @media only screen and (max-width: 770px){
+      //MOBILE ONLY STYLES
+    section{
+      display:flex;
+      flex-direction: column;
+
+    }
+
+    table{
+      overflow:scroll;
+    }
 
 
+  }
 
 }
+
 
 
 
