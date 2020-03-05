@@ -91,8 +91,10 @@
                 <p><%= game_option %></p>
               <% end %>
             <% else %>
-              <p><%= @round.game_options %></p>
+              <p>- <%= @round.game_options %></p>
             <% end %>
+            <p>- Search Bar : <%= @round.search_bar ? "Activée" : "Désactivée" %></p>
+            <p>- Reverse Malus : <%= @round.reverse ? "Activé" : "Désactivé" %></p>
           </div>
         <% end %>
         <%= button_tag "OK",type: 'button', class: "btn-tim", id:"ok-btn" %>
