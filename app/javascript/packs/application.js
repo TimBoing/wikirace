@@ -16,6 +16,7 @@ import { highlight } from '../components/marker';
 import { alertBrowser } from '../components/alert_browser';
 import { checkRecord } from '../components/check_record';
 import { displayPathInfo } from '../components/path_info';
+import { displayRoundsInfo } from '../components/rounds_info';
 
 
 
@@ -34,4 +35,5 @@ highlight();
 alertBrowser();
 checkRecord();
 displayPathInfo();
+displayRoundsInfo();
 //trackMouse();

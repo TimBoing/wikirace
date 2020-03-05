@@ -4,8 +4,8 @@
 
     <div class="white-container centered-vertically" id="score-page-record-container">
       <% if @sorted_round_participations.first.is_the_best? %>
-        <i class="fas fa-trophy"></i>
-        <h4><%= @sorted_round_participations.first.user.username %> a battu le record en <%= @sorted_round_participations.first.visited_pages.count %> pages</h4>
+        <i class="fas fa-trophy trophy"></i>
+        <h4><%= @sorted_round_participations.first.user.username %> a battu le record en <strong class="trophy"><%= @sorted_round_participations.first.visited_pages.count - 1 %></strong> clicks</h4>
       <% else %>
         <p>Pas de nouveau record sur ce round...</p>
       <% end %>
@@ -60,7 +60,6 @@
             </div>
 
 
-
             <div style="display: flex; align-items: center; flex-direction: column;">
               <% counter = 0 %>
               <% player.round_participations.last.visited_pages.each do |visited_page| %>
@@ -72,16 +71,11 @@
               <% end %>
             </div>
 
-
           </div>
-
-
 
         </div>
       </div>
     <% end %>
-
-
 
 
 
@@ -93,12 +87,6 @@
       <% end %>
       <%= link_to "Finir la partie", game_session_rounds_path(@game_session), class: "btn-tim", id: "go-to-round-index" %>
     </div>
-
-
-
-
-
-
 
 
   </div>
