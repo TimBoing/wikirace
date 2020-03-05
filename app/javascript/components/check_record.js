@@ -17,7 +17,7 @@ const lookInDB = (start_end) => {
     if (data.min_click === "") {
       recordSentence.innerHTML = "Pas encore de record sur ce chemin";
     } else {
-      recordSentence.innerHTML = `Le record pour ce couple de pages est de : ${data.min_click} clicks`;
+      recordSentence.innerHTML = `Le record pour ce couple de pages est de : <strong>${data.min_click} clicks</strong>`;
     }
   });
 };
