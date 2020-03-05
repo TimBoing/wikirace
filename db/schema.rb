@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_152556) do
     t.bigint "user_id"
     t.bigint "start_page_id"
     t.bigint "end_page_id"
-    t.time "duration"
+    t.string "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["end_page_id"], name: "index_paths_on_end_page_id"

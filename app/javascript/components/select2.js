@@ -10,5 +10,5 @@ const select2js = () => {
   }
 };
 
-export { select2js }
+export { select2js };
 

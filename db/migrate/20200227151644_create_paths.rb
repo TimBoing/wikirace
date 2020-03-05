@@ -4,7 +4,7 @@ class CreatePaths < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
       t.references :start_page
       t.references :end_page
-      t.time :duration
+      t.string :duration
 
       t.timestamps
     end
