@@ -25,7 +25,7 @@ const addMalusLinks = () => {
   wikiContent.forEach((paragraph) => {
     const malusProba = Math.random();
     if(malusProba > 0.5){
-      paragraph.insertAdjacentHTML('beforeEnd', '<a class="reverse-malus">reverse!</a>');
+      paragraph.insertAdjacentHTML('beforeEnd', '<a class="reverse-malus"><i class="fas fa-sync-alt"></i></a>');
     }
   });
   const reverseMalus = pageContainer.querySelectorAll('.reverse-malus');
