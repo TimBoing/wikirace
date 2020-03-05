@@ -7,18 +7,9 @@ class MessagesController < ApplicationController
     if @message.save
       # here is the broadcast that happens when a message is saved
       ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", {
-        message_partial: render(partial: 'game_sessions/messages', locals: { message: @message })
+        message_partial: render(partial: 'game_sessions/messages', locals: { message: @message }),
+        current_user_id: current_user.id
       })
-
-      respond_to do |format|
-        format.html {redirect_to game_session_path(@game_session)}
-        format.js
-      end
-    else
-      respond_to do |format|
-        format.html { render "game_session/show" }
-        format.js
-      end
     end
   end
 
