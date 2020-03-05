@@ -10,7 +10,6 @@ const displayRoundsInfo = () => {
       const assignedSpan = document.getElementById(`rounds-info-modal-close-player-${userId}`);
       card.addEventListener('click', (event) => {
         assignedModal.style.display = "block";
-        console.log("xoxo");
       });
 
       assignedSpan.addEventListener('click', (event) => {
