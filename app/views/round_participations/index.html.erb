@@ -66,7 +66,7 @@
 
             <div style="display: flex; align-items: center; flex-direction: column;">
               <% counter = 0 %>
-              <% player.round_participations.last.visited_pages.each do |visited_page| %>
+              <% player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.each do |visited_page| %>
                 <% counter += 1 %>
                   <p style="margin-bottom: 20px;"><%= counter %> : <%= visited_page.title %></p>
                   <% if @round.end_page != visited_page.title %>
