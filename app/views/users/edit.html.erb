@@ -2,7 +2,7 @@
   <div class="title-container centered-vertically">
     <h1>
       <% if @user.first_name != nil && @user.first_name != "" %>
-        <%= @user.first_name%>, mets à jour ton profil!
+        <%= @user.username%>, mets à jour ton profil!
       <% else %>
         Renseigne ton profil!
       <% end %>
@@ -21,7 +21,7 @@
         <%= f.submit 'Mettre à jour', class:'btn-tim main-red mx-auto' %>
       <% end %>
 
-      <%= link_to "Retour", :back %>
+      <%= link_to "Retour", :back, class: 'btn-tim main-green mx-auto' %>
 
     </div>
   </div>
