@@ -21,6 +21,7 @@ import { optionsSelection } from '../components/options_grid';
 import { select2js } from '../components/select2';
 
 
+
 loadDynamicBannerText();
 handleRoundOptionsModal();
 // collapsePageChoice();
@@ -32,7 +33,7 @@ handleRoundInfoModal();
 highlight();
 // handleRoundPathsModals();
 alertBrowser();
-checkRecord();
+//checkRecord();
 displayPathInfo();
 displayRoundsInfo();
 searchBar();
