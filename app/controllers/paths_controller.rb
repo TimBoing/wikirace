@@ -6,7 +6,7 @@ class PathsController < ApplicationController
     if start_page && end_page
       @path = Path.find_by(start_page: start_page, end_page: end_page)
       if !@path.blank?
-        render json: {min_click: @path.points.count} and return
+        render json: {min_click: @path.points.count - 1} and return
       end
       render json: {min_click: ""} and return
     else
