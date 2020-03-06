@@ -31,52 +31,68 @@
       </div>
 
       <div class="title-container centered-vertically white-shadow "><h3><span>Tes records mondiaux</span></h3></div>
-      <div class="record-cards">
-        <% @world_records.each do |world_record| %>
-          <div class="card record-card" data-game_session="<%= world_record.id %>">
-            <div class="begin-page">
-              <div class="color-red"><i class="fas fa-play"></i></div>
-              <div><%= world_record.start_page.title %></div>
+        <div class="record-cards">
+          <% @world_records.each do |world_record| %>
+            <div class="card record-card" data-game_session="<%= world_record.id %>">
+              <div class="begin-page">
+                <div class="color-red"><i class="fas fa-play"></i></div>
+                <% if world_record.start_page.title.length > 35 %>
+                  <div class="keep-all"><%= world_record.start_page.title.first(35) %>...</div>
+                <% else %>
+                  <div class="keep-all"><%= world_record.start_page.title %></div>
+                <% end %>
+              </div>
+              <div class="content-page">
+                <div class="record-content color-red"><%= world_record.points.count %> </div>
+                <div class="record-contentv keep-all">clicks</div>
+              </div>
+              <div class="content-page">
+                <div class="record-content color-red"><%= world_record.duration.to_i / 1000 %></div>
+                <div class="record-content keep-all">secondes</div>
+              </div>
+              <div class="begin-page">
+                <div class="color-red"><i class="fas fa-bullseye"></i></div>
+                <% if world_record.end_page.title.length > 35 %>
+                  <div class="keep-all"><%= world_record.end_page.title.first(35) %></div>
+                <% else %>
+                  <div class="keep-all"><%= world_record.end_page.title %></div>
+                <% end %>
+              </div>
             </div>
-            <div class="begin-page">
-              <div class="record-content color-red"><%= world_record.points.count %> </div>
-              <div class="record-content">clicks</div>
-            </div>
-            <div class="begin-page">
-              <div class="record-content color-red"><%= world_record.duration.to_i / 1000 %></div>
-              <div class="record-content">secondes</div>
-            </div>
-            <div class="begin-page">
-              <div class="color-red"><i class="fas fa-bullseye"></i></div>
-              <div><%= world_record.end_page.title %></div>
-            </div>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
 
       <div class="title-container centered-vertically white-shadow"><h3>Tes records perso</h3></div>
-      <div class="record-cards">
-        <% @personal_records.each do |personal_record| %>
-          <div class="card record-card" data-game_session="<%= personal_record.id %>">
-            <div id="begin-page">
-              <div class="color-red"><i class="fas fa-play"></i></div>
-              <div><%= personal_record.round.start_page %></div>
+        <div class="record-cards">
+          <% @personal_records.each do |personal_record| %>
+            <div class="card record-card" data-game_session="<%= personal_record.id %>">
+              <div class="begin-page">
+                <div class="color-red"><i class="fas fa-play"></i></div>
+                <% if personal_record.round.start_page.length > 35 %>
+                  <div class="keep-all"><%= personal_record.round.start_page.first(35) %>...</div>
+                <% else %>
+                  <div class="keep-all"><%= personal_record.round.start_page %></div>
+                <% end %>
+              </div>
+              <div class="content-page">
+                <div class="record-content color-red"><%= personal_record.visited_pages.count %> </div>
+                <div class="record-contentv keep-all">clicks</div>
+              </div>
+              <div class="content-page">
+                <div class="record-content color-red"><%= (personal_record.end_time.to_i - personal_record.round.start_time.to_i) / 1000 %></div>
+                <div class="record-content keep-all">secondes</div>
+              </div>
+              <div class="begin-page">
+                <div class="color-red"><i class="fas fa-bullseye"></i></div>
+                <% if personal_record.visited_pages.last.title.length > 35 %>
+                  <div class="keep-all"><%= personal_record.visited_pages.last.title.first(35) %></div>
+                <% else %>
+                  <div class="keep-all"><%= personal_record.visited_pages.last.title %></div>
+                <% end %>
+              </div>
             </div>
-            <div class="begin-page">
-              <div class="record-content color-red"><%= personal_record.visited_pages.count %> </div>
-              <div class="record-content">clicks</div>
-            </div>
-            <div class="begin-page">
-              <div class="record-content color-red"><%= (personal_record.end_time.to_i - personal_record.round.start_time.to_i) / 1000 %></div>
-              <div class="record-content">secondes</div>
-            </div>
-            <div class="begin-page">
-              <div class="color-red"><i class="fas fa-bullseye"></i></div>
-              <div><%= personal_record.visited_pages.last.title %></div>
-            </div>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
 
     </div>
   </div>
