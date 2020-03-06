@@ -6,7 +6,7 @@ const optionsSelection = () => {
   const reverseOption = document.getElementById("grid-option-reverse");
 
   const toggleActive = (element) => {
-    element.classList.toggle("active");
+    element.classList.toggle("selected");
   }
 
 

@@ -20,7 +20,7 @@
               <p>Pas encore de record sur ce chemin</p>
             </div>
 
-            <div id="force-cohesion">
+            <!-- <div id="force-cohesion"> -->
 
               <h4>Mode de jeu</h4>
               <%= hidden_field_tag :game_mode, 'Premier arrivé' %>
@@ -47,7 +47,7 @@
 
               <div id="grid-container-options">
 
-                <div class="grid-option selectable-option active" id="grid-option-search-bar">
+                <div class="grid-option selectable-option selected" id="grid-option-search-bar">
                   <i class="fas fa-search"></i>
                   <div class="title-option">Search Bar!</div>
                   <div class="validation-option">
@@ -65,7 +65,7 @@
 
               </div>
 
-            </div>
+            <!-- </div> -->
             <%= f.input :game_options, label: false,
               collection: ['Standard', 'Avec questions', 'Sans aide de recherche', 'Où est Charlie', 'Battlefield', 'Sens-interdit'],
               default: 'Standard' %>
