@@ -85,9 +85,9 @@
               <div class="begin-page">
                 <div class="color-red"><i class="fas fa-bullseye"></i></div>
                 <% if personal_record.visited_pages.last.title.length > 20 %>
-                  <div class="keep-all"><%= personal_record.visited_pages.last.title.first(20) %>...</div>
+                  <div class=""><%= personal_record.visited_pages.last.title.first(20) %>...</div>
                 <% else %>
-                  <div class="keep-all"><%= personal_record.visited_pages.last.title %></div>
+                  <div class=""><%= personal_record.visited_pages.last.title %></div>
                 <% end %>
               </div>
             </div>
