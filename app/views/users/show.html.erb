@@ -36,8 +36,8 @@
             <div class="card record-card" data-game_session="<%= world_record.id %>">
               <div class="begin-page">
                 <div class="color-red"><i class="fas fa-play"></i></div>
-                <% if world_record.start_page.title.length > 35 %>
-                  <div class="keep-all"><%= world_record.start_page.title.first(35) %>...</div>
+                <% if world_record.start_page.title.length > 20 %>
+                  <div class="keep-all"><%= world_record.start_page.title.first(20) %>...</div>
                 <% else %>
                   <div class="keep-all"><%= world_record.start_page.title %></div>
                 <% end %>
@@ -52,8 +52,8 @@
               </div>
               <div class="begin-page">
                 <div class="color-red"><i class="fas fa-bullseye"></i></div>
-                <% if world_record.end_page.title.length > 35 %>
-                  <div class="keep-all"><%= world_record.end_page.title.first(35) %></div>
+                <% if world_record.end_page.title.length > 20 %>
+                  <div class="keep-all"><%= world_record.end_page.title.first(20) %>...</div>
                 <% else %>
                   <div class="keep-all"><%= world_record.end_page.title %></div>
                 <% end %>
@@ -68,8 +68,8 @@
             <div class="card record-card" data-game_session="<%= personal_record.id %>">
               <div class="begin-page">
                 <div class="color-red"><i class="fas fa-play"></i></div>
-                <% if personal_record.round.start_page.length > 35 %>
-                  <div class="keep-all"><%= personal_record.round.start_page.first(35) %>...</div>
+                <% if personal_record.round.start_page.length > 20 %>
+                  <div class="keep-all"><%= personal_record.round.start_page.first(20) %>...</div>
                 <% else %>
                   <div class="keep-all"><%= personal_record.round.start_page %></div>
                 <% end %>
@@ -84,8 +84,8 @@
               </div>
               <div class="begin-page">
                 <div class="color-red"><i class="fas fa-bullseye"></i></div>
-                <% if personal_record.visited_pages.last.title.length > 35 %>
-                  <div class="keep-all"><%= personal_record.visited_pages.last.title.first(35) %></div>
+                <% if personal_record.visited_pages.last.title.length > 20 %>
+                  <div class="keep-all"><%= personal_record.visited_pages.last.title.first(20) %>...</div>
                 <% else %>
                   <div class="keep-all"><%= personal_record.visited_pages.last.title %></div>
                 <% end %>
