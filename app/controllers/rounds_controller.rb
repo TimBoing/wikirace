@@ -6,7 +6,7 @@ class RoundsController < ApplicationController
 
   def index
     @game_session = GameSession.find(params[:game_session_id])
-    @rounds = Round.where(game_session_id: @game_session.id)
+    @rounds = Round.where(game_session_id: @game_session.id).reverse
     @players = @game_session.users.uniq.sort_by{ |player| player.total_score_for(@game_session)}.reverse
   end
 

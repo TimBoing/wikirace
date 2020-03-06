@@ -60,6 +60,17 @@
               <% round_counter = 0 %>
               <% @rounds.each do |round| %>
                 <% if round.round_participations.where(user: player) == [] || round.round_participations.where(user: player).last.end_time.nil? %>
+                  <div class="round-recap">
+                    <% round_counter += 1 %>
+                    <div class="round-index-rank">
+                      <h4 class="rank-nrb">Round : <%= round_counter %></h4>
+                    </div>
+                    <% if %>
+                      <p>Rang : absent </p>
+                      <p>Score : absent </p>
+                      <p>Clicks : absent </p>
+                    <% end %>
+                  </div>
                 <% else %>
                   <div class="round-recap">
                     <% round_counter += 1 %>
