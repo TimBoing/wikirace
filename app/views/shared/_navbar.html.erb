@@ -23,12 +23,12 @@
             <%= link_to "Voir mes stats", user_path(current_user[:id]), class: "dropdown-item" %>
             <%= link_to "Editer l'utilisateur", edit_user_path(current_user[:id]), class: "dropdown-item" %>
             <%= link_to "Changer mot de passe / Email", edit_user_registration_path, class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Déconnection", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to "S'identifier", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
     </ul>
