@@ -1,7 +1,7 @@
 <div class="main-container" id="gs-show-main-container">
   <div class="title-container centered-vertically"><h1>Créer un compte</h1></div>
   <div class="content-container centered-vertically">
-    <div class="white-container centered-vertically">
+    <div class="white-container centered-vertically pb-0">
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
@@ -28,7 +28,7 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Créer !" %>
+          <%= f.button :submit, "Créer !", class:"btn-tim main-red" %>
         </div>
       <% end %>
 

@@ -1,7 +1,7 @@
 <div class="main-container" id="gs-show-main-container">
   <div class="title-container centered-vertically"><h1>Identification</h1></div>
   <div class="content-container centered-vertically">
-    <div class="white-container centered-vertically">
+    <div class="white-container centered-vertically pb-0">
 
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
          <div class="form-inputs">
@@ -19,7 +19,7 @@
          </div>
 
          <div class="form-actions">
-           <%= f.button :submit, "S'identifier" %>
+           <%= f.button :submit, "S'identifier", class:'btn-tim main-red' %>
          </div>
       <% end %>
 
