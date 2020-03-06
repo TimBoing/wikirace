@@ -97,7 +97,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 90%;
 }
 
 .record-card {
@@ -114,10 +114,23 @@
 }
 
 .begin-page {
+  width: 30%;
   display: flex;
   flex-direction: column;
+  word-break: keep-all;
 }
 
 .color-red {
   color: $main-red;
+}
+
+.content-page {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  word-break: keep-all;
+}
+
+.keep-all{
+  overflow-wrap: initial;
 }
