@@ -13,9 +13,10 @@
           <div class="centered-vertically" id="round-options-modal-content-after-header">
             <h4>Choix de page :</h4>
             <div id="page-choice-container">
-              <%= f.input :start_page, label: false, label: "Page de début :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2"} %>
-              <%= f.input :end_page, label: false, label: "Page cible :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2"}  %>
+              <%= f.input :start_page, label: false, label: "Page de début :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2", onchange: "checkRecord()"} %>
+              <%= f.input :end_page, label: false, label: "Page cible :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2", onchange: "checkRecord()"}  %>
             </div>
+
             <div id="nombre-de-clicks-record">
               <p>Pas encore de record sur ce chemin</p>
             </div>
@@ -75,11 +76,49 @@
             </div>
             <%= button_tag "Jouer",type: 'submit', class: "btn-tim", id:"round-options-ok-btn" %>
 
-
-
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+<script>
+
+  // RIEN A FAIRE ICI - A REFACTO MAIS BESOIN POUR LA DEMO
+  const roundStartPage = document.getElementById("round_start_page");
+  const roundEndPage = document.getElementById("round_end_page");
+  const recordSentence = document.getElementById("nombre-de-clicks-record");
+
+  const lookInDB = (start_end) => {
+  const requestOptions = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  }
+  fetch(`http://${window.location.host}/path?${start_end}`, requestOptions)
+    .then(response => response.json())
+    .then((data) => {
+      if (data.min_click === "") {
+        recordSentence.innerHTML = "Pas encore de record sur ce chemin";
+      } else {
+        recordSentence.innerHTML = `Le record pour ce couple de pages est de : <strong>${data.min_click} clicks</strong>`;
+      }
+    });
+  };
+
+  const buildQueryString = (start, end) => {
+    return new URLSearchParams({start_page: start, end_page: end}).toString();
+  }
+
+
+  const checkRecord = () => {
+    const start_title = roundStartPage.value;
+    const end_title = roundEndPage.value;
+    const start_end = buildQueryString(start_title, end_title);
+    lookInDB(start_end);
+  }
+
+</script>
