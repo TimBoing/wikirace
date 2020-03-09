@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     #   round_participation.round.game_session
     # }.uniq
     @world_records = current_user.paths
-    personal_records_all = current_user.round_participations.uniq { |round_participation| [round_participation.round.start_page, round_participation.round.end_page] }
+    personal_records_all = current_user.round_participations.sort_by { |round_participation| round_participation.visited_pages.count }.uniq { |round_participation| [round_participation.round.start_page, round_participation.round.end_page] }
     @personal_records = []
     personal_records_all.each do |personal_record|
       if personal_record.visited_pages.count > 1

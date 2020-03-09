@@ -13,11 +13,9 @@ class RoundParticipation < ApplicationRecord
     if record_path.blank?
       return true
     else
-      clicks_number_record = record_path.points.count
-      clicks_number_new = self.visited_pages.count
-      if clicks_number_new < clicks_number_record
+      if self.visited_pages.count < record_path.points.count
         return true
-      elsif record_path.user_id == self.user_id && clicks_number_new = clicks_number_record
+      elsif record_path.user_id == self.user_id && self.visited_pages.count == record_path.points.count
         return true
       end
       return false
@@ -30,6 +28,7 @@ class RoundParticipation < ApplicationRecord
       WikiPage.create(title: start_page_title, url: self.round.start_page_url)
     end
     start_page = WikiPage.find_by(title: start_page_title)
+
     end_page_title = self.visited_pages.last.title
     if WikiPage.find_by(title: end_page_title).blank?
       WikiPage.create(title: end_page_title, url: self.round.end_page_url)
