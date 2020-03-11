@@ -11,7 +11,10 @@
             <span class="close" id="close-round-options">&times;</span>
           </div>
           <div class="centered-vertically" id="round-options-modal-content-after-header">
-            <h4>Choix de page :</h4>
+            <h4>Choix de pages :</h4>
+            <div class="info-bubble-pages" id="info-bubble-pages">
+              <i class="fas fa-info-circle"></i>
+            </div>
             <div id="page-choice-container">
               <%= f.input :start_page, label: false, label: "Page de début :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2", onchange: "checkRecord()"} %>
               <%= f.input :end_page, label: false, label: "Page cible :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2", onchange: "checkRecord()"}  %>
@@ -23,7 +26,10 @@
 
             <!-- <div id="force-cohesion"> -->
 
-              <h4>Mode de jeu</h4>
+              <h4>Modes de jeu :</h4>
+              <div class="info-bubble-modes" id="info-bubble-modes">
+                <i class="fas fa-info-circle"></i>
+              </div>
               <%= hidden_field_tag :game_mode, 'Premier arrivé' %>
               <div id="grid-container-options">
                 <div class="grid-option" id="grid-option-time-limit">
@@ -44,8 +50,10 @@
               </div>
 
 
-              <h4>Option de jeu</h4>
-
+              <h4>Options de jeu :</h4>
+              <div class="info-bubble-options" id="info-bubble-options">
+                <i class="fas fa-info-circle"></i>
+              </div>
               <div id="grid-container-options">
 
                 <div class="grid-option selectable-option selected" id="grid-option-search-bar">
@@ -80,6 +88,34 @@
         </div>
       </div>
     <% end %>
+  </div>
+</div>
+
+<div class="modal-info-pages">
+  <div id="modal-info-pages">
+    <span>Le choix des pages :<a href="#close" id="close-pages">&#215;</a></span>
+    <p><strong>Par défault le choix des pages est aléatoire.</strong></p>
+    <p><em>Note: , mais il est possible de choisir sa page de départ, sa page de fin ou les deux à la fois. Il est aussi possible de demander un couple de pages "facile" (considéré comme tel car ayant déjà été relié 5 clicks ou moins.</em></p>
+  </div>
+</div>
+
+<div class="modal-info-modes">
+  <div id="modal-info-modes">
+    <span>Le choix des modes :<a href="#close" id="close-modes">&#215;</a></span>
+    <p><strong>Premier arrivé :</strong> Mode de jeu par défault. La partie s'arrete lorsque l'un des joueurs arrive sur la page cible. Celui-ci gagne alors 100 points, les autres perdent autant de points que de nombres de clicks réalisés.</p>
+    <p><strong>Limite de clicks : (en développement)</strong> Le créateur fixe une limite de clicks. La partie s'arrete individuellement pour chaque joueur, soit que celui-ci a trouver la page cible, soit qu'il a atteint le nombre maximum de clicks autorisés. Le classement se fait pour ceux qui ont trouvé la page cible par ordre croissant de nombre de click et pour ceux qui ont échoué, par ordre croissant de temps.</p>
+    <p><strong>Limite de temps : (en développement)</strong> Le créateur fixe une limite de temps. La partie s'arrete individuellement pour chaque joueur, soit que celui-ci a trouver la page cible, soit qu'il a atteint le temps maximum autorisés. Le classement se fait pour ceux qui ont trouvé la page cible par ordre croissant de nombre de click et pour ceux qui ont échoué, par ordre croissant de clicks.</p>
+    <p><em>Note: Il est possible de combiner les modes de jeu "limite de clicks" et "limite de temps" afin d'avoir une limite sur ces deux paramètres.</em></p>
+  </div>
+</div>
+
+<div class="modal-info-options">
+  <div id="modal-info-options">
+    <span>Le choix des options :<a href="#close" id="close-options">&#215;</a></span>
+    <p><strong>Search bar :</strong> Elle est active par défault. C'est une barre de recherche qui surligne en jaune (mais ne déplace pas la vue) les mots contenant la suite de charctères recherchées (en un seul bloc) dans l'article.</p>
+    <p><strong>Reverse : (en développement)</strong></p>
+    <p><strong>Précédent : (en développement)</strong></p>
+    <p><em>Note: Il est possible de combiner plusieurs options de jeu dans le même round.</em></p>
   </div>
 </div>
 
