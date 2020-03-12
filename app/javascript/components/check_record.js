@@ -1,71 +1,60 @@
+const pageChoiceContainer = document.getElementById('page-choice-container');
+const recordSentence = document.getElementById("nombre-de-clicks-record");
+let startPage = "Page aléatoire";
+let endPage = "Page aléatoire";
+
+const checkRecord = () => {
 
 
-// const roundOptionModal = document.getElementById("round-options-modal-content-after-header");
-// const roundStartPage = document.getElementById("round_start_page");
-// const roundEndPage = document.getElementById("round_end_page");
-// const recordSentence = document.getElementById("nombre-de-clicks-record");
-// const testT = document.querySelectorAll(".js-select2");
-// const lookInDB = (start_end) => {
-//   const requestOptions = {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Accept': 'application/json'
-//     }
-//   }
-//   fetch(`http://${window.location.host}/path?${start_end}`, requestOptions)
-//   .then(response => response.json())
-//   .then((data) => {
-//     if (data.min_click === "") {
-//       recordSentence.innerHTML = "Pas encore de record sur ce chemin";
-//     } else {
-//       recordSentence.innerHTML = `Le record pour ce couple de pages est de : <strong>${data.min_click} clicks</strong>`;
-//     }
-//   });
-// };
+  const lookInDB = (start_end) => {
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }
+    fetch(`http://${window.location.host}/path?${start_end}`, requestOptions)
+      .then(response => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.min_click === "") {
+          recordSentence.innerHTML = "Pas encore de record sur ce chemin";
+        } else {
+          recordSentence.innerHTML = `Le record pour ce couple de pages est de : <strong>${data.min_click} clicks</strong>`;
+        }
+    });
+  };
 
-// const buildQueryString = (start, end) => {
-//   return new URLSearchParams({start_page: start, end_page: end}).toString();
-// }
+  const buildQueryString = (start, end) => {
+    return new URLSearchParams({start_page: start, end_page: end}).toString();
+  }
 
-// const handleSelect = (event) => {
-//   const start_title = roundStartPage.value;
-//   const end_title = roundEndPage.value;
-//   const start_end = buildQueryString(start_title, end_title);
-//   lookInDB(start_end);
+  const firstFilter = () => {
+    if( startPage === "Page aléatoire" || endPage === "Page aléatoire" ){
+       recordSentence.innerHTML = "Pas encore de record sur ce chemin";
+    }else{
+      const startEnd = buildQueryString(startPage, endPage);
+      console.log('tvb');
+      lookInDB(startEnd);
+    }
+  }
 
-// }
+  if(pageChoiceContainer){
+    $('#round_start_page').on('select2:select', function (e) {
+      startPage = e.params.data.id;
+      firstFilter();
+    });
 
-// const checkRecord = () => {
+    $('#round_end_page').on('select2:select', function (e) {
+      endPage = e.params.data.id;
+      firstFilter();
+    });
+  }
 
-//   if(roundOptionModal){
-//     // roundStartPage.addEventListener("change", handleSelect);
-//     // roundEndPage.addEventListener("change", handleSelect);
-//   }
-// }
-
-// const testTim = () => {
-
-
-//   if(testT){
-
-
-//     console.log("step 1");
-
-//      testT.forEach((test) => {
-//       test.addEventListener('onchange', (event) =>  {
-//       // Do something
-//         console.log("ouais");
-//       });
-
-//     });
+}
 
 
-//   }
 
 
-// }
-
-
-// export { checkRecord };
-// export { testTim };
+export { checkRecord };

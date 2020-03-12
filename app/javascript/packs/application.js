@@ -37,11 +37,12 @@ handleRoundInfoModal();
 highlight();
 // handleRoundPathsModals();
 alertBrowser();
-//checkRecord();
+
 displayPathInfo();
 displayRoundsInfo();
 searchBar();
 select2js();
+checkRecord();
 optionsSelection();
 //trackMouse();
 
