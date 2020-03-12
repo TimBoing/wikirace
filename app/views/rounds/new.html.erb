@@ -11,10 +11,17 @@
             <span class="close" id="close-round-options">&times;</span>
           </div>
           <div class="centered-vertically" id="round-options-modal-content-after-header">
+
             <h4>Choix de pages :</h4>
+
+
+            <div id="easy-path">Générer un chemin "facile"</div>
+            <div id="easy-path-suggestion"></div>
             <div class="info-bubble-pages" id="info-bubble-pages">
               <i class="fas fa-info-circle"></i>
             </div>
+
+
             <div id="page-choice-container">
               <%= f.input :start_page, label: false, label: "Page de début :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2", onchange: "checkRecord()"} %>
               <%= f.input :end_page, label: false, label: "Page cible :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2", onchange: "checkRecord()"}  %>
