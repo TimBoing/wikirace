@@ -79,6 +79,14 @@
                   </div>
                 </div>
 
+                <div class="grid-option selectable-option" id="grid-option-back">
+                  <i class="fas fa-chevron-circle-left"></i>
+                  <div class="title-option">Back!</div>
+                  <div class="validation-option">
+                    <i class="fas fa-check"></i>
+                  </div>
+                </div>
+
               </div>
 
             <!-- </div> -->
@@ -88,6 +96,7 @@
             <div class="not-visible">
               <%= f.input :search_bar, default: true %>
               <%= f.input :reverse, default: false %>
+              <%= f.input :back, default: true %>
             </div>
             <%= button_tag "Jouer",type: 'submit', class: "btn-tim", id:"round-options-ok-btn" %>
 

@@ -35,8 +35,11 @@
 
 
       <div id="game-actions-bar">
-        <i class="fas fa-chevron-circle-left" id="action-previous-page"></i>
-        <!-- <i class="fas fa-search" id="action-search-page"></i> -->
+        <% if @round.back %>
+          <i class="fas fa-chevron-circle-left" id="action-previous-page"></i>
+        <% else %>
+          <div> </div>
+        <% end %>
         <div id="timer-container">00:00:00</div>
 
         <i class="fas fa-bullseye" id="action-target-page"></i>
