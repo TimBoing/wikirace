@@ -41,8 +41,11 @@ alertBrowser();
 displayPathInfo();
 displayRoundsInfo();
 searchBar();
+
 select2js();
 checkRecord();
+defineEasyPath();
+
 optionsSelection();
 //trackMouse();
 
@@ -50,6 +53,6 @@ modalInfoJoin();
 modalInfoPages();
 modalInfoModes();
 modalInfoOptions();
-defineEasyPath();
+
 
 
