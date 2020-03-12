@@ -17,7 +17,7 @@ const checkRecord = () => {
     fetch(`http://${window.location.host}/path?${start_end}`, requestOptions)
       .then(response => response.json())
       .then((data) => {
-        console.log(data);
+
         if (data.min_click === "") {
           recordSentence.innerHTML = "Pas encore de record sur ce chemin";
         } else {
@@ -35,18 +35,20 @@ const checkRecord = () => {
        recordSentence.innerHTML = "Pas encore de record sur ce chemin";
     }else{
       const startEnd = buildQueryString(startPage, endPage);
-      console.log('tvb');
+
       lookInDB(startEnd);
     }
   }
 
   if(pageChoiceContainer){
     $('#round_start_page').on('select2:select', function (e) {
+      if(!e.params) return;
       startPage = e.params.data.id;
       firstFilter();
     });
 
     $('#round_end_page').on('select2:select', function (e) {
+      if(!e.params) return;
       endPage = e.params.data.id;
       firstFilter();
     });
