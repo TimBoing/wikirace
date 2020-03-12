@@ -42,7 +42,6 @@ const displayPageContent = (page) => {
       }
     });
   });
-  console.log(`reverse : ${gameReverse}`);
   if(gameReverse === "true"){addMalusLinks();};
 };
 

@@ -31,23 +31,23 @@ const initGameActionsBar = () => {
     });
   }
 
-
-  const initActionPreviousPage = () => {
-    actionPreviousPage.addEventListener('click', (event) => {
-      visitedPages = visitedPagesGetter();
-      if(visitedPages.length > 1){
-        visitedPages.pop();
-        visitedPagesSetter(visitedPages);
-        const previousPage = visitedPages[visitedPages.length - 1];
-        requestPageContent(previousPage);
-      }
-    });
-
+  if (actionPreviousPage) {
+    const initActionPreviousPage = () => {
+      actionPreviousPage.addEventListener('click', (event) => {
+        visitedPages = visitedPagesGetter();
+        if(visitedPages.length > 1){
+          visitedPages.pop();
+          visitedPagesSetter(visitedPages);
+          const previousPage = visitedPages[visitedPages.length - 1];
+          requestPageContent(previousPage);
+        }
+      });
+    }
+    initActionPreviousPage ();
   }
 
-  initActionTargetPage ();
-  initActionPreviousPage ();
 
+  initActionTargetPage ();
 }
 
 
