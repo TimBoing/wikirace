@@ -38,7 +38,9 @@ class RoundParticipation < ApplicationRecord
     record_path = Path.find_by(start_page: start_page, end_page: end_page)
 
     # creation of the new path
-    if record_path.blank?
+    if start_page == end_page
+      #nothing happens
+    elsif record_path.blank?
       Path.create(user: current_user, start_page: start_page, end_page: end_page, duration: (self.end_time.to_i - self.round.start_time.to_i))
     else
       record_path.update(user: current_user, start_page: start_page, end_page: end_page, duration: (self.end_time.to_i - self.round.start_time.to_i))
