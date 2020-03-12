@@ -12,14 +12,17 @@
           </div>
           <div class="centered-vertically" id="round-options-modal-content-after-header">
 
-            <h4>Choix de pages :</h4>
-
+            <div class="info-container-title-icon">
+              <div>
+                <h4>Choix de pages :</h4>
+              </div>
+              <div class="info-bubble-pages" id="info-bubble-pages">
+                <i class="fas fa-info-circle"></i>
+              </div>
+            </div>
 
             <div id="easy-path">Générer un chemin "facile"</div>
             <div id="easy-path-suggestion"></div>
-            <div class="info-bubble-pages" id="info-bubble-pages">
-              <i class="fas fa-info-circle"></i>
-            </div>
 
 
             <div id="page-choice-container">
@@ -31,63 +34,75 @@
               <p>Pas encore de record sur ce chemin</p>
             </div>
 
-            <!-- <div id="force-cohesion"> -->
-
-              <h4>Modes de jeu :</h4>
+            <div class="info-container-title-icon">
+              <div>
+                <h4>Modes de jeu :</h4>
+              </div>
               <div class="info-bubble-modes" id="info-bubble-modes">
                 <i class="fas fa-info-circle"></i>
               </div>
-              <%= hidden_field_tag :game_mode, 'Premier arrivé' %>
-              <div id="grid-container-options">
-                <div class="grid-option" id="grid-option-time-limit">
-                  <i class="far fa-clock"></i>
-                  <div class="title-option">Time Limit!</div>
-                  <div class="validation-option">
-                    <i class="fas fa-check"></i>
-                  </div>
-                </div>
+            </div>
 
-                <div class="grid-option" id="grid-option-click-limit">
-                  <i class="fas fa-mouse-pointer"></i>
-                  <div class="title-option">Click Limit!</div>
-                  <div class="validation-option">
-                    <i class="fas fa-check"></i>
-                  </div>
+            <%= hidden_field_tag :game_mode, 'Premier arrivé' %>
+            <div id="grid-container-options" style="opacity : 0.5">
+              <div class="grid-option" id="grid-option-time-limit">
+                <i class="far fa-clock"></i>
+                <div class="title-option">Time Limit!</div>
+                <div class="validation-option">
+                  <i class="fas fa-check"></i>
                 </div>
               </div>
 
+              <div class="grid-option" id="grid-option-click-limit">
+                <i class="fas fa-mouse-pointer"></i>
+                <div class="title-option">Click Limit!</div>
+                <div class="validation-option">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+            </div>
 
-              <h4>Options de jeu :</h4>
+            <div class="info-container-title-icon">
+              <div>
+                <h4>Options de jeu :</h4>
+              </div>
               <div class="info-bubble-options" id="info-bubble-options">
                 <i class="fas fa-info-circle"></i>
               </div>
-              <div id="grid-container-options">
+            </div>
 
-                <div class="grid-option selectable-option selected" id="grid-option-search-bar">
-                  <i class="fas fa-search"></i>
-                  <div class="title-option">Search Bar!</div>
-                  <div class="validation-option">
-                    <i class="fas fa-check"></i>
-                  </div>
+            <div id="grid-container-options">
+              <div class="grid-option selectable-option selected" id="grid-option-search-bar">
+                <i class="fas fa-search"></i>
+                <div class="title-option">Search Bar!</div>
+                <div class="validation-option">
+                  <i class="fas fa-check"></i>
                 </div>
-
-                <div class="grid-option selectable-option" id="grid-option-reverse">
-                  <i class="fas fa-sync-alt"></i>
-                  <div class="title-option">Reverse!</div>
-                  <div class="validation-option">
-                    <i class="fas fa-check"></i>
-                  </div>
-                </div>
-
-                <div class="grid-option selectable-option" id="grid-option-back">
-                  <i class="fas fa-chevron-circle-left"></i>
-                  <div class="title-option">Back!</div>
-                  <div class="validation-option">
-                    <i class="fas fa-check"></i>
-                  </div>
-                </div>
-
               </div>
+              <div class="grid-option selectable-option" id="grid-option-reverse">
+                <i class="fas fa-sync-alt"></i>
+                <div class="title-option">Reverse!</div>
+                <div class="validation-option">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+            </div>
+            <div id="grid-container-options">
+              <div class="grid-option selectable-option selected" id="grid-option-back">
+                <i class="fas fa-chevron-circle-left"></i>
+                <div class="title-option">Back!</div>
+                <div class="validation-option">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+              <div class="grid-option selectable-option" id="grid-option-where_is_charlie" style="opacity : 0.5">
+                <i class="fas fa-question"></i>
+                <div class="title-option">Where is ...?</div>
+                <div class="validation-option">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+            </div>
 
             <!-- </div> -->
             <%= f.input :game_options, label: false,
