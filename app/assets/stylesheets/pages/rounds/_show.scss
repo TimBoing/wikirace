@@ -84,6 +84,7 @@
 
   &:hover {
     cursor: pointer;
+    opacity: 1;
   }
 
 
@@ -110,6 +111,37 @@
     font-size: 30px;
 
   }
+}
+
+
+#quite-icon-container{
+  width: 70px;
+  max-width: 70px;
+  height: 100%;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  font-size: 30px;
+  position: fixed;
+  top: 2%;
+  left: 2%;
+  z-index: 10;
+  height: 8vh;
+  width: 15%;
+  max-width: 70px;
+  display: flex;
+
+  .quite-btn{
+    color: $main-red;
+    opacity: 0.5;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+  }
+
+
 }
 
 

@@ -12,6 +12,12 @@
         <!-- <div id="portal-test" class="small-portal"></div> -->
       </div>
 
+      <div id="quite-icon-container">
+        <%= link_to "#{@host_name}#{root_path}", class: "quite-btn" do %>
+          <i class="far fa-times-circle" id="quite-icon"></i>
+        <% end %>
+      </div>
+
       <!-- <div id="game-actions-bar-top">
 
           <i class="fas fa-search" id="game-actions-search"></i>
