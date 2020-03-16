@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'creator/show'
   devise_for :users
   mount ActionCable.server => "/cable"
 
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit, :update, :show]
   resource :path, only: [:show]
+  resources :creators, only: [:show]
 
   resources :game_sessions, only: [:new, :create, :show], shallow: true do
     resources :messages, only: [:create]
