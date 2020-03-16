@@ -3,7 +3,6 @@
   <div id="left-mouse">Left mouse : 0</div> -->
 <!-- --------------------------------------------- -->
 
-
  <div class="container-fluid d-flex align-items-center justify-content-center">
     <div id="game-container" class="" >
 
@@ -17,6 +16,14 @@
           <i class="far fa-times-circle" id="quit-icon"></i>
         <% end %>
       </div>
+
+
+      <div id="path-icon-container">
+        <%= link_to "#{@host_name}#{round_participation_visited_pages_path(@round_participation_id)}" do %>
+          <i class="fas fa-route" id="path-icon"></i>
+        <% end %>
+      </div>
+
 
       <!-- <div id="game-actions-bar-top">
 
@@ -68,6 +75,20 @@
   </div>
 </div>
 
+<% if params[:visited_pages].blank? %>
+<% else %>
+  <div id="game-path-modal" class="modal">
+    <div class="modal-content centered-vertically">
+      <span class="close" id="close-game-path-modal">&times;</span>
+      <h1>Ta route actuelle :</h1>
+      <div id="beginning-of-the-path"><%= @round.start_page %></div>
+      <% @visited_pages.each do |visited_page|%>
+        <div><%= visited_page %></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
 <div id="game-end-modal" class="modal">
   <div class="modal-content centered-vertically">
     <h1>La partie est terminée!</h1>
@@ -75,7 +96,6 @@
     <%= link_to 'Résultats', "#{@host_name}#{round_round_participations_path(@round)}", class: "btn-tim", id:"to-results-btn" %>
   </div>
 </div>
-
 
 <div id="game-info"
   data-current-user="<%= current_user.id %>"

@@ -8,6 +8,12 @@ class VisitedPagesController < ApplicationController
     @visited_page.save
   end
 
+  def index
+    @round_participation = RoundParticipation.find(params[:round_participation_id])
+    @visited_pages = @round_participation.visited_pages
+    render json: {visited_page: "ok"} and return
+  end
+
   private
 
   def visited_page_params
