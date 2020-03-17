@@ -10,8 +10,8 @@ class VisitedPagesController < ApplicationController
 
   def index
     @round_participation = RoundParticipation.find(params[:round_participation_id])
-    @visited_pages = @round_participation.visited_pages
-    render json: {visited_page: "ok"} and return
+    visited_pages = @round_participation.visited_pages
+    render json: {visited_page: visited_pages} and return
   end
 
   private

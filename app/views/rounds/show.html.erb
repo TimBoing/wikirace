@@ -19,9 +19,7 @@
 
 
       <div id="path-icon-container">
-        <%= link_to "#{@host_name}#{round_participation_visited_pages_path(@round_participation_id)}" do %>
           <i class="fas fa-route" id="path-icon"></i>
-        <% end %>
       </div>
 
 
@@ -75,19 +73,13 @@
   </div>
 </div>
 
-<% if params[:visited_pages].blank? %>
-<% else %>
-  <div id="game-path-modal" class="modal">
-    <div class="modal-content centered-vertically">
-      <span class="close" id="close-game-path-modal">&times;</span>
-      <h1>Ta route actuelle :</h1>
-      <div id="beginning-of-the-path"><%= @round.start_page %></div>
-      <% @visited_pages.each do |visited_page|%>
-        <div><%= visited_page %></div>
-      <% end %>
-    </div>
+<div id="game-path-modal" class="modal">
+  <div class="modal-content centered-vertically">
+    <span class="close" id="close-game-path-modal">&times;</span>
+    <h1>Ta route actuelle :</h1>
+    <div id="beginning-of-the-path"></div>
   </div>
-<% end %>
+</div>
 
 <div id="game-end-modal" class="modal">
   <div class="modal-content centered-vertically">
