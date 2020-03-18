@@ -21,6 +21,7 @@
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Voir mes stats", user_path(current_user[:id]), class: "dropdown-item" %>
+            <%= link_to "Les regles du jeu", rules_path, class: "dropdown-item" %>
             <%= link_to "Editer l'utilisateur", edit_user_path(current_user[:id]), class: "dropdown-item" %>
             <%= link_to "Changer mot de passe / Email", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Déconnection", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
@@ -28,7 +29,10 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "S'identifier", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Les regles du jeu", rules_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "S'identifier", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
     </ul>
