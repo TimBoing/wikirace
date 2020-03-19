@@ -12,11 +12,17 @@ class UsersController < ApplicationController
     # @game_sessions_played = current_user.round_participations.map { |round_participation|
     #   round_participation.round.game_session
     # }.uniq
-    @world_records = current_user.paths
+    world_records_all = current_user.paths.sort_by { |path| path.points.count }
+    @world_records = []
+    world_records_all.each do |world_record|
+      if world_record.points.count > 2
+        @world_records << world_record
+      end
+    end
     personal_records_all = current_user.round_participations.sort_by { |round_participation| round_participation.visited_pages.count }.uniq { |round_participation| [round_participation.round.start_page, round_participation.round.end_page] }
     @personal_records = []
     personal_records_all.each do |personal_record|
-      if personal_record.visited_pages.count > 1
+      if personal_record.visited_pages.count > 2
         @personal_records << personal_record
       end
     end

@@ -13,107 +13,115 @@
           <div class="centered-vertically" id="round-options-modal-content-after-header">
 
             <div class="info-container-title-icon">
-              <div>
-                <h4>Choix de pages :</h4>
+              <div class="title-and-chevron" id="pages-choice">
+                <i class="fas fa-chevron-down chevron" style="display: block"></i>
+                <i class="fas fa-chevron-up chevron" style="display: none"></i>
+                <div class="title-container centered-vertically white-shadow "><h4>Pages :</h4></div>
               </div>
               <div class="info-bubble-pages" id="info-bubble-pages">
                 <i class="fas fa-info-circle"></i>
               </div>
             </div>
+            <div id="pages-choice-collapsible" style="display: none">
+              <div id="easy-path">Générer un chemin "facile"</div>
+              <div id="easy-path-suggestion"></div>
 
-            <div id="easy-path">Générer un chemin "facile"</div>
-            <div id="easy-path-suggestion"></div>
 
+              <div id="page-choice-container">
+                <%= f.input :start_page, label: false, label: "Page de début :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2"} %>
+                <%= f.input :end_page, label: false, label: "Page cible :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2"}  %>
+              </div>
 
-            <div id="page-choice-container">
-              <%= f.input :start_page, label: false, label: "Page de début :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2"} %>
-              <%= f.input :end_page, label: false, label: "Page cible :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2"}  %>
-            </div>
-
-            <div id="nombre-de-clicks-record">
-              <p>Pas encore de record sur ce chemin</p>
+              <div id="nombre-de-clicks-record">
+                <p>Pas encore de record sur ce chemin</p>
+              </div>
             </div>
 
             <div class="info-container-title-icon">
-              <div>
-                <h4>Modes de jeu :</h4>
+              <div class="title-and-chevron" id="modes-choice">
+                <i class="fas fa-chevron-down chevron" style="display: block"></i>
+                <i class="fas fa-chevron-up chevron" style="display: none"></i>
+                <div class="title-container centered-vertically white-shadow "><h4>Modes :</h4></div>
               </div>
               <div class="info-bubble-modes" id="info-bubble-modes">
                 <i class="fas fa-info-circle"></i>
               </div>
             </div>
-
-            <%= hidden_field_tag :game_mode, 'Premier arrivé' %>
-            <div id="grid-container-options" style="opacity : 0.5">
-              <div class="grid-option" id="grid-option-time-limit">
-                <i class="far fa-clock"></i>
-                <div class="title-option">Time Limit!</div>
-                <div class="validation-option">
-                  <i class="fas fa-check"></i>
+            <div id="modes-choice-collapsible" style="display: none">
+              <%= hidden_field_tag :game_mode, 'Premier arrivé' %>
+              <div id="grid-container-options" style="opacity : 0.5">
+                <div class="grid-option" id="grid-option-time-limit">
+                  <i class="far fa-clock"></i>
+                  <div class="title-option">Time Limit!</div>
+                  <div class="validation-option">
+                    <i class="fas fa-check"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="grid-option" id="grid-option-click-limit">
-                <i class="fas fa-mouse-pointer"></i>
-                <div class="title-option">Click Limit!</div>
-                <div class="validation-option">
-                  <i class="fas fa-check"></i>
+                <div class="grid-option" id="grid-option-click-limit">
+                  <i class="fas fa-mouse-pointer"></i>
+                  <div class="title-option">Click Limit!</div>
+                  <div class="validation-option">
+                    <i class="fas fa-check"></i>
+                  </div>
                 </div>
               </div>
             </div>
 
             <div class="info-container-title-icon">
-              <div>
-                <h4>Options de jeu :</h4>
+              <div class="title-and-chevron" id="options-choice">
+                <i class="fas fa-chevron-down chevron" style="display: block"></i>
+                <i class="fas fa-chevron-up chevron" style="display: none"></i>
+                <div class="title-container centered-vertically white-shadow "><h4>Options :</h4></div>
               </div>
               <div class="info-bubble-options" id="info-bubble-options">
                 <i class="fas fa-info-circle"></i>
               </div>
             </div>
+            <div id="options-choice-collapsible" style="display: none">
+              <div id="grid-container-options">
+                <div class="grid-option selectable-option selected" id="grid-option-search-bar">
+                  <i class="fas fa-search"></i>
+                  <div class="title-option">Search Bar!</div>
+                  <div class="validation-option">
+                    <i class="fas fa-check"></i>
+                  </div>
+                </div>
+                <div class="grid-option selectable-option" id="grid-option-reverse">
+                  <i class="fas fa-sync-alt"></i>
+                  <div class="title-option">Reverse!</div>
+                  <div class="validation-option">
+                    <i class="fas fa-check"></i>
+                  </div>
+                </div>
+              </div>
+              <div id="grid-container-options">
+                <div class="grid-option selectable-option selected" id="grid-option-back">
+                  <i class="fas fa-chevron-circle-left"></i>
+                  <div class="title-option">Back!</div>
+                  <div class="validation-option">
+                    <i class="fas fa-check"></i>
+                  </div>
+                </div>
+                <div class="grid-option selectable-option" id="grid-option-where_is_charlie" style="opacity : 0.5">
+                  <i class="fas fa-question"></i>
+                  <div class="title-option">Where is ...?</div>
+                  <div class="validation-option">
+                    <i class="fas fa-check"></i>
+                  </div>
+                </div>
+              </div>
 
-            <div id="grid-container-options">
-              <div class="grid-option selectable-option selected" id="grid-option-search-bar">
-                <i class="fas fa-search"></i>
-                <div class="title-option">Search Bar!</div>
-                <div class="validation-option">
-                  <i class="fas fa-check"></i>
-                </div>
+              <%= f.input :game_options, label: false,
+                collection: ['Standard', 'Avec questions', 'Sans aide de recherche', 'Où est Charlie', 'Battlefield', 'Sens-interdit'],
+                default: 'Standard' %>
+              <div class="not-visible">
+                <%= f.input :search_bar, default: true %>
+                <%= f.input :reverse, default: false %>
+                <%= f.input :back, default: true %>
               </div>
-              <div class="grid-option selectable-option" id="grid-option-reverse">
-                <i class="fas fa-sync-alt"></i>
-                <div class="title-option">Reverse!</div>
-                <div class="validation-option">
-                  <i class="fas fa-check"></i>
-                </div>
-              </div>
+              <%= button_tag "Jouer",type: 'submit', class: "btn-tim", id:"round-options-ok-btn" %>
             </div>
-            <div id="grid-container-options">
-              <div class="grid-option selectable-option selected" id="grid-option-back">
-                <i class="fas fa-chevron-circle-left"></i>
-                <div class="title-option">Back!</div>
-                <div class="validation-option">
-                  <i class="fas fa-check"></i>
-                </div>
-              </div>
-              <div class="grid-option selectable-option" id="grid-option-where_is_charlie" style="opacity : 0.5">
-                <i class="fas fa-question"></i>
-                <div class="title-option">Where is ...?</div>
-                <div class="validation-option">
-                  <i class="fas fa-check"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- </div> -->
-            <%= f.input :game_options, label: false,
-              collection: ['Standard', 'Avec questions', 'Sans aide de recherche', 'Où est Charlie', 'Battlefield', 'Sens-interdit'],
-              default: 'Standard' %>
-            <div class="not-visible">
-              <%= f.input :search_bar, default: true %>
-              <%= f.input :reverse, default: false %>
-              <%= f.input :back, default: true %>
-            </div>
-            <%= button_tag "Jouer",type: 'submit', class: "btn-tim", id:"round-options-ok-btn" %>
 
           </div>
         </div>
