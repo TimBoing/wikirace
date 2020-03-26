@@ -17,3 +17,16 @@
   </div>
 </div>
 
+<% content_for :after_js do %>
+  <script>
+    App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create(
+    { channel: 'GameSessionChannel', game_session_id: <%= @game_session.id %> },
+    {received: (data) => {
+      if (data.new_round_link_off) {
+        const replayButtonForPlayer = document.querySelector('#btn-join');
+        replayButtonForPlayer.outerHTML = data.new_round_link_off;
+      } else {}
+      }
+    })
+  </script>
+<% end %>
