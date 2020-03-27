@@ -138,6 +138,17 @@ const gameLoop = () => {
         if(pageContainer.classList.contains('reverse-effect')){
         }else{
           pageContainer.classList.add('reverse-effect');
+          const messageReceived = document.getElementById('malus-reverse');
+          const messageReceivedPromise = messageReceived.play();
+          messageReceived.currentTime = 0;
+          if (messageReceivedPromise !== undefined) {
+            messageReceivedPromise.then(function() {
+              messageReceived.play();
+            }).catch(function(error) {
+              messageReceived.play();
+              console.log("Probleme de chargement du son pour reverse effect!");
+            });
+          }
         }
       }else {
         if(pageContainer.classList.contains('reverse-effect')){pageContainer.classList.remove('reverse-effect')}
