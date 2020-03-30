@@ -15,7 +15,7 @@ class RoundsController < ApplicationController
     @round = Round.find(params[:id])
     @game_session = @round.game_session
     @round_participation_id = @round.round_participations.where(user: current_user).first.id
-    ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", content: @round.id) if @round.state != "playing"
+    ActionCable.server.broadcast("game_session_channel_#{@game_session.id}", content: @round.id, new_round_link_off: '<button class="player_replay_button btn-tim main-red" style="opacity: 0.5;"><i>Désolé, la partie a déjà commencé...</i></button>') if @round.state != "playing"
     @round.update(state: "playing")
   end
 
