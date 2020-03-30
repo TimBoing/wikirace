@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   mount ActionCable.server => "/cable"
 
   root to: 'game_sessions#new'
-
+  resource :rules, only: [:show]
   resources :users, only: [:edit, :update, :show]
   resource :path, only: [:show]
   resources :creators, only: [:show]
