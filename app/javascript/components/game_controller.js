@@ -143,6 +143,11 @@ const gameLoop = () => {
         if(pageContainer.classList.contains('reverse-effect')){pageContainer.classList.remove('reverse-effect')}
       }
     }
+
+    if(gameInfo.dataset.malus === "reverse-end"){
+      if(pageContainer.classList.contains('reverse-effect')){pageContainer.classList.remove('reverse-effect')}
+    }
+
     break;
   //-----------------------------------------------------------------------------
   case 'ended':
