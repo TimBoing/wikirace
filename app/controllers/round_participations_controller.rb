@@ -19,7 +19,8 @@ class RoundParticipationsController < ApplicationController
     if @round_participation.is_the_best?
       @round_participation.save_record(current_user)
     end
-
+    @game_session = @round_participation.round.game_session
+    @next_round = @game_session.rounds.last
     @sorted_round_participations = @round_participations.sort_by{ |round_participation| round_participation.rank}
     @players = @sorted_round_participations.map { |round_participation| round_participation.user }
   end

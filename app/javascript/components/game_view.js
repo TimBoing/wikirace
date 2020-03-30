@@ -36,6 +36,17 @@ const displayPageContent = (page) => {
       if(event.currentTarget.classList.contains('new')){
         alert('Ce lien est mort');
       }else{
+        const messageReceived = document.getElementById('link-clicked');
+        const messageReceivedPromise = messageReceived.play();
+        messageReceived.currentTime = 0;
+        if (messageReceivedPromise !== undefined) {
+          messageReceivedPromise.then(function() {
+            messageReceived.play();
+          }).catch(function(error) {
+            messageReceived.play();
+            console.log("Probleme de chargement du son pour lien clické!");
+          });
+        }
         const linkRef = event.currentTarget.getAttribute("href");
         const stripedRef = linkRef.substring(2);
         requestPageContent(stripedRef);

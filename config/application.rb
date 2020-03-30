@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Wikirace
   class Application < Rails::Application
+    config.assets.precompile << "audios/*"
     config.generators do |generate|
           generate.assets false
           generate.helper false

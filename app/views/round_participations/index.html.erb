@@ -87,12 +87,17 @@
       <% if current_user.id == @game_session.user_id %>
         <%= link_to "Nouveau Round", new_game_session_round_path(@game_session), class: "btn-tim", id: "launch-new-round" %>
       <% else %>
-         <button class="player_replay_button btn-tim main-red" style="opacity: 0.5;"><i>En attente de <%= @game_session.user.username %></i></button>
+        <% if @next_round.state == 'imminent' %>
+        <% raise %>
+          <%= link_to "Nouveau Round", new_game_session_round_path(@game_session), class: "btn-tim", id: "launch-new-round" %>
+        <% elsif @next_round.state == 'playing' %>
+          <button class="player_replay_button btn-tim main-red" style="opacity: 0.5;"><i>Désolé, la partie a déjà commencé...</i></button>
+        <% else %>
+          <button class="player_replay_button btn-tim main-red" style="opacity: 0.5;"><i>En attente de <%= @game_session.user.username %></i></button>
+        <% end %>
       <% end %>
       <%= link_to "Finir la partie", game_session_rounds_path(@game_session), class: "btn-tim", id: "go-to-round-index" %>
     </div>
-
-
   </div>
 </div>
 
@@ -103,8 +108,13 @@
     App['game_session_channel_<%= @game_session.id %>'] = App.cable.subscriptions.create(
     { channel: 'GameSessionChannel', game_session_id: <%= @game_session.id %> },
     {received: (data) => {
-      const replayButtonForPlayer = document.querySelector('.player_replay_button');
-      replayButtonForPlayer.outerHTML = data.new_round_link;
+      if (data.new_round_link_off) {
+        const replayButtonForPlayer = document.querySelector('.main-red');
+        replayButtonForPlayer.outerHTML = data.new_round_link_off;
+      } else if (data.new_round_link) {
+        const replayButtonForPlayer = document.querySelector('.player_replay_button');
+        replayButtonForPlayer.outerHTML = data.new_round_link;
+      } else {}
       }
     })
   </script>

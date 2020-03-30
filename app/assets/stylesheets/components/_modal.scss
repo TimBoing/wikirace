@@ -107,20 +107,20 @@
   bottom:0;
   z-index:100;
   background-color:rgba(50,50,50,0.5);
+  overflow: auto;
+  max-height: 100vh;
 }
 
 #modal-info-join{
-  position:absolute;
-  background-color:#F5F5F6;
-  top:50%;
-  left:50%;
+  position: relative;
+  background-color: #F5F5F6;
+  margin: 0 5vh 25vh 5vh;
+  top: 35%;
   z-index:101;
   border-radius:15px;
-  width:340px;
-  height:300px;
-  margin-top:-130px;
-  margin-left:-170px;
+  overflow: hidden;
   box-shadow:0 0 10px 0 rgba(0,0,0,0.3);
+  flex-direction: column;
 }
 
 #modal-info-join span{
@@ -129,6 +129,11 @@
   background: $main-green;
   padding: 10px;
   color:#fff;
+}
+
+#modal-info-join p{
+  text-align: justify;
+  padding: 10px;
 }
 
 #close-join{
@@ -164,20 +169,20 @@
   bottom:0;
   z-index:100;
   background-color:rgba(50,50,50,0.5);
+  overflow: auto;
+  max-height: 100vh;
 }
 
 #modal-info-pages{
-  position:absolute;
-  background-color:#F5F5F6;
-  top:50%;
-  left:50%;
+  position: relative;
+  background-color: #F5F5F6;
+  margin: 0 5vh 25vh 5vh;
+  top: 35%;
   z-index:101;
   border-radius:15px;
-  width:340px;
-  height:250px;
-  margin-top:-130px;
-  margin-left:-170px;
+  overflow: hidden;
   box-shadow:0 0 10px 0 rgba(0,0,0,0.3);
+  flex-direction: column;
 }
 
 #modal-info-pages span{
@@ -186,6 +191,11 @@
   background: $main-green;
   padding: 10px;
   color:#fff;
+}
+
+#modal-info-pages p{
+  text-align: justify;
+  padding: 10px;
 }
 
 #close-pages{
@@ -212,6 +222,7 @@
 }
 
 .modal-info-modes{
+  position:fixed;
   left:0;
   display: none;
   right:0;
@@ -219,20 +230,20 @@
   bottom:0;
   z-index:100;
   background-color:rgba(50,50,50,0.5);
+  overflow: auto;
+  max-height: 100vh;
 }
 
 #modal-info-modes{
-  position:absolute;
-  background-color:#F5F5F6;
-  top:50%;
-  left:50%;
+  position: relative;
+  background-color: #F5F5F6;
+  margin: 0 5vh 25vh 5vh;
+  top: 35%;
   z-index:101;
   border-radius:15px;
-  width:340px;
-  height:750px;
-  margin-top:-130px;
-  margin-left:-170px;
+  overflow: hidden;
   box-shadow:0 0 10px 0 rgba(0,0,0,0.3);
+  flex-direction: column;
 }
 
 #modal-info-modes span{
@@ -241,6 +252,11 @@
   background: $main-green;
   padding: 10px;
   color:#fff;
+}
+
+#modal-info-modes p{
+  text-align: justify;
+  padding: 10px;
 }
 
 #close-modes{
@@ -275,20 +291,20 @@
   bottom:0;
   z-index:100;
   background-color:rgba(50,50,50,0.5);
+  overflow: auto;
+  max-height: 100vh;
 }
 
 #modal-info-options{
-  position:absolute;
-  background-color:#F5F5F6;
-  top:50%;
-  left:50%;
+  position: relative;
+  background-color: #F5F5F6;
+  margin: 0 5vh 25vh 5vh;
+  top: 35%;
   z-index:101;
   border-radius:15px;
-  width:340px;
-  height:325px;
-  margin-top:-130px;
-  margin-left:-170px;
+  overflow: hidden;
   box-shadow:0 0 10px 0 rgba(0,0,0,0.3);
+  flex-direction: column;
 }
 
 #modal-info-options span{
@@ -297,6 +313,11 @@
   background: $main-green;
   padding: 10px;
   color:#fff;
+}
+
+#modal-info-options p{
+  text-align: justify;
+  padding: 10px;
 }
 
 #close-options{

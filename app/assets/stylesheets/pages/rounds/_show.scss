@@ -140,8 +140,34 @@
       opacity: 1;
     }
   }
+}
 
+#path-icon-container{
+  position: fixed;
+  cursor: pointer;
+  background-color: $main-red;
+  color: white;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  border-radius: 50px 0px 0px 50px;
+  font-size: 30px;
+  top: 20%;
+  right: 0;
+  z-index: 10;
+  height: 8vh;
+  width: 15%;
+  max-width: 70px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  opacity: 0.5;
 
+  &:hover {
+    opacity: 1;
+  }
+
+  #path-icon{
+    color: white;
+  }
 }
 
 

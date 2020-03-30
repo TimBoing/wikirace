@@ -3,7 +3,6 @@
   <div id="left-mouse">Left mouse : 0</div> -->
 <!-- --------------------------------------------- -->
 
-
  <div class="container-fluid d-flex align-items-center justify-content-center">
     <div id="game-container" class="" >
 
@@ -17,6 +16,12 @@
           <i class="far fa-times-circle" id="quit-icon"></i>
         <% end %>
       </div>
+
+
+      <div id="path-icon-container">
+          <i class="fas fa-route" id="path-icon"></i>
+      </div>
+
 
       <!-- <div id="game-actions-bar-top">
 
@@ -68,6 +73,14 @@
   </div>
 </div>
 
+<div id="game-path-modal" class="modal">
+  <div class="modal-content centered-vertically">
+    <span class="close" id="close-game-path-modal">&times;</span>
+    <h1>Ta route actuelle :</h1>
+    <div id="beginning-of-the-path"></div>
+  </div>
+</div>
+
 <div id="game-end-modal" class="modal">
   <div class="modal-content centered-vertically">
     <h1>La partie est terminée!</h1>
@@ -76,6 +89,21 @@
   </div>
 </div>
 
+<audio id="malus-reverse" preload="true">
+ <source src='/reverse.wav' type="audio/wav">
+</audio>
+
+<audio id="link-clicked" preload="true">
+ <source src='/link_click.mp3' type="audio/mpeg">
+</audio>
+
+<audio id="victory-song" preload="true">
+ <source src='/victory.mp3' type="audio/mpeg">
+</audio>
+
+<audio id="loosing-song" preload="true">
+ <source src='/loosing.mp3' type="audio/mpeg">
+</audio>
 
 <div id="game-info"
   data-current-user="<%= current_user.id %>"
@@ -106,6 +134,34 @@
         gameInfo.dataset.winner = data['end_game'];
         gameEndModalWinner.innerText= `Winner is : ${gameInfo.dataset.winner}`
         gameInfo.dataset.state = "ended";
+
+// TODO: les sons de victoire et de défaite à inclure mais JS ne connait pas "current user" donc faut faire différement
+        // if (gameInfo.dataset.winner == current_user) {
+        //   const messageReceived = document.getElementById('victory-song');
+        //   const messageReceivedPromise = messageReceived.play();
+        //   messageReceived.currentTime = 0;
+        //   if (messageReceivedPromise !== undefined) {
+        //     messageReceivedPromise.then(function() {
+        //       messageReceived.play();
+        //     }).catch(function(error) {
+        //       messageReceived.play();
+        //       console.log("Probleme de chargement du son pour la victoire!");
+        //     });
+        //   }
+        // } else {
+        //   const messageReceived = document.getElementById('loosing-song');
+        //   const messageReceivedPromise = messageReceived.play();
+        //   messageReceived.currentTime = 0;
+        //   if (messageReceivedPromise !== undefined) {
+        //     messageReceivedPromise.then(function() {
+        //       messageReceived.play();
+        //     }).catch(function(error) {
+        //       messageReceived.play();
+        //       console.log("Probleme de chargement du son pour la defaite!");
+        //     });
+        //   }
+        // }
+
 
       }else if(data['malus']){
         console.log('there is a malus');

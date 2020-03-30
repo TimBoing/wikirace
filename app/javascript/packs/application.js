@@ -24,7 +24,7 @@ import { quitAlert } from '../components/quit_game';
 import { modalInfoJoin, modalInfoPages, modalInfoModes, modalInfoOptions } from '../components/modal_info';
 import { defineEasyPath } from '../components/easy_path';
 import { collapsibleChevrons } from '../components/chevrons';
-
+import { gamePath } from '../components/game_path';
 
 
 
@@ -56,6 +56,9 @@ modalInfoJoin();
 modalInfoPages();
 modalInfoModes();
 modalInfoOptions();
+
 collapsibleChevrons();
+gamePath();
+
 
 
