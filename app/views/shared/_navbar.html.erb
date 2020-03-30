@@ -23,6 +23,7 @@
             <%= link_to "Voir mes stats", user_path(current_user[:id]), class: "dropdown-item" %>
             <%= link_to "Editer l'utilisateur", edit_user_path(current_user[:id]), class: "dropdown-item" %>
             <%= link_to "Changer mot de passe / Email", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "A propos...", creator_show_path, class: "dropdown-item" %>
             <%= link_to "Déconnection", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
