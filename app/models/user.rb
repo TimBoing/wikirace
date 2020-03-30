@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :session_limitable
   has_many :game_sessions
   has_many :round_participations
   has_many :messages, dependent: :destroy
