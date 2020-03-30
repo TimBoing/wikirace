@@ -67,4 +67,17 @@
 //   }
 // }
 
+.title-and-chevron{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  .chevron{
+    font-size: 24px;
+  }
+
+  .fa-chevron-up {
+  display: none;
+  }
+}
 

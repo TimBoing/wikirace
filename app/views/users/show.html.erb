@@ -30,8 +30,12 @@
       </div>
     </div>
 
-    <div class="title-container centered-vertically white-shadow "><h3><span>Tes records mondiaux</span></h3></div>
-    <div class="record-cards">
+    <div class="title-and-chevron" id="world-records-list-title">
+      <i class="fas fa-chevron-down chevron" style="display: block"></i>
+      <i class="fas fa-chevron-up chevron" style="display: none"></i>
+      <div class="title-container centered-vertically white-shadow "><h3><span>Records mondiaux : <strong><%= @world_records.count %></strong></span></h3></div>
+    </div>
+    <div class="record-cards not-visible" id="world-records-list" style="display: none">
       <% @world_records.each do |world_record| %>
         <div class="card record-card" data-game_session="<%= world_record.id %>">
           <div class="begin-page">
@@ -62,8 +66,12 @@
       <% end %>
     </div>
 
-    <div class="title-container centered-vertically white-shadow"><h3>Tes records perso</h3></div>
-    <div class="record-cards">
+    <div class="title-and-chevron" id="personal-records-list-title">
+      <i class="fas fa-chevron-down chevron" style="display: block"></i>
+      <i class="fas fa-chevron-up chevron" style="display: none"></i>
+      <div class="title-container centered-vertically white-shadow"><h3>Records perso : <strong><%= @personal_records.count %></strong></h3></div>
+    </div>
+    <div class="record-cards" id="personal-records-list" style="display: none">
       <% @personal_records.each do |personal_record| %>
         <div class="card record-card" data-game_session="<%= personal_record.id %>">
           <div class="begin-page">
