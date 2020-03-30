@@ -1,4 +1,4 @@
-meta_product_name: "Product Name"
-meta_title: "Product name - Product tagline"
-meta_description: "Relevant description"
+meta_product_name: "WikiRace"
+meta_title: "WikiRace - Learn fast, click faster !"
+meta_description: "Be the first to reach the Wikipedia target page using only the articles links. Challenge your friends and be the faster one by finding the shortest paths!"
 meta_image: "wikirace-logo.png" # should exist in `app/assets/images/`
