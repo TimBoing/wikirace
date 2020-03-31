@@ -28,7 +28,7 @@ const gamePath = () => {
             });
           };
           Object.keys(data.visited_page).forEach(function (item) {
-            pathBeginning.insertAdjacentHTML('afterend', `<div class="path-point">${data.visited_page[item].title}</div><i class="fas fa-arrow-up"></i>`);
+            pathBeginning.insertAdjacentHTML('afterbegin', `<div class="path-point">${data.visited_page[item].title}</div><i class="fas fa-arrow-up"></i>`);
           });
       });
       modalGamePath.style.display = "block";
