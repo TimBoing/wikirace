@@ -330,3 +330,21 @@
 #close-options:hover{
   color: #000;
 }
+
+#close-game-path-modal{
+  position: absolute;
+  top: 5%;
+  right: 5%;
+
+}
+
+.justified{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    color: $main-red;
+  }
+
+}
