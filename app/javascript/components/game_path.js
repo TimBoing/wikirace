@@ -27,6 +27,7 @@ const gamePath = () => {
             });
           };
           Object.keys(data.visited_page).forEach(function (item) {
+            pathBeginning.innerHTML = "";
             pathBeginning.insertAdjacentHTML('afterend', `<div class="path-point">${data.visited_page[item].title}</div><i class="fas fa-arrow-up"></i>`);
           });
       });
