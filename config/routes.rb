@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resource :rules, only: [:show]
   resources :users, only: [:edit, :update, :show]
   resource :path, only: [:show]
-  resources :creators, only: [:show]
+  resources :game_sessions_quick, only: [:new]
 
   resources :game_sessions, only: [:new, :create, :show], shallow: true do
     resources :messages, only: [:create]
