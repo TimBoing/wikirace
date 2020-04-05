@@ -11,7 +11,7 @@ const modalInfoJoin = () => {
       modalInfoJoin.style.display = "none";
     });
     window.addEventListener('click', (event) => {
-      if (event.target == infoBubbleJ) {
+      if (event.target == modalInfoJoin) {
         modalInfoJoin.style.display = "none";
       }
     });
@@ -31,7 +31,7 @@ const modalInfoPages = () => {
       modalInfoPages.style.display = "none";
     });
     window.addEventListener('click', (event) => {
-      if (event.target == infoBubbleP) {
+      if (event.target == modalInfoPages) {
         modalInfoPages.style.display = "none";
       }
     });
@@ -51,7 +51,7 @@ const modalInfoModes = () => {
       modalInfoModes.style.display = "none";
     });
     window.addEventListener('click', (event) => {
-      if (event.target == infoBubbleM) {
+      if (event.target == modalInfoModes) {
         modalInfoModes.style.display = "none";
       }
     });
@@ -71,7 +71,7 @@ const modalInfoOptions = () => {
       modalInfoOptions.style.display = "none";
     });
     window.addEventListener('click', (event) => {
-      if (event.target == infoBubbleO) {
+      if (event.target == modalInfoOptions) {
         modalInfoOptions.style.display = "none";
       }
     });
