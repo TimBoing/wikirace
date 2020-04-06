@@ -14,7 +14,6 @@ const optionsSelection = () => {
 
   if(searchBar){
 
-
     searchBarOption.addEventListener('click', (event) => {
       toggleActive(searchBarOption);
       if(searchBar.checked === true){
@@ -24,16 +23,16 @@ const optionsSelection = () => {
       }
     });
 
-
-    reverseOption.addEventListener('click', (event) => {
-      toggleActive(reverseOption);
-      if(reverse.checked === true){
-        reverse.checked = false;
-      } else {
-        reverse.checked = true;
-      }
-    });
-
+    if(reverseOption) {
+      reverseOption.addEventListener('click', (event) => {
+        toggleActive(reverseOption);
+        if(reverse.checked === true){
+          reverse.checked = false;
+        } else {
+          reverse.checked = true;
+        }
+      });
+    }
 
     backOption.addEventListener('click', (event) => {
       toggleActive(backOption);

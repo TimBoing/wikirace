@@ -1,14 +1,8 @@
-<!-- Tracking the mouse with coordinates---------- -->
-  <!-- <div id="top-mouse">Top mouse : 0</div>
-  <div id="left-mouse">Left mouse : 0</div> -->
-<!-- --------------------------------------------- -->
-
-  <div class="container-fluid d-flex align-items-center justify-content-center">
+<div class="container-fluid d-flex align-items-center justify-content-center">
     <div id="game-container" class="" >
 
       <h1 id="wikipage-title-container"></h1>
       <div id="wikipage-container">
-        <!-- <div id="portal-test" class="small-portal"></div> -->
       </div>
 
       <div id="quit-icon-container">
@@ -19,21 +13,8 @@
 
 
       <div id="path-icon-container">
-          <i class="fas fa-route" id="path-icon"></i>
+        <i class="fas fa-route" id="path-icon"></i>
       </div>
-
-
-      <!-- <div id="game-actions-bar-top">
-
-          <i class="fas fa-search" id="game-actions-search"></i>
-
-          <div id="userFindInput" class="hidden">
-              <input id="userFindInputText" type="text" value="" style="border: none;"/>
-          </div>
-
-          <i class="fas fa-poo-storm" id="game-actions-weapons"></i>
-
-      </div> -->
 
       <% if @round.search_bar %>
         <div id="game-actions-search">
@@ -84,8 +65,8 @@
 <div id="game-end-modal" class="modal">
   <div class="modal-content centered-vertically">
     <h1>La partie est terminée!</h1>
-    <h2 id="game-end-modal-winner">Le vainqueur est : </h2>
-    <%= link_to 'Résultats', "#{@host_name}#{round_round_participations_path(@round)}", class: "btn-tim", id:"to-results-btn" %>
+    <h2 id="game-end-modal-winner">Félicitation, vous avez gagné!!! </h2>
+    <%= link_to 'Résultats', "#{@host_name}#{game_sessions_quick_rounds_quick_index_path(@round)}", class: "btn-tim", id:"to-results-btn" %>
   </div>
 </div>
 
@@ -106,7 +87,6 @@
 </audio>
 
 <div id="game-info"
-  data-current-user="<%= current_user.id %>"
   data-round="<%= @round.id %>"
   data-state= "init"
   data-winner= ""
@@ -134,47 +114,8 @@
         gameInfo.dataset.winner = data['end_game'];
         gameEndModalWinner.innerText= `Winner is : ${gameInfo.dataset.winner}`
         gameInfo.dataset.state = "ended";
-
-// TODO: les sons de victoire et de défaite à inclure mais JS ne connait pas "current user" donc faut faire différement
-        // if (gameInfo.dataset.winner == current_user) {
-        //   const messageReceived = document.getElementById('victory-song');
-        //   const messageReceivedPromise = messageReceived.play();
-        //   messageReceived.currentTime = 0;
-        //   if (messageReceivedPromise !== undefined) {
-        //     messageReceivedPromise.then(function() {
-        //       messageReceived.play();
-        //     }).catch(function(error) {
-        //       messageReceived.play();
-        //       console.log("Probleme de chargement du son pour la victoire!");
-        //     });
-        //   }
-        // } else {
-        //   const messageReceived = document.getElementById('loosing-song');
-        //   const messageReceivedPromise = messageReceived.play();
-        //   messageReceived.currentTime = 0;
-        //   if (messageReceivedPromise !== undefined) {
-        //     messageReceivedPromise.then(function() {
-        //       messageReceived.play();
-        //     }).catch(function(error) {
-        //       messageReceived.play();
-        //       console.log("Probleme de chargement du son pour la defaite!");
-        //     });
-        //   }
-        // }
-
-
-      }else if(data['malus']){
-        console.log('there is a malus');
-        console.log(data['malus']);
-        gameInfo.dataset.sender = data['malus']['sender'];
-        gameInfo.dataset.malus = data['malus']['type'];
       }
-
     }
-
     })
   </script>
 <% end %>
-
-
-

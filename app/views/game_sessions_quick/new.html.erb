@@ -1,0 +1,151 @@
+<div class="main-container">
+  <div class="title-container centered-vertically"><h1>Partie rapide en solo</h1></div>
+  <div class="content-container centered-vertically">
+    <div class="white-container centered-vertically">
+    <%= simple_form_for @round, url: rounds_quick_path(@round), method: "GET", html:{class:"centered-vertically"} do |f| %>
+      <%= f.button :submit,'Jouer', class: "btn-tim", id:"to-fire-camp" %>
+      <%= button_tag "Options",type: 'button', class: "btn-tim", id:"round-options-btn" %>
+      <div id="round-options-modal" class="modal">
+        <div id="round-options-modal-content" class="modal-content">
+          <div id="round-options-modal-header">
+            <span class="close" id="close-round-options">&times;</span>
+          </div>
+          <div class="centered-vertically" id="round-options-modal-content-after-header">
+
+            <div class="info-container-title-icon">
+              <div class="title-and-chevron" id="pages-choice">
+                <i class="fas fa-chevron-down chevron" style="display: block"></i>
+                <i class="fas fa-chevron-up chevron" style="display: none"></i>
+                <div class="title-container centered-vertically white-shadow "><h4>Pages :</h4></div>
+              </div>
+              <div class="info-bubble-pages" id="info-bubble-pages">
+                <i class="fas fa-info-circle"></i>
+              </div>
+            </div>
+            <div id="pages-choice-collapsible" style="display: none">
+              <div id="easy-path">Générer un chemin "facile"</div>
+              <div id="easy-path-suggestion"></div>
+
+
+              <div id="page-choice-container">
+                <%= f.input :start_page, label: false, label: "Page de début :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2"} %>
+                <%= f.input :end_page, label: false, label: "Page cible :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2"}  %>
+              </div>
+
+              <div id="nombre-de-clicks-record">
+                <p>Pas encore de record sur ce chemin</p>
+              </div>
+            </div>
+
+            <div class="info-container-title-icon">
+              <div class="title-and-chevron" id="modes-choice">
+                <i class="fas fa-chevron-down chevron" style="display: block"></i>
+                <i class="fas fa-chevron-up chevron" style="display: none"></i>
+                <div class="title-container centered-vertically white-shadow "><h4>Modes :</h4></div>
+              </div>
+              <div class="info-bubble-modes" id="info-bubble-modes">
+                <i class="fas fa-info-circle"></i>
+              </div>
+            </div>
+            <div id="modes-choice-collapsible" style="display: none">
+              <%= hidden_field_tag :game_mode, 'Premier arrivé' %>
+              <div id="grid-container-options" style="opacity : 0.5">
+                <div class="grid-option" id="grid-option-time-limit">
+                  <i class="far fa-clock"></i>
+                  <div class="title-option">Time Limit!</div>
+                  <div class="validation-option">
+                    <i class="fas fa-check"></i>
+                  </div>
+                </div>
+
+                <div class="grid-option" id="grid-option-click-limit">
+                  <i class="fas fa-mouse-pointer"></i>
+                  <div class="title-option">Click Limit!</div>
+                  <div class="validation-option">
+                    <i class="fas fa-check"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-container-title-icon">
+              <div class="title-and-chevron" id="options-choice">
+                <i class="fas fa-chevron-down chevron" style="display: block"></i>
+                <i class="fas fa-chevron-up chevron" style="display: none"></i>
+                <div class="title-container centered-vertically white-shadow "><h4>Options :</h4></div>
+              </div>
+              <div class="info-bubble-options" id="info-bubble-options">
+                <i class="fas fa-info-circle"></i>
+              </div>
+            </div>
+            <div id="options-choice-collapsible" style="display: none;">
+              <div id="grid-container-options">
+                <div class="grid-option selectable-option selected" id="grid-option-search-bar">
+                  <i class="fas fa-search"></i>
+                  <div class="title-option">Search Bar!</div>
+                  <div class="validation-option">
+                    <i class="fas fa-check"></i>
+                  </div>
+                </div>
+                <div class="grid-option selectable-option selected" id="grid-option-back">
+                  <i class="fas fa-chevron-circle-left"></i>
+                  <div class="title-option">Back!</div>
+                  <div class="validation-option">
+                    <i class="fas fa-check"></i>
+                  </div>
+                </div>
+                <div id="grid-container-options">
+                  <div class="grid-option selectable-option" id="grid-option-where_is_charlie" style="opacity : 0.5">
+                    <i class="fas fa-question"></i>
+                    <div class="title-option">Where is ...?</div>
+                    <div class="validation-option">
+                      <i class="fas fa-check"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <%= f.input :game_options, label: false,
+                collection: ['Standard', 'Avec questions', 'Sans aide de recherche', 'Où est Charlie', 'Battlefield', 'Sens-interdit'],
+                default: 'Standard' %>
+              <div class="not-visible">
+                <%= f.input :search_bar, default: true %>
+                <%= f.input :back, default: true %>
+              </div>
+            </div>
+          <%= button_tag "Jouer",type: 'submit', class: "btn-tim", id:"round-options-ok-btn" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="modal-info-pages">
+  <div id="modal-info-pages">
+    <span>Le choix des pages :<a href="#close" id="close-pages">&#215;</a></span>
+    <p><strong>Par défaut le choix des pages est aléatoire.</strong></p>
+    <p><em><strong>Note:</strong> Il est possible de choisir sa page de départ, sa page de fin ou les deux à la fois. Il est aussi possible de demander un couple de pages "facile" (considéré comme tel car ayant déjà été relié 5 clicks ou moins.</em></p>
+  </div>
+</div>
+
+<div class="modal-info-modes">
+  <div id="modal-info-modes">
+    <span>Le choix des modes :<a href="#close" id="close-modes">&#215;</a></span>
+    <p><strong>Premier arrivé :</strong> Mode de jeu par défaut. La partie s'arrête lorsque l'un des joueurs arrive sur la page cible. Celui-ci gagne alors 100 points, les autres perdent autant de points que de nombres de clicks réalisés.</p>
+    <p><strong>Limite de clicks : (en développement)</strong> Le créateur fixe une limite de clicks. La partie s'arrête individuellement pour chaque joueur, soit que celui-ci a trouvé la page cible, soit qu'il a atteint le nombre maximum de clicks autorisés. Le classement se fait pour ceux qui ont trouvé la page cible par ordre croissant de nombre de clicks et pour ceux qui ont échoué, par ordre croissant de temps.</p>
+    <p><strong>Limite de temps : (en développement)</strong> Le créateur fixe une limite de temps. La partie s'arrête individuellement pour chaque joueur, soit que celui-ci a trouvé la page cible, soit qu'il a atteint le temps maximum autorisé. Le classement se fait pour ceux qui ont trouvé la page cible par ordre croissant de nombre de clicks et pour ceux qui ont échoué, par ordre croissant de clicks.</p>
+    <p><em><strong>Note:</strong> Il est possible de combiner les modes de jeu "limite de clicks" et "limite de temps" afin d'avoir une limite sur ces deux paramètres.</em></p>
+  </div>
+</div>
+
+<div class="modal-info-options">
+  <div id="modal-info-options">
+    <span>Le choix des options :<a href="#close" id="close-options">&#215;</a></span>
+    <p><strong>Search bar :</strong> Elle est active par défaut. C'est une barre de recherche qui surligne en jaune (mais ne déplace pas la vue) les mots contenant la suite de caractères recherchée (en un seul bloc) dans l'article.</p>
+    <p><strong>Reverse :</strong> Dans les articles peuvent se cacher des logos "Reverse" qui retourne les écrans des autres joueurs pendant 20 s. Si vous êtes vous-même à l'envers lorsque vous activez un "Reverse", celui-ci retourne les autres mais vous remet aussi à l'endroit.</p>
+    <p><strong>Précédent :</strong> Actif par défaut. C'est la possibilité de revenir sur les pages précédentes. À noter que cette action compte comme un click.</p>
+    <p><strong>Où est...? : (en développement)</strong></p>
+    <p><em><strong>Note:</strong> Il est possible de combiner plusieurs options de jeu dans le même round.</em></p>
+  </div>
+</div>

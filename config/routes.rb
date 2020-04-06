@@ -3,11 +3,16 @@ Rails.application.routes.draw do
   devise_for :users
   mount ActionCable.server => "/cable"
 
+  resources :game_sessions_quick, only: [:new], shallow: true do
+    resources :rounds_quick, only: [:show, :update, :index]
+  end
+
   root to: 'game_sessions#new'
   resource :rules, only: [:show]
   resources :users, only: [:edit, :update, :show]
   resource :path, only: [:show]
-  resources :game_sessions_quick, only: [:new]
+
+
 
   resources :game_sessions, only: [:new, :create, :show], shallow: true do
     resources :messages, only: [:create]
