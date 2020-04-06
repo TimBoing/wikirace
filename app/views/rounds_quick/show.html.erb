@@ -87,9 +87,11 @@
 </audio>
 
 <div id="game-info"
+  data-current-user="<%= 23 %>"
   data-round="<%= @round.id %>"
   data-state= "init"
   data-winner= ""
+  data-options= "<%= @round.game_options %>"
   data-start-page="<%= @round.start_page %>"
   data-end-page="<%= @round.end_page %>"
   data-current-page="<%= @round.start_page %>"

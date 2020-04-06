@@ -86,7 +86,6 @@ class RoundsController < ApplicationController
     unless params[:malus].nil?
       ActionCable.server.broadcast("game_session_channel_#{round.game_session.id}", malus: params[:malus])
     end
-
   end
 
   private

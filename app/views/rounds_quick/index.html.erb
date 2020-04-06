@@ -1,1 +1,31 @@
-<h1>la page des résultats</h1>
+<div class="main-container">
+  <div class="title-container centered-vertically "><h1><span id="score-page-winner">Félicitation, vous avez gagné!!!</span></h1></div>
+  <div class="content-container centered-vertically">
+
+    <div class="white-container centered-vertically" id="score-page-record-container">
+      <% if @round_participation.is_the_best? %>
+        <i class="fas fa-trophy trophy"></i>
+        <h4>Vous avez battu le record en <strong class="trophy"><%= @round_participation.visited_pages.count - 1 %></strong> clicks</h4>
+      <% else %>
+        <h4>Pas de nouveau record sur ce chemin...</h4>
+        <i class="fas fa-heart-broken trophy"></i>
+      <% end %>
+    </div>
+
+
+
+    <div class="cards">
+      <% @round_participation.visited_pages do |visited_page| %>
+        <div class="card">
+          <%= visited_page.title %>
+        </div>
+      <% end %>
+    </div>
+
+
+
+    <div class="white-container centered-vertically" id="score-page-buttons-container">
+      <%= link_to "Finir la partie", root_path, class: "btn-tim", id: "go-to-round-index" %>
+    </div>
+  </div>
+</div>

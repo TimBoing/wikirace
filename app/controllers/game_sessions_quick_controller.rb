@@ -7,5 +7,6 @@ class GameSessionsQuickController < ApplicationController
     @round.game_session = @game_session
     @round.save
     @round_participation = RoundParticipation.new
+    @wiki_pages = WikiPage.all.sort_by { |wiki_page| wiki_page.title }
   end
 end

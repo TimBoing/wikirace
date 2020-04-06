@@ -3,6 +3,7 @@ require 'open-uri'
 
 class RoundsQuickController < ApplicationController
   skip_before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 
   def new
     @round = Round.new
@@ -35,6 +36,11 @@ class RoundsQuickController < ApplicationController
       @round.end_page = WikiPage.find(params[:round][:end_page]).title
       @round.end_page_url = WikiPage.find(params[:round][:end_page]).url
     end
+
+    t = Time.now
+    start_time = t.to_f * 1000
+    @round.update(start_time: start_time)
+
     if @round.save
       round_participation = RoundParticipation.new
       round_participation.user_id = 23
@@ -54,22 +60,20 @@ class RoundsQuickController < ApplicationController
   end
 
   def index
-
+    # raise
+    unknown_user = User.find(23)
+    @round_participation = RoundParticipation.where(user: unknown_user)[0]
+    if @round_participation.is_the_best?
+      @round_participation.save_record(unknown_user)
+    end
   end
 
   def update
     round = Round.find(params[:id])
-    if params[:start_game]
-      t = Time.now
-      start_time = t.to_f * 1000
-      round.update(start_time: start_time)
-      redirect_to round_path(round)
-    end
-
-    unless params[:state].nil?
-      round.update(state: 'ended')
-    end
-
+    round.update(state: 'ended')
+    winner = User.find(params[:winner]).username
+    ActionCable.server.broadcast("game_session_channel_#{round.game_session.id}", end_game: winner)
+    RoundScoreComputer.new(round).call
   end
 
   private
