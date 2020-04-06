@@ -13,6 +13,9 @@ User.destroy_all
 puts "All the old database has been deleted"
 
 puts "Creating new users..."
+user_solo = User.new(email: "mode@solo.fr", password: "123456", first_name: "Mode", last_name: "Solo",coins: 0, item1: 0, item2: 0, item3: 0, item4: 0, item5: 0, username: "ModeSolo")
+user_solo.save!
+
 user1 = User.new(email: "aaaaa@aaaaa.fr", password: "123456", first_name: "Alexis", last_name: "Filia",coins: 55, item1: 1, item2: 1, item3: 0, item4: 2, item5: 1, username: "Alex")
 picture1 = URI.open('https://images.unsplash.com/photo-1574257434424-2ee5b4fa8922?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80')
 user1.photo.attach(io: picture1, filename: 'user1.jpg', content_type: 'image/png')
@@ -40,6 +43,7 @@ user5.save!
 puts "Some users have been created"
 
 puts "Creating new game sessions..."
+game_session_solo = GameSession.create(user: user_solo)
 game_session1 = GameSession.create(user: user1)
 game_session2 = GameSession.create(user: user1)
 game_session3 = GameSession.create(user: user1)

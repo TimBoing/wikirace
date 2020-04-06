@@ -12,14 +12,18 @@
       <% end %>
     </div>
 
-
-
     <div class="cards">
-      <% @round_participation.visited_pages do |visited_page| %>
-        <div class="card">
+       <% @round_participation.visited_pages.each do |visited_page| %>
+        <div class="card centered-vertically path-card">
           <%= visited_page.title %>
         </div>
+        <div>
+          <i class="fas fa-arrow-down"></i>
+        </div>
       <% end %>
+        <div class="card centered-vertically path-card">
+          Victoire!!!
+        </div>
     </div>
 
 

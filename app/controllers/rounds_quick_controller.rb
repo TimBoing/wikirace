@@ -43,13 +43,14 @@ class RoundsQuickController < ApplicationController
 
     if @round.save
       round_participation = RoundParticipation.new
-      round_participation.user_id = 23
+      @unknown_user = User.find_by(username: "ModeSolo")
+      round_participation.user_id = @unknown_user
       round_participation.round_id = @round.id
       if round_participation.save
         @host_name = request.protocol + request.host_with_port #pour gérer le soucis de redirection des bouttons
         @round = Round.find(params[:id])
         @game_session = @round.game_session
-        @round_participation_id = @round.round_participations.where(user: 23).first.id
+        @round_participation_id = @round.round_participations.where(user: @unknown_user).first.id
         @round.update(state: "playing")
       else
         render "game_sessions_quick/new"
@@ -60,11 +61,10 @@ class RoundsQuickController < ApplicationController
   end
 
   def index
-    # raise
-    unknown_user = User.find(23)
-    @round_participation = RoundParticipation.where(user: unknown_user)[0]
+    @unknown_user = User.find_by(username: "ModeSolo")
+    @round_participation = RoundParticipation.where(user: @unknown_user).last
     if @round_participation.is_the_best?
-      @round_participation.save_record(unknown_user)
+      @round_participation.save_record(@unknown_user)
     end
   end
 
