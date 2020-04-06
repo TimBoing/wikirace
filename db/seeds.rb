@@ -27,8 +27,6 @@ user2.photo.attach(io: picture2, filename: 'user2.png', content_type: 'image/png
 user2.save!
 
 user3 = User.new(email: "ccccc@ccccc.fr", password: "123456", first_name: "Geoffrey", last_name: "Dulac",coins: 90, item1: 7, item2: 0, item3: 1, item4: 2, item5: 4, username: "GeoffreyXXX")
-picture3 = URI.open('https://res.cloudinary.com/dwsebrqxl/image/upload/v1582122066/mec1_fazdks.jpg')
-user3.photo.attach(io: picture3, filename: 'user3.png', content_type: 'image/png')
 user3.save!
 
 user4 = User.new(email: "ddddd@ddddd.fr", password: "123456", first_name: "VanderWees", last_name: "Maxime",coins: 12, item1: 8, item2: 7, item3: 3, item4: 2, item5: 1, username: "Max")

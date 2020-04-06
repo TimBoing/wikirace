@@ -55,8 +55,8 @@ class RoundsController < ApplicationController
     end
     if @round.save
       round_participation = RoundParticipation.new
-      round_participation.user_id = current_user.id
-      round_participation.round_id = @round.id
+      round_participation.user = current_user
+      round_participation.round = @round
       if round_participation.save
         redirect_to game_session_path(params[:game_session_id])
       else

@@ -40,12 +40,11 @@ class RoundsQuickController < ApplicationController
     t = Time.now
     start_time = t.to_f * 1000
     @round.update(start_time: start_time)
-
     if @round.save
       round_participation = RoundParticipation.new
       @unknown_user = User.find_by(username: "ModeSolo")
-      round_participation.user_id = @unknown_user
-      round_participation.round_id = @round.id
+      round_participation.user = @unknown_user
+      round_participation.round = @round
       if round_participation.save
         @host_name = request.protocol + request.host_with_port #pour gérer le soucis de redirection des bouttons
         @round = Round.find(params[:id])

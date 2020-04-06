@@ -2,8 +2,8 @@ class GameSessionsQuickController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new]
 
   def new
-    @user = User.find_by(username: "ModeSolo")
-    @game_session = GameSession.find_by(username: @user)
+    @unknown_user = User.find_by(username: "ModeSolo")
+    @game_session = GameSession.find_by(user: @unknown_user)
     @round = Round.new
     @round.game_session = @game_session
     @round.save
