@@ -23,9 +23,10 @@
               </div>
             </div>
             <div id="pages-choice-collapsible" style="display: none">
-              <div id="easy-path">Générer un chemin "facile"</div>
-              <div id="easy-path-suggestion"></div>
-
+              <div id="grid-container-options">
+                <div id="easy-path" class="little-btn main-green">Générer un chemin "facile"</div>
+                <div id="random-path" class="little-btn main-red">Chemin "aléatoire"</div>
+              </div>
 
               <div id="page-choice-container">
                 <%= f.input :start_page, label: false, label: "Page de début :", :collection => @wiki_pages, :prompt => "Page aléatoire", input_html: {class: "js-select2"} %>
