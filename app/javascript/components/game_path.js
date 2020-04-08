@@ -7,7 +7,6 @@ const gamePath = () => {
     const pathBeginning = document.getElementById("beginning-of-the-path");
     const gameInfo = document.getElementById("game-info");
     const roundParticipationId = gameInfo.dataset.participation;
-    console.log(roundParticipationId);
 
     pathIconContainer.addEventListener('click', (event) => {
       pathBeginning.innerHTML = "";

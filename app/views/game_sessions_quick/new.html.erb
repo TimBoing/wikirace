@@ -88,6 +88,15 @@
                     <i class="fas fa-check"></i>
                   </div>
                 </div>
+                <div class="grid-option selectable-option" id="" style="opacity : 0.5">
+                  <i class="fas fa-sync-alt"></i>
+                  <div class="title-option">Reverse!</div>
+                  <div class="validation-option">
+                    <i class="fas fa-check"></i>
+                  </div>
+                </div>
+              </div>
+              <div id="grid-container-options">
                 <div class="grid-option selectable-option selected" id="grid-option-back">
                   <i class="fas fa-chevron-circle-left"></i>
                   <div class="title-option">Back!</div>
@@ -95,13 +104,10 @@
                     <i class="fas fa-check"></i>
                   </div>
                 </div>
-                <div id="grid-container-options">
-                  <div class="grid-option selectable-option" id="grid-option-where_is_charlie" style="opacity : 0.5">
-                    <i class="fas fa-question"></i>
-                    <div class="title-option">Where is ...?</div>
-                    <div class="validation-option">
-                      <i class="fas fa-check"></i>
-                    </div>
+                <div class="grid-option selectable-option" id="grid-option-where_is_charlie">
+                  <div class="title-option">Where is <i class="fas fa-user-secret"></i>?</div>
+                  <div class="validation-option">
+                    <i class="fas fa-check"></i>
                   </div>
                 </div>
               </div>
@@ -111,7 +117,9 @@
                 default: 'Solo' %>
               <div class="not-visible">
                 <%= f.input :search_bar, default: true %>
+                <%= f.input :reverse, default: false %>
                 <%= f.input :back, default: true %>
+                <%= f.input :charlie, default: false %>
               </div>
             </div>
           <%= button_tag "Jouer",type: 'submit', class: "btn-tim", id:"round-options-ok-btn" %>
@@ -144,9 +152,9 @@
   <div id="modal-info-options">
     <span>Le choix des options :<a href="#close" id="close-options">&#215;</a></span>
     <p><strong>Search bar :</strong> Elle est active par défaut. C'est une barre de recherche qui surligne en jaune (mais ne déplace pas la vue) les mots contenant la suite de caractères recherchée (en un seul bloc) dans l'article.</p>
-    <p><strong>Reverse :</strong> Dans les articles peuvent se cacher des logos "Reverse" qui retourne les écrans des autres joueurs pendant 20 s. Si vous êtes vous-même à l'envers lorsque vous activez un "Reverse", celui-ci retourne les autres mais vous remet aussi à l'endroit.</p>
+    <p><strong>Reverse : indisponible en jeu "Solo".</strong> Dans les articles peuvent se cacher des logos <i class="fas fa-sync-alt"></i> qui retourne les écrans des autres joueurs pendant 20 s. Si vous êtes vous-même à l'envers lorsque vous activez un <i class="fas fa-sync-alt"></i>, celui-ci retourne les autres mais vous remet aussi à l'endroit.</p>
     <p><strong>Précédent :</strong> Actif par défaut. C'est la possibilité de revenir sur les pages précédentes. À noter que cette action compte comme un click.</p>
-    <p><strong>Où est...? : (en développement)</strong></p>
+    <p><strong>Où est <i class="fas fa-user-secret"></i>? :</strong> Dans les articles se cache un unique <i class="fas fa-user-secret"></i>. Tant que vous ne l'avez pas trouvé, vous ne pouvez pas changer de page. <em>Astuce : privilegez les articles courts, il sera plus simple à trouver.</em></p>
     <p><em><strong>Note:</strong> Il est possible de combiner plusieurs options de jeu dans le même round.</em></p>
   </div>
 </div>

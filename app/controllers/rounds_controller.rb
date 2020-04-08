@@ -35,6 +35,7 @@ class RoundsController < ApplicationController
     @round.search_bar = params[:round][:search_bar]
     @round.reverse = params[:round][:reverse]
     @round.back = params[:round][:back]
+    @round.charlie = params[:round][:charlie]
 
     if params[:round][:start_page] == ""
       @round.start_page_url = random_page_url
