@@ -13,6 +13,9 @@ User.destroy_all
 puts "All the old database has been deleted"
 
 puts "Creating new users..."
+user_solo = User.new(email: "mode@solo.fr", password: "123456", first_name: "Mode", last_name: "Solo",coins: 0, item1: 0, item2: 0, item3: 0, item4: 0, item5: 0, username: "ModeSolo")
+user_solo.save!
+
 user1 = User.new(email: "aaaaa@aaaaa.fr", password: "123456", first_name: "Alexis", last_name: "Filia",coins: 55, item1: 1, item2: 1, item3: 0, item4: 2, item5: 1, username: "Alex")
 picture1 = URI.open('https://images.unsplash.com/photo-1574257434424-2ee5b4fa8922?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80')
 user1.photo.attach(io: picture1, filename: 'user1.jpg', content_type: 'image/png')
@@ -24,8 +27,6 @@ user2.photo.attach(io: picture2, filename: 'user2.png', content_type: 'image/png
 user2.save!
 
 user3 = User.new(email: "ccccc@ccccc.fr", password: "123456", first_name: "Geoffrey", last_name: "Dulac",coins: 90, item1: 7, item2: 0, item3: 1, item4: 2, item5: 4, username: "GeoffreyXXX")
-picture3 = URI.open('https://res.cloudinary.com/dwsebrqxl/image/upload/v1582122066/mec1_fazdks.jpg')
-user3.photo.attach(io: picture3, filename: 'user3.png', content_type: 'image/png')
 user3.save!
 
 user4 = User.new(email: "ddddd@ddddd.fr", password: "123456", first_name: "VanderWees", last_name: "Maxime",coins: 12, item1: 8, item2: 7, item3: 3, item4: 2, item5: 1, username: "Max")
@@ -40,6 +41,7 @@ user5.save!
 puts "Some users have been created"
 
 puts "Creating new game sessions..."
+game_session_solo = GameSession.create(user: user_solo)
 game_session1 = GameSession.create(user: user1)
 game_session2 = GameSession.create(user: user1)
 game_session3 = GameSession.create(user: user1)

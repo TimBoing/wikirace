@@ -15,7 +15,6 @@ const initGameActionsBar = () => {
 
   const initActionTargetPage = () => {
     actionTargetPage.addEventListener('click', (event) => {
-      console.log("yes");
       infoContainer.style.display = "block";
     });
 

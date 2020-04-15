@@ -49,7 +49,6 @@ const collapsibleChevrons = () => {
       const optionsChoiceCollapsible = document.getElementById("options-choice-collapsible");
 
       pagesChoice.addEventListener('click', (event) => {
-        console.log("ca marche2")
         const pagesChoiceCollapsibleChevronUp = pagesChoice.querySelector(".fa-chevron-up");
         const pagesChoiceCollapsibleChevronDown = pagesChoice.querySelector(".fa-chevron-down");
         if (pagesChoiceCollapsible.style.display == "none") {

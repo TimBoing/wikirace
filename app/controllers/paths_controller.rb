@@ -1,7 +1,7 @@
 class PathsController < ApplicationController
+  skip_before_action :authenticate_user!
 
   def show
-
     if params[:start_page].blank? && params[:end_page].blank?
       easy_paths = Path.all.select { |path| path.points.count <= 5 && path.points.count > 2 }
       @easy_path = easy_paths.sample

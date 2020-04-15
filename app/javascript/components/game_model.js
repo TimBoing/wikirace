@@ -63,16 +63,32 @@ const requestPageContent = (page) => {
 
 const notifyRoundEnded = () => {
   const gameRound = gameInfo.dataset.round;
-  const requestOptions = {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify({state: 'ended', winner: gameInfo.dataset.winner})
-  };
-  fetch(`http://${window.location.host}/rounds/${gameRound}`, requestOptions)
-    .catch(error => console.log('error', error));
+  const gameOptions = gameInfo.dataset.options
+
+  if(gameOptions == "Standard") {
+    const requestOptions = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({state: 'ended', winner: gameInfo.dataset.winner})
+    };
+    fetch(`http://${window.location.host}/rounds/${gameRound}`, requestOptions)
+      .catch(error => console.log('error', error));
+  } else {
+    const requestOptions = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({state: 'ended', winner: gameInfo.dataset.winner})
+    };
+    fetch(`http://${window.location.host}/rounds_quick/${gameRound}`, requestOptions)
+      .catch(error => console.log('error', error));
+  }
+
 }
 
 

@@ -35,6 +35,7 @@ class RoundsController < ApplicationController
     @round.search_bar = params[:round][:search_bar]
     @round.reverse = params[:round][:reverse]
     @round.back = params[:round][:back]
+    @round.charlie = params[:round][:charlie]
 
     if params[:round][:start_page] == ""
       @round.start_page_url = random_page_url
@@ -55,8 +56,8 @@ class RoundsController < ApplicationController
     end
     if @round.save
       round_participation = RoundParticipation.new
-      round_participation.user_id = current_user.id
-      round_participation.round_id = @round.id
+      round_participation.user = current_user
+      round_participation.round = @round
       if round_participation.save
         redirect_to game_session_path(params[:game_session_id])
       else
@@ -86,7 +87,6 @@ class RoundsController < ApplicationController
     unless params[:malus].nil?
       ActionCable.server.broadcast("game_session_channel_#{round.game_session.id}", malus: params[:malus])
     end
-
   end
 
   private
