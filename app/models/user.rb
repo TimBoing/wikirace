@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
+         :recoverable, :rememberable, :validatable, :confirmable,
          :session_limitable
   has_many :game_sessions
   has_many :round_participations
@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   validates :username, presence: true, uniqueness: true
+
+  after_create :send_welcome_email
 
   def total_score_for(game_session)
     game_session.round_participations.where(user: self).map(&:score).sum
@@ -23,5 +25,12 @@ class User < ApplicationRecord
       end
     end
     visited_pages_count = visited_pages.count - game_session.rounds.count
+  end
+
+
+  private
+
+  def send_welcome_email
+    UserMailer.with(user: self).welcome.deliver_now
   end
 end
