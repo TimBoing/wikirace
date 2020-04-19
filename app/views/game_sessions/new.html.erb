@@ -5,19 +5,19 @@
       <% if user_signed_in? %>
 
           <%= simple_form_for @game_session, html: { id: 'home-page-options' } do |f| %>
-              <%= f.submit "Créer une partie", class: "btn-tim", id: "red-pill" %>
+              <%= f.submit t('.create_game'), class: "btn-tim", id: "red-pill" %>
           <% end %>
 
-          <%= text_field_tag "name", "", placeholder: "Entre le code donné #", id: "round-input" %>
+          <%= text_field_tag "name", "", placeholder: t('.enter_code'), id: "round-input" %>
           <div class="info-bubble-join" id="info-bubble-join">
             <i class="fas fa-info-circle"></i>
           </div>
-          <%= button_tag "Rejoindre",class: "btn-tim", id: "blue-pill" %>
+          <%= button_tag t('.join'),class: "btn-tim", id: "blue-pill" %>
 
 
       <% else %>
-        <%= link_to "JOUER", new_user_session_path, class: "btn-tim", id:"welcome-btn" %>
-        <%= link_to "Jeu rapide solo", new_game_sessions_quick_path, class: "btn-tim", id:"welcome-btn" %>
+        <%= link_to t('.play'), new_user_session_path, class: "btn-tim", id:"welcome-btn" %>
+        <%= link_to t('.quick_play'), new_game_sessions_quick_path, class: "btn-tim", id:"welcome-btn" %>
       <% end %>
     </div>
   </div>
@@ -26,9 +26,9 @@
 
 <div class="modal-info-join">
   <div id="modal-info-join">
-    <span>Code pour rejoindre :<a href="#close" id="close-join">&#215;</a></span>
-    <p>Une fois que le créateur de la partie a choisi les options de jeu, celui-ci peut partager le numéro du round afin que des amis puissent le rejoindre sur la page "Feu de camp" avant de démarrer un nouveau round.</p>
-    <p><em><strong>Note:</strong> le numéro de round change à chaque fois que l'on veut relancer une manche. Il faut donc partager le nouveau code si l'on veut que d'autres amis rejoignent le groupe.</em></p>
+    <span><%= t('.code_to_join') %><a href="#close" id="close-join">&#215;</a></span>
+    <p><%= t('.join_info') %></p>
+    <p><em><strong><%= t('.note') %></strong> <%= t('.join_info_note') %></em></p>
   </div>
 </div>
 

@@ -1,2 +1,95 @@
 fr:
-  hello: "Hello world"
+
+  activerecord:
+    models:
+      game_session: "Session de jeu"
+      message: "Message"
+      path: "Chemin"
+      point: "Point"
+      round: "Round"
+      round_participation: "Participation à un round"
+      user: "Utilisateur"
+      visited_page: "Page visitée"
+      wiki_page: "Page Wikipédia"
+    attributes:
+      game_session:
+      message:
+        content: "Contenu"
+      path:
+        duration: "Durée"
+      point:
+        position: "Position"
+      round:
+        start_page: "Page de départ"
+        start_page_url: "URL de page de départ"
+        end_page: "Page cible"
+        end_page_url: "URL de page cible"
+        game_mode: "Mode de jeu"
+        game_options: "Options de jeu"
+        search_bar: "Barre de recherche"
+        reverse: "Reverse"
+        start_page_random: "Page de départ aléatoire"
+        end_page_random: "Page cible aléatoire"
+        state: "Etat du jeu"
+        start_time: "Temps de départ"
+        back: "Retour en arrière"
+        charlie: "Où est Charlie?"
+      round_participation:
+        score: "Score"
+        rank: "Rang"
+        item1_used: "Object 1 utilisé"
+        item2_used: "Object 2 utilisé"
+        item3_used: "Object 3 utilisé"
+        item4_used: "Object 4 utilisé"
+        item5_used: "Object 5 utilisé"
+        item6_used: "Object 6 utilisé"
+        end_time: "Temps de fin"
+      user:
+        first_name: "Prénom"
+        last_name: "Nom"
+        username: "Nom d'utilisateur"
+        coins: "Pièces"
+        item1: "Object 1"
+        item2: "Object 2"
+        item3: "Object 3"
+        item4: "Object 4"
+        item5: "Object 5"
+      visited_page:
+        title: "Titre"
+        url: "URL"
+      wiki_page:
+        title: "Titre"
+        url: "URL"
+        categories: "Categories"
+
+  english: "Anglais"
+  french: "Francais"
+  home: "Accueil"
+  stats: "Voir mes stats"
+  game_rules: "Les règles du jeu"
+  edit_user: "Editer l'utilisateur"
+  change_email_pw: "Changer mot de passe / Email"
+  about: "A propos..."
+  sign_out: "Déconnection"
+
+  game_sessions:
+    new:
+      create_game: "Créer une partie"
+      enter_code: "Entre le code donné #"
+      join: "Rejoindre"
+      play: "JOUER"
+      quick_play: "Jeu rapide solo"
+      code_to_join: "Code pour rejoindre :"
+      join_info: "Une fois que le créateur de la partie a choisi les options de jeu, celui-ci peut partager le numéro du round afin que des amis puissent le rejoindre sur la page 'Feu de camp' avant de démarrer un nouveau round."
+      note: "Note :"
+      join_info_note: "le numéro de round change à chaque fois que l'on veut relancer une manche. Il faut donc partager le nouveau code si l'on veut que d'autres amis rejoignent le groupe."
+
+  creator:
+    show:
+      story_title: "Pour la petite histoire :"
+      story: "Février 2020: Développé comme projet de fin de formation, WikiRace n'avait alors que 2 semaines lorsque ses créateurs décident de le poursuivre dans le but d'affiner leurs connaissances de développeur. Mais voyant rapidement leurs amis se prendre 'litteralement' au jeu, ils ont décidé d'en faire réellement une plateforme de jeu."
+      creators_tilte: "Les créateurs :"
+      contact_title: "Nous contacter :"
+      buy_a_beer_title: "Offre nous un verre :"
+      support_us: "Don de soutien :"
+      how: "La marche à suivre..."

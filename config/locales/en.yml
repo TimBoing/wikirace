@@ -1,2 +1,95 @@
 en:
-  hello: "Hello world"
+
+  activerecord:
+    models:
+      game_session: "Game session"
+      message: "Message"
+      path: "Path"
+      point: "Point"
+      round: "Round"
+      round_participation: "Round participation"
+      user: "User"
+      visited_page: "Visited page"
+      wiki_page: "Wiki page"
+    attributes:
+      game_session:
+      message:
+        content: "Content"
+      path:
+        duration: "Duration"
+      point:
+        position: "Position"
+      round:
+        start_page: "Start page"
+        start_page_url: "Satrt page URL"
+        end_page: "End page"
+        end_page_url: "End page URL"
+        game_mode: "Game mode"
+        game_options: "Game options"
+        search_bar: "Search bar"
+        reverse: "Reverse"
+        start_page_random: "Random start page"
+        end_page_random: "Random end page"
+        state: "Game state"
+        start_time: "Start time"
+        back: "Back"
+        charlie: "Where is Charlie?"
+      round_participation:
+        score: "Score"
+        rank: "Rank"
+        item1_used: "Item 1 Used"
+        item2_used: "Item 2 Used"
+        item3_used: "Item 3 Used"
+        item4_used: "Item 4 Used"
+        item5_used: "Item 5 Used"
+        item6_used: "Item 6 Used"
+        end_time: "End time"
+      user:
+        first_name: "First name"
+        last_name: "Last name"
+        username: "Username"
+        coins: "Coins"
+        item1: "Item 1"
+        item2: "Item 2"
+        item3: "Item 3"
+        item4: "Item 4"
+        item5: "Item 5"
+      visited_page:
+        title: "Title"
+        url: "URL"
+      wiki_page:
+        title: "Titre"
+        url: "URL"
+        categories: "Categories"
+
+  english: "English"
+  french: "French"
+  home: "Home"
+  stats: "My statistics"
+  game_rules: "Game rules"
+  edit_user: "Edit user"
+  change_email_pw: "Change email / password"
+  about: "About..."
+  sign_out: "Sign-out"
+
+  game_sessions:
+    new:
+      create_game: "Create a Game"
+      enter_code: "Enter the given code #"
+      join: "Join"
+      play: "Play"
+      quick_play: "Quick solo game"
+      code_to_join: "Code to join :"
+      join_info: "Once the game creator has chosen the game options, he can share the round number for his friends to join the page 'Camp fire' before starting a new round."
+      note: "Note :"
+      join_info_note: "the round number changes everytimes we restart a round. The new code needs to be shared once again if some new friends want to join the group."
+
+  creator:
+    show:
+      story_title: "The little story :"
+      story: "February 2020: TODO."
+      creators_tilte: "Creators :"
+      contact_title: "To contact us :"
+      buy_a_beer_title: "Offer us a drink :"
+      support_us: "Support us :"
+      how: "How to do..."
