@@ -3,7 +3,7 @@
   <div class="content-container centered-vertically">
 
     <div class="white-container centered-vertically" id="score-page-record-container">
-      <% if @sorted_round_participations.first.is_the_best? %>
+      <% if @sorted_round_participations.first.is_the_best?(locale) %>
         <i class="fas fa-trophy trophy"></i>
         <h4><%= @sorted_round_participations.first.user.username %> <%= t('.beat_record') %> <strong class="trophy"><%= @sorted_round_participations.first.visited_pages.count - 1 %></strong> clicks</h4>
       <% else %>

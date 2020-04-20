@@ -13,6 +13,7 @@ class RoundsQuickController < ApplicationController
 
   def show
     @round = Round.find(params[:id])
+    @game_session = @round.game_session
     @round.game_mode = params[:game_mode]
     @round.game_options = params[:round][:game_options]
     @round.search_bar = params[:round][:search_bar]
@@ -43,7 +44,11 @@ class RoundsQuickController < ApplicationController
     @round.update(start_time: start_time)
     if @round.save
       round_participation = RoundParticipation.new
-      @unknown_user = User.find_by(username: "ModeSolo")
+      if locale == :en
+        @unknown_user = User.find_by(username: "ModeSoloEN")
+      else
+        @unknown_user = User.find_by(username: "ModeSoloFR")
+      end
       round_participation.user = @unknown_user
       round_participation.round = @round
       if round_participation.save
@@ -61,10 +66,14 @@ class RoundsQuickController < ApplicationController
   end
 
   def index
-    @unknown_user = User.find_by(username: "ModeSolo")
+    if locale == :en
+      @unknown_user = User.find_by(username: "ModeSoloEN")
+    else
+      @unknown_user = User.find_by(username: "ModeSoloFR")
+    end
     @round_participation = RoundParticipation.where(user: @unknown_user).last
-    if @round_participation.is_the_best?
-      @round_participation.save_record(@unknown_user)
+    if @round_participation.is_the_best?(locale)
+      @round_participation.save_record(@unknown_user, locale)
     end
   end
 
@@ -83,8 +92,11 @@ class RoundsQuickController < ApplicationController
   end
 
   def random_page_url
-    url_for_random_title = 'https://fr.wikipedia.org/api/rest_v1/page/random/title'
-
+    if locale == :en
+      url_for_random_title = 'https://en.wikipedia.org/api/rest_v1/page/random/title'
+    else
+      url_for_random_title = 'https://fr.wikipedia.org/api/rest_v1/page/random/title'
+    end
   end
 
   def random_page_title(url)

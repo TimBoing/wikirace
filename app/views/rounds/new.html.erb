@@ -31,6 +31,7 @@
               <div id="page-choice-container">
                 <%= f.input :start_page, label: false, label: t('.start_page'), :collection => @wiki_pages, :prompt => t('.random_page'), input_html: {class: "js-select2"} %>
                 <%= f.input :end_page, label: false, label: t('.target_page'), :collection => @wiki_pages, :prompt => t('.random_page'), input_html: {class: "js-select2"}  %>
+                <div class="not-visible" id="local-language"><%= "#{locale}" %></div>
               </div>
 
               <div id="nombre-de-clicks-record">

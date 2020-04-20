@@ -66,7 +66,7 @@
   <div class="modal-content centered-vertically">
     <h1><%= t('.round_ended') %></h1>
     <h2 id="game-end-modal-winner"><%= t('.winner_is') %> </h2>
-    <%= link_to t('.results'), "#{@host_name}#{round_round_participations_path(@round)}", class: "btn-tim", id:"to-results-btn" %>
+    <%= link_to t('.results'), "#{@host_name}#{game_sessions_quick_rounds_quick_index_path(@game_session)}", class: "btn-tim", id:"to-results-btn" %>
   </div>
 </div>
 
@@ -101,7 +101,8 @@
   data-malus-sender = ""
   data-malus = "none"
   data-reverse = "<%= @round.reverse %>"
-  data-charlie = "<%= @round.charlie %>">
+  data-charlie = "<%= @round.charlie %>"
+  data-language = "<%= locale %>">
 </div>
 
 <% content_for :after_js do %>

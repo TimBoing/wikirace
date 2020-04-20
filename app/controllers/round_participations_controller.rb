@@ -16,8 +16,8 @@ class RoundParticipationsController < ApplicationController
     @round_participation = RoundParticipation.where(user: current_user)[0]
     @round_participations = @round.round_participations
     @round_participation = @round.round_participations.select {|round_participation| round_participation.user == current_user}[0]
-    if @round_participation.is_the_best?
-      @round_participation.save_record(current_user)
+    if @round_participation.is_the_best?(locale)
+      @round_participation.save_record(current_user, locale)
     end
     @game_session = @round_participation.round.game_session
     @next_round = @game_session.rounds.last
