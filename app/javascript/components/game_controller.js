@@ -51,7 +51,7 @@ const initGame = () => {
     gameStartTime = parseInt(gameInfo.dataset.startTime);
     gameLaunchTime = gameStartTime + waitingTime * 1000;
     const realTitle = gameEndPage.replace(/_/g, " ");
-    infoGameEndPageTitleContainer.innerText = `Your Target : ${realTitle}`;
+    infoGameEndPageTitleContainer.innerText = `La page cible est : ${realTitle}`;
     requestEndPageContent(gameEndPage);
     infoContainer.style.display = "block";
     myInterval = setInterval(gameLoop, 250);

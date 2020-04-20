@@ -32,7 +32,7 @@ const displayPageContent = (page) => {
   if(gameReverse === "true"){addMalusLinks();};
 
   const wikiLinks = pageContainer.querySelectorAll('a');
-  if(charlie == false){
+  if(charlie === "false"){
     wikiLinks.forEach((link) => {
       link.addEventListener('click', (event)=> {
         event.preventDefault();
