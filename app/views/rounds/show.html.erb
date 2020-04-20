@@ -64,8 +64,8 @@
       <span class="close" id="info-close">&times;</span>
     </div>
     <div id="info-your-target-modal-container">
-      <div id="info-game-counter">La partie commence dans : </div>
-      <div id="info-game-mode">Le mode de jeu est : <%= @round.game_mode %></div>
+      <div id="info-game-counter"><%= t('.stating_in') %> </div>
+      <div id="info-game-mode"><%= t('.game_mode_is') %> <%= @round.game_mode %></div>
       <h1 id="info-game-end-page-title-container"></h1>
       <div id="info-game-end-page-container"></div>
       <div id="info-game-counter-big"></div>
@@ -76,16 +76,16 @@
 <div id="game-path-modal" class="modal">
   <div class="modal-content justified">
     <span class="close" id="close-game-path-modal">&times;</span>
-    <h1>Ta route actuelle :</h1>
+    <h1><%= t('.current_path') %></h1>
     <div id="beginning-of-the-path" class="centered-vertically"></div>
   </div>
 </div>
 
 <div id="game-end-modal" class="modal">
   <div class="modal-content centered-vertically">
-    <h1>La partie est terminée!</h1>
-    <h2 id="game-end-modal-winner">Le vainqueur est : </h2>
-    <%= link_to 'Résultats', "#{@host_name}#{round_round_participations_path(@round)}", class: "btn-tim", id:"to-results-btn" %>
+    <h1><%= t('.round_ended') %></h1>
+    <h2 id="game-end-modal-winner"><%= t('.winner_is') %> </h2>
+    <%= link_to t('.results'), "#{@host_name}#{round_round_participations_path(@round)}", class: "btn-tim", id:"to-results-btn" %>
   </div>
 </div>
 

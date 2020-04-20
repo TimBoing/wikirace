@@ -32,10 +32,10 @@
         </li>
       <% else %>
         <li class="nav-item">
-            <%= link_to "Les règles du jeu", rules_path, class: "nav-link" %>
+            <%= link_to t('game_rules'), rules_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-            <%= link_to "S'identifier", new_user_session_path, class: "nav-link" %>
+            <%= link_to t('log_in'), new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
     </ul>

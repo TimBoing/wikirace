@@ -1,13 +1,13 @@
 <div class="main-container">
-  <div class="title-container centered-vertically "><h1><span id="score-page-winner">Round <%= @game_session.rounds.count %> : <%= @sorted_round_participations.first.user.username %> gagne !!!</span></h1></div>
+  <div class="title-container centered-vertically "><h1><span id="score-page-winner">Round <%= @game_session.rounds.count %> : <%= @sorted_round_participations.first.user.username %> <%= t('.win') %></span></h1></div>
   <div class="content-container centered-vertically">
 
     <div class="white-container centered-vertically" id="score-page-record-container">
       <% if @sorted_round_participations.first.is_the_best? %>
         <i class="fas fa-trophy trophy"></i>
-        <h4><%= @sorted_round_participations.first.user.username %> a battu le record en <strong class="trophy"><%= @sorted_round_participations.first.visited_pages.count - 1 %></strong> clicks</h4>
+        <h4><%= @sorted_round_participations.first.user.username %> <%= t('.beat_record') %> <strong class="trophy"><%= @sorted_round_participations.first.visited_pages.count - 1 %></strong> clicks</h4>
       <% else %>
-        <h4>Pas de nouveau record sur ce round...</h4>
+        <h4><%= t('.no_record') %></h4>
         <i class="fas fa-heart-broken trophy"></i>
       <% end %>
     </div>
@@ -53,14 +53,14 @@
           <div class="centered-vertically game-font">
 
 
-            <h2 class="parcours-title">Parcours : <%= player.username %>!</h2>
+            <h2 class="parcours-title"><%= t('.path') %> <%= player.username %>!</h2>
             <div class="time-and-score">
               <% time_gap = player.round_participations.select{|round_participation| round_participation.round == @round }[0].end_time.to_i - @round.start_time.to_i %>
               <% seconds_elapsed = ((time_gap / 1000) % 60).to_i %>
               <% minutes_elapsed = ((time_gap / 1000) / 60 % 60).to_i %>
               <% hours_elapsed = ((time_gap / 1000) / 60 / 60 % 60).to_i  %>
-              <p>Temps: <%= hours_elapsed %>h <%= minutes_elapsed %>min <%= seconds_elapsed %>s</p>
-              <p>Click: <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.count - 1 %></p>
+              <p><%= t('.time') %> <%= hours_elapsed %>h <%= minutes_elapsed %>min <%= seconds_elapsed %>s</p>
+              <p><%= t('.clicks') %> <%= player.round_participations.select{|round_participation| round_participation.round == @round }[0].visited_pages.count - 1 %></p>
             </div>
 
 
@@ -85,18 +85,18 @@
 
     <div class="white-container centered-vertically" id="score-page-buttons-container">
       <% if current_user.id == @game_session.user_id %>
-        <%= link_to "Nouveau Round", new_game_session_round_path(@game_session), class: "btn-tim", id: "launch-new-round" %>
+        <%= link_to t('.new_round'), new_game_session_round_path(@game_session), class: "btn-tim", id: "launch-new-round" %>
       <% else %>
         <% if @next_round.state == 'imminent' %>
         <% raise %>
-          <%= link_to "Nouveau Round", new_game_session_round_path(@game_session), class: "btn-tim", id: "launch-new-round" %>
+          <%= link_to t('.new_round'), new_game_session_round_path(@game_session), class: "btn-tim", id: "launch-new-round" %>
         <% elsif @next_round.state == 'playing' %>
-          <button class="player_replay_button btn-tim main-red" style="opacity: 0.5;"><i>Désolé, la partie a déjà commencé...</i></button>
+          <button class="player_replay_button btn-tim main-red" style="opacity: 0.5;"><i><%= t('.already_started') %></i></button>
         <% else %>
-          <button class="player_replay_button btn-tim main-red" style="opacity: 0.5;"><i>En attente de <%= @game_session.user.username %></i></button>
+          <button class="player_replay_button btn-tim main-red" style="opacity: 0.5;"><i><%= t('.waiting_for') %> <%= @game_session.user.username %></i></button>
         <% end %>
       <% end %>
-      <%= link_to "Finir la partie", game_session_rounds_path(@game_session), class: "btn-tim", id: "go-to-round-index" %>
+      <%= link_to t('.end_game'), game_session_rounds_path(@game_session), class: "btn-tim", id: "go-to-round-index" %>
     </div>
   </div>
 </div>

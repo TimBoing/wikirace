@@ -1,17 +1,17 @@
 <div class="main-container">
-  <div class="title-container centered-vertically "><h1><span><%= @creator.username %> t'invite à jouer!</span></h1></div>
+  <div class="title-container centered-vertically "><h1><span><%= @creator.username %> <%= t('.invited_you') %></span></h1></div>
   <div class="content-container centered-vertically">
     <div class="white-container centered-vertically">
       <% if @round.state == nil %>
-        <p class="display-messages-no-round">Ce round n'existe pas, il doit y avoir un problème avec l'URL de votre ami(e)</p>
+        <p class="display-messages-no-round"><%= t('.not_existing') %></p>
       <% elsif @round.state == "initiated" %>
-        <%= link_to "Rejoindre", round_round_participations_path, method: :post, class:"btn-tim", id:"btn-join"  %>
+        <%= link_to t('.join'), round_round_participations_path, method: :post, class:"btn-tim", id:"btn-join"  %>
       <% elsif @round.state == "playing" %>
-        <p class="display-messages-no-round">Désolé, vous ne pouvez pas vous joindre car ce round a déjà commencé, essayez de vous joindre à vos amis pour un prochain round...</p>
+        <p class="display-messages-no-round"><%= t('.already_started') %></p>
       <% elsif @round.state == "ended" %>
-        <p class="display-messages-no-round">Désolé, vous ne pouvez pas vous joindre car ce round a déjà été joué...</p>
+        <p class="display-messages-no-round"><%= t('.already_played') %></p>
       <% else %>
-        <p class="display-messages-no-round">Il y a un problème avec cette partie</p>
+        <p class="display-messages-no-round"><%= t('.issue') %></p>
       <% end %>
     </div>
   </div>
