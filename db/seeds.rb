@@ -46,6 +46,7 @@ puts "Some users have been created"
 puts "Creating new game sessions..."
 game_session_solo_fr = GameSession.create(user: user_solo_fr, language: :fr)
 game_session_solo_en = GameSession.create(user: user_solo_en, language: :en)
+
 # game_session1 = GameSession.create(user: user1)
 # game_session2 = GameSession.create(user: user1)
 # game_session3 = GameSession.create(user: user1)
@@ -60,7 +61,7 @@ game_session_solo_en = GameSession.create(user: user_solo_en, language: :en)
 # game_session12 = GameSession.create(user: user4)
 puts "Some game sessions have been created"
 
-puts "Creating new rounds..."
+# puts "Creating new rounds..."
 # round1 = Round.create(start_page: "Phare_de_Pumpkin_Island", end_page: "Polycétide_synthase", state: "ended", start_time: Time.now - 260, game_session: game_session1)
 # round2 = Round.create(start_page: "Liste_des_églises_les_plus_hautes_de_France", end_page: "Slam_Stewart", state: "ended", start_time: Time.now - 160, game_session: game_session1)
 # round3 = Round.create(start_page: "Erwan_Bergot", end_page: "Sapmer", state: "ended", start_time: Time.now - 60, game_session: game_session1)
@@ -86,9 +87,9 @@ puts "Creating new rounds..."
 # round23 = Round.create(start_page: "Comité_de_protection_des_personnes", end_page: "Frontières_du_Royaume-Uni", state: "ended", start_time: Time.now - 60000, game_session: game_session12)
 # round24 = Round.create(start_page: "Forfait_journalier_hospitalier", end_page: "Ortigosa_del_Monte", state: "ended", start_time: Time.now - 50000, game_session: game_session12)
 # round25 = Round.create(start_page: "LoveHateHero", end_page: "Pamela_H._Smith", state: "playing", start_time: Time.now, game_session: game_session12)
-puts "Some rounds have been created"
+# puts "Some rounds have been created"
 
-puts "Creating some round participations"
+# puts "Creating some round participations"
 # round_participation1 = RoundParticipation.create(user: user1, round: round1, score: 0, rank: 1, end_time: Time.now)
 # round_participation2 = RoundParticipation.create(user: user1, round: round2, score: 20, rank: 2, end_time: Time.now)
 # round_participation3 = RoundParticipation.create(user: user1, round: round3, score: 10, rank: 1, end_time: Time.now)
@@ -124,9 +125,9 @@ puts "Creating some round participations"
 # round_participation33 = RoundParticipation.create(user: user3, round: round6, score: 47, rank: 1, end_time: Time.now)
 # round_participation34 = RoundParticipation.create(user: user3, round: round24, score: 83, rank: 6, end_time: Time.now)
 # round_participation35 = RoundParticipation.create(user: user3, round: round25, score: 95, rank: 5, end_time: Time.now)
-puts "Some round participations have been created"
+# puts "Some round participations have been created"
 
-puts "Creating new visited pages..."
+# puts "Creating new visited pages..."
 # visited_pages1 = VisitedPage.create(title: "Phare_de_Pumpkin_Island", url: "https://fr.wikipedia.org/wiki/La_Vengeance_des_zombies")
 # visited_pages2 = VisitedPage.create(title: "Phare_de_Pumpkin_Island", url: "https://fr.wikipedia.org/wiki/La_Vengeance_des_zombies")
 # visited_pages3 = VisitedPage.create(title: "Phare_de_Pumpkin_Island", url: "https://fr.wikipedia.org/wiki/La_Vengeance_des_zombies")
@@ -162,7 +163,7 @@ puts "Creating new visited pages..."
 # visited_pages33 = VisitedPage.create(title: "Phare_de_Pumpkin_Island", url: "https://fr.wikipedia.org/wiki/La_Vengeance_des_zombies")
 # visited_pages34 = VisitedPage.create(title: "Phare_de_Pumpkin_Island", url: "https://fr.wikipedia.org/wiki/La_Vengeance_des_zombies")
 # visited_pages35 = VisitedPage.create(title: "Phare_de_Pumpkin_Island", url: "https://fr.wikipedia.org/wiki/La_Vengeance_des_zombies")
-puts "Some visited pages have been created"
+# puts "Some visited pages have been created"
 
 puts "Creating new wiki_pages..."
 wiki_pageFR1 = WikiPage.create(language: :fr,categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
