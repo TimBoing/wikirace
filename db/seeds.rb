@@ -13,8 +13,11 @@ User.destroy_all
 puts "All the old database has been deleted"
 
 puts "Creating new users..."
-user_solo = User.new(email: "mode@solo.fr", password: "123456", first_name: "Mode", last_name: "Solo",coins: 0, item1: 0, item2: 0, item3: 0, item4: 0, item5: 0, username: "ModeSolo")
-user_solo.save!
+user_solo_fr = User.new(email: "mode@solo.fr", password: "123456", first_name: "Mode", last_name: "Solo",coins: 0, item1: 0, item2: 0, item3: 0, item4: 0, item5: 0, username: "ModeSoloFR")
+user_solo_fr.save!
+
+user_solo_en = User.new(email: "mode@solo.en", password: "123456", first_name: "Mode", last_name: "Solo",coins: 0, item1: 0, item2: 0, item3: 0, item4: 0, item5: 0, username: "ModeSoloEN")
+user_solo_en.save!
 
 # user1 = User.new(email: "aaaaa@aaaaa.fr", password: "123456", first_name: "Alexis", last_name: "Filia",coins: 55, item1: 1, item2: 1, item3: 0, item4: 2, item5: 1, username: "Alex")
 # picture1 = URI.open('https://images.unsplash.com/photo-1574257434424-2ee5b4fa8922?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80')
@@ -41,7 +44,9 @@ user_solo.save!
 puts "Some users have been created"
 
 puts "Creating new game sessions..."
-game_session_solo = GameSession.create(user: user_solo)
+game_session_solo_fr = GameSession.create(user: user_solo_fr, language: :fr)
+game_session_solo_en = GameSession.create(user: user_solo_en, language: :en)
+
 # game_session1 = GameSession.create(user: user1)
 # game_session2 = GameSession.create(user: user1)
 # game_session3 = GameSession.create(user: user1)
@@ -161,37 +166,26 @@ puts "Some game sessions have been created"
 # puts "Some visited pages have been created"
 
 puts "Creating new wiki_pages..."
-wiki_page1 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-wiki_page2 = WikiPage.create(categories: "Fruit", title: "Tomate", url: "https://fr.wikipedia.org/wiki/Tomate")
-wiki_page3 = WikiPage.create(categories: "Fruit", title: "Avocat (fruit)", url: "https://fr.wikipedia.org/wiki/Avocat_(fruit)")
-wiki_page4 = WikiPage.create(categories: "Fruit", title: "Orange (fruit)", url: "https://fr.wikipedia.org/wiki/Orange_(fruit)")
-wiki_page5 = WikiPage.create(categories: "Fruit", title: "Prune", url: "https://fr.wikipedia.org/wiki/Prune")
-wiki_page6 = WikiPage.create(categories: "Philosophie", title: "Philosophie", url: "https://fr.wikipedia.org/wiki/Philosophie")
-wiki_page7 = WikiPage.create(categories: "Philosophie", title: "Socrate", url: "https://fr.wikipedia.org/wiki/Socrate")
-wiki_page8 = WikiPage.create(categories: "Philosophie", title: "Diogène de Sinope", url: "https://fr.wikipedia.org/wiki/Diog%C3%A8ne_de_Sinope")
-wiki_page9 = WikiPage.create(categories: "Philosophie", title: "Liste de philosophes scolastiques", url: "https://fr.wikipedia.org/wiki/Liste_de_philosophes_scolastiques")
-# wiki_page10 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page11 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page12 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page13 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page14 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page15 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page16 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page17 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page18 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page19 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page20 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page21 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page22 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page23 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page24 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page25 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page26 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page27 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page28 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page29 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
-# wiki_page30 = WikiPage.create(categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+wiki_pageFR1 = WikiPage.create(language: :fr,categories: "Fruit", title: "Raisin", url: "https://fr.wikipedia.org/wiki/Raisin")
+wiki_pageFR2 = WikiPage.create(language: :fr,categories: "Fruit", title: "Tomate", url: "https://fr.wikipedia.org/wiki/Tomate")
+wiki_pageFR3 = WikiPage.create(language: :fr,categories: "Fruit", title: "Avocat (fruit)", url: "https://fr.wikipedia.org/wiki/Avocat_(fruit)")
+wiki_pageFR4 = WikiPage.create(language: :fr,categories: "Fruit", title: "Orange (fruit)", url: "https://fr.wikipedia.org/wiki/Orange_(fruit)")
+wiki_pageFR5 = WikiPage.create(language: :fr,categories: "Fruit", title: "Prune", url: "https://fr.wikipedia.org/wiki/Prune")
+wiki_pageFR6 = WikiPage.create(language: :fr,categories: "Philosophie", title: "Philosophie", url: "https://fr.wikipedia.org/wiki/Philosophie")
+wiki_pageFR7 = WikiPage.create(language: :fr,categories: "Philosophie", title: "Socrate", url: "https://fr.wikipedia.org/wiki/Socrate")
+wiki_pageFR8 = WikiPage.create(language: :fr,categories: "Philosophie", title: "Diogène de Sinope", url: "https://fr.wikipedia.org/wiki/Diog%C3%A8ne_de_Sinope")
+wiki_pageFR9 = WikiPage.create(language: :fr,categories: "Philosophie", title: "Liste de philosophes scolastiques", url: "https://fr.wikipedia.org/wiki/Liste_de_philosophes_scolastiques")
 
+wiki_pageEN1 = WikiPage.create(language: :en, title: "New York City", url: "https://en.wikipedia.org/wiki/New_York_City")
+wiki_pageEN2 = WikiPage.create(language: :en, title: "United States", url: "https://en.wikipedia.org/wiki/United_States")
+wiki_pageEN3 = WikiPage.create(language: :en, title: "Mexico", url: "https://en.wikipedia.org/wiki/Mexico")
+wiki_pageEN4 = WikiPage.create(language: :en, title: "Pacific Ocean", url: "https://en.wikipedia.org/wiki/Pacific_Ocean")
+wiki_pageEN5 = WikiPage.create(language: :en, title: "Asia", url: "https://en.wikipedia.org/wiki/Asia")
+wiki_pageEN6 = WikiPage.create(language: :en, title: "Africa", url: "https://en.wikipedia.org/wiki/Africa")
+wiki_pageEN7 = WikiPage.create(language: :en, title: "Latin", url: "https://en.wikipedia.org/wiki/Latin")
+wiki_pageEN8 = WikiPage.create(language: :en, title: "Language", url: "https://en.wikipedia.org/wiki/Language")
+wiki_pageEN9 = WikiPage.create(language: :en, title: "Philosophy", url: "https://en.wikipedia.org/wiki/Philosophy")
 puts "Some wiki_pages have been created"
 
 puts "Congratulation, your database is clean and has some elements from the seed"
+

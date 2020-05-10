@@ -1,15 +1,15 @@
 <div class="main-container">
-  <div class="title-container centered-vertically "><h1><span>À propos...</span></h1></div>
+  <div class="title-container centered-vertically "><h1><span><%= t('about')%></span></h1></div>
   <div class="content-container centered-vertically">
 
-    <div class="title-container centered-vertically white-shadow "><h3><span>Pour la petite histoire :</span></h3></div>
+    <div class="title-container centered-vertically white-shadow "><h3><span><%= t('.story_title') %></span></h3></div>
     <div class="record-cards">
       <div class="card">
-        <p>Février 2020: Développé comme projet de fin de formation, WikiRace n'avait alors que 2 semaines lorsque ses créateurs décident de le poursuivre dans le but d'affiner leurs connaissances de développeur. Mais voyant rapidement leurs amis se prendre "litteralement" au jeu, ils ont décidé d'en faire réellement une plateforme de jeu.</p>
+        <p><%= t('.story') %></p>
       </div>
     </div>
 
-    <div class="title-container centered-vertically white-shadow "><h3><span>Les créateurs :</span></h3></div>
+    <div class="title-container centered-vertically white-shadow "><h3><span><%= t('.creators_title') %></span></h3></div>
     <div class="record-cards">
       <div class="card">
         <div>Tim</div>
@@ -23,17 +23,17 @@
       </div>
     </div>
 
-    <div class="title-container centered-vertically white-shadow "><h3><span>Nous contacter :</span></h3></div>
+    <div class="title-container centered-vertically white-shadow "><h3><span><%= t('.contact_title') %></span></h3></div>
     <div class="record-cards">
       <div class="card">
         <div><strong>Email :</strong> contact@wikirace.xyz</div>
       </div>
     </div>
 
-    <div class="title-container centered-vertically white-shadow "><h3><span>Paye nous un verre :</span></h3></div>
+    <div class="title-container centered-vertically white-shadow "><h3><span><%= t('.buy_a_beer_title') %></span></h3></div>
     <div class="record-cards">
       <div class="card">
-        <div><strong>Don de soutien :</strong> La marche à suivre...</div>
+        <div><strong><%= t('.support_us') %></strong> <%= t('.how') %></div>
       </div>
     </div>
 

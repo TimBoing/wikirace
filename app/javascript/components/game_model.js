@@ -2,6 +2,7 @@ import { displayPageContentOnInfoModal } from './game_view';
 import { displayPageContent } from './game_view';
 
 const gameInfo = document.getElementById('game-info');
+
 let visitedPages = [];
 
 const visitedPagesGetter = () => {
@@ -27,37 +28,52 @@ const addVisitedPageToDatabase = (page) => {
 };
 
 const requestEndPageContent = (page) => {
+  const language = gameInfo.dataset.language
   const requestOptions = {
     method: 'GET',
     redirect: 'follow'
   };
-  fetch(`https://fr.wikipedia.org/api/rest_v1/page/html/${page}`, requestOptions)
-    .then(response => response.text())
-    .then(result => displayPageContentOnInfoModal(result));
+  if (language === "fr") {
+    fetch(`https://fr.wikipedia.org/api/rest_v1/page/html/${page}`, requestOptions)
+      .then(response => response.text())
+      .then(result => displayPageContentOnInfoModal(result));
+  } else {
+    fetch(`https://en.wikipedia.org/api/rest_v1/page/html/${page}`, requestOptions)
+      .then(response => response.text())
+      .then(result => displayPageContentOnInfoModal(result));
+  }
 };
+
 
 const requestPageContent = (page) => {
   const pageTitleContainer = document.getElementById('wikipage-title-container');
+  const language = gameInfo.dataset.language
+
+  const displayTitleAndContent = (result) => {
+    if(result.substring(0,1) !== "{"){
+      const realTitle = page.replace(/_/g, " ");
+      pageTitleContainer.innerText = realTitle;
+      gameInfo.dataset.currentPage = page;
+      displayPageContent(result);
+      addVisitedPageToDatabase(page);
+    } else {
+      alert("Tu ne peux pas accéder à cette page!");
+    }
+  }
 
   const requestOptions = {
     method: 'GET',
     redirect: 'follow'
   };
-  fetch(`https://fr.wikipedia.org/api/rest_v1/page/html/${page}`, requestOptions)
-    .then(response => response.text())
-    .then((result) => {
-      if(result.substring(0,1) !== "{"){
-        const realTitle = page.replace(/_/g, " ");
-        pageTitleContainer.innerText = realTitle;
-        gameInfo.dataset.currentPage = page;
-        displayPageContent(result);
-        addVisitedPageToDatabase(page);
-      } else {
-        alert("Tu ne peux pas accéder à cette page!");
-      }
-
-
-    });
+  if (language === "fr") {
+    fetch(`https://fr.wikipedia.org/api/rest_v1/page/html/${page}`, requestOptions)
+      .then(response => response.text())
+      .then(result => displayTitleAndContent(result));
+  } else {
+    fetch(`https://en.wikipedia.org/api/rest_v1/page/html/${page}`, requestOptions)
+      .then(response => response.text())
+      .then(result => displayTitleAndContent(result));
+  }
 };
 
 

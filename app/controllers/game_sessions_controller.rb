@@ -8,7 +8,7 @@ class GameSessionsController < ApplicationController
   end
 
   def create
-    @game_session = GameSession.new(user_id: current_user.id)
+    @game_session = GameSession.new(user_id: current_user.id, language: locale)
     if @game_session.save
       redirect_to new_game_session_round_path(@game_session)
     else

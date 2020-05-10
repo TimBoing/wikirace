@@ -22,8 +22,9 @@ class RoundsController < ApplicationController
   def new
     @round = Round.new
     @game_session = GameSession.find(params[:game_session_id])
-    @wiki_pages = WikiPage.all.sort_by { |wiki_page| wiki_page.title }
-  end
+    wiki_pages_all = WikiPage.all.sort_by { |wiki_page| wiki_page.title }
+    @wiki_pages = wiki_pages_all.select { |wikipage| wikipage.language == "#{locale}" }
+   end
 
   def create
 
@@ -96,8 +97,11 @@ class RoundsController < ApplicationController
   end
 
   def random_page_url
-    url_for_random_title = 'https://fr.wikipedia.org/api/rest_v1/page/random/title'
-
+    if locale == :en
+      url_for_random_title = 'https://en.wikipedia.org/api/rest_v1/page/random/title'
+    else
+      url_for_random_title = 'https://fr.wikipedia.org/api/rest_v1/page/random/title'
+    end
   end
 
   def random_page_title(url)

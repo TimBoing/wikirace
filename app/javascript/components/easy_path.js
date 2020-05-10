@@ -2,6 +2,7 @@ const easy_path_btn = document.getElementById("easy-path")
 const recordSentence = document.getElementById("nombre-de-clicks-record");
 let startPage = "Page aléatoire";
 let endPage = "Page aléatoire";
+const localeLanguage = document.getElementById("local-language");
 
 const defineEasyPath = () => {
 
@@ -29,6 +30,10 @@ const defineEasyPath = () => {
     return new URLSearchParams({start_page: start, end_page: end}).toString();
   }
 
+  const buildQueryString2 = (localLanguage) => {
+    return new URLSearchParams({language: localLanguage}).toString();
+  }
+
   const firstFilter = () => {
     const startEnd = buildQueryString(startPage, endPage);
     lookInDB(startEnd);
@@ -39,6 +44,7 @@ const defineEasyPath = () => {
   if (easy_path_btn) {
 
     easy_path_btn.addEventListener('click', (event) => {
+      const locale = buildQueryString2(localeLanguage.textContent);
       const requestOptions = {
           method: 'GET',
           headers: {
@@ -46,7 +52,7 @@ const defineEasyPath = () => {
             'Accept': 'application/json'
           }
         }
-        fetch(`http://${window.location.host}/path`, requestOptions)
+        fetch(`http://${window.location.host}/path?${locale}`, requestOptions)
         .then(response => response.json())
         .then((data) => {
 

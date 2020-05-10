@@ -1,27 +1,26 @@
 <div class="main-container">
-  <div class="title-container centered-vertically "><h1><span>Les règles du jeu</span></h1></div>
+  <div class="title-container centered-vertically "><h1><span><%= t('.game_rules') %></span></h1></div>
   <div class="content-container centered-vertically">
-    <div class="title-container centered-vertically white-shadow "><h3><span>Les règles de base :</span></h3></div>
+    <div class="title-container centered-vertically white-shadow "><h3><span><%= t('.basics') %></span></h3></div>
     <div class="white-container centered-vertically">
-      <p><strong>Le principe:</strong> une course pour rejoindre une page Wikipédia "cible" à partir d'une autre page "de départ" en utilisant uniquement les liens présents dans les articles.</p>
-      <p>Utilisez vos connaissances et votre culture afin d'associer les idées et de trouver les meilleurs chemins pour atteindre votre objectif.</p>
+      <%= t('.principal_html') %>
     </div>
 
-    <div class="title-container centered-vertically white-shadow "><h3><span>Les modes de jeu :</span></h3></div>
+    <div class="title-container centered-vertically white-shadow "><h3><span><%= t('.modes_info_title') %></span></h3></div>
     <div class="white-container centered-vertically">
-      <p><strong>Premier arrivé :</strong> Mode de jeu par défaut. La partie s'arrête lorsque l'un des joueurs arrive sur la page cible. Celui-ci gagne alors 100 points, les autres perdent autant de points que de nombres de clicks réalisés.</p>
-      <p><strong>Limite de clicks : (en développement)</strong> Le créateur fixe une limite de clicks. La partie s'arrête individuellement pour chaque joueur, soit que celui-ci a trouvé la page cible, soit qu'il a atteint le nombre maximum de clicks autorisés. Le classement se fait pour ceux qui ont trouvé la page cible par ordre croissant de nombre de clicks et pour ceux qui ont échoué, par ordre croissant de temps.</p>
-      <p><strong>Limite de temps : (en développement)</strong> Le créateur fixe une limite de temps. La partie s'arrête individuellement pour chaque joueur, soit que celui-ci a trouvé la page cible, soit qu'il a atteint le temps maximum autorisé. Le classement se fait pour ceux qui ont trouvé la page cible par ordre croissant de nombre de clicks et pour ceux qui ont échoué, par ordre croissant de clicks.</p>
-      <p><em><strong>Note:</strong> Il est possible de combiner les modes de jeu "limite de clicks" et "limite de temps" afin d'avoir une limite sur ces deux paramètres.</em></p>
+      <p><strong><%= t('.first_arrived') %> :</strong> <%= t('.default_mode') %> <%= t('.first_arrived_info') %></p>
+      <p><strong><%= t('.time_limit') %> : <%= t('.TODO') %></strong> <%= t('.time_limit_info') %></p>
+      <p><strong><%= t('.click_limit') %> : <%= t('.TODO') %></strong> <%= t('.click_limit_info') %></p>
+      <p><em><strong><%= t('.note') %></strong> <%= t('.combine_modes') %></em></p>
     </div>
 
-    <div class="title-container centered-vertically white-shadow "><h3><span>Les options de jeu :</span></h3></div>
+    <div class="title-container centered-vertically white-shadow "><h3><span><%= t('.options_info_title') %></span></h3></div>
     <div class="white-container centered-vertically">
-      <p><strong>Search bar :</strong> Elle est active par défaut. C'est une barre de recherche qui surligne en jaune (mais ne déplace pas la vue) les mots contenant la suite de caractères recherché (en un seul bloc) dans l'article.</p>
-      <p><strong>Reverse :</strong> Dans les articles peuvent se cacher des logos "Reverse" qui retournent les écrans des autres joueurs pendant 20 s. Si vos êtes vous-même à l'envers lorsque vous activez un "Reverse", celui-ci retourne les autres mais vous remet aussi à l'endroit.</p>
-      <p><strong>Précédent :</strong> Actif par défaut. C'est la possibilité de revenir sur les pages précédentes. À noter que cette action compte comme un click.</p>
-      <p><strong>Où est...? : (en développement)</strong></p>
-      <p><em><strong>Note:</strong> Il est possible de combiner plusieurs options de jeu dans le même round.</em></p>
+      <p><strong><%= t('.search_bar') %> :</strong> <%= t('.default') %> <%= t('.search_bar_info') %></p>
+      <p><strong><%= t('.reverse') %> :</strong> <%= t('.reverse_info_html') %></p>
+      <p><strong><%= t('.back') %> :</strong> <%= t('.default') %> <%= t('.back_info') %></p>
+      <p><strong><%= t('.where_is_html') %> :</strong> <%= t('.where_is_info_html') %></p>
+      <p><em><strong><%= t('.note') %></strong> <%= t('.combine_options') %></em></p>
     </div>
   </div>
 </div>

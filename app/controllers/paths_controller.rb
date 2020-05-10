@@ -3,7 +3,7 @@ class PathsController < ApplicationController
 
   def show
     if params[:start_page].blank? && params[:end_page].blank?
-      easy_paths = Path.all.select { |path| path.points.count <= 5 && path.points.count > 2 }
+      easy_paths = Path.all.select { |path| path.points.count <= 5 && path.points.count > 2 && path.start_page.language == params[:language] }
       @easy_path = easy_paths.sample
       render json: {start_page: @easy_path.start_page, end_page: @easy_path.end_page} and return
     else
